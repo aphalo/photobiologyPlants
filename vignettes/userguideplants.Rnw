@@ -1,0 +1,289 @@
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{Phytochrome state quantification with R}
+%\VignetteDepends{knitr, photobiologyPlants}
+%\VignetteKeyword{misc}
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{abbrev}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\usepackage{listings}
+%\usepackage{booktabs}
+
+\newcommand{\PB}{\textsf{photobiology}\xspace}
+\newcommand{\PBWB}{\textsf{photobiologyWavebands}\xspace}
+\newcommand{\PBPL}{\textsf{photobiologyPlants}\xspace}
+
+\begin{document}
+
+<<setup, include=FALSE, cache=FALSE>>=
+library(knitr)
+opts_chunk$set(fig.path='figure/pos-', fig.align='center', fig.show='hold', size="footnotesize", fig.width=6, fig.height=4, out.width='.95\\textwidth', warning=FALSE)
+options(replace.assign=TRUE,width=55)
+@
+
+<<example-0-hiden, eval=TRUE, include=FALSE>>=
+library(photobiologyPlants)
+@
+
+<<own-set-up, echo=FALSE, include=FALSE>>=
+my_version <- packageVersion("photobiologyPlants")
+@
+
+\title{\PBPL Version \Sexpr{my_version}\\ User Guide}
+\author{Pedro J. Aphalo}
+
+\maketitle
+
+\section{Introduction}
+
+\sloppy
+We have developed a set of packages to
+facilitate the calculation of many different quantities that can be derived from spectral irradiance data. The basic package is called \PB, and the package described here is an extension of the basic facilities for quantification of Phytochrome (a photoreceptor in plants). It will be submitted to CRAN (Comprehensive R archive network), it is meanwhile available from \url{https://bitbucket.org/aphalo/photobiology/downloads} and \url{https://bitbucket.org/aphalo/photobiologyphy/downloads}. There are also a public Git repositories at \url{https://bitbucket.org/aphalo/photobiology} and \url{https://bitbucket.org/aphalo/photobiologycry}. Functions are included for calculating the cryptochrome
+related quantities.
+
+\section{Installation and use}
+
+The functions in the package \PBCRY are
+made available by installing the packages \verb!photobiologyPlants! (once) and
+loading it from the library when needed.
+
+To load the package into the workspace we use \verb!library(photobiologyPlants)!.
+
+<<example-0, eval=TRUE>>=
+library(photobiologyPlants)
+library(photobiologyWavebands)
+@
+
+\part{PHY}
+
+\section{Spectral data }
+If our spectral irradiance data is in \wattnm, and the wavelength in nm, as in the case of
+the Macam spectroradiometer, the functions will return the effective irradiance in \watt. In this
+example we calculated a biologically effective irradiance.
+
+If, for example, the spectral irradiance output by our model of spectroradiometer is in m\wattnm,
+and the wavelengths are in Ångstrom then to obtain the effective irradiance in \watt we will
+need to convert the units.
+
+<<example-1, eval=FALSE>>=
+Pr_P_ratio(wavelength/10,irrad/1000)
+@
+
+In this example, we take advantage of the behaviour of the S language: an operation between a scalar
+and vector, is equivalent to applying this operation to each member of the vector.
+Consequently, in the code above, each value from the vector of wavelengths is divided
+by 10, and each value in the vector of spectral irradiances is divided by 1000.
+
+If the spectral irradiance is in \mwattnm then values should be multiplied by 10 to
+convert them to \wattnm.
+
+It is very important to make sure that the wavelengths are in nanometers as this is what
+the functions expect. If the wavelengths are in the wrong units, the action spectra will be
+wrongly calculated, and the returned value for effective irradiance will be completely wrong.
+
+Here we just use the example data supplied with the package.
+
+\section{Calculating the Phytochrome photoequilibrium}
+
+<<example-2, eval=TRUE>>=
+attach(sun.data)
+@
+
+<<example-3, eval=TRUE>>=
+Pr_P_ratio(w.length, s.e.irrad)
+@
+
+<<example-4, eval=TRUE>>=
+library(photobiologyVIS)
+R.FR <- R_FR_ratio(w.length,s.e.irrad)
+Pr_P_ratio_R_FR(R.FR)
+@
+
+Here we calculated the R:FR ratio from spectral data, but in practice one would use this
+function only when spectral data is not available as when a R plus FR sensor is used. In such
+a case the photoequilibrium is only a very rough approximation, as this function is meant
+for calculation of the photoequilibrium under dichromatic radiation.
+
+<<>>=
+detach(sun.data)
+@
+
+We have used here \texttt{attach} and \texttt{detach} as we used the same data in several examples,
+and we wanted to keep the code lines short and simple. It is also possible, and even recommended
+to use \texttt{with} instead:
+<<example-5>>=
+with(sun.data, Pr_P_ratio(w.length,s.e.irrad))
+@
+
+In the case of monochromatic light we can still use the same functions, as the defaults are such that
+we can use a single value as the 'w.length' argument, to obtain the Pr:P ratio. For monchromatic
+light irradiance is irrelevant for the photoequilibrium.
+
+<<example-5a>>=
+Pr_P_ratio(660)
+Pr_P_ratio(735)
+Pr_P_ratio(435)
+@
+
+We can also plot Pr:P as a function of wavelength (nm) of monochromatic light.
+
+<<example-5b>>=
+ex5.data <- data.frame(w.length=seq(300, 770, length.out=100), pr.p=numeric(100))
+attach(ex5.data)
+
+ex5.data$pr.p <- Pr_P_ratio_mono(ex5.data$w.length)
+
+plot(pr.p ~ w.length, xlab="Wavelength (nm)",
+     ylab="Phytochrome photoequilibrium, Pr:Ptot ratio",
+     type="l", data=ex5.data)
+rm(ex5.data)
+@
+
+In the case of dichromatic illumination with red (660 nm) and far-red (730 nm) light, we can use a different function that takes the R:FR photon ratio as argument.
+
+<<example-6>>=
+Pr_P_ratio_R_FR(1.15)
+Pr_P_ratio_R_FR(0.01)
+Pr_P_ratio_R_FR(c(1.15,0.01))
+@
+
+Of course it is also easy to plot Pr:P ratio as a function of R:FR photon ratio. However we have to
+remember that such values are exact only for dichromatic light, and only a rought approximation for
+wide-spectrum light sources. For light spectrum light sources, the photoequilibrium should, if
+possible, from spectral irradiance data.
+
+<<example-6a>>=
+ex6.data <- data.frame(r.fr=seq(0.01, 2.0, length.out=100), pr.p=numeric(100))
+ex6.data$pr.p <- Pr_P_ratio_R_FR(ex6.data$r.fr)
+
+plot(pr.p ~ r.fr, xlab="R:FR photon ratio",
+     ylab="Phytochrome photoequilibrium, Pr:Ptot ratio",
+     type="l", data=ex6.data)
+rm(ex6.data)
+@
+
+Here we try to reproduce figure 11 from Mancinelli (1994), where he uses a logarithmic
+scale for the R:FR ratio.
+
+<<example-7>>=
+ex7.data <- data.frame(r.fr=10^(seq(log10(0.01), log10(10.0), length.out=100)), pr.p=numeric(100))
+ex7.data$pr.p <- Pr_P_ratio_R_FR(ex7.data$r.fr)
+
+plot(pr.p ~ r.fr, xlab="R:FR photon ratio", log="x",
+     ylab="Phytochrome photoequilibrium, Pr:Ptot ratio",
+     type="l", data=ex7.data)
+rm(ex7.data)
+@
+
+\section{Calculating reaction rates}
+
+<<example-3rate, eval=TRUE>>=
+with(sun.data, Phy_reaction_rates(w.length, s.e.irrad))
+@
+
+\section{Calculating the absorption cross section at given wavelengths}
+
+The phytochrome photoequilibrium cannot be calculated from the absportance spectra
+of Pr and Pfr, because Pr and Pfr have different quantum yields for the
+respective phototransformations. We need to use action spectra, which in this
+context are usually called `absorption cross-sections'. They can be calculated
+as the product of absortance and quantum yield. The values in these spectra,
+in the case of Phy are called `Sigma'.
+
+Here we reproduce Figure 3 in Mancinelli (1994), which gives the `Relative photoconversion cross-sections' of Pr ($\sigma_R$) and Pfr ($\sigma_{FR}$). The values are expressed relative to $\sigma_R$ at its maximum at $\lambda = 666$~nm.
+
+<<example-8>>=
+ex7.data <- data.frame(w.length=seq(300, 770, length.out=100))
+ex7.data$sigma.r <- Phy_Sigma_R(ex7.data$w.length)
+ex7.data$sigma.fr <- Phy_Sigma_FR(ex7.data$w.length)
+ex7.data$sigma <- Phy_Sigma(ex7.data$w.length)
+plot(I(sigma.r/ max(sigma.r)) ~ w.length, data=ex7.data, type="l", col="red",
+     xlab="Wavelength (nm)", ylab=expression(sigma[R]~and~sigma[FR]))
+lines(I(sigma.fr/max(sigma.r)) ~ w.length, data=ex7.data)
+rm(ex7.data)
+@
+
+\part{CRY}
+
+\section{Spectral data }
+
+All functions in the photobiology suite expect wavelength in nanometres (nm), spectral energy irradiances in \Wm2nm and spectral photon irradiances in \molm2nm. They do not rescale the data.
+
+It is very important to make sure that the wavelengths are in nanometers as if the wavelengths are in the wrong units, the spectra will be
+wrongly calculated, and the returned value for effective irradiance will be completely wrong.
+
+Here we just use the example data supplied with the package.
+
+\section{Calculating the Crytochrome effective irradiances}
+
+<<example-cry-cry-2, eval=TRUE>>=
+attach(sun.spct)
+@
+
+<<example-cry-cry-3, eval=TRUE>>=
+photon_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="darkness"))
+@
+
+<<example-cry-cry-4, eval=TRUE>>=
+photon_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="light"))
+@
+
+Here we calculated the effective photon irradiance weighted with the absorbance spectrum,
+first using the spectrum for "dark-adapted" CRY2 and then for "blue-light" adapted CRY2.
+
+<<example-cry-3a, eval=TRUE>>=
+energy_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="darkness"))
+@
+
+<<example-cry-4a, eval=TRUE>>=
+energy_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="light"))
+@
+
+Here we calculated the effective (energy) irradiance weighted with the absorbance spectrum,
+first using the spectrum for "dark-adapted" CRY2 and then for "blue-light" adapted CRY2.
+
+<<example-cry-4b, eval=TRUE>>=
+energy_irradiance(w.length, s.e.irrad, CRY2.Abs(norm=400, previous="light"))
+@
+
+As shwon above, it is also possible to indicate a normalization wavelength, in this case 400~nm. If no normalization wavelength is given, the absorbance spectrum data is used as is.
+
+<<>>=
+detach(sun.spct)
+@
+
+We have used here \texttt{attach} and \texttt{detach} as we used the same data in several examples,
+and we wanted to keep the code lines short and simple. It is also possible, and even recommended
+to use \texttt{with} instead:
+<<example-cry-5>>=
+with(sun.spct, photon_irradiance(w.length, s.e.irrad, CRY2.Abs()))
+@
+
+
+\section{Calculating the CRY absorbance at given wavelengths}
+
+Here we try to reproduce Figure 1.B from Banerjee et al. (2007).
+
+<<example-cry-7>>=
+ex7.data <- data.frame(w.length=seq(310, 700, length.out=100),
+                       A.dark=numeric(100),
+                       A.light=numeric(100))
+ex7.data$A.dark <- CRY2_Abs_dark_fun(ex7.data$w.length)
+ex7.data$A.light <- CRY2_Abs_light_fun(ex7.data$w.length)
+
+plot(A.dark ~ w.length, xlab="Wavelength (nm)",
+     ylab="CRY2 spectral Absorbance",
+     type="l", data=ex7.data)
+lines(A.light ~ w.length, data=ex7.data, col="blue")
+rm(ex7.data)
+@
+
+\part{UVR8}
+
+\section{Coming soon!}
+\end{document}

@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+*.Rd
+*.tex
+*.bbl
+*.synctex.gz
+*.log
+*.so
+*.toc
+vignettes/*.pdf
+vignettes/figure/*
+man

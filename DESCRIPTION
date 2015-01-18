@@ -1,0 +1,20 @@
+Package: photobiologyPlants
+Type: Package
+Title: Plant photobiology related functions and data
+Version: 0.0.1
+Date: 2015-01-18
+Author: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
+Maintainer: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
+Description: This package provides pre-defined functions
+             for quantifying visible (VIS) radiation in relation to the photoreceptors
+             Phytochromes, Cryptochromes, and UVR8 which is present in plants.
+License: GPL (>= 3)
+VignetteBuilder: knitr
+Depends: R (>= 3.1.0), photobiology (>= 0.5.7)
+Suggests: knitr, photobiologyWavebands, photobiologygg
+LazyLoad: yes
+LazyData: yes
+ByteCompile: true
+Encoding: UTF-8
+URL: http://uv4growth.dyndns.org, http://openinstruments.dyndns.org, https://bitbucket.org/aphalo/photobiology
+BugReports: https://bitbucket.org/aphalo/photobiology

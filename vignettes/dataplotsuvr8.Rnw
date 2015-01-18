@@ -1,0 +1,95 @@
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{UVR8 absorbance based quantification with R}
+%\VignetteDepends{knitr, photobiologyPlants, photobiologygg}
+%\VignetteKeyword{misc}
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{abbrev}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{breakurl}
+
+\newcommand{\PB}{\textsf{photobiology}\xspace}
+\newcommand{\PBPL}{\textsf{photobiologyPlants}\xspace}
+\newcommand{\PBGG}{\textsf{photobiologygg}\xspace}
+\newcommand{\PBWB}{\textsf{photobiologyWavebands}\xspace}
+
+\begin{document}
+
+<<setup, include=FALSE, cache=FALSE>>=
+library(knitr)
+opts_chunk$set(fig.path='figure/pos-', fig.align='center', fig.show='hold', size="footnotesize",            fig.width=4, fig.height=4, out.width='.47\\textwidth', warning=FALSE)
+@
+
+<<example-0-hiden, eval=TRUE, include=FALSE>>=
+library(photobiologygg)
+library(photobiologyPlants)
+@
+
+<<own-set-up, echo=FALSE, include=FALSE>>=
+my_version <- packageVersion("photobiologyPlants")
+@
+
+\title{\PBPL Version \Sexpr{my_version}\\  UVR8 related functions and data}
+
+\author{Pedro J. Aphalo}
+
+\maketitle
+
+\section{Introduction}
+
+<<example-0-hidden, eval=FALSE, include=TRUE>>=
+library(ggplot2)
+library(photobiologyWavebands)
+@
+
+<<setup-function>>=
+my.plotter <- function(bwfs.fun, w.low=250, w.high=400, ylab="Action"){
+  spectrum.data <- data.frame(w.length=seq(250, 400, length.out=300))
+spectrum.data$action <- bwfs.fun(spectrum.data$w.length)
+fig_linear <- ggplot(aes(x=w.length, y=action), data=spectrum.data) +
+  labs(x="Wavelength (nm)", y=ylab) +
+  geom_line()
+fig_log <- fig_linear + scale_y_log10(limits=c(1e-5,30))
+print(fig_linear)
+print(fig_log)
+}
+@
+
+\newpage
+
+\section{Plotting wavebands}
+
+Wavebands can be directly plotted with function plot. Here we guive just a couple of examples,
+as with the many options plotting all wavebands using different options would be tedious.
+Waveband objetcs defining BSWFs can be similarly plotted.
+
+<<>>=
+plot(UVR8.Abs())
+@
+
+We can limit the plotted wavelengths to a range, even using another waveband object.
+
+<<>>=
+plot(UVR8.Abs(), range = UVB())
+
+plot(UVR8.Abs(), range = UVA())
+@
+
+
+\newpage
+
+\section{The UVR8 functions}
+
+\subsection{UVR8}
+<<plot-CIE>>=
+my.plotter(UVR8.Abs.fun, ylab="UVR8 spectral absorbance")
+@
+
+\end{document}

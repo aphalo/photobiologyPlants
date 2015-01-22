@@ -1,6 +1,6 @@
 %\VignetteEngine{knitr}
 %\VignetteIndexEntry{Phytochrome state quantification with R}
-%\VignetteDepends{knitr, photobiologyPlants}
+%\VignetteDepends{knitr, photobiologyPlants, photobiologyWavebands}
 %\VignetteKeyword{misc}
 
 \documentclass{article}
@@ -28,6 +28,7 @@ options(replace.assign=TRUE,width=55)
 
 <<example-0-hiden, eval=TRUE, include=FALSE>>=
 library(photobiologyPlants)
+library(photobiologyWavebands)
 @
 
 <<own-set-up, echo=FALSE, include=FALSE>>=
@@ -43,50 +44,38 @@ my_version <- packageVersion("photobiologyPlants")
 
 \sloppy
 We have developed a set of packages to
-facilitate the calculation of many different quantities that can be derived from spectral irradiance data. The basic package is called \PB, and the package described here is an extension of the basic facilities for quantification of Phytochrome (a photoreceptor in plants). It will be submitted to CRAN (Comprehensive R archive network), it is meanwhile available from \url{https://bitbucket.org/aphalo/photobiology/downloads} and \url{https://bitbucket.org/aphalo/photobiologyphy/downloads}. There are also a public Git repositories at \url{https://bitbucket.org/aphalo/photobiology} and \url{https://bitbucket.org/aphalo/photobiologycry}. Functions are included for calculating the cryptochrome
-related quantities.
+facilitate the calculation of many different quantities that can be derived from spectral irradiance data. The basic package is called \PB, and the package described here is an extension of the basic facilities for quantification of Phytochrome, Chryptochrome and UVR8 (plant photoreceptors). It will be submitted to CRAN (Comprehensive R archive network), it is meanwhile available from \url{http://r4photobiology.wordpress.com}.
 
 \section{Installation and use}
 
-The functions in the package \PBCRY are
+The functions in the package \PBPL are
 made available by installing the packages \verb!photobiologyPlants! (once) and
 loading it from the library when needed.
 
-To load the package into the workspace we use \verb!library(photobiologyPlants)!.
+To load package \PBPL into the workspace of the current R session we use \verb!library(photobiologyPlants)!.
 
 <<example-0, eval=TRUE>>=
 library(photobiologyPlants)
 library(photobiologyWavebands)
 @
 
-\part{PHY}
+\section{Spectral data}
 
-\section{Spectral data }
-If our spectral irradiance data is in \wattnm, and the wavelength in nm, as in the case of
-the Macam spectroradiometer, the functions will return the effective irradiance in \watt. In this
-example we calculated a biologically effective irradiance.
+See the User Guide for package \PB for instructions on how to work with spectral data.
 
-If, for example, the spectral irradiance output by our model of spectroradiometer is in m\wattnm,
-and the wavelengths are in Ångstrom then to obtain the effective irradiance in \watt we will
-need to convert the units.
+\begin{framed}
+\noindent
+All functions in the photobiology suite expect wavelength in nanometres (nm), spectral energy irradiances in \wattnm and spectral photon irradiances in \molnm. They do not rescale the data.
 
-<<example-1, eval=FALSE>>=
-Pr_P_ratio(wavelength/10,irrad/1000)
-@
-
-In this example, we take advantage of the behaviour of the S language: an operation between a scalar
-and vector, is equivalent to applying this operation to each member of the vector.
-Consequently, in the code above, each value from the vector of wavelengths is divided
-by 10, and each value in the vector of spectral irradiances is divided by 1000.
-
-If the spectral irradiance is in \mwattnm then values should be multiplied by 10 to
-convert them to \wattnm.
 
 It is very important to make sure that the wavelengths are in nanometers as this is what
-the functions expect. If the wavelengths are in the wrong units, the action spectra will be
-wrongly calculated, and the returned value for effective irradiance will be completely wrong.
+the functions expect. If the wavelengths supplied as arguments are in the wrong units, the returned values will be
+wrong.
+\end{framed}
 
-Here we just use the example data supplied with the package.
+Below we use the solar spectral data included in package \PB as a data frame in object \texttt{sun.data}.
+
+\part{PHY}
 
 \section{Calculating the Phytochrome photoequilibrium}
 
@@ -99,7 +88,6 @@ Pr_P_ratio(w.length, s.e.irrad)
 @
 
 <<example-4, eval=TRUE>>=
-library(photobiologyVIS)
 R.FR <- R_FR_ratio(w.length,s.e.irrad)
 Pr_P_ratio_R_FR(R.FR)
 @
@@ -113,9 +101,7 @@ for calculation of the photoequilibrium under dichromatic radiation.
 detach(sun.data)
 @
 
-We have used here \texttt{attach} and \texttt{detach} as we used the same data in several examples,
-and we wanted to keep the code lines short and simple. It is also possible, and even recommended
-to use \texttt{with} instead:
+Above we have used \texttt{attach} and \texttt{detach} as we wanted to keep the code lines short and simple. It is also possible, and recommended to use \texttt{with} instead:
 <<example-5>>=
 with(sun.data, Pr_P_ratio(w.length,s.e.irrad))
 @
@@ -144,7 +130,7 @@ plot(pr.p ~ w.length, xlab="Wavelength (nm)",
 rm(ex5.data)
 @
 
-In the case of dichromatic illumination with red (660 nm) and far-red (730 nm) light, we can use a different function that takes the R:FR photon ratio as argument.
+In the case of dichromatic illumination with red (660~nm) and far-red (730~nm) light, we can use a different function that takes the R:FR photon ratio as argument.
 
 <<example-6>>=
 Pr_P_ratio_R_FR(1.15)
@@ -153,9 +139,9 @@ Pr_P_ratio_R_FR(c(1.15,0.01))
 @
 
 Of course it is also easy to plot Pr:P ratio as a function of R:FR photon ratio. However we have to
-remember that such values are exact only for dichromatic light, and only a rought approximation for
+remember that such values are exact only for dichromatic light, and only a rough approximation for
 wide-spectrum light sources. For light spectrum light sources, the photoequilibrium should, if
-possible, from spectral irradiance data.
+possible, be calculated from spectral irradiance data.
 
 <<example-6a>>=
 ex6.data <- data.frame(r.fr=seq(0.01, 2.0, length.out=100), pr.p=numeric(100))
@@ -210,15 +196,6 @@ rm(ex7.data)
 
 \part{CRY}
 
-\section{Spectral data }
-
-All functions in the photobiology suite expect wavelength in nanometres (nm), spectral energy irradiances in \Wm2nm and spectral photon irradiances in \molm2nm. They do not rescale the data.
-
-It is very important to make sure that the wavelengths are in nanometers as if the wavelengths are in the wrong units, the spectra will be
-wrongly calculated, and the returned value for effective irradiance will be completely wrong.
-
-Here we just use the example data supplied with the package.
-
 \section{Calculating the Crytochrome effective irradiances}
 
 <<example-cry-cry-2, eval=TRUE>>=
@@ -234,7 +211,7 @@ photon_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="light"))
 @
 
 Here we calculated the effective photon irradiance weighted with the absorbance spectrum,
-first using the spectrum for "dark-adapted" CRY2 and then for "blue-light" adapted CRY2.
+first using the spectrum for ``dark-adapted'' CRY2 and then for ``blue-light-adapted'' CRY2.
 
 <<example-cry-3a, eval=TRUE>>=
 energy_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="darkness"))
@@ -245,7 +222,7 @@ energy_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="light"))
 @
 
 Here we calculated the effective (energy) irradiance weighted with the absorbance spectrum,
-first using the spectrum for "dark-adapted" CRY2 and then for "blue-light" adapted CRY2.
+first using the spectrum for ``dark-adapted'' CRY2 and then for ``blue-light-adapted'' CRY2.
 
 <<example-cry-4b, eval=TRUE>>=
 energy_irradiance(w.length, s.e.irrad, CRY2.Abs(norm=400, previous="light"))
@@ -267,7 +244,7 @@ with(sun.spct, photon_irradiance(w.length, s.e.irrad, CRY2.Abs()))
 
 \section{Calculating the CRY absorbance at given wavelengths}
 
-Here we try to reproduce Figure 1.B from Banerjee et al. (2007).
+Here we try to reproduce Figure 1.B from Banerjee et al.\ (2007).
 
 <<example-cry-7>>=
 ex7.data <- data.frame(w.length=seq(310, 700, length.out=100),

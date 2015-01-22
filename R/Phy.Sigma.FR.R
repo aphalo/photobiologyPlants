@@ -6,7 +6,7 @@
 #'
 #' @usage Phy_Sigma_FR(w.length, use.cached.mult=FALSE)
 #' @param w.length numeric array of wavelength (nm)
-#' @param use.cached.mult logical indicating whether multiplier values should be cached between calls
+#' @param use.cached.mult logical ignored
 #'
 #' @return a numeric array with values for Sigma
 #' @export
@@ -24,34 +24,11 @@
 #'
 Phy_Sigma_FR <-
   function(w.length, use.cached.mult=FALSE){
-    cache.needs.saving <- FALSE
-    if (use.cached.mult) {
-      our.env <- .photobioPl.cache
-      # search for cached multipliers
-      cache.name <- "Phy.Sigma.FR.cache"
-      if (exists(cache.name, where = our.env)) {
-        Sigma.FR.mult <- get(cache.name, envir = our.env)
-        if (length(w.length) == length(Sigma.FR.mult)) {
-          return(Sigma.FR.mult)
-        } else {
-          cache.needs.saving <- TRUE
-        }
-      } else {
-        cache.needs.saving <- TRUE
-      }
-    }
     Sigma.FR.mult <- numeric(length(w.length))
     Sigma.FR.mult[w.length >= 300 & w.length <= 770] <-
       spline(phytochrome.data$wavelength,phytochrome.data$Sigma.FR,
              xout=w.length[w.length >= 300 & w.length <= 770])$y
     Sigma.FR.mult[w.length < 300 | w.length > 770] <- NA
 
-    if (use.cached.mult && cache.needs.saving) {
-      assign(cache.name, Sigma.FR.mult, envir = our.env)
-    }
-
     return(Sigma.FR.mult)
   }
-
-## cache envir is created by .onLOad and removed by .onLoad in file
-## Phy.Sigma.R.R

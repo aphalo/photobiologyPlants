@@ -2,6 +2,7 @@ photobiologyPlants 0.0.1
 ========================
 
 New package created by merging the CRY and PHY related apckages, and adding UVR8 functions and data.
+Vignettes were editted, but only the User Guide was merged.
 
 #### merged
 

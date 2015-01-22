@@ -1,6 +1,6 @@
 %\VignetteEngine{knitr}
 %\VignetteIndexEntry{Phytochrome state quantification with R}
-%\VignetteDepends{knitr, photobiologyPlants}
+%\VignetteDepends{knitr, photobiologyPlants, photobiologygg}
 %\VignetteKeyword{misc}
 
 \documentclass{article}
@@ -29,6 +29,7 @@ options(replace.assign=TRUE,width=55)
 
 <<example-0-hiden, eval=TRUE, include=FALSE>>=
 library(photobiologyPlants)
+library(photobiologygg)
 @
 
 <<own-set-up, echo=FALSE, include=FALSE>>=
@@ -40,11 +41,21 @@ my_version <- packageVersion("photobiologyPlants")
 
 \maketitle
 
-\section{Check of interpolation}
+\section{Set up}
 
 <<example-0, eval=FALSE>>=
 library(photobiologyPlants)
+library(photobiologygg)
 @
+
+\section{Plotting as wavebands with \texttt{plot}}
+
+<<>>=
+plot(CRY2.Abs(previous = "light"))
+plot(CRY2.Abs(previous = "darkness"))
+@
+
+\section{Check of interpolation}
 
 <<Cry-spline>>=
 ex7.data <- data.frame(w.length=seq(310, 700, length.out=100),

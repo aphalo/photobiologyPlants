@@ -1,9 +1,8 @@
-"Abs.in.light(w.length), created by Plot Digitizer, 2.6.3"
-"Date: 06/08/13, 10:38:22"
-
-
-68
-w.length,Absorbance,
+# "Abs.in.light(w.length), created by Plot Digitizer, 2.6.3"
+# "Date: 06/08/13, 10:38:22"
+#
+# 68
+w.length,A,kk
 309.533,0.129429,
 308.956,0.120571,
 310.689,0.110000,

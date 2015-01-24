@@ -1,9 +1,8 @@
-"Absorbance(w.length), created by Plot Digitizer, 2.6.3"
-"Date: 06/08/13, 10:31:14"
-
-
-68
-w.length,Absorbance,kk
+# "Absorbance(w.length), created by Plot Digitizer, 2.6.3"
+# "Date: 06/08/13, 10:31:14"
+#
+# 68
+w.length,A,kk
 309.533,0.129000,
 309.533,0.119143,
 309.533,0.106286,

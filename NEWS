@@ -1,3 +1,9 @@
+photobiologyPlants 0.0.2
+========================
+
+Added McCree's action spectra for photosynthesis in oat and amaranth as response.spct objects.
+Now the absorbance spectra of UVR8 and CRY2 are included as filter.spct objets.
+
 photobiologyPlants 0.0.1
 ========================
 

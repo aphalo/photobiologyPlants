@@ -10,13 +10,13 @@
 #'
 #' \itemize{
 #'   \item w.length (nm)
-#'   \item Absorabnce (spectral absorbance)
+#'   \item A (spectral absorbance)
 #' }
 #'
 #' @docType data
 #' @keywords datasets
-#' @format A data frame with 68 rows and 2 variables
-#' @name CRY2.light.raw.data
+#' @format A \code{filter.spct} object with 200 rows and 2 numeric variables, \code{w.length} and \code{A}
+#' @name CRY2_light.spct
 #' @references
 #' Banerjee, R., Schleicher, E., Meier, S., Viana, R. M.,
 #' Pokorny, R., Ahmad, M., Batschauer, A. (2007).

@@ -12,6 +12,6 @@
 #'
 #' @docType data
 #' @keywords datasets
-#' @format A data frame with 64 rows and 2 variables
-#' @name UVR8.raw.data
+#' @format A \code{filter.spct} object with 100 rows and 2 numeric variables, \code{w.length} and \code{A}
+#' @name UVR8_Glasgow.spct
 NULL

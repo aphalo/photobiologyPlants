@@ -11,8 +11,8 @@
 #' \tabular{ll}{
 #' Package: \tab photobiologyCry\cr
 #' Type: \tab Package\cr
-#' Version: \tab 0.0.2\cr
-#' Date: \tab 2015-01-25\cr
+#' Version: \tab 0.0.3\cr
+#' Date: \tab 2015-02-21\cr
 #' License: \tab GPL (>= 3)\cr
 #' URL: \tab \url{http://uv4growth.dyndns.org},\cr \tab \url{http://openinstruments.dyndns.org},\cr
 #' \tab \url{https://bitbucket.org/aphalo/photobiology}\cr

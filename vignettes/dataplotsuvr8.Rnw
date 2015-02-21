@@ -79,7 +79,7 @@ We can limit the plotted wavelengths to a range, even using another waveband obj
 <<>>=
 plot(UVR8.Abs(), range = UVB())
 
-plot(UVR8.Abs(), range = UVA())
+plot(UVR8.Abs(), range = UV())
 @
 
 

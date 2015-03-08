@@ -1,3 +1,13 @@
+photobiologyPlants 0.1.0
+========================
+
+Removed all waveband objects as it was confusing to have waveband objects and functions for spectral
+absorbance data.
+
+Rebuilt all data as .spct objects.
+
+Edited the vignettes.
+
 photobiologyPlants 0.0.3
 ========================
 

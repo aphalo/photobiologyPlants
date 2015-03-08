@@ -26,7 +26,7 @@ Phy_Sigma_FR <-
   function(w.length, use.cached.mult=FALSE){
     Sigma.FR.mult <- numeric(length(w.length))
     Sigma.FR.mult[w.length >= 300 & w.length <= 770] <-
-      spline(phytochrome.data$wavelength,phytochrome.data$Sigma.FR,
+      spline(phytochrome.spct$w.length, phytochrome.spct$Sigma.FR,
              xout=w.length[w.length >= 300 & w.length <= 770])$y
     Sigma.FR.mult[w.length < 300 | w.length > 770] <- NA
 

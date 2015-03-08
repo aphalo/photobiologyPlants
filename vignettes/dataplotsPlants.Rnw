@@ -48,31 +48,61 @@ library(photobiologyPlants)
 library(photobiologygg)
 @
 
-\section{Plotting as wavebands with \texttt{plot}}
+<<>>=
+options(photobiology.filter.qty = "absorbance")
+options(photobiology.plot.annotations =
+          c("boxes", "labels", "colour.guide", "peaks", "title"))
+options(photobiology.radiation.unit = "photon")
+@
+
+
+\section{Phytochrome}
+
+\section{Test of interpolation}
+
+<<Phy-spline>>=
+ex7.dt <- data.table(w.length=300:700,
+                     sigma.r = Phy_Sigma_R(300:700),
+                     sigma.fr = Phy_Sigma_FR(300:700),
+                     sigma = Phy_Sigma(300:700))
+plot(I(sigma.r/ max(sigma.r)) ~ w.length, data=ex7.dt, type="l", col="red",
+     xlab="Wavelength (nm)", ylab=expression(sigma[R]~and~sigma[FR]))
+lines(I(sigma.fr/max(sigma.r)) ~ w.length, data=ex7.dt, col="black")
+points(I(Sigma.R/max(Sigma.R)) ~ w.length, data=phytochrome.spct, col="red")
+points(I(Sigma.FR/max(Sigma.R)) ~ w.length, data=phytochrome.spct, col="black")
+rm(ex7.dt)
+@
+
+\section{Cryptochromes}
 
 <<>>=
-plot(CRY2.Abs(previous = "light"))
-plot(CRY2.Abs(previous = "darkness"))
+plot(CRY2_dark.spct)
+plot(CRY2_light.spct)
 @
 
-\section{Check of interpolation}
+\subsection{UVR8 wavebands}
 
-<<Cry-spline>>=
-ex7.data <- data.frame(w.length=seq(310, 700, length.out=100),
-                       A.dark=numeric(100),
-                       A.light=numeric(100))
-ex7.data$A.dark <- CRY2_Abs_dark_fun(ex7.data$w.length)
-ex7.data$A.light <- CRY2_Abs_light_fun(ex7.data$w.length)
 
-plot(A.dark ~ w.length, xlab="Wavelength (nm)",
-     ylab="CRY2 spectral Absorbance",
-     type="l", data=ex7.data)
-lines(A.light ~ w.length, data=ex7.data, col="blue")
-data(cry.data)
-points(Absorbance ~ w.length, data=CRY2.dark.raw.data, col="black")
-points(Absorbance ~ w.length, data=CRY2.light.raw.data, col="blue")
-rm(ex7.data)
+We can limit the plotted wavelengths to a range, even using another waveband object.
+
+<<>>=
+plot(UVR8_Glasgow.spct, range = UVB())
+plot(UVR8_Glasgow.spct, range = UV())
 @
 
+
+\section{Photosynthesis action spectra}
+
+<<>>=
+plot(McCree_Amaranth.spct)
+plot(McCree_Oat.spct)
+@
+
+\section{Optical properties of leaves}
+
+<<>>=
+plot(Solidago_lower_adax.spct)
+plot(Solidago_lower_abax.spct)
+@
 
 \end{document}

@@ -25,7 +25,7 @@ Phy_Sigma <-
   function(w.length){
     Sigma.int <- numeric(length(w.length))
     Sigma.int[w.length >= 300 & w.length <= 770] <-
-      spline(phytochrome.data$wavelength, phytochrome.data$Sigma.R + phytochrome.data$Sigma.FR,
+      spline(phytochrome.spct$w.length, phytochrome.spct$Sigma.R + phytochrome.spct$Sigma.FR,
              xout=w.length[w.length >= 300 & w.length <= 770])$y
     Sigma.int[w.length < 300 | w.length > 770] <- NA
     return(Sigma.int)

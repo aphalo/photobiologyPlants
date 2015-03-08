@@ -5,18 +5,18 @@
 #'
 #' @docType package
 #' @keywords misc
-#' @name photobiologyCry-package
+#' @name photobiologyPlants-package
 #' @author Pedro J. Aphalo
 #' @details
 #' \tabular{ll}{
-#' Package: \tab photobiologyCry\cr
+#' Package: \tab photobiologyPlants\cr
 #' Type: \tab Package\cr
-#' Version: \tab 0.0.3\cr
-#' Date: \tab 2015-02-21\cr
+#' Version: \tab 0.1.0\cr
+#' Date: \tab 2015-03-07\cr
 #' License: \tab GPL (>= 3)\cr
-#' URL: \tab \url{http://uv4growth.dyndns.org},\cr \tab \url{http://openinstruments.dyndns.org},\cr
-#' \tab \url{https://bitbucket.org/aphalo/photobiology}\cr
-#' BugReports: \tab \url{https://bitbucket.org/aphalo/photobiology}\cr
+#' URL: \tab \url{http://www.r4photobiology.info},\cr
+#' \tab \url{https://bitbucket.org/aphalo}\cr
+#' BugReports: \tab \url{https://bitbucket.org/aphalo/photobiologyPlants}\cr
 #' }
 #'
 #' @references

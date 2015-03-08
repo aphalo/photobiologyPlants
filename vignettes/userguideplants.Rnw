@@ -27,6 +27,7 @@ options(replace.assign=TRUE,width=55)
 @
 
 <<example-0-hiden, eval=TRUE, include=FALSE>>=
+library(photobiologygg)
 library(photobiologyPlants)
 library(photobiologyWavebands)
 @
@@ -54,7 +55,8 @@ loading it from the library when needed.
 
 To load package \PBPL into the workspace of the current R session we use \verb!library(photobiologyPlants)!.
 
-<<example-0, eval=TRUE>>=
+<<example-0, eval=FALSE>>=
+library(photobiologygg)
 library(photobiologyPlants)
 library(photobiologyWavebands)
 @
@@ -80,7 +82,7 @@ Below we use the solar spectral data included in package \PB as a data frame in 
 \section{Calculating the Phytochrome photoequilibrium}
 
 <<example-2, eval=TRUE>>=
-attach(sun.data)
+attach(sun.spct)
 @
 
 <<example-3, eval=TRUE>>=
@@ -88,7 +90,7 @@ Pr_P_ratio(w.length, s.e.irrad)
 @
 
 <<example-4, eval=TRUE>>=
-R.FR <- R_FR_ratio(w.length,s.e.irrad)
+R.FR <- R_FR_ratio(w.length, s.e.irrad)
 Pr_P_ratio_R_FR(R.FR)
 @
 
@@ -98,12 +100,12 @@ a case the photoequilibrium is only a very rough approximation, as this function
 for calculation of the photoequilibrium under dichromatic radiation.
 
 <<>>=
-detach(sun.data)
+detach(sun.spct)
 @
 
 Above we have used \texttt{attach} and \texttt{detach} as we wanted to keep the code lines short and simple. It is also possible, and recommended to use \texttt{with} instead:
 <<example-5>>=
-with(sun.data, Pr_P_ratio(w.length,s.e.irrad))
+with(sun.spct, Pr_P_ratio(w.length,s.e.irrad))
 @
 
 In the case of monochromatic light we can still use the same functions, as the defaults are such that
@@ -196,71 +198,42 @@ rm(ex7.data)
 
 \part{CRY}
 
-\section{Calculating the Crytochrome effective irradiances}
+\section{Calculating energy or photons absorbed by Crytochrome 2}
 
-<<example-cry-cry-2, eval=TRUE>>=
-attach(sun.spct)
+
+<<example-cry-1>>=
+options(photobiology.filter.qty = "absorbance")
 @
 
-<<example-cry-cry-3, eval=TRUE>>=
-photon_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="darkness"))
+<<example-cry-2>>=
+q_irrad(sun.spct * CRY2_dark.spct)
 @
 
-<<example-cry-cry-4, eval=TRUE>>=
-photon_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="light"))
+<<example-cry-3>>=
+e_irrad(sun.spct * CRY2_light.spct)
 @
-
-Here we calculated the effective photon irradiance weighted with the absorbance spectrum,
-first using the spectrum for ``dark-adapted'' CRY2 and then for ``blue-light-adapted'' CRY2.
-
-<<example-cry-3a, eval=TRUE>>=
-energy_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="darkness"))
-@
-
-<<example-cry-4a, eval=TRUE>>=
-energy_irradiance(w.length, s.e.irrad, CRY2.Abs(previous="light"))
-@
-
-Here we calculated the effective (energy) irradiance weighted with the absorbance spectrum,
-first using the spectrum for ``dark-adapted'' CRY2 and then for ``blue-light-adapted'' CRY2.
-
-<<example-cry-4b, eval=TRUE>>=
-energy_irradiance(w.length, s.e.irrad, CRY2.Abs(norm=400, previous="light"))
-@
-
-As shwon above, it is also possible to indicate a normalization wavelength, in this case 400~nm. If no normalization wavelength is given, the absorbance spectrum data is used as is.
-
-<<>>=
-detach(sun.spct)
-@
-
-We have used here \texttt{attach} and \texttt{detach} as we used the same data in several examples,
-and we wanted to keep the code lines short and simple. It is also possible, and even recommended
-to use \texttt{with} instead:
-<<example-cry-5>>=
-with(sun.spct, photon_irradiance(w.length, s.e.irrad, CRY2.Abs()))
-@
-
 
 \section{Calculating the CRY absorbance at given wavelengths}
 
 Here we try to reproduce Figure 1.B from Banerjee et al.\ (2007).
 
-<<example-cry-7>>=
-ex7.data <- data.frame(w.length=seq(310, 700, length.out=100),
-                       A.dark=numeric(100),
-                       A.light=numeric(100))
-ex7.data$A.dark <- CRY2_Abs_dark_fun(ex7.data$w.length)
-ex7.data$A.light <- CRY2_Abs_light_fun(ex7.data$w.length)
+<<>>=
+interpolate_spct(CRY2_dark.spct, 300:500)
+@
 
-plot(A.dark ~ w.length, xlab="Wavelength (nm)",
-     ylab="CRY2 spectral Absorbance",
-     type="l", data=ex7.data)
-lines(A.light ~ w.length, data=ex7.data, col="blue")
-rm(ex7.data)
+<<example-cry-5>>=
+plot(CRY2_dark.spct, range = c(300,700))
 @
 
 \part{UVR8}
 
+\section{Plot}
+
+<<example-uvr8-1>>=
+plot(UVR8_Glasgow.spct)
+@
+
 \section{Coming soon!}
+
+
 \end{document}

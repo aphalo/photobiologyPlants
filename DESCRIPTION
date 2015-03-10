@@ -1,8 +1,8 @@
 Package: photobiologyPlants
 Type: Package
 Title: Plant photobiology related functions and data
-Version: 0.1.0
-Date: 2015-03-07
+Version: 0.1.1
+Date: 2015-03-10
 Author: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
 Maintainer: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
 Description: This package provides pre-defined functions
@@ -10,7 +10,7 @@ Description: This package provides pre-defined functions
              Phytochromes, Cryptochromes, and UVR8 which is present in plants.
 License: GPL (>= 3)
 VignetteBuilder: knitr
-Depends: R (>= 3.1.0), photobiology (>= 0.5.15)
+Depends: R (>= 3.1.0), photobiology (>= 0.5.16)
 Suggests: knitr, photobiologyWavebands, photobiologygg
 LazyLoad: yes
 LazyData: yes

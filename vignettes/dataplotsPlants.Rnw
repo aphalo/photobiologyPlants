@@ -105,4 +105,9 @@ plot(Solidago_lower_adax.spct)
 plot(Solidago_lower_abax.spct)
 @
 
+<<>>=
+plot(Solidago_upper_adax.spct)
+plot(Solidago_upper_abax.spct)
+@
+
 \end{document}

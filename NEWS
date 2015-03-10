@@ -1,3 +1,10 @@
+photobiologyPlants 0.1.1
+========================
+
+Added JaLTER additional data for spectral properties of leaves.
+
+Rebuilt JaLTER data as it was missing the Rfr.type attribute.
+
 photobiologyPlants 0.1.0
 ========================
 

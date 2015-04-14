@@ -5,11 +5,12 @@
 #' Ratio between Pr and Ptot (photoequilibrium)
 #' for Type I Phytochrome.
 #'
-#' @usage Pr_P_ratio_R_FR(R.FR)
+#' @usage Pfr_P_ratio_R_FR(R.FR)
 #' @param R.FR R:FR a single value or a vector of photon ratio (unitless) values
 #'
 #' @return a single value or a vector of numeric values giving the unitless ratio
-#' @export
+#' @export Pfr_P_ratio_R_FR Pfr_Ptot_R_FR
+#' @aliases Pfr_P_ratio_R_FR Pfr_Ptot_R_FR
 #' @references
 #' Mancinelli, A.L. (1994) The physiology of phytochrome action.
 #' In Photomorphogenesis in plants, 2nd edition. R.E. Kendrick and
@@ -19,14 +20,16 @@
 #'
 #' @seealso \code{\link[photobiologyWavebands]{R_FR_ratio}}
 #' @examples
-#' Pr_P_ratio_R_FR(1.15)
-#' Pr_P_ratio_R_FR(0.10)
-#' Pr_P_ratio_R_FR(c(0.1,1.15,5.0,20.0))
+#' Pfr_P_ratio_R_FR(1.15)
+#' Pfr_P_ratio_R_FR(0.10)
+#' Pfr_P_ratio_R_FR(c(0.1,1.15,5.0,20.0))
 #'
-Pr_P_ratio_R_FR <- function(R.FR){
+Pfr_P_ratio_R_FR <- function(R.FR){
   if (length(R.FR)==0) return(numeric(0))
   ratio <- sapply(R.FR,
-                  FUN=function(x){Pr_P_ratio(c(660, 730), c(x, 1.0), unit.in="photon",
+                  FUN=function(x){Pfr_P_ratio(c(660, 730), c(x, 1.0), unit.in="photon",
                                   check.spectrum=FALSE, use.cached.mult=FALSE)})
   return(ratio)
 }
+
+Pfr_Ptot_R_FR <- Pfr_P_ratio_R_FR

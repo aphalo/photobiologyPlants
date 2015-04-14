@@ -15,6 +15,6 @@
 #' @note Digitised from a bitmap
 #' @docType data
 #' @keywords datasets
-#' @format A \code{response.spct} object with 200 rows and 2 numeric variables, \code{w.length} and \code{s.e.response}
+#' @format A \code{response_spct} object with 200 rows and 2 numeric variables, \code{w.length} and \code{s.e.response}
 #' @seealso \code{\link{McCree_Amaranth.spct}}
 NULL

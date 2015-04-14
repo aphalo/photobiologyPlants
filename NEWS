@@ -1,3 +1,19 @@
+photobiologyPlants 0.3.0
+========================
+
+Changed naming of phytochrome related functions, which were all misnamed!
+Rebuilt all data and the package under photobiology 0.6.0.
+
+photobiologyPlants 0.1.2
+========================
+
+Updated versions of dependencies.
+
+New generic function Pr_Ptot() for phytochrome photoequiibrium with methods
+for numeric values of wavelengths and source.spct objects.
+
+Updated phytochrome chapter of User Guide.
+
 photobiologyPlants 0.1.1
 ========================
 

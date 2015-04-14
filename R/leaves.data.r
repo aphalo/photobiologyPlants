@@ -21,7 +21,7 @@
 #' ERDP-2013-02.1.1 (http://db.cger.nies.go.jp/JaLTER/metacat/metacat/ERDP-2013-02.1.1/jalter-en)\cr
 #' JaLTER, Japan Long Term Ecological Research Network, \url{http://www.jalter.org/}\cr
 #'
-#' @note We thank H. Noda for allowing us to include these data in our package. We have included here
+#' @note We thank H. M. Noda for allowing us to include these data in our package. We have included here
 #' only data for two leaves from one species (Solidago altissima) and for wavelengths shorter than 1000 nm,
 #' from the much larger original data set. The whole data set
 #' is publicly available and the data easy to read into R. The data included here where measured with

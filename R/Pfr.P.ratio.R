@@ -3,7 +3,7 @@
 #' Ratio between  Pr and Ptot (photoequilibrium)
 #' for Type I Phytochrome.
 #'
-#' @usage Pr_P_ratio(w.length, s.irrad=rep(1.0,length(w.length)), unit.in="energy",
+#' @usage Pfr_P_ratio(w.length, s.irrad=rep(1.0,length(w.length)), unit.in="energy",
 #' check.spectrum=TRUE, use.cached.mult=FALSE)
 #' @param w.length numeric array of wavelength (nm)
 #' @param s.irrad numeric array of spectral (energy) irradiances (W m-2 nm-1) or (mol s-1 m-2)
@@ -24,12 +24,12 @@
 #' @examples
 #' data(sun.data)
 #' trimmed.sun.data <- with(sun.data, trim_tails(w.length, s.e.irrad, low.limit=300, high.limit=770))
-#' with(trimmed.sun.data, Pr_P_ratio(w.length, s.irrad))
-#' with(sun.data, Pr_P_ratio(w.length, s.e.irrad))
-#' with(sun.data, Pr_P_ratio(w.length, s.e.irrad, use.cached.mult=TRUE))
-#' with(sun.data, Pr_P_ratio(w.length, s.e.irrad, check.spectrum=FALSE))
+#' with(trimmed.sun.data, Pfr_P_ratio(w.length, s.irrad))
+#' with(sun.data, Pfr_P_ratio(w.length, s.e.irrad))
+#' with(sun.data, Pfr_P_ratio(w.length, s.e.irrad, use.cached.mult=TRUE))
+#' with(sun.data, Pfr_P_ratio(w.length, s.e.irrad, check.spectrum=FALSE))
 #'
-Pr_P_ratio <- function(w.length, s.irrad=rep(1.0,length(w.length)), unit.in="energy",
+Pfr_P_ratio <- function(w.length, s.irrad=rep(1.0,length(w.length)), unit.in="energy",
                        check.spectrum=TRUE, use.cached.mult=FALSE){
   # sanity check for wavelengths
   if (check.spectrum && !check_spectrum(w.length, s.irrad)) {

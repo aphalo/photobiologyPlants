@@ -1,8 +1,8 @@
 Package: photobiologyPlants
 Type: Package
 Title: Plant photobiology related functions and data
-Version: 0.3.0
-Date: 2015-04-13
+Version: 0.3.0.9000
+Date: 2015-06-06
 Author: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
 Maintainer: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
 Description: This package provides pre-defined functions

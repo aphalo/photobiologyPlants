@@ -1,4 +1,4 @@
-#' Calculation of Pr:Ptot ratio for monochromatic radiation.
+#' Calculation of Pfr:Ptot ratio for monochromatic radiation.
 #' Exact only for narrow band light sources.
 #'
 #' Ratio between Pr and Ptot (photoequilibrium)

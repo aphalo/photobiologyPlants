@@ -1,4 +1,4 @@
-#' Calculation of Pr:Ptot ratio from red:far-red photon ratio
+#' Calculation of Pfr:Ptot ratio from red:far-red photon ratio
 #' Exact only for dichromatic irradiation, not for R:FR ratio
 #' calculated from a broadband light source.
 #'

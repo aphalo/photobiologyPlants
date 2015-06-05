@@ -1,4 +1,4 @@
-#' Calculation of Pr:Ptot ratio from spectral irradiance
+#' Calculation of Pfr:Ptot ratio from spectral irradiance
 #'
 #' Ratio between  Pr and Ptot (photoequilibrium)
 #' for Type I Phytochrome.

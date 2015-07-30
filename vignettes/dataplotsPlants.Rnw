@@ -43,9 +43,7 @@ my_version <- packageVersion("photobiologyPlants")
 
 \section{Set up}
 
-<<example-0, eval=FALSE>>=
-library(photobiologyPlants)
-library(photobiologygg)
+<<example-0-hiden, eval=FALSE>>=
 @
 
 <<>>=
@@ -61,7 +59,7 @@ options(photobiology.radiation.unit = "photon")
 \section{Test of interpolation}
 
 <<Phy-spline>>=
-ex7.dt <- data.table(w.length=300:700,
+ex7.dt <- data.frame(w.length=300:700,
                      sigma.r = Phy_Sigma_R(300:700),
                      sigma.fr = Phy_Sigma_FR(300:700),
                      sigma = Phy_Sigma(300:700))

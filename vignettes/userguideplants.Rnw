@@ -55,10 +55,7 @@ loading it from the library when needed.
 
 To load package \PBPL into the workspace of the current R session we use \verb!library(photobiologyPlants)!.
 
-<<example-0, eval=FALSE>>=
-library(photobiologygg)
-library(photobiologyPlants)
-library(photobiologyWavebands)
+<<example-0-hiden, eval=FALSE>>=
 @
 
 \section{Spectral data}

@@ -1,6 +1,9 @@
 photobiologyPlants 0.3.1
 ========================
 
+Rebuilt all data and the package under photobiology 0.8.0.
+Removed dependency on data.table.
+
 photobiologyPlants 0.3.0
 ========================
 

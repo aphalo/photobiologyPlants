@@ -1,15 +1,15 @@
 library("photobiology")
-library("photobiologygg")
-old.wd <- setwd("raw.data")
-McCree_Amaranth.spct <- read.table(file = "A_McCree_1972_Amaranth.txt", header = TRUE, comment.char = "#")
+
+McCree_Amaranth.spct <- read.table(file = "raw.data/A_McCree_1972_Amaranth.txt", header = TRUE, comment.char = "#")
+McCree_Amaranth.spct <- McCree_Amaranth.spct[order(McCree_Amaranth.spct$w.length), ]
+McCree_Amaranth.spct <- McCree_Amaranth.spct[-which(diff(McCree_Amaranth.spct$w.length) < 0.1), ]
 setResponseSpct(McCree_Amaranth.spct)
 McCree_Amaranth.spct <- interpolate_spct(McCree_Amaranth.spct, length.out = 200)
-# plot(McCree_Amaranth.spct)
-# plot(McCree_Amaranth.spct, unit.out = "photon")
-McCree_Oat.spct <- read.table(file = "A_McCree_1972_Oats.txt", header = TRUE, comment.char = "#")
+
+McCree_Oat.spct <- read.table(file = "raw.data/A_McCree_1972_Oats.txt", header = TRUE, comment.char = "#")
+McCree_Oat.spct <- McCree_Oat.spct[order(McCree_Oat.spct$w.length), ]
+McCree_Oat.spct <- McCree_Oat.spct[-which(diff(McCree_Oat.spct$w.length) < 0.1), ]
 setResponseSpct(McCree_Oat.spct)
 McCree_Oat.spct <- interpolate_spct(McCree_Oat.spct, length.out = 200)
-# plot(McCree_Oat.spct)
-# plot(McCree_Oat.spct, unit.out = "photon")
-setwd(old.wd)
-save(McCree_Amaranth.spct, McCree_Oat.spct, file = "./data/McCree.rda")
+
+save(McCree_Amaranth.spct, McCree_Oat.spct, file = "data/McCree.rda")

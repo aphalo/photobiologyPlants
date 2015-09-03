@@ -1,7 +1,14 @@
+photobiologyPlants 0.3.2
+========================
+
+Set spectral absorbance data for photoreceptors as as of type "internal".
+Fix minor error in UVR8 data.
+Rebuild all data and the package under photobiology 0.8.5.
+
 photobiologyPlants 0.3.1
 ========================
 
-Rebuilt all data and the package under photobiology 0.8.0.
+Rebuild all data and the package under photobiology 0.8.0.
 Removed dependency on data.table.
 
 photobiologyPlants 0.3.0

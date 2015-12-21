@@ -1,6 +1,6 @@
-##' Generic function
-#'
 #' Calculate phytochrome photoequilibrium
+#'
+#' A method implemented for objects of different classes.
 #'
 #' @param x an R object
 #' @param ... not used
@@ -8,11 +8,12 @@
 #' @export Pfr_Ptot
 #'
 #' @references
-#' Mancinelli, A.L. (1994) The physiology of phytochrome action.
-#' In Photomorphogenesis in plants, 2nd edition. R.E. Kendrick and
-#' G.H.M. Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269.
-#' ISBN 978-0-7923-2551-2 (print), 978-94-011-1884-2 (on-line).
-#' \href{http://dx.doi.org/10.1007/978-94-011-1884-2_10}{DOI 10.1007/978-94-011-1884-2_10}
+#' Mancinelli, A.L. (1994) The physiology of phytochrome action. In
+#' Photomorphogenesis in plants, 2nd edition. R.E. Kendrick and G.H.M.
+#' Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269. ISBN
+#' 978-0-7923-2551-2 (print), 978-94-011-1884-2 (on-line).
+#' \href{http://dx.doi.org/10.1007/978-94-011-1884-2_10}{DOI
+#' 10.1007/978-94-011-1884-2_10}
 #'
 Pfr_Ptot <- function(x, ...) UseMethod("Pfr_Ptot")
 
@@ -30,10 +31,11 @@ Pfr_Ptot.default <- function(x, ...) {
 #' @param spct.out logical Flag indicating if the returned object should be of
 #'   class \code{response_spct} instead of \code{numeric}.
 #'
-#' @return If \code{x} is \code{numeric}, giving wavelengths (nm), a vector of numeric
-#'   values giving the unitless photon ratio at each wavelength or a
+#' @return If \code{x} is \code{numeric}, giving wavelengths (nm), a vector of
+#'   numeric values giving the unitless photon ratio at each wavelength or a
 #'   \code{generic_spct} object with the wavelength values sorted in ascending
-#'   order and the corresponding \code{Pfr_Ptot} values in column \code{s.q.response}.
+#'   order and the corresponding \code{Pfr_Ptot} values in column
+#'   \code{s.q.response}.
 #'
 #' @export
 #'

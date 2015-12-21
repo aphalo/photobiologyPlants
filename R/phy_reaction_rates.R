@@ -3,35 +3,37 @@
 #' Rate constants k1 Pr -> Pfr; k2 Pfr -> Pr; photoconversion rate nu = k1 + k2
 #' for Type I Phytochrome.
 #'
-#' @usage Phy_reaction_rates(w.length, s.irrad, unit.in="energy",
-#' check.spectrum=TRUE, use.cached.mult=FALSE)
 #' @param w.length numeric array of wavelength (nm)
-#' @param s.irrad numeric array of spectral (energy) irradiances (W m-2 nm-1) or (mol s-1 m-2)
-#' @param unit.in character string with allowed values "energy", and "photon", or its alias "quantum"
-#' @param check.spectrum logical indicating whether to sanity check input data, default is TRUE
-#' @param use.cached.mult logical indicating whether multiplier values should be cached between calls
+#' @param s.irrad numeric array of spectral (energy) irradiances (W m-2 nm-1) or
+#'   (mol s-1 m-2)
+#' @param unit.in character string with allowed values "energy", and "photon",
+#'   or its alias "quantum"
+#' @param check.spectrum logical indicating whether to sanity check input data,
+#'   default is TRUE
+#' @param use.cached.mult logical indicating whether multiplier values should be
+#'   cached between calls
 #'
-#' @return a list of three numeric values giving the photoconversion rate (nu) and reaction rates (k1, k2).
+#' @return a list of three numeric values giving the photoconversion rate (nu)
+#'   and reaction rates (k1, k2).
 #' @export
-#' @references
-#' Hayward, P. M. (1984) Determination of phytochrome parameters from radiation
-#' measurements. In Techniques in Photomorphogenesis, H. Smith and M. G. Holmes (eds).
-#' Academic Press, London, pp. 159-173. ISBN 0-12-652990-6.
+#' @references Hayward, P. M. (1984) Determination of phytochrome parameters
+#' from radiation measurements. In Techniques in Photomorphogenesis, H. Smith
+#' and M. G. Holmes (eds). Academic Press, London, pp. 159-173. ISBN
+#' 0-12-652990-6.
 #'
-#' Mancinelli, A.L. (1994) The physiology of phytochrome action.
-#' In Photomorphogenesis in plants, 2nd edition. R.E. Kendrick and
-#' G.H.M. Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269.
-#' ISBN 978-0-7923-2551-2 (print), 978-94-011-1884-2 (on-line).
-#' \href{http://dx.doi.org/10.1007/978-94-011-1884-2_10}{DOI 10.1007/978-94-011-1884-2_10}
+#' Mancinelli, A.L. (1994) The physiology of phytochrome action. In
+#' Photomorphogenesis in plants, 2nd edition. R.E. Kendrick and G.H.M.
+#' Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269. ISBN
+#' 978-0-7923-2551-2 (print), 978-94-011-1884-2 (on-line).
+#' \href{http://dx.doi.org/10.1007/978-94-011-1884-2_10}{DOI
+#' 10.1007/978-94-011-1884-2_10}
 #'
-#' @seealso \code{\link[photobiology]{photon_ratio}} and \code{\link[photobiology]{energy_ratio}}
+#' @seealso \code{\link[photobiology]{photon_ratio}} and
+#'   \code{\link[photobiology]{energy_ratio}}
 #' @examples
-#' data(sun.data)
-#' trimmed.sun.data <- with(sun.data, trim_tails(w.length, s.e.irrad, low.limit=300, high.limit=770))
-#' with(trimmed.sun.data, Phy_reaction_rates(w.length, s.irrad))
-#' with(sun.data, Phy_reaction_rates(w.length, s.e.irrad))
-#' with(sun.data, Phy_reaction_rates(w.length, s.e.irrad, use.cached.mult=TRUE))
-#' with(sun.data, Phy_reaction_rates(w.length, s.e.irrad, check.spectrum=FALSE))
+#' library(photobiology)
+#' trimmed.sun.spct <- trim_wl(sun.spct, range = c(300, 770))
+#' with(trimmed.sun.spct, Phy_reaction_rates(w.length, s.e.irrad))
 #'
 Phy_reaction_rates <- function(w.length, s.irrad, unit.in="energy",
                        check.spectrum=TRUE, use.cached.mult=FALSE){
@@ -39,10 +41,10 @@ Phy_reaction_rates <- function(w.length, s.irrad, unit.in="energy",
   if (check.spectrum && !check_spectrum(w.length, s.irrad)) {
     return(NA)
   }
-  if (unit.in=="energy"){
+  if (unit.in == "energy") {
     s.q.irrad <- as_quantum_mol(w.length,s.irrad)
   }
-  else if (unit.in=="photon" || unit.in=="quantum") {
+  else if (unit.in == "photon" || unit.in == "quantum") {
     s.q.irrad <- s.irrad
   } else {
     warning("'unit.in' value not supported.")
@@ -51,8 +53,9 @@ Phy_reaction_rates <- function(w.length, s.irrad, unit.in="energy",
   #
   Pr.wave.raw <- s.q.irrad * Phy_Sigma_R(w.length, use.cached.mult)
   Pfr.wave.raw <- s.q.irrad * Phy_Sigma_FR(w.length, use.cached.mult)
-  if (length(w.length)==1){
-    return(list(k1 = Pr.wave.raw, k2 = Pfr.wave.raw, nu = Pr.wave.raw + Pfr.wave.raw))
+  if (length(w.length) == 1) {
+    return(list(k1 = Pr.wave.raw, k2 = Pfr.wave.raw,
+                nu = Pr.wave.raw + Pfr.wave.raw))
   }
   # we remove data "rows" with NAs
   Pr.selector <- !is.na(Pr.wave.raw)
@@ -65,8 +68,8 @@ Phy_reaction_rates <- function(w.length, s.irrad, unit.in="energy",
   Pfr.wave <- Pfr.wave.raw[selector]
   w.length <- w.length[selector]
   # we integrate over wavelengths
-  Pr.int <- integrate_irradiance(w.length, Pr.wave)
-  Pfr.int <- integrate_irradiance(w.length, Pfr.wave)
+  Pr.int <- integrate_xy(w.length, Pr.wave)
+  Pfr.int <- integrate_xy(w.length, Pfr.wave)
   # we return the rates at photoequilibrium
   return(list(k1 = Pr.int, k2 = Pfr.int, nu = Pr.int + Pfr.int))
 }

@@ -1,6 +1,6 @@
 %\VignetteEngine{knitr}
 %\VignetteIndexEntry{Phytochrome state quantification with R}
-%\VignetteDepends{knitr, photobiologyPlants, photobiologyWavebands}
+%\VignetteDepends{knitr, photobiologyPlants, photobiologyWavebands, photobiology, ggplot2, ggspectra}
 %\VignetteKeyword{misc}
 
 \documentclass{article}
@@ -27,7 +27,9 @@ options(replace.assign=TRUE,width=55)
 @
 
 <<example-0-hiden, eval=TRUE, include=FALSE>>=
-library(photobiologygg)
+library(ggplot2)
+library(ggspectra)
+library(photobiology)
 library(photobiologyPlants)
 library(photobiologyWavebands)
 @
@@ -214,11 +216,11 @@ options(photobiology.filter.qty = "absorbance")
 @
 
 <<example-cry-2>>=
-q_irrad(sun.spct * CRY2_dark.spct)
+q_response(sun.spct * CRY2_dark.spct)
 @
 
 <<example-cry-3>>=
-e_irrad(sun.spct * CRY2_light.spct)
+e_response(sun.spct * CRY2_light.spct)
 @
 
 \section{Calculating the CRY absorbance at given wavelengths}
@@ -226,7 +228,7 @@ e_irrad(sun.spct * CRY2_light.spct)
 Here we try to reproduce Figure 1.B from Banerjee et al.\ (2007).
 
 <<>>=
-interpolate_spct(CRY2_dark.spct, 300:500)
+interpolate_wl(CRY2_dark.spct, 300:500)
 @
 
 <<example-cry-5>>=

@@ -1,6 +1,6 @@
 %\VignetteEngine{knitr}
 %\VignetteIndexEntry{Phytochrome state quantification with R}
-%\VignetteDepends{knitr, photobiologyPlants, photobiologygg}
+%\VignetteDepends{knitr, photobiologyPlants, ggspectra, ggplot2}
 %\VignetteKeyword{misc}
 
 \documentclass{article}
@@ -24,12 +24,14 @@
 <<setup, include=FALSE, cache=FALSE>>=
 library(knitr)
 opts_chunk$set(fig.path='figure/pos-', fig.align='center', fig.show='hold', size="footnotesize", fig.width=6, fig.height=4, out.width='.95\\textwidth', warning=FALSE)
-options(replace.assign=TRUE,width=55)
+options(replace.assign=TRUE, width=55, warnPartialMatchArgs = FALSE)
 @
 
 <<example-0-hiden, eval=TRUE, include=FALSE>>=
+library(ggplot2)
+library(ggspectra)
 library(photobiologyPlants)
-library(photobiologygg)
+library(photobiology)
 @
 
 <<own-set-up, echo=FALSE, include=FALSE>>=

@@ -19,7 +19,7 @@
 #' \href{http://dx.doi.org/10.1007/978-94-011-1884-2_10}{DOI
 #' 10.1007/978-94-011-1884-2_10}
 #'
-#' @seealso \code{\link[photobiologyWavebands]{R_FR_ratio}}
+#' @seealso \code{\link[photobiology]{q_ratio}}
 #' @examples
 #' Pfr_P_ratio_mono(665)
 #' Pfr_P_ratio_mono(735)

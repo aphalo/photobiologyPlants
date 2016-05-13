@@ -1,8 +1,8 @@
 Package: photobiologyPlants
 Type: Package
 Title: Plant photobiology related functions and data
-Version: 0.3.3
-Date: 2015-12-21
+Version: 0.3.3.9001
+Date: 2016-05-02
 Author: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
 Maintainer: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
 Description: This package provides pre-defined functions
@@ -12,12 +12,12 @@ License: GPL (>= 3)
 VignetteBuilder: knitr
 Depends:
     R (>= 3.2.0),
-    photobiology (>= 0.9.1),
-    photobiologyWavebands (>= 0.3.0)
+    photobiology (>= 0.9.7),
+    photobiologyWavebands (>= 0.4.0)
 Suggests:
-    ggplot2 (>= 2.0.0),
-    knitr (>= 0.1.10),
-    ggspectra (>= 0.1.0)
+    ggplot2 (>= 2.1.0),
+    knitr (>= 1.12.3),
+    ggspectra (>= 0.1.6)
 LazyLoad: yes
 LazyData: yes
 ByteCompile: true

@@ -4,7 +4,7 @@ Add chlorophyll a and b absorbance spectra.
 photobiologyPlants 0.3.4
 ========================
 
-Rebuild data objects with photobiology 0.9.7, ggplot2 2.1.0 and ggspectra > 0.6.
+Rebuild data objects with photobiology 0.9.9, ggplot2 2.1.0 and ggspectra 0.1.8.
 
 photobiologyPlants 0.3.3
 ========================

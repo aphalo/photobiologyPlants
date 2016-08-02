@@ -24,7 +24,7 @@
 <<setup, include=FALSE, cache=FALSE>>=
 library(knitr)
 opts_chunk$set(fig.path='figure/pos-', fig.align='center', fig.show='hold', size="footnotesize", fig.width=6, fig.height=4, out.width='.95\\textwidth', warning=FALSE)
-options(replace.assign=TRUE, width=55, warnPartialMatchArgs = FALSE)
+#options(replace.assign=TRUE, width=55, warnPartialMatchArgs = FALSE)
 @
 
 <<example-0-hiden, eval=TRUE, include=FALSE>>=
@@ -49,9 +49,9 @@ my_version <- packageVersion("photobiologyPlants")
 @
 
 <<>>=
-options(photobiology.filter.qty = "absorbance")
+# options(photobiology.filter.qty = "absorbance")
 options(photobiology.plot.annotations =
-          c("boxes", "labels", "colour.guide", "peaks", "title"))
+          c("boxes", "labels", "colour.guide", "title"))
 options(photobiology.radiation.unit = "photon")
 @
 
@@ -101,13 +101,28 @@ plot(McCree_Oat.spct)
 \section{Optical properties of leaves}
 
 <<>>=
-plot(Solidago_lower_adax.spct)
-plot(Solidago_lower_abax.spct)
+plot(Solidago_altissima.mspct$lower_adax)
+plot(Solidago_altissima.mspct$lower_abax)
 @
 
 <<>>=
-plot(Solidago_upper_adax.spct)
-plot(Solidago_upper_abax.spct)
+plot(Solidago_altissima.mspct$upper_adax)
+plot(Solidago_altissima.mspct$upper_abax)
+@
+
+<<>>=
+plot(Betula_ermanii.mspct$first_flush_adax)
+plot(Betula_ermanii.mspct$first_flush_abax)
+@
+
+<<>>=
+plot(Betula_ermanii.mspct$summer_flush_adax)
+plot(Betula_ermanii.mspct$summer_flush_abax)
+@
+
+<<>>=
+plot(Betula_ermanii.mspct$senesced_adax)
+plot(Betula_ermanii.mspct$senesced_abax)
 @
 
 \end{document}

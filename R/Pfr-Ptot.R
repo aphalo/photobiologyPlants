@@ -5,7 +5,7 @@
 #' @param x an R object
 #' @param ... not used
 #'
-#' @export Pfr_Ptot
+#' @export
 #'
 #' @references
 #' Mancinelli, A.L. (1994) The physiology of phytochrome action. In
@@ -68,9 +68,10 @@ Pfr_Ptot.numeric <- function(x, spct.out = length(x) > 20, ...) {
 Pfr_Ptot.source_spct <- function(x, ...) {
   spct <- trim_spct(x, range = c(300, 770), verbose = FALSE)
   e2q(spct, byref = TRUE)
-  Pfr_P_ratio(w.length = spct$w.length,
-             s.irrad = spct$s.q.irrad,
-             unit.in = "photon",
-             check.spectrum = FALSE,
-             use.cached.mult = FALSE)
+  Pfr_P_ratio(
+    w.length = spct$w.length,
+    s.irrad = spct$s.q.irrad,
+    unit.in = "photon",
+    check.spectrum = FALSE,
+    use.cached.mult = FALSE)
 }

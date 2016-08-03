@@ -1,5 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-raw.data
-test
-vignettes/figure
+^data-raw$
+^test$
+^vignettes/figure$
+^inst/web$

@@ -1,19 +1,19 @@
 %\VignetteEngine{knitr}
-%\VignetteIndexEntry{Phytochrome state quantification with R}
+%\VignetteIndexEntry{Plots of the included data}
 %\VignetteDepends{knitr, photobiologyPlants, ggspectra, ggplot2}
 %\VignetteKeyword{misc}
 
 \documentclass{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage{abbrev}
 \usepackage[unicode=true,pdfusetitle,
  bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
  breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
  {hyperref}
 \usepackage{listings}
 \usepackage{booktabs}
-\usepackage{breakurl}
+\usepackage{url}
+\usepackage{xspace}
 
 \newcommand{\PB}{\textsf{photobiology}\xspace}
 \newcommand{\PBWB}{\textsf{photobiologyWavebands}\xspace}
@@ -38,7 +38,7 @@ library(photobiology)
 my_version <- packageVersion("photobiologyPlants")
 @
 
-\title{\PBPL Version \Sexpr{my_version}\\  CRY related functions and data}
+\title{\PBPL Version \Sexpr{my_version}\\ Plots of the data}
 \author{Pedro J. Aphalo}
 
 \maketitle
@@ -76,8 +76,8 @@ rm(ex7.dt)
 \section{Cryptochromes}
 
 <<>>=
-plot(CRY2_dark.spct)
-plot(CRY2_light.spct)
+plot(CRY2.mspct$dark_adapted, plot.qty = "absorbance")
+plot(CRY2.mspct$light_adapted, plot.qty = "absorbance")
 @
 
 \subsection{UVR8 wavebands}
@@ -86,16 +86,16 @@ plot(CRY2_light.spct)
 We can limit the plotted wavelengths to a range, even using another waveband object.
 
 <<>>=
-plot(UVR8_Glasgow.spct, range = UVB())
-plot(UVR8_Glasgow.spct, range = UV())
+plot(UVR8_Glasgow.spct, range = UVB(), plot.qty = "absorbance")
+plot(UVR8_Glasgow.spct, range = UV(), plot.qty = "absorbance")
 @
 
 
 \section{Photosynthesis action spectra}
 
 <<>>=
-plot(McCree_Amaranth.spct)
-plot(McCree_Oat.spct)
+plot(McCree_photosynthesis.mspct$amaranth)
+plot(McCree_photosynthesis.mspct$oats)
 @
 
 \section{Optical properties of leaves}

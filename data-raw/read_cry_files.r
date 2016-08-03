@@ -4,15 +4,18 @@ CRY2_dark.spct <- read.csv(file = "./data-raw/Cryptochromes/cry2_dark.csv",
 CRY2_dark.spct <- CRY2_dark.spct[-(1:2), -3]
 setFilterSpct(CRY2_dark.spct, Tfr.type = "internal")
 CRY2_dark.spct <- interpolate_spct(CRY2_dark.spct, length.out = 100)
+setWhatMeasured(CRY2_dark.spct, "In vitro absorbance of a dark exposed solution of CRY2")
 
 CRY2_light.spct <- read.csv(file = "./data-raw/Cryptochromes/cry2_light.csv",
                             header = TRUE, comment.char = "#")
 CRY2_light.spct <- CRY2_light.spct[order(CRY2_light.spct$w.length), -3]
 setFilterSpct(CRY2_light.spct, Tfr.type = "internal")
 CRY2_light.spct <- interpolate_spct(CRY2_light.spct, length.out = 100)
+setWhatMeasured(CRY2_light.spct, "In vitro absorbance of a light exposed solution of CRY2")
 
-save(CRY2_dark.spct, CRY2_light.spct, file = "./data/cry.spct.rda")
-
+CRY2.mspct <- filter_mspct(list(dark_adapted = CRY2_dark.spct,
+                                light_adapted = CRY2_light.spct))
+save(CRY2.mspct, file = "./data/cry.spct.rda")
 
 ## UVR8
 

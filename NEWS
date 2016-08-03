@@ -1,10 +1,13 @@
 TODO: add CRY1, PHOT1, PHOT2, BLUF and carotenoids absorbance spectra.
 Add chlorophyll a and b absorbance spectra.
 
-photobiologyPlants 0.3.4
+photobiologyPlants 0.4.0
 ========================
 
-Rebuild data objects with photobiology 0.9.9, ggplot2 2.1.0 and ggspectra 0.1.8.
+Rebuild data objects with photobiology 0.9.9, after updating scripts to create
+collections of spectra instead of separate objects for related data sets.
+Add functions for frequently used photon ratios.
+Remove some redundant phytochrome-related functions.
 
 photobiologyPlants 0.3.3
 ========================

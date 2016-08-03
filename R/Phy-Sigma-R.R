@@ -1,9 +1,8 @@
-#' Pfr Sigma as a function of wavelength
+#' Pr Sigma as a function of wavelength
 #'
-#' Pfr Sigma as a function of wavelength, calculated by interpolatio from data
-#' for Type I Phytochrome as compiled by Mancinelli (xxxx).
+#' Pr Sigma as a function of wavelength, calculated by interpolatio from data
+#' for Type I Phytochrome as compiled by Mancinelli (1994).
 #'
-#' @usage Phy_Sigma_FR(w.length, use.cached.mult=FALSE)
 #' @param w.length numeric array of wavelength (nm)
 #' @param use.cached.mult logical ignored
 #'
@@ -17,20 +16,21 @@
 #' 10.1007/978-94-011-1884-2_10}
 #'
 #' @seealso \code{\link[photobiologyPlants]{Phy_Sigma}},
-#'   \code{\link[photobiologyPlants]{Pfr_P_ratio}} and
-#'   \code{\link[photobiologyPlants]{Pfr_P_ratio_R_FR}}
-#' @examples
-#' with(sun.spct, Phy_Sigma_FR(w.length))
-#' with(sun.spct, Phy_Sigma_FR(w.length, TRUE))
+#'   \code{\link[photobiologyPlants]{Pfr_Ptot}} and
+#'   \code{\link[photobiologyPlants]{Pfr_Ptot_R_FR}}
 #'
-Phy_Sigma_FR <-
+#' @examples
+#' with(sun.data, Phy_Sigma_R(w.length))
+#' with(sun.data, Phy_Sigma_R(w.length, TRUE))
+#'
+Phy_Sigma_R <-
   function(w.length, use.cached.mult=FALSE){
-    Sigma.FR.mult <- numeric(length(w.length))
-    Sigma.FR.mult[w.length >= 300 & w.length <= 770] <-
+    Sigma.R.mult <- numeric(length(w.length))
+    Sigma.R.mult[w.length >= 300 & w.length <= 770] <-
       stats::spline(photobiologyPlants::phytochrome.spct$w.length,
-                    photobiologyPlants::phytochrome.spct$Sigma.FR,
+                    photobiologyPlants::phytochrome.spct$Sigma.R,
              xout = w.length[w.length >= 300 & w.length <= 770])$y
-    Sigma.FR.mult[w.length < 300 | w.length > 770] <- NA
+    Sigma.R.mult[w.length < 300 | w.length > 770] <- NA
 
-    return(Sigma.FR.mult)
+    return(Sigma.R.mult)
   }

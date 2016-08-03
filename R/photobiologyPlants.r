@@ -1,27 +1,15 @@
-#' @title Quantification of radiation for Cryptochrome photobiology
+#' @details Package 'photobiologyPlants' is part of a suite of packages for
+#'   analysis and plotting of data relevant to photobiology (described at
+#'   \url{http://www.r4photobiology.info/}). The current component package
+#'   provides functions and data related to plant photoreceptors, light
+#'   dependent reponses and optical properties of plants.
 #'
-#' @description Calculation of quantities relevant to the effects of radiation
-#'   on plants from spectral data. The package complements package
-#'   \code{\link[photobiology]{photobiology-package}}.
-#'
-#' @docType package
-#' @keywords misc
-#' @name photobiologyPlants-package
-#' @author Pedro J. Aphalo
-#' @details \tabular{ll}{ Package: \tab photobiologyPlants\cr Type: \tab
-#'   Package\cr Version: \tab 0.3.3\cr Date: \tab 2015-12-21\cr License: \tab
-#'   GPL (>= 3)\cr URL: \tab \url{http://www.r4photobiology.info},\cr \tab
-#'   \url{https://bitbucket.org/aphalo}\cr BugReports: \tab
-#'   \url{https://bitbucket.org/aphalo/photobiologyPlants}\cr }
+#' @section Acknowledgements: This work was partly funded by the Academy of
+#'   Finland (decision 252548). COST Action FA9604 'UV4Growth' facilitated
+#'   discussions and exchanges of ideas that lead to the development of this
+#'   package.
 #'
 #' @references
-#' Aphalo, P. J., Albert, A., Björn, L. O., McLeod, A. R., Robson,
-#' T. M., Rosenqvist, E. (Eds.). (2012). Beyond the Visible: A handbook of best
-#' practice in plant UV photobiology (1st ed., p. xxx + 174). Helsinki:
-#' University of Helsinki, Department of Biosciences, Division of Plant Biology.
-#' ISBN 978-952-10-8363-1 (PDF), 978-952-10-8362-4 (paperback). Open access PDF
-#' download available at \url{http://hdl.handle.net/10138/37558}
-#'
 #' Aphalo, P. J., Albert, A., Björn, L. O., McLeod, A. R., Robson, T. M.,
 #' Rosenqvist, E. (Eds.). (2012). Beyond the Visible: A handbook of best
 #' practice in plant UV photobiology (1st ed., p. xxx + 174). Helsinki:
@@ -45,4 +33,4 @@
 #'
 #' @seealso Package \code{\link[photobiology]{photobiology-package}}
 #'
-NULL
+"_PACKAGE"

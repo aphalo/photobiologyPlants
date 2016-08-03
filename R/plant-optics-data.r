@@ -1,4 +1,4 @@
-#' @title Spectral data for 'Solidago altissima' leaves
+#' @title Spectral optical data for 'Solidago altissima' leaves
 #'
 #' @description A dataset containing for wavelengths at a 1 nm interval in the
 #'   range 350 to 1000 nm, tabulated values for total reflectance and total

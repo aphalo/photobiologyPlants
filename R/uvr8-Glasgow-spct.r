@@ -5,7 +5,7 @@
 #'
 #' The variables are as follows:
 #'
-#' \itemize{ \item wavelength (nm) \item absorabnce (spectral absorbance) }
+#' \itemize{ \item w.length (nm) \item A (spectral absorbance) }
 #'
 #' @docType data
 #' @keywords datasets

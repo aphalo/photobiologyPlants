@@ -3,7 +3,7 @@
 #' Phytochrome Sigma as a function of wavelength, calculated by interpolatio
 #' from data for Type I Phytochrome as compiled by Mancinelli (1994).
 #'
- #' @param w.length numeric array of wavelength (nm)
+#' @param w.length numeric array of wavelength (nm)
 #'
 #' @return a numeric array with values for Sigma
 #' @export
@@ -14,8 +14,8 @@
 #' \href{http://dx.doi.org/10.1007/978-94-011-1884-2_10}{DOI
 #' 10.1007/978-94-011-1884-2_10}
 #'
-#' @seealso \code{\link[photobiologyPlants]{Pfr_P_ratio}} and
-#'   \code{\link[photobiologyPlants]{Pfr_P_ratio_R_FR}}
+#' @seealso \code{\link[photobiologyPlants]{Pfr_Ptot}} and
+#'   \code{\link[photobiologyPlants]{Pfr_Ptot_R_FR}}
 #' @examples
 #' with(sun.data, Phy_Sigma(w.length))
 #'

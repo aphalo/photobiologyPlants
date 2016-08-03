@@ -1,28 +1,29 @@
 Package: photobiologyPlants
 Type: Package
-Title: Plant photobiology related functions and data
-Version: 0.3.4
-Date: 2016-08-02
-Author: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
+Title: Plant Photobiology Related Functions and Data
+Version: 0.4.0.9001
+Date: 2016-08-03
+Authors@R:
+    person("Pedro J.", "Aphalo", email = "pedro.aphalo@helsinki.fi", role = c("aut", "cre"))
 Maintainer: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
-Description: This package provides pre-defined functions
-    for quantifying visible (VIS) radiation in relation to the photoreceptors
-    Phytochromes, Cryptochromes, and UVR8 which is present in plants.
+Description: Provides functions for quantifying visible (VIS) and ultraviolet
+    (UV) radiation in relation to the photoreceptors Phytochromes,
+    Cryptochromes, and UVR8 which are present in plants. It also
+    includes data sets on the optical properties of plants.
 License: GPL (>= 3)
 VignetteBuilder: knitr
 Depends:
     R (>= 3.2.0),
-    photobiology (>= 0.9.7),
+    photobiology (>= 0.9.8),
     photobiologyWavebands (>= 0.4.0)
 Suggests:
     ggplot2 (>= 2.1.0),
-    knitr (>= 1.12.3),
+    knitr (>= 1.13.0),
     ggspectra (>= 0.1.6)
 LazyLoad: yes
 LazyData: yes
 ByteCompile: true
 Encoding: UTF-8
-URL: http://uv4growth.dyndns.org, http://openinstruments.dyndns.org, https://
-    bitbucket.org/aphalo/photobiology
-BugReports: https://bitbucket.org/aphalo/photobiology
+URL: http://www.r4photobiology.info/
+BugReports: https://bitbucket.org/aphalo/photobiologyplants
 RoxygenNote: 5.0.1

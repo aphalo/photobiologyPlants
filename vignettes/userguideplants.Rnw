@@ -1,18 +1,17 @@
 %\VignetteEngine{knitr}
-%\VignetteIndexEntry{Phytochrome state quantification with R}
+%\VignetteIndexEntry{User Guide}
 %\VignetteDepends{knitr, photobiologyPlants, photobiologyWavebands, photobiology, ggplot2, ggspectra}
 %\VignetteKeyword{misc}
 
 \documentclass{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage{abbrev}
 \usepackage[unicode=true,pdfusetitle,
  bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
  breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
  {hyperref}
 \usepackage{listings}
-%\usepackage{booktabs}
+\usepackage{xspace}
 
 \newcommand{\PB}{\textsf{photobiology}\xspace}
 \newcommand{\PBWB}{\textsf{photobiologyWavebands}\xspace}
@@ -45,38 +44,11 @@ my_version <- packageVersion("photobiologyPlants")
 
 \section{Introduction}
 
-\sloppy
-We have developed a set of packages to
-facilitate the calculation of many different quantities that can be derived from spectral irradiance data. The basic package is called \PB, and the package described here is an extension of the basic facilities for quantification of Phytochrome, Chryptochrome and UVR8 (plant photoreceptors). It will be submitted to CRAN (Comprehensive R archive network), it is meanwhile available from \url{http://www.r4photobiology.info}.
-
-\section{Installation and use}
-
-The functions in the package \PBPL are
-made available by installing the packages \verb!photobiologyPlants! (once) and
-loading it from the library when needed.
-
-To load package \PBPL into the workspace of the current R session we use \verb!library(photobiologyPlants)!.
-
-<<example-0-hiden, eval=FALSE>>=
-@
+Package \PBPL provides data sets and functions relevant to the photobiology of plants.
 
 \section{Spectral data}
 
-See the User Guide for package \PB for instructions on how to work with spectral data.
-
-\begin{framed}
-\noindent
-All functions in the photobiology suite expect wavelength in nanometres (nm), spectral energy irradiances in \wattnm and spectral photon irradiances in \molnm. They do not rescale the data.
-
-
-It is very important to make sure that the wavelengths are in nanometers as this is what
-the functions expect. If the wavelengths supplied as arguments are in the wrong units, the returned values will be
-wrong.
-\end{framed}
-
-Below we use the solar spectral data included in package \PB as a data frame in object \texttt{sun.data}.
-
-\part{PHY}
+See the User Guide for package \PB for instructions on how to work with spectral data. In the examples below we use the solar spectral data included in package \PB as a data frame in object \texttt{sun.data}.
 
 \section{Calculating the Phytochrome photoequilibrium}
 
@@ -100,7 +72,7 @@ q_ratio(sun.spct, Red("Smith"), Far_red("Smith"))
 
 We can, and should whenever spectral data are available, calculate the photoequilibrium as above from them.
 It is possible to obtain and approximation in case of the solar spectrum and other broad spectra, using
-the red:far-red photon ratio. The calculation, however, is only stricly valid, for di-chromatic illumination
+the red:far-red photon ratio. The calculation, however, is only strictly valid, for di-chromatic illumination
 with red plus far-red light.
 
 <<example-4, eval=TRUE>>=
@@ -108,12 +80,12 @@ Pfr_Ptot_R_FR(R_FR(sun.spct))
 @
 
 Here we calculated the R:FR ratio from spectral data, but in practice one would use this
-function only when spectral data is not available as when a R plus FR sensor is used. We can see tha In such
-a case the photoequilibrium calcualted is only a very rough approximation. For sunlight, in the example above
+function only when spectral data is not available as when a R plus FR sensor is used. We can see that in such
+a case the photoequilibrium calculated is only a very rough approximation. For sunlight, in the example above
 when using spectral data we obtained a value of \Sexpr{signif(Pfr_Ptot(sun.spct), 3)} in contrast to \Sexpr{signif(Pfr_Ptot_R_FR(R_FR(sun.spct)), 3)} when using the R:FR photon ratio. For other light sources differences can be much larger.
 
 In the case of monochromatic light we can still use the same functions, as the defaults are such that
-we can use a single value as the 'w.length' argument, to obtain the Pfr:P ratio. For monchromatic
+we can use a single value as the 'w.length' argument, to obtain the Pfr:P ratio. For monochromatic
 light irradiance is irrelevant for the photoequilibrium.
 
 <<example-5a>>=
@@ -151,7 +123,7 @@ Pfr_Ptot_R_FR(c(1.15,0.01))
 
 Of course it is also easy to plot Pfr:P ratio as a function of R:FR photon ratio. However we have to
 remember that such values are exact only for dichromatic light, and only a rough approximation for
-wide-spectrum light sources. For light spectrum light sources, the photoequilibrium should, if
+wide-spectrum light sources. For wide-spectrum light sources, the photoequilibrium should, if
 possible, be calculated from spectral irradiance data.
 
 <<example-6a>>=
@@ -163,7 +135,7 @@ ggplot(data=ex6.data, aes(r.fr, Pfr.p)) +
          y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
 @
 
-Below we try to reproduce figure 11 from Mancinelli (1994), where he uses a logarithmic
+Below we approximate figure 11 from Mancinelli (1994), where he uses a logarithmic
 scale for the R:FR ratio.
 
 <<example-7>>=
@@ -186,11 +158,11 @@ with(sun.data, Phy_reaction_rates(w.length, s.e.irrad))
 
 \section{Calculating the absorption cross section at given wavelengths}
 
-The phytochrome photoequilibrium cannot be calculated from the absportance spectra
+The phytochrome photoequilibrium cannot be calculated from the absorptance spectra
 of Pr and Pfr, because Pr and Pfr have different quantum yields for the
 respective phototransformations. We need to use action spectra, which in this
 context are usually called `absorption cross-sections'. They can be calculated
-as the product of absortance and quantum yield. The values in these spectra,
+as the product of absorptance and quantum yield. The values in these spectra,
 in the case of Phy are called `Sigma'.
 
 Here we reproduce Figure 3 in Mancinelli (1994), which gives the `Relative photoconversion cross-sections' of Pr ($\sigma_R$) and Pfr ($\sigma_{FR}$). The values are expressed relative to $\sigma_R$ at its maximum at $\lambda = 666$~nm.
@@ -206,44 +178,24 @@ lines(I(sigma.fr/max(sigma.r)) ~ w.length, data=ex7.data)
 rm(ex7.data)
 @
 
-\part{CRY}
-
-\section{Calculating energy or photons absorbed by Crytochrome 2}
-
-
-<<example-cry-1>>=
-options(photobiology.filter.qty = "absorbance")
-@
-
-<<example-cry-2>>=
-q_response(sun.spct * CRY2_dark.spct)
-@
-
-<<example-cry-3>>=
-e_response(sun.spct * CRY2_light.spct)
-@
-
 \section{Calculating the CRY absorbance at given wavelengths}
 
-Here we try to reproduce Figure 1.B from Banerjee et al.\ (2007).
+Here we approximate Figure 1.B from Banerjee et al.\ (2007).
 
 <<>>=
-interpolate_wl(CRY2_dark.spct, 300:500)
+plot(interpolate_wl(CRY2.mspct$dark_adapted, 300:500),
+     plot.qty = "absorbance")
 @
 
 <<example-cry-5>>=
-plot(CRY2_dark.spct, range = c(300,700))
+plot(CRY2.mspct$dark_adapted, range = c(300,700),
+     plot.qty = "absorbance")
 @
 
-\part{UVR8}
-
-\section{Plot}
+\section{UVR8}
 
 <<example-uvr8-1>>=
 plot(UVR8_Glasgow.spct)
 @
-
-\section{Coming soon!}
-
 
 \end{document}

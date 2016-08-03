@@ -13,7 +13,6 @@
 #'   cached between calls
 #'
 #' @return a single numeric value giving the unitless photon ratio
-#' @export
 #' @references Mancinelli, A.L. (1994) The physiology of phytochrome action. In
 #' Photomorphogenesis in plants, 2nd edition. R.E. Kendrick and G.H.M.
 #' Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269. ISBN
@@ -21,12 +20,7 @@
 #' \href{http://dx.doi.org/10.1007/978-94-011-1884-2_10}{DOI
 #' 10.1007/978-94-011-1884-2_10}
 #'
-#' @seealso \code{\link[photobiology]{q_ratio}} and
-#'   \code{\link[photobiology]{e_ratio}}
-#' @examples
-#' library(photobiology)
-#' trimmed.sun.spct <- trim_wl(sun.spct, range = c(300,770))
-#' with(trimmed.sun.spct, Pfr_P_ratio(w.length, s.e.irrad))
+#' @keywords internal
 #'
 Pfr_P_ratio <- function(w.length, s.irrad=rep(1.0,length(w.length)), unit.in="energy",
                        check.spectrum=TRUE, use.cached.mult=FALSE){

@@ -61,10 +61,10 @@ options(photobiology.radiation.unit = "photon")
 \section{Test of interpolation}
 
 <<Phy-spline>>=
-ex7.dt <- data.frame(w.length=300:700,
-                     sigma.r = Phy_Sigma_R(300:700),
-                     sigma.fr = Phy_Sigma_FR(300:700),
-                     sigma = Phy_Sigma(300:700))
+ex7.dt <- data.frame(w.length=300:770,
+                     sigma.r = Phy_Sigma_R(300:770),
+                     sigma.fr = Phy_Sigma_FR(300:770),
+                     sigma = Phy_Sigma(300:770))
 plot(I(sigma.r/ max(sigma.r)) ~ w.length, data=ex7.dt, type="l", col="red",
      xlab="Wavelength (nm)", ylab=expression(sigma[R]~and~sigma[FR]))
 lines(I(sigma.fr/max(sigma.r)) ~ w.length, data=ex7.dt, col="black")

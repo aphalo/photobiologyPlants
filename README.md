@@ -1,4 +1,6 @@
-# photobiologyPlants #
+# R package 'photobiologyPlants' #
+
+[![](http://www.r-pkg.org/badges/version/photobiologyPlants)](https://cran.r-project.org/package=photobiologyPlants) [![](http://cranlogs.r-pkg.org/badges/photobiologyPlants)](http://cran.rstudio.com/web/packages/photobiologyPlants/index.html) [![](http://cranlogs.r-pkg.org/badges/grand-total/photobiologyPlants)](http://cran.rstudio.com/web/packages/photobiologyPlants/index.html)
 
 Package '**photobiologyPlants**' provides pre-defined functions for quantifying 
 visible ('VIS') and ultraviolet ('UV') radiation in relation to the

@@ -25,5 +25,6 @@ LazyData: yes
 ByteCompile: true
 Encoding: UTF-8
 URL: http://www.r4photobiology.info/
-BugReports: https://bitbucket.org/aphalo/photobiologyplants
+    https://bitbucket.org/aphalo/photobiologyplants
+BugReports: https://bitbucket.org/aphalo/photobiologyplants/issues
 RoxygenNote: 5.0.1

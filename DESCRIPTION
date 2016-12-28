@@ -10,7 +10,7 @@ Description: Provides functions for quantifying visible (VIS) and ultraviolet
     (UV) radiation in relation to the photoreceptors Phytochromes,
     Cryptochromes, and UVR8 which are present in plants. It also
     includes data sets on the optical properties of plants.
-License: GPL (>= 3)
+License: GPL (>= 2)
 VignetteBuilder: knitr
 Depends:
     R (>= 3.2.0),

@@ -1,6 +1,12 @@
 TODO: add CRY1, PHOT1, PHOT2, BLUF and carotenoids absorbance spectra.
 Add chlorophyll a and b absorbance spectra.
 
+photobiologyPlants 0.4.1
+========================
+
+Rebuild data objects with photobiology 0.9.14. Updating data build script to
+fix wrong attribute of exported object_spct data objects.
+
 photobiologyPlants 0.4.0
 ========================
 

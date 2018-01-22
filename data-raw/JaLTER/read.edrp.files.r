@@ -14,8 +14,8 @@ Solidago_lower_abax.spct <- temp.df[ , c(1,4,5)]
 names(Solidago_lower_adax.spct) <- c("w.length", "Rfr", "Tfr")
 names(Solidago_lower_abax.spct) <- c("w.length", "Rfr", "Tfr")
 
-setObjectSpct(Solidago_lower_adax.spct, Tfr.type = "internal", Rfr.type = "total")
-setObjectSpct(Solidago_lower_abax.spct, Tfr.type = "internal", Rfr.type = "total")
+setObjectSpct(Solidago_lower_adax.spct, Tfr.type = "total", Rfr.type = "total")
+setObjectSpct(Solidago_lower_abax.spct, Tfr.type = "total", Rfr.type = "total")
 
 when <- ymd_h("2010-07-28 12", tz = "Asia/Tokyo")
 where <- data.frame(lat = 36.11667, lon =  140.13333, address = "The experimental grassland at the Terrestrial Environmental Research Center of the University of the Tsukuba")
@@ -36,8 +36,8 @@ Solidago_upper_abax.spct <- temp.df[ , c(1,4,5)]
 names(Solidago_upper_adax.spct) <- c("w.length", "Rfr", "Tfr")
 names(Solidago_upper_abax.spct) <- c("w.length", "Rfr", "Tfr")
 
-setObjectSpct(Solidago_upper_adax.spct, Tfr.type = "internal", Rfr.type = "total")
-setObjectSpct(Solidago_upper_abax.spct, Tfr.type = "internal", Rfr.type = "total")
+setObjectSpct(Solidago_upper_adax.spct, Tfr.type = "total", Rfr.type = "total")
+setObjectSpct(Solidago_upper_abax.spct, Tfr.type = "total", Rfr.type = "total")
 
 setWhereMeasured(Solidago_upper_adax.spct, where)
 setWhenMeasured(Solidago_upper_adax.spct, when)
@@ -61,8 +61,8 @@ first_flush_abax.spct <- temp.df[ , c(1,4,5)]
 names(first_flush_adax.spct) <- c("w.length", "Rfr", "Tfr")
 names(first_flush_abax.spct) <- c("w.length", "Rfr", "Tfr")
 
-setObjectSpct(first_flush_adax.spct, Tfr.type = "internal", Rfr.type = "total")
-setObjectSpct(first_flush_abax.spct, Tfr.type = "internal", Rfr.type = "total")
+setObjectSpct(first_flush_adax.spct, Tfr.type = "total", Rfr.type = "total")
+setObjectSpct(first_flush_abax.spct, Tfr.type = "total", Rfr.type = "total")
 
 when <- ymd_h("2010-08-02 12", tz = "Asia/Tokyo")
 where <- data.frame(lat = 36.13333, lon =  137.41667, address = "Takayama deciduous broadleaf forest")
@@ -83,8 +83,8 @@ summer_flush_abax.spct <- temp.df[ , c(1,4,5)]
 names(summer_flush_adax.spct) <- c("w.length", "Rfr", "Tfr")
 names(summer_flush_abax.spct) <- c("w.length", "Rfr", "Tfr")
 
-setObjectSpct(summer_flush_adax.spct, Tfr.type = "internal", Rfr.type = "total")
-setObjectSpct(summer_flush_abax.spct, Tfr.type = "internal", Rfr.type = "total")
+setObjectSpct(summer_flush_adax.spct, Tfr.type = "total", Rfr.type = "total")
+setObjectSpct(summer_flush_abax.spct, Tfr.type = "total", Rfr.type = "total")
 
 setWhereMeasured(summer_flush_adax.spct, where)
 setWhenMeasured(summer_flush_adax.spct, when)
@@ -103,8 +103,8 @@ senesced_abax.spct <- temp.df[ , c(1,4,5)]
 names(senesced_adax.spct) <- c("w.length", "Rfr", "Tfr")
 names(senesced_abax.spct) <- c("w.length", "Rfr", "Tfr")
 
-setObjectSpct(senesced_adax.spct, Tfr.type = "internal", Rfr.type = "total")
-setObjectSpct(senesced_abax.spct, Tfr.type = "internal", Rfr.type = "total")
+setObjectSpct(senesced_adax.spct, Tfr.type = "total", Rfr.type = "total")
+setObjectSpct(senesced_abax.spct, Tfr.type = "total", Rfr.type = "total")
 
 when <- ymd_h("2010-10-06 12", tz = "Asia/Tokyo")
 setWhereMeasured(senesced_adax.spct, where)

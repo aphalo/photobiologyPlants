@@ -1,6 +1,13 @@
 TODO: add CRY1, PHOT1, PHOT2, BLUF and carotenoids absorbance spectra.
 Add chlorophyll a and b absorbance spectra.
 
+photobiologyPlants 0.4.2
+========================
+
+Rebuild data objects with photobiology 0.9.18.
+Translate vignette to R markdown.
+Fix bug in Jalter leaf optical properties data object.
+
 photobiologyPlants 0.4.1
 ========================
 

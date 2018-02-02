@@ -12,3 +12,4 @@ vignettes/*.pdf
 vignettes/figure/*
 inst/web
 man
+docs/

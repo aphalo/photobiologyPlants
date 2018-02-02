@@ -2,4 +2,5 @@
 ^\.Rproj\.user$
 ^data-raw$
 ^test$
-^vignettes/figure$
+^docs$
+^_pkgdown\.yml$

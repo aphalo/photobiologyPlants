@@ -1,0 +1,26 @@
+reference:
+  - title: Package overview
+    contents:
+    - photobiologyPlants-package
+  - title: Phytochrome
+    contents:
+    - Pfr_Ptot
+    - Pfr_Ptot_R_FR
+    - Phy_Sigma
+    - Phy_Sigma_R
+    - Phy_Sigma_FR
+    - Phy_reaction_rates
+    - phytochrome.spct
+  - title: Cryptochromes
+    contents:
+    - CRY2.mspct
+  - title: UVR8
+    contents:
+    - UVR8_Glasgow.spct
+  - title: Photosynthesis
+    contents:
+    - McCree_photosynthesis.mspct
+articles:
+  - title: Vignettes
+    contents:
+    - '`user-guide`'

@@ -14,8 +14,8 @@
 #' @name UVR8_Glasgow.spct
 #'
 #' @references Christie, J. M., A. S. Arvai, K. J. Baxter, M. Heilmann, A. J.
-#' Pratt, A. O’Hara, S. M. Kelly, M. Hothorn, B. O. Smith, K. Hitomi, et al.
-#' (2012). “Plant UVR8 photoreceptor senses UV-B by tryptophan-mediated
-#' disruption of cross-dimer salt bridges.” In:   Science (New York, N.Y.)
-#' 335.6075, pp. 1492–1496. DOI:  10.1126/science.1218091. (Figure S3)
+#' Pratt, A. O'Hara, S. M. Kelly, M. Hothorn, B. O. Smith, K. Hitomi, et al.
+#' (2012). Plant UVR8 photoreceptor senses UV-B by tryptophan-mediated
+#' disruption of cross-dimer salt bridges. In:   Science (New York, N.Y.)
+#' 335.6075, pp. 1492-1496. DOI:  10.1126/science.1218091. (Figure S3)
 NULL

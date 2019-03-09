@@ -15,7 +15,7 @@
 #'   with 100 or 200 rows and 2 numeric variables, \code{w.length} and \code{A}
 #' @name CRY2.mspct
 #' @references Banerjee, R., Schleicher, E., Meier, S., Viana, R. M., Pokorny,
-#'   R., Ahmad, M., … Batschauer, A. (2007). The signaling state of Arabidopsis
+#'   R., Ahmad, M., ... Batschauer, A. (2007). The signaling state of Arabidopsis
 #'   cryptochrome 2 contains flavin semiquinone. J Biol Chem, 282(20),
-#'   14916–14922. doi:10.1074/jbc.M700616200
+#'   14916-14922. doi:10.1074/jbc.M700616200
 NULL

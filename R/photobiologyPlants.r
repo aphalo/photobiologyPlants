@@ -13,7 +13,7 @@
 #' Aphalo, Pedro J. (2015) The r4photobiology suite. UV4Plants Bulletin, 2015:1,
 #' 21-29. \url{https://doi.org/10.19232/uv4pb.2015.1.14}.
 #'
-#' Aphalo, P. J., Albert, A., Björn, L. O., McLeod, A. R., Robson, T. M.,
+#' Aphalo, P. J., Albert, A., Bjoern, L. O., McLeod, A. R., Robson, T. M.,
 #' Rosenqvist, E. (Eds.). (2012). Beyond the Visible: A handbook of best
 #' practice in plant UV photobiology (1st ed., p. xxx + 174). Helsinki:
 #' University of Helsinki, Department of Biosciences, Division of Plant Biology.
@@ -27,8 +27,8 @@
 #' \url{https://doi.org/10.1007/978-94-011-1884-2_10}.
 #'
 #' Banerjee, R., Schleicher, E., Meier, S., Viana, R. M., Pokorny, R., Ahmad,
-#' M., … Batschauer, A. (2007). The signaling state of Arabidopsis cryptochrome
-#' 2 contains flavin semiquinone. J Biol Chem, 282(20), 14916–14922.
+#' M., ... Batschauer, A. (2007). The signaling state of Arabidopsis cryptochrome
+#' 2 contains flavin semiquinone. J Biol Chem, 282(20), 14916-14922.
 #' \url{https://doi.org/10.1074/jbc.M700616200}.
 #'
 #' @import photobiology photobiologyWavebands

@@ -4,9 +4,11 @@ Add chlorophyll a and b absorbance spectra.
 photobiologyPlants 0.4.2
 ========================
 
-Rebuild data objects with photobiology 0.9.18.
-Translate vignette to R markdown.
-Fix bug in Jalter leaf optical properties data object.
+* Add spectral absorbance data for cryptochromes 1 and 3, and phototropins 1
+  and 2.
+* Translate vignette to R markdown.
+* Fix bug in Jalter leaf optical properties data object.
+* Rebuild data objects with photobiology 0.9.26.
 
 photobiologyPlants 0.4.1
 ========================

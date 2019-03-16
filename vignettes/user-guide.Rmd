@@ -24,19 +24,26 @@ for more details. For more details on plotting spectra, please consult the
 documentation for package 'ggspectra', and for information on the calculation of summaries and maths operations between spectra, please, consult the 
 documentation for package 'photobiology'.
 
+See the User Guide for package 'photobiology' for instructions on how to work with spectral data. 
+
 ```{r,message=FALSE}
-library(ggplot2)
 library(ggspectra)
 library(photobiology)
 library(photobiologyPlants)
 library(photobiologyWavebands)
 ```
 
-## Spectral data
+## Photon ratios relevant to plants
 
-See the User Guide for package '\PB'photo for instructions on how to work with spectral data. 
+`R_FR()`, `B_G()`, `UVB_UV()`, `UVA_UV()`, `UV_PAR()`, `UVB_PAR()`, `UVA_PAR()` are convenience functions implemented using function `q_ratio()` from package
+'photobiology' and waveband definitions from package 'photobiiologyWavebands'
+with defaults as commonly used in the field of _plant photobiology_.
 
-## Calculating the Phytochrome photoequilibrium
+```{r}
+R_FR(sun.spct)
+```
+
+## Calculating the phytochrome photoequilibrium
 
 In the examples below we use the solar spectral data included in package 'photobiology' as a data frame in object `sun.spct`. 
 
@@ -79,9 +86,9 @@ Pfr_Ptot(435)
 We can also plot Pfr:Ptot as a function of wavelength (nm) of monochromatic light. The default is to return a vector for short input vectors, and a `response_spct` object otherwise, but this can be changed through argument `spct.out`.
 
 ```{r}
-plot(Pfr_Ptot(300:770), norm = NULL, unit.out = "photon",
-     w.band = Plant_bands(),
-     annotations = c("colour.guide", "labels", "boxes")) +
+autoplot(Pfr_Ptot(300:770), norm = NULL, unit.out = "photon",
+         w.band = Plant_bands(),
+         annotations = c("colour.guide", "labels", "boxes")) +
   labs(y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
 ```
 
@@ -91,10 +98,13 @@ It is, of course, also possible to use base R plotting functions, or as shown he
 ggplot(data = Pfr_Ptot(300:770), aes(w.length, s.q.response)) +
   geom_line() +
   labs(x = "Wavelength (nm)",
-     y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
+       y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
 ```
 
 In the case of dichromatic illumination with red (660 nm) and far-red (730 nm) light, we can use a different function that takes the R:FR photon ratio as argument.
+
+**These computations are valid only for true mixes of light at these two wavelengths but not valid for broad spectra like sunlight and especially
+inaccurate for plant growth lamps with peaks in their output spectrum, such as most discharge lamps (sodium, mercury, multi-metal, fluorescent tubes) and many LED lamps.** 
 
 ```{r}
 Pfr_Ptot_R_FR(1.15)
@@ -102,7 +112,7 @@ Pfr_Ptot_R_FR(0.01)
 Pfr_Ptot_R_FR(c(1.15,0.01))
 ```
 
-Of course it is also easy to plot Pfr:P ratio as a function of R:FR photon ratio. However we have to remember that such values are exact only for dichromatic light, and only a rough approximation for wide-spectrum light sources. For wide-spectrum light sources, the photoequilibrium should, if possible, be calculated from spectral irradiance data.
+It is also easy to plot Pfr:P ratio as a function of R:FR photon ratio. However we have to remember that such values are exact only for dichromatic light, and only a very rough approximation for wide-spectrum light sources. For wide-spectrum light sources, the photoequilibrium should, if possible, be calculated from spectral irradiance data.
 
 ```{r}
 ex6.data <- data.frame(r.fr=seq(0.01, 5.0, length.out=100), Pfr.p=numeric(100))
@@ -142,23 +152,55 @@ lines(I(sigma.fr/max(sigma.r)) ~ w.length, data=ex7.data)
 rm(ex7.data)
 ```
 
-## Calculating the CRY absorbance at given wavelengths
+## Spectral absorbance of cryptochromes
+
+```{r}
+names(CRYs.mspct)
+```
 
 Here we approximate Figure 1.B from Banerjee et al.\ (2007).
 
 ```{r}
 A_as_default()
-plot(interpolate_wl(CRY2.mspct$dark_adapted, 300:500))
+autoplot(interpolate_wl(CRYs.mspct$CRY2_dark, 300:500))
 ```
 
 ```{r}
-plot(CRY2.mspct$dark_adapted, range = c(300,700))
+autoplot(CRYs.mspct[c("CRY2_dark", "CRY2_light")], range = c(300,700))
+```
+
+```{r}
+autoplot(CRYs.mspct[c("CRY1_dark", "CRY1_light")])
+```
+```{r}
+autoplot(CRYs.mspct["CRY3_dark"], range = c(300,700))
+```
+
+```{r}
+ggplot(CRYs.mspct[c("CRY1_dark", "CRY2_dark", "CRY3_dark")]) +
+  geom_line(aes(linetype = spct.idx)) +
+  expand_limits(x = 300)
+```
+
+## Spectral absorbance of phototropins
+
+```{r}
+names(PHOTs.mspct)
+```
+
+```{r}
+plot(PHOTs.mspct[c("PHOT1_fluo", "PHOT2_fluo")]) +
+  expand_limits(x = 300)
+```
+
+```{r}
+plot(PHOTs.mspct[c("PHOT1_dark", "PHOT1_light")])
 ```
 
 ## UV8 absorbance
 
 ```{r}
-plot(normalize(UVR8_Glasgow.spct))
+autoplot(UVR8.mspct)
 ```
 
 ## Photosynthesis action spectra
@@ -167,9 +209,32 @@ plot(normalize(UVR8_Glasgow.spct))
 names(McCree_photosynthesis.mspct)
 ```
 
+```{r}
+autoplot(McCree_photosynthesis.mspct)
+```
+
 
 ## Optical properties of leaves
 
 ```{r}
+Tfr_as_default()
+```
+
+```{r}
 names(Solidago_altissima.mspct)
+```
+```{r}
+autoplot(Solidago_altissima.mspct$lower_adax) 
+```
+
+```{r}
+autoplot(Solidago_altissima.mspct$lower_abax) 
+```
+
+```{r}
+autoplot(as.filter_mspct(Solidago_altissima.mspct)) 
+```
+
+```{r}
+autoplot(as.reflector_mspct(Solidago_altissima.mspct)) 
 ```

@@ -97,10 +97,43 @@ comment(phot1.spct) <-
 is_normalized(phot1.spct)
 autoplot(phot1.spct)
 
+read.csv(file = "./data-raw/phototropins/LOV2-dark.csv",
+         header = TRUE, comment.char = "#") %>%
+  rename(w.length = "Line.6.x", A = "Line.6.y") %>%
+  group_by(w.length) %>%
+  summarise(A = median(A)) %>%
+  as.filter_spct(Tfr.type = "internal") %>%
+  clean() %>%
+  interpolate_spct(length.out = 100) %>%
+  normalize() %>%
+  setWhatMeasured("phototropin 1 (Arabidopsis)") -> phot1_LOV2_dark.spct
+
+comment(phot1_LOV2_dark.spct) <-
+  "phototropin 1 (Arabidopsis) LOV2, dark adapted\nfrom Cristie et. al, 2015, figure 3B."
+
+is_normalized(phot1_LOV2_dark.spct)
+autoplot(phot1_LOV2_dark.spct)
+
+read.csv(file = "./data-raw/phototropins/LOV2-light.csv",
+         header = TRUE, comment.char = "#") %>%
+  rename(w.length = "Line.7.x", A = "Line.7.y") %>%
+  group_by(w.length) %>%
+  summarise(A = median(A)) %>%
+  as.filter_spct(Tfr.type = "internal") %>%
+  clean() %>%
+  interpolate_spct(length.out = 100) %>%
+  normalize() %>%
+  setWhatMeasured("phototropin 1 (Arabidopsis)") -> phot1_LOV2_light.spct
+
+comment(phot1_LOV2_light.spct) <-
+  "phototropin 1 (Arabidopsis) LOV2, blue-ligth adapted\nfrom Cristie et. al, 2015, figure 3B."
+
+is_normalized(phot1_LOV2_light.spct)
+autoplot(phot1_LOV2_light.spct)
+
 phot2.spct <- read.csv(file = "./data-raw/phototropins/phot2.csv",
                        header = TRUE, comment.char = "#") %>%
   rename(w.length = "Line.26.x", A = "Line.26.y") %>%
-#  filter(A > 1e-2) %>%
   as.filter_spct(Tfr.type = "internal") %>%
   interpolate_spct(length.out = 100) %>%
   normalize()
@@ -128,9 +161,10 @@ comment(LOV2.spct) <-
 is_normalized(LOV2.spct)
 autoplot(LOV2.spct)
 
-PHOTs.mspct <- filter_mspct(list(phot1.fluo = phot1.spct,
-                                phot2.fluo = phot2.spct,
-                                phot1.LOV2.abs = LOV2.spct))
+PHOTs.mspct <- filter_mspct(list(PHOT1_fluo = phot1.spct,
+                                 PHOT2_fluo = phot2.spct,
+                                 PHOT1_dark = phot1_LOV2_dark.spct,
+                                 PHOT1_light = phot1_LOV2_light.spct))
 save(PHOTs.mspct, file = "./data/PHOTs.mspct.rda")
 
 ## UVR8
@@ -144,7 +178,8 @@ setWhatMeasured(UVR8_Glasgow.spct, "UVR8 (Arabidopsis)")
 comment(phot1.spct) <-
   "UVR8 (Arabidopsis)\nfrom Christie et al. 2012, figure S3\nIn vitro absorbance."
 
-UVR8_Glasgow.spct <- interpolate_spct(UVR8_Glasgow.spct, length.out = 100)
+UVR8_Glasgow.spct <- interpolate_spct(UVR8_Glasgow.spct, length.out = 100) %>%
+  normalize()
 
 is_normalized(UVR8_Glasgow.spct)
 autoplot(UVR8_Glasgow.spct)

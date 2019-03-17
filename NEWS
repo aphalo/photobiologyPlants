@@ -1,17 +1,21 @@
-TODO: add CRY1, PHOT1, PHOT2, BLUF and carotenoids absorbance spectra.
+TODO: add BLUF and carotenoids absorbance spectra.
 Add chlorophyll a and b absorbance spectra.
 
-photobiologyPlants 0.4.2
-========================
+photobiologyPlants 0.4.2 (2019-03-17)
+=====================================
 
++ CODE BREAKING: Some data objects have been renamed and consequently old
+  scripts may need minor edits.
++ DATA CHANGES: Spectral data has increased wavelength resolution.
 * Add spectral absorbance data for cryptochromes 1 and 3, and phototropins 1
-  and 2.
-* Translate vignette to R markdown.
+  and 2, eight carotenoids and chlorophylls a and b.
+* Add spectral fluorescence emission daata for chlorophylls a and b.
+* Translate vignette to R markdown and update it.
 * Fix bug in Jalter leaf optical properties data object.
 * Rebuild data objects with photobiology 0.9.26.
 
-photobiologyPlants 0.4.1
-========================
+photobiologyPlants 0.4.1 (2017-03-21)
+=====================================
 
 Rebuild data objects with photobiology 0.9.14. Updating data build script to
 fix wrong attribute of exported object_spct data objects.

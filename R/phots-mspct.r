@@ -16,15 +16,19 @@
 #'
 #' @docType data
 #' @keywords datasets
-#' @format A \code{filter.mspct} with five member \code{filter.spct} objects each
-#'   with 100 or 200 rows and 2 numeric variables, \code{w.length} and \code{A}
+#' @format A \code{filter_mspct} with five member \code{filter_spct} objects each
+#'   with 300 rows and 2 numeric variables, \code{w.length} and \code{A}
 #' @name PHOTs.mspct
 #'
 #' @references
 #' CHRISTIE, John M., SWARTZ, Trevor E., BOGOMOLNI, Roberto A., BRIGGS, Winslow
 #'    R. (2002) Phototropin LOV domains exhibit distinct roles in regulating
 #'    photoreceptor function. The Plant Journal 32(2):205-219.
+#'
 #' CHRISTIE, J. M., BLACKWOOD, L., PETERSEN, J., SULLIVAN, S. (2015) Plant
 #'   Flavoprotein Photoreceptors. Plant and Cell Physiology. 56(3):401-413.
+#'
+#' @note If you use these data in a publication, please cite also the original
+#'   source as given under references.
 #'
 NULL

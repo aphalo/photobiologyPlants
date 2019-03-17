@@ -1,4 +1,4 @@
-#' CRY, CRY2 and CRY3 absorbance spectra.
+#' CRY1, CRY2 and CRY3 absorbance spectra.
 #'
 #' A dataset containing the wavelengths at an arbitrary nm interval. Tabulated
 #' values for the in vitro absorbance spectrum of CRY1, CRY2, CRY3 for
@@ -14,8 +14,8 @@
 #'
 #' @docType data
 #' @keywords datasets
-#' @format A \code{filter.mspct} with five member \code{filter.spct} objects each
-#'   with 100 or 200 rows and 2 numeric variables, \code{w.length} and \code{A}
+#' @format A \code{filter_mspct} with five member \code{filter_spct} objects each
+#'   with 300 rows and 2 numeric variables, \code{w.length} and \code{A}
 #' @name CRYs.mspct
 #'
 #' @references
@@ -23,13 +23,18 @@
 #'   R., Ahmad, M., ... Batschauer, A. (2007) The signaling state of Arabidopsis
 #'   cryptochrome 2 contains flavin semiquinone. J Biol Chem, 282(20),
 #'   14916-14922. doi:10.1074/jbc.M700616200
+#'
 #' SONG, S.-H., B. DICK, , A. PENZKOFER, , R. POKORNY, , A. BATSCHAUER,
-#'   L.-O. ESSEN (2006) "Absorption and fluorescence spectroscopic
-#'   characterization of cryptochrome 3 from Arabidopsis thaliana". Journal
+#'   L.-O. ESSEN (2006) Absorption and fluorescence spectroscopic
+#'   characterization of cryptochrome 3 from Arabidopsis thaliana. Journal
 #'   of Photochemistry and Photobiology B: Biology. 85(1):1-16.
+#'
 #' ZEUGNER, A., MARTIN BYRDIN, JEAN-PIERRE BOULY, NADIA BAKRIM, BALDISSERA
 #'   GIOVANI, KLAUS BRETTEL, MARGARET AHMAD (2005) Light-induced Electron
-#'   Transfer in Arabidopsis Cryptochrome-1 Correlates with in Vivo Function".
+#'   Transfer in Arabidopsis Cryptochrome-1 Correlates with in Vivo Function.
 #'   Journal of Biological Chemistry. 280(20):19437-19440.
+#'
+#' @note If you use these data in a publication, please cite also the original
+#'   source as given under references.
 #'
 NULL

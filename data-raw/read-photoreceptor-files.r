@@ -15,7 +15,8 @@ CRY1_dark.spct %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
   clean() %>%
-  interpolate_spct(length.out = 100) %>%
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
   setNormalized(norm = TRUE) %>%
   setWhatMeasured("In vitro absorbance of a dark exposed solution of CRY1") -> CRY1_dark.spct
 
@@ -31,7 +32,8 @@ CRY1_light.spct %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
   clean() %>%
-  interpolate_spct(length.out = 100) %>%
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
   setNormalized(norm = TRUE) %>%
   setWhatMeasured("In vitro absorbance of a light exposed (30 min) solution of CRY1") -> CRY1_light.spct
 
@@ -46,7 +48,8 @@ CRY3_dark.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
-  interpolate_spct(length.out = 100) %>%
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
   setNormalized(norm = TRUE) %>%
   setWhatMeasured("In vitro absorbance of a dark exposed solution of CRY3") -> CRY3_dark.spct
 
@@ -55,9 +58,11 @@ autoplot(CRY3_dark.spct)
 
 CRY2_dark.spct <- read.csv(file = "./data-raw/Cryptochromes/cry2_dark.csv",
                            header = TRUE, comment.char = "#")
-CRY2_dark.spct <- CRY2_dark.spct[-(1:2), -3]
-setFilterSpct(CRY2_dark.spct, Tfr.type = "internal")
-CRY2_dark.spct <- interpolate_spct(CRY2_dark.spct, length.out = 100) %>% normalize()
+CRY2_dark.spct[-(1:2), -3] %>%
+  setFilterSpct(Tfr.type = "internal") %>%
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
+  normalize() -> CRY2_dark.spct
 setWhatMeasured(CRY2_dark.spct, "In vitro absorbance of a dark exposed solution of CRY2")
 
 is_normalized(CRY2_dark.spct)
@@ -65,10 +70,13 @@ autoplot(CRY2_dark.spct)
 
 CRY2_light.spct <- read.csv(file = "./data-raw/Cryptochromes/cry2_light.csv",
                             header = TRUE, comment.char = "#")
-CRY2_light.spct <- CRY2_light.spct[order(CRY2_light.spct$w.length), -3]
-setFilterSpct(CRY2_light.spct, Tfr.type = "internal")
-CRY2_light.spct <- interpolate_spct(CRY2_light.spct, length.out = 100) %>% normalize()
-setWhatMeasured(CRY2_light.spct, "In vitro absorbance of a light exposed solution of CRY2")
+CRY2_light.spct[order(CRY2_light.spct$w.length), -3] %>%
+  setFilterSpct(Tfr.type = "internal") %>%
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
+  normalize() %>%
+  setWhatMeasured("In vitro absorbance of a light exposed solution of CRY2") ->
+  CRY2_light.spct
 
 is_normalized(CRY2_light.spct)
 autoplot(CRY2_light.spct)
@@ -87,7 +95,8 @@ read.csv(file = "./data-raw/phototropins/phot1.csv",
   rename(w.length = "Line.20.x", A = "Line.20.y") %>%
   filter(A > 1e-2) %>%
   as.filter_spct(Tfr.type = "internal") %>%
-  interpolate_spct(length.out = 100) %>%
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
   normalize() %>%
   setWhatMeasured("phototropin 1 (Arabidopsis)") -> phot1.spct
 
@@ -104,7 +113,8 @@ read.csv(file = "./data-raw/phototropins/LOV2-dark.csv",
   summarise(A = median(A)) %>%
   as.filter_spct(Tfr.type = "internal") %>%
   clean() %>%
-  interpolate_spct(length.out = 100) %>%
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
   normalize() %>%
   setWhatMeasured("phototropin 1 (Arabidopsis)") -> phot1_LOV2_dark.spct
 
@@ -121,7 +131,7 @@ read.csv(file = "./data-raw/phototropins/LOV2-light.csv",
   summarise(A = median(A)) %>%
   as.filter_spct(Tfr.type = "internal") %>%
   clean() %>%
-  interpolate_spct(length.out = 100) %>%
+  interpolate_spct(length.out = 300) %>%
   normalize() %>%
   setWhatMeasured("phototropin 1 (Arabidopsis)") -> phot1_LOV2_light.spct
 
@@ -131,14 +141,15 @@ comment(phot1_LOV2_light.spct) <-
 is_normalized(phot1_LOV2_light.spct)
 autoplot(phot1_LOV2_light.spct)
 
-phot2.spct <- read.csv(file = "./data-raw/phototropins/phot2.csv",
+read.csv(file = "./data-raw/phototropins/phot2.csv",
                        header = TRUE, comment.char = "#") %>%
   rename(w.length = "Line.26.x", A = "Line.26.y") %>%
   as.filter_spct(Tfr.type = "internal") %>%
-  interpolate_spct(length.out = 100) %>%
-  normalize()
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
+  normalize() %>%
+  setWhatMeasured("phototropin 2 (Arabidopsis)") -> phot2.spct
 
-setWhatMeasured(phot2.spct, "phototropin 2 (Arabidopsis)")
 comment(phot2.spct) <-
   "phototropin 2 (Arabidopsis)\nfrom Cristie et. al, 2002, figure 7a.\nBased on fluorescence yield."
 
@@ -146,15 +157,16 @@ is_normalized(phot2.spct)
 autoplot(phot2.spct)
 
 
-LOV2.spct <- read.csv(file = "./data-raw/phototropins/LOV2.csv",
-                       header = TRUE, comment.char = "#") %>%
+read.csv(file = "./data-raw/phototropins/LOV2.csv",
+         header = TRUE, comment.char = "#") %>%
   rename(w.length = "Line.27.x", A = "Line.27.y") %>%
   #  filter(A > 1e-2) %>%
   as.filter_spct(Tfr.type = "internal") %>%
-  interpolate_spct(length.out = 100) %>%
-  normalize()
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
+  normalize() %>%
+  setWhatMeasured("phototropin 1 LOV2 (Arabidopsis)") -> LOV2.spct
 
-setWhatMeasured(LOV2.spct, "phototropin 1 LOV2 (Arabidopsis)")
 comment(LOV2.spct) <-
   "phototropin 1 LOV2 (Arabidopsis)\nfrom XXXX, figure 7a.\nIn vitro absorbance."
 
@@ -175,20 +187,24 @@ names(UVR8_Glasgow.spct) <- c("w.length", "A")
 setFilterSpct(UVR8_Glasgow.spct, Tfr.type = "internal")
 UVR8_Glasgow.spct <- normalize(UVR8_Glasgow.spct)
 setWhatMeasured(UVR8_Glasgow.spct, "UVR8 (Arabidopsis)")
-comment(phot1.spct) <-
+comment(UVR8_Glasgow.spct) <-
   "UVR8 (Arabidopsis)\nfrom Christie et al. 2012, figure S3\nIn vitro absorbance."
 
-UVR8_Glasgow.spct <- interpolate_spct(UVR8_Glasgow.spct, length.out = 100) %>%
-  normalize()
+smooth_spct(UVR8_Glasgow.spct, method = "supsmu") %>%
+interpolate_spct(length.out = 300) %>%
+  normalize() -> UVR8_Glasgow.spct
 
 is_normalized(UVR8_Glasgow.spct)
 autoplot(UVR8_Glasgow.spct)
 
-UVR8.mspct <- filter_mspct(list(UVR8.abs.Glasgow = UVR8_Glasgow.spct))
-save(UVR8.mspct, file = "./data/UVR8.mspct.rda")
+UVR8s.mspct <- filter_mspct(list(UVR8.abs.Glasgow = UVR8_Glasgow.spct))
+save(UVR8s.mspct, file = "./data/UVR8s.mspct.rda")
 
 ## Phytochromes
 
 load("./data-raw/Phytochromes/phytochrome.data.rda")
 phytochrome.spct <- setGenericSpct(phytochrome.data)
-save(phytochrome.spct, file = "./data/phytochrome.spct.rda")
+PHYs.mspct <- filter_mspct(list(PHY = phytochrome.spct))
+save(phytochrome.spct, PHYs.mspct, file = "./data/phytochrome.spct.rda")
+
+unset_filter_qty_default()

@@ -67,7 +67,7 @@
 #'
 #' @note We thank H. M. Noda for allowing us to include these data in our
 #'   package. We have included here only data for two leaves from one species
-#'   (Solidago altissima) and for wavelengths shorter than 1000 nm, from the
+#'   (Betula ermanii) and for wavelengths shorter than 1000 nm, from the
 #'   much larger original data set. The whole data set is publicly available and
 #'   the data easy to read into R. The data included here where measured with a
 #'   Li-Cor LI-1800 spectroradiometer equipped with a LI-1800-12 (Li-Cor)

@@ -12,8 +12,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, echo=FALSE}
-knitr::opts_chunk$set(fig.width=8, fig.height=4)
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(fig.width=7.2, fig.height=4.3)
+```
+
+```{r, printing-spectra, eval=TRUE, include=FALSE}
+# library(tibble)
+options(tibble.print_max = 6, tibble.print_min = 4)
 ```
 
 ## Introduction
@@ -200,10 +205,14 @@ plot(PHOTs.mspct[c("PHOT1_dark", "PHOT1_light")])
 ## UV8 absorbance
 
 ```{r}
-autoplot(UVR8.mspct)
+autoplot(UVR8s.mspct)
 ```
 
 ## Photosynthesis action spectra
+
+```{r}
+photon_as_default()
+```
 
 ```{r}
 names(McCree_photosynthesis.mspct)
@@ -213,6 +222,56 @@ names(McCree_photosynthesis.mspct)
 autoplot(McCree_photosynthesis.mspct)
 ```
 
+## Carotenoids
+
+```{r}
+A_as_default()
+```
+
+```{r}
+names(carotenoids.mspct)
+```
+
+```{r}
+autoplot(carotenoids.mspct[1:4], 
+         annotations = c("-", "labels", "boxes")) 
+```
+```{r}
+autoplot(carotenoids.mspct[5:length(carotenoids.mspct)], 
+         annotations = c("-", "labels", "boxes")) 
+```
+
+## Chlorophylls
+
+```{r}
+A_as_default()
+```
+
+```{r}
+names(chlorophylls.mspct)
+```
+
+```{r}
+autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_b_DME")]) 
+```
+
+```{r}
+autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_a_MethOH")]) 
+```
+
+### Fluorescence
+
+```{r}
+names(chlorophylls_fluorescence.mspct)
+```
+
+```{r}
+autoplot(chlorophylls_fluorescence.mspct[c("Chl_a_DME", "Chl_b_DME")]) 
+```
+
+```{r}
+autoplot(chlorophylls_fluorescence.mspct[c("Chl_a_DME", "Chl_a_MethOH")]) 
+```
 
 ## Optical properties of leaves
 
@@ -232,9 +291,9 @@ autoplot(Solidago_altissima.mspct$lower_abax)
 ```
 
 ```{r}
-autoplot(as.filter_mspct(Solidago_altissima.mspct)) 
+autoplot(as.filter_mspct(Betula_ermanii.mspct)) 
 ```
 
 ```{r}
-autoplot(as.reflector_mspct(Solidago_altissima.mspct)) 
+autoplot(as.reflector_mspct(Betula_ermanii.mspct)) 
 ```

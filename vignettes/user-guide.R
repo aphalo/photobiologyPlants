@@ -1,12 +1,18 @@
-## ---- echo=FALSE---------------------------------------------------------
-knitr::opts_chunk$set(fig.width=8, fig.height=4)
+## ---- include=FALSE, echo=FALSE------------------------------------------
+knitr::opts_chunk$set(fig.width=7.2, fig.height=4.3)
+
+## ---- printing-spectra, eval=TRUE, include=FALSE-------------------------
+# library(tibble)
+options(tibble.print_max = 6, tibble.print_min = 4)
 
 ## ----message=FALSE-------------------------------------------------------
-library(ggplot2)
 library(ggspectra)
 library(photobiology)
 library(photobiologyPlants)
 library(photobiologyWavebands)
+
+## ------------------------------------------------------------------------
+R_FR(sun.spct)
 
 ## ------------------------------------------------------------------------
 Pfr_Ptot(sun.spct)
@@ -27,16 +33,16 @@ Pfr_Ptot(c(660, 735))
 Pfr_Ptot(435)
 
 ## ------------------------------------------------------------------------
-plot(Pfr_Ptot(300:770), norm = NULL, unit.out = "photon",
-     w.band = Plant_bands(),
-     annotations = c("colour.guide", "labels", "boxes")) +
+autoplot(Pfr_Ptot(300:770), norm = NULL, unit.out = "photon",
+         w.band = Plant_bands(),
+         annotations = c("colour.guide", "labels", "boxes")) +
   labs(y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
 
 ## ------------------------------------------------------------------------
 ggplot(data = Pfr_Ptot(300:770), aes(w.length, s.q.response)) +
   geom_line() +
   labs(x = "Wavelength (nm)",
-     y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
+       y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
 
 ## ------------------------------------------------------------------------
 Pfr_Ptot_R_FR(1.15)
@@ -66,18 +72,98 @@ lines(I(sigma.fr/max(sigma.r)) ~ w.length, data=ex7.data)
 rm(ex7.data)
 
 ## ------------------------------------------------------------------------
+names(CRYs.mspct)
+
+## ------------------------------------------------------------------------
 A_as_default()
-plot(interpolate_wl(CRY2.mspct$dark_adapted, 300:500))
+autoplot(interpolate_wl(CRYs.mspct$CRY2_dark, 300:500))
 
 ## ------------------------------------------------------------------------
-plot(CRY2.mspct$dark_adapted, range = c(300,700))
+autoplot(CRYs.mspct[c("CRY2_dark", "CRY2_light")], range = c(300,700))
 
 ## ------------------------------------------------------------------------
-plot(normalize(UVR8_Glasgow.spct))
+autoplot(CRYs.mspct[c("CRY1_dark", "CRY1_light")])
+
+## ------------------------------------------------------------------------
+autoplot(CRYs.mspct["CRY3_dark"], range = c(300,700))
+
+## ------------------------------------------------------------------------
+ggplot(CRYs.mspct[c("CRY1_dark", "CRY2_dark", "CRY3_dark")]) +
+  geom_line(aes(linetype = spct.idx)) +
+  expand_limits(x = 300)
+
+## ------------------------------------------------------------------------
+names(PHOTs.mspct)
+
+## ------------------------------------------------------------------------
+plot(PHOTs.mspct[c("PHOT1_fluo", "PHOT2_fluo")]) +
+  expand_limits(x = 300)
+
+## ------------------------------------------------------------------------
+plot(PHOTs.mspct[c("PHOT1_dark", "PHOT1_light")])
+
+## ------------------------------------------------------------------------
+autoplot(UVR8s.mspct)
+
+## ------------------------------------------------------------------------
+photon_as_default()
 
 ## ------------------------------------------------------------------------
 names(McCree_photosynthesis.mspct)
 
 ## ------------------------------------------------------------------------
+autoplot(McCree_photosynthesis.mspct)
+
+## ------------------------------------------------------------------------
+A_as_default()
+
+## ------------------------------------------------------------------------
+names(carotenoids.mspct)
+
+## ------------------------------------------------------------------------
+autoplot(carotenoids.mspct[1:4], 
+         annotations = c("-", "labels", "boxes")) 
+
+## ------------------------------------------------------------------------
+autoplot(carotenoids.mspct[5:length(carotenoids.mspct)], 
+         annotations = c("-", "labels", "boxes")) 
+
+## ------------------------------------------------------------------------
+A_as_default()
+
+## ------------------------------------------------------------------------
+names(chlorophylls.mspct)
+
+## ------------------------------------------------------------------------
+autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_b_DME")]) 
+
+## ------------------------------------------------------------------------
+autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_a_MethOH")]) 
+
+## ------------------------------------------------------------------------
+names(chlorophylls_fluorescence.mspct)
+
+## ------------------------------------------------------------------------
+autoplot(chlorophylls_fluorescence.mspct[c("Chl_a_DME", "Chl_b_DME")]) 
+
+## ------------------------------------------------------------------------
+autoplot(chlorophylls_fluorescence.mspct[c("Chl_a_DME", "Chl_a_MethOH")]) 
+
+## ------------------------------------------------------------------------
+Tfr_as_default()
+
+## ------------------------------------------------------------------------
 names(Solidago_altissima.mspct)
+
+## ------------------------------------------------------------------------
+autoplot(Solidago_altissima.mspct$lower_adax) 
+
+## ------------------------------------------------------------------------
+autoplot(Solidago_altissima.mspct$lower_abax) 
+
+## ------------------------------------------------------------------------
+autoplot(as.filter_mspct(Betula_ermanii.mspct)) 
+
+## ------------------------------------------------------------------------
+autoplot(as.reflector_mspct(Betula_ermanii.mspct)) 
 

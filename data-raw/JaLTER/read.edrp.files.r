@@ -1,7 +1,9 @@
 # read.edrp.files.r
-
 library(photobiology)
 library(lubridate)
+library(ggspectra)
+
+Tfr_as_default()
 
 file_path <- "./data-raw/JaLTER/ERDP-2013-02/"
 temp.df <- read.csv(paste(file_path,
@@ -50,6 +52,9 @@ Solidago_altissima.mspct <- object_mspct(list(lower_adax = Solidago_lower_adax.s
                                               lower_abax = Solidago_lower_abax.spct,
                                               upper_adax = Solidago_upper_adax.spct,
                                               upper_abax = Solidago_upper_abax.spct))
+
+autoplot(as.filter_mspct(Solidago_altissima.mspct))
+autoplot(as.reflector_mspct(Solidago_altissima.mspct))
 
 temp.df <- read.csv(paste(file_path,
                           "Betula_leaf_first_2010_0802_1_LICOR.csv",
@@ -121,6 +126,12 @@ Betula_ermanii.mspct <- object_mspct(list(first_flush_adax = first_flush_adax.sp
                                           senesced_adax = senesced_adax.spct,
                                           senesced_abax = senesced_abax.spct))
 
+autoplot(as.filter_mspct(Betula_ermanii.mspct))
+autoplot(as.reflector_mspct(Betula_ermanii.mspct))
+
 save(Solidago_altissima.mspct,
      Betula_ermanii.mspct,
      file = "./data/leaves.spct.rda")
+
+unset_filter_qty_default()
+

@@ -4,3 +4,4 @@
 ^test$
 ^docs$
 ^_pkgdown\.yml$
+^build-binary-from-source.sh$

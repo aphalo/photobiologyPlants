@@ -96,14 +96,21 @@ ggplot(CRYs.mspct[c("CRY1_dark", "CRY2_dark", "CRY3_dark")]) +
 names(PHOTs.mspct)
 
 ## ------------------------------------------------------------------------
-plot(PHOTs.mspct[c("PHOT1_fluo", "PHOT2_fluo")]) +
+autoplot(PHOTs.mspct[c("PHOT1_fluo", "PHOT2_fluo")]) +
   expand_limits(x = 300)
 
 ## ------------------------------------------------------------------------
-plot(PHOTs.mspct[c("PHOT1_dark", "PHOT1_light")])
+autoplot(PHOTs.mspct[c("PHOT1_dark", "PHOT1_light")])
 
 ## ------------------------------------------------------------------------
 autoplot(UVR8s.mspct)
+
+## ------------------------------------------------------------------------
+names(ZTLs.mspct)
+
+## ------------------------------------------------------------------------
+autoplot(ZTLs.mspct) +
+  expand_limits(x = 300)
 
 ## ------------------------------------------------------------------------
 photon_as_default()

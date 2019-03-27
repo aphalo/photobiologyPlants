@@ -1,14 +1,11 @@
-TODO: add BLUF and carotenoids absorbance spectra.
-Add chlorophyll a and b absorbance spectra.
-
-photobiologyPlants 0.4.2 (2019-03-17)
+photobiologyPlants 0.4.2 (2019-03-25)
 =====================================
 
 + CODE BREAKING: Some data objects have been renamed and consequently old
   scripts may need minor edits.
 + DATA CHANGES: Spectral data has increased wavelength resolution.
 * Add spectral absorbance data for cryptochromes 1 and 3, and phototropins 1
-  and 2, eight carotenoids and chlorophylls a and b.
+  and 2, ZTL protein, eight carotenoids and chlorophylls a and b.
 * Add spectral fluorescence emission daata for chlorophylls a and b.
 * Translate vignette to R markdown and update it.
 * Fix bug in Jalter leaf optical properties data object.

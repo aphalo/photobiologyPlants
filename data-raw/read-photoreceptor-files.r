@@ -179,6 +179,47 @@ PHOTs.mspct <- filter_mspct(list(PHOT1_fluo = phot1.spct,
                                  PHOT1_light = phot1_LOV2_light.spct))
 save(PHOTs.mspct, file = "./data/PHOTs.mspct.rda")
 
+## ZTL zeitloupe
+
+ZTL_dark.spct <- read.csv(file = "./data-raw/ZTL/ZTL-dark.csv",
+                           header = TRUE, comment.char = "#")
+names(ZTL_dark.spct) <- c("w.length", "A")
+ZTL_dark.spct %>%
+  mutate(A = A / max(A)) %>%
+  group_by(w.length) %>%
+  summarise(A = median(A)) %>%
+  setFilterSpct(Tfr.type = "internal") %>%
+  clean() %>%
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
+  setNormalized(norm = TRUE) %>%
+  setWhatMeasured("In vitro absorbance of a dark adapted solution of ZTL") -> ZTL_dark.spct
+
+is_normalized(ZTL_dark.spct)
+autoplot(ZTL_dark.spct)
+
+ZTL_light.spct <- read.csv(file = "./data-raw/ZTL/ZTL-light.csv",
+                          header = TRUE, comment.char = "#")
+names(ZTL_light.spct) <- c("w.length", "A")
+ZTL_light.spct %>%
+  mutate(A = A / max(A)) %>%
+  group_by(w.length) %>%
+  summarise(A = median(A)) %>%
+  setFilterSpct(Tfr.type = "internal") %>%
+  clean() %>%
+  smooth_spct(method = "supsmu") %>%
+  interpolate_spct(length.out = 300) %>%
+  setNormalized(norm = TRUE) %>%
+  setWhatMeasured("In vitro absorbance of a light adapted solution of ZTL") -> ZTL_light.spct
+
+is_normalized(ZTL_light.spct)
+autoplot(ZTL_light.spct)
+
+ZTLs.mspct <- filter_mspct(list(ZTL_dark = ZTL_dark.spct,
+                                ZTL_light = ZTL_light.spct))
+autoplot(ZTLs.mspct)
+save(ZTLs.mspct, file = "./data/ZTLs.mspct.rda")
+
 ## UVR8
 
 load("./data-raw/UVR8/UVR8.raw.data.rda")
@@ -204,7 +245,7 @@ save(UVR8s.mspct, file = "./data/UVR8s.mspct.rda")
 
 load("./data-raw/Phytochromes/phytochrome.data.rda")
 phytochrome.spct <- setGenericSpct(phytochrome.data)
-PHYs.mspct <- filter_mspct(list(PHY = phytochrome.spct))
+PHYs.mspct <- generic_mspct(list(PHY = phytochrome.spct))
 save(phytochrome.spct, PHYs.mspct, file = "./data/phytochrome.spct.rda")
 
 unset_filter_qty_default()

@@ -11,6 +11,8 @@ library(photobiology)
 library(photobiologyPlants)
 library(photobiologyWavebands)
 
+theme_set(theme_bw())
+
 ## ------------------------------------------------------------------------
 R_FR(sun.spct)
 
@@ -66,9 +68,10 @@ ex7.data <- data.frame(w.length=seq(300, 770, length.out=100))
 ex7.data$sigma.r <- Phy_Sigma_R(ex7.data$w.length)
 ex7.data$sigma.fr <- Phy_Sigma_FR(ex7.data$w.length)
 ex7.data$sigma <- Phy_Sigma(ex7.data$w.length)
-plot(I(sigma.r/ max(sigma.r)) ~ w.length, data=ex7.data, type="l", col="red",
-     xlab="Wavelength (nm)", ylab=expression(sigma[R]~and~sigma[FR]))
-lines(I(sigma.fr/max(sigma.r)) ~ w.length, data=ex7.data)
+ggplot(ex7.data, aes(x = w.length)) +
+  geom_line(aes(y = sigma.r/ max(sigma.r)), colour = "red") +
+  geom_line(aes(y = sigma.fr/ max(sigma.r))) +
+  labs(x = "Wavelength (nm)", y = expression(sigma[R]~"and"~sigma[FR]))
 rm(ex7.data)
 
 ## ------------------------------------------------------------------------

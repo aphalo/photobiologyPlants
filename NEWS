@@ -4,7 +4,7 @@ photobiologyPlants 0.4.2 (2019-03-25)
 + CODE BREAKING: Some data objects have been renamed and consequently old
   scripts may need minor edits.
 + DATA CHANGES: Spectral data has increased wavelength resolution.
-* Add spectral absorbance data for cryptochromes 1 and 3, and phototropins 1
+* Add spectral absorbance data for cryptochromes 1 and 3, phototropins 1
   and 2, ZTL protein, eight carotenoids and chlorophylls a and b.
 * Add spectral fluorescence emission daata for chlorophylls a and b.
 * Translate vignette to R markdown and update it.

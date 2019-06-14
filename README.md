@@ -47,7 +47,7 @@ class(McCree_photosynthesis.mspct$oats)
 
 ``` r
 autoplot(McCree_photosynthesis.mspct$oats, 
-         annotations = c("+", "title:none:what:comment"))
+         annotations = c("+", "title:none:what"))
 ```
 
 ![](man/figures/README-example1a-1.png)<!-- -->

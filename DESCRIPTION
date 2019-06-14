@@ -21,7 +21,7 @@ Suggests:
     knitr (>= 1.23),
     rmarkdown (>= 1.13),
     ggplot2 (>= 3.1.1),
-    ggspectra (>= 0.3.3-1)
+    ggspectra (>= 0.3.3)
 LazyLoad: yes
 LazyData: yes
 ByteCompile: true

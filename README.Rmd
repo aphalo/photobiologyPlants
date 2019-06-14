@@ -52,7 +52,7 @@ class(McCree_photosynthesis.mspct$oats)
 
 ```{r example1a, message=FALSE}
 autoplot(McCree_photosynthesis.mspct$oats, 
-         annotations = c("+", "title:none:what:comment"))
+         annotations = c("+", "title:none:what"))
 ```
 
 We can calculate the R:FR photon ratio of a spectrum, in this case an example solar spectrum at ground level from package 'photobiology'.

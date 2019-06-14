@@ -11,8 +11,7 @@
 #'   Prahl (\url{https://omlc.org/}) to make the information available to
 #'   non-Windows users. Although he has tried to be as careful as possible, he
 #'   may have introduced some error; the cautious user is advised to compare
-#'   these results with the original sources at
-#'   \url{https://www.photochemcad.com/} (Du et al., 1998; Dixon et al., 2005).
+#'   these results with the original sources (Du et al., 1998; Dixon et al., 2005).
 #'
 #' The spectral absorption measurements of chlorophyll a in methanol,
 #' chlorophyll a and chlorophyll b in diethyl ether were made by J. Li on

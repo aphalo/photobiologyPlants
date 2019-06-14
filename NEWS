@@ -1,15 +1,15 @@
-photobiologyPlants 0.4.2 (2019-03-25)
+photobiologyPlants 0.4.2 (2019-06-09)
 =====================================
 
-+ CODE BREAKING: Some data objects have been renamed and consequently old
+* CODE BREAKING: Some data objects have been renamed and consequently old
   scripts may need minor edits.
-+ DATA CHANGES: Spectral data has increased wavelength resolution.
+* DATA CHANGES: Spectral data has increased wavelength resolution.
 * Add spectral absorbance data for cryptochromes 1 and 3, phototropins 1
   and 2, ZTL protein, eight carotenoids and chlorophylls a and b.
-* Add spectral fluorescence emission daata for chlorophylls a and b.
+* Add spectral fluorescence emission data for chlorophylls a and b.
 * Translate vignette to R markdown and update it.
 * Fix bug in Jalter leaf optical properties data object.
-* Rebuild data objects with photobiology 0.9.26.
+* Rebuild data objects with photobiology 0.9.28.
 
 photobiologyPlants 0.4.1 (2017-03-21)
 =====================================

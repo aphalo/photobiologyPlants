@@ -14,12 +14,17 @@ beta_carotene.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
+  smooth_spct(method = "lowess", strength = 1) %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
   setWhatMeasured("Beta-carotene in Methanol (VCA0001SP1101)") -> beta_carotene.spct
 
-is_normalized(beta_carotene.spct)
+
+getFilterProperties(beta_carotene.spct)
+getNormalized(beta_carotene.spct)
 autoplot(beta_carotene.spct)
 
 dihydro_lycopene.spct <- read.csv(file = "./data-raw/carotenoids/Dihydrolycopene.csv",
@@ -30,12 +35,15 @@ dihydro_lycopene.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
+  smooth_spct(method = "lowess", strength = 1) %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
   setWhatMeasured("3-4 dihydro-lycopene (VCA0010SP1051)") -> dihydro_lycopene.spct
 
-is_normalized(dihydro_lycopene.spct)
+getNormalized(dihydro_lycopene.spct)
 autoplot(dihydro_lycopene.spct)
 
 lycopene.spct <- read.csv(file = "./data-raw/carotenoids/Lycopene.csv",
@@ -46,12 +54,15 @@ lycopene.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
+  smooth_spct(method = "lowess", strength = 1) %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
   setWhatMeasured("Lycopene in Methanol (VCA0010SP1107)") -> lycopene.spct
 
-is_normalized(lycopene.spct)
+getNormalized(lycopene.spct)
 autoplot(lycopene.spct)
 
 lutein.spct <- read.csv(file = "./data-raw/carotenoids/Lutein.csv",
@@ -62,28 +73,15 @@ lutein.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
   clean() %>%
+  smooth_spct(method = "lowess", strength = 1) %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
   setWhatMeasured("Lutein in Methanol (VCA0016SP1108)") -> lutein.spct
 
-is_normalized(lutein.spct)
-autoplot(lutein.spct)
-
-lutein.spct <- read.csv(file = "./data-raw/carotenoids/Lutein.csv",
-                        header = TRUE, comment.char = "#")
-names(lutein.spct) <- c("w.length", "A")
-lutein.spct %>%
-  mutate(A = A / max(A)) %>%
-  group_by(w.length) %>%
-  summarise(A = median(A)) %>%
-  setFilterSpct(Tfr.type = "internal") %>%
-  clean() %>%
-  interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
-  setWhatMeasured("Lutein in Methanol (VCA0016SP1108)") -> lutein.spct
-
-is_normalized(lutein.spct)
+getNormalized(lutein.spct)
 autoplot(lutein.spct)
 
 phytoene.spct <- read.csv(file = "./data-raw/carotenoids/Phytoene.csv",
@@ -95,12 +93,15 @@ phytoene.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
+  smooth_spct(method = "supsmu", strength = 2.5) %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
   setWhatMeasured("Phytoene (VCA1010SP1051)") -> phytoene.spct
 
-is_normalized(phytoene.spct)
+getNormalized(phytoene.spct)
 autoplot(phytoene.spct)
 
 phytofluene.spct <- read.csv(file = "./data-raw/carotenoids/Phytofluene.csv",
@@ -110,13 +111,17 @@ phytofluene.spct %>%
   mutate(A = A / max(A)) %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
+  ungroup() %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
+  smooth_spct(method = "supsmu", strength = 0.5) %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
   setWhatMeasured("Phytoene (VCA1010SP1051)") -> phytofluene.spct
 
-is_normalized(phytofluene.spct)
+getNormalized(phytofluene.spct)
 autoplot(phytofluene.spct)
 
 violaxanthin.spct <- read.csv(file = "./data-raw/carotenoids/Violaxanthin.csv",
@@ -127,12 +132,15 @@ violaxanthin.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
+  smooth_spct(method = "supsmu", strength = 0.5) %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
   setWhatMeasured("Violaxanthin in methanol (VCA0060SP1112)") -> violaxanthin.spct
 
-is_normalized(violaxanthin.spct)
+getNormalized(violaxanthin.spct)
 autoplot(violaxanthin.spct)
 
 zeaxanthin.spct <- read.csv(file = "./data-raw/carotenoids/Zeaxanthin.csv",
@@ -143,12 +151,15 @@ zeaxanthin.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
+  smooth_spct(method = "supsmu", strength = 0.5) %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
   setWhatMeasured("Zeaxanthin (VCA0007SP1105)") -> zeaxanthin.spct
 
-is_normalized(zeaxanthin.spct)
+getNormalized(zeaxanthin.spct)
 autoplot(zeaxanthin.spct)
 
 carotenoids.mspct <- filter_mspct(list(beta_carotene = beta_carotene.spct,

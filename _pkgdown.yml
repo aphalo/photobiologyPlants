@@ -1,4 +1,5 @@
 destination: ../photobiologyPlants-docs
+url: https://docs.r4photobiology.info/photobiologyPlants/
 
 home:
   strip_header: true
@@ -31,17 +32,21 @@ reference:
     - Phy_reaction_rates
     - phytochrome.spct
   - title: Cryptochromes
-    desc: Data sets related to the plant photoreceptors _cryptochromes_ which mediate responses to UVA, blue and green radiation.
+    desc: Data sets related to the plant photoreceptors cryptochromes which mediate responses to UVA, blue and green radiation.
     contents:
     - CRYs.mspct
   - title: Phototropins
-    desc: Data sets related to the plant photoreceptors _phototropins_ which mediate responses to UVA and blue radiation.
+    desc: Data sets related to the plant photoreceptors phototropins which mediate responses to UVA and blue radiation.
     contents:
     - PHOTs.mspct
   - title: UVR8
     desc: Data sets related to the plant photoreceptors UVR8 which mediate responses to UVB radiation.
     contents:
     - UVR8s.mspct
+  - title: Zeitlupe
+    desc: Data sets related to the plant photoreceptors in the zeitlupe family which mediate responses to blue radiation.
+    contents:
+    - ZTLs.mspct
   - title: Chlorophylls
     desc: Data sets related to the plant photoreceptors UVR8 which mediate responses to UVB radiation.
     contents:

@@ -81,8 +81,8 @@ B_G <- function(spct, std = "Sellaro",
 #' UVB_UV(sun.spct)
 #'
 UVB_UV <- function(spct, std = "ISO",
-                 use.cached.mult = FALSE,
-                 use.hinges = TRUE) {
+                   use.cached.mult = FALSE,
+                   use.hinges = TRUE) {
   q_ratio(spct, UVB(std), UV(std),
           use.cached.mult = use.cached.mult,
           use.hinges = use.hinges)
@@ -114,6 +114,66 @@ UVA_UV <- function(spct, std = "ISO",
                    use.cached.mult = FALSE,
                    use.hinges = TRUE) {
   q_ratio(spct, UVA(std), UV(std),
+          use.cached.mult = use.cached.mult,
+          use.hinges = use.hinges)
+}
+
+#' Calculate UVAlw:UV photon ratio from spectral irradiance.
+#'
+#' This function returns the UVA:UV photon ratio of a light source
+#' spectrum.
+#'
+#' @param spct an object of class "source.spct"
+#' @param std select which definition of UVB and UV should be used,
+#'   defaults to "ISO"
+#' @param use.cached.mult logical indicating whether multiplier values should be
+#'   cached between calls
+#' @param use.hinges logical indicating whether to use hinges to reduce
+#'   interpolation errors
+#'
+#' @return a single numeric nondimensional value giving the UVA:UV photon ratio,
+#'   with name attribute set to the name of the wavebands, with "(q:q)"
+#'   appended.
+#'
+#' @keywords manip misc
+#' @export
+#' @examples
+#' UVA_UV(sun.spct)
+#'
+UVAlw_UV <- function(spct, std = "plants",
+                   use.cached.mult = FALSE,
+                   use.hinges = TRUE) {
+  q_ratio(spct, UVAlw(std), UV(std),
+          use.cached.mult = use.cached.mult,
+          use.hinges = use.hinges)
+}
+
+#' Calculate UVAsw:UV photon ratio from spectral irradiance.
+#'
+#' This function returns the UVA:UV photon ratio of a light source
+#' spectrum.
+#'
+#' @param spct an object of class "source.spct"
+#' @param std select which definition of UVB and UV should be used,
+#'   defaults to "ISO"
+#' @param use.cached.mult logical indicating whether multiplier values should be
+#'   cached between calls
+#' @param use.hinges logical indicating whether to use hinges to reduce
+#'   interpolation errors
+#'
+#' @return a single numeric nondimensional value giving the UVA:UV photon ratio,
+#'   with name attribute set to the name of the wavebands, with "(q:q)"
+#'   appended.
+#'
+#' @keywords manip misc
+#' @export
+#' @examples
+#' UVAlw_UV(sun.spct)
+#'
+UVAsw_UV <- function(spct, std = "plants",
+                     use.cached.mult = FALSE,
+                     use.hinges = TRUE) {
+  q_ratio(spct, UVAsw(std), UV(std),
           use.cached.mult = use.cached.mult,
           use.hinges = use.hinges)
 }
@@ -171,8 +231,8 @@ UV_PAR <- function(spct, std = "ISO",
 #' UVB_PAR(sun.spct)
 #'
 UVB_PAR <- function(spct, std = "ISO",
-                   use.cached.mult = FALSE,
-                   use.hinges = TRUE) {
+                    use.cached.mult = FALSE,
+                    use.hinges = TRUE) {
   q_ratio(spct, UVB(std), PAR(),
           use.cached.mult = use.cached.mult,
           use.hinges = use.hinges)
@@ -201,8 +261,8 @@ UVB_PAR <- function(spct, std = "ISO",
 #' UVA_PAR(sun.spct)
 #'
 UVA_PAR <- function(spct, std = "ISO",
-                   use.cached.mult = FALSE,
-                   use.hinges = TRUE) {
+                    use.cached.mult = FALSE,
+                    use.hinges = TRUE) {
   q_ratio(spct, UVA(std), PAR(),
           use.cached.mult = use.cached.mult,
           use.hinges = use.hinges)

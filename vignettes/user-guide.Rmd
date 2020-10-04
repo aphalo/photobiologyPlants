@@ -206,7 +206,7 @@ autoplot(PHOTs.mspct[c("PHOT1_fluo", "PHOT2_fluo")]) +
 autoplot(PHOTs.mspct[c("PHOT1_dark", "PHOT1_light")])
 ```
 
-## UV8 absorbance
+## UVR8 absorbance
 
 ```{r}
 autoplot(UVR8s.mspct)

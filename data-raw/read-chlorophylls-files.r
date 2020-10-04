@@ -14,10 +14,12 @@ chl_a_MethOH.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
   clean() %>%
-  smooth_spct(method = "supsmu") %>%
-  #  interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  smooth_spct(method = "supsmu", strength = 0.3) %>%
+  normalize() %>%
+  thin_wl(max.wl.step = 2) %>%
   setWhatMeasured("Chlorophyll a in Methanol (122-abs.txt)") -> chl_a_MethOH.spct
 
 file_header <- readLines("./data-raw/chlorophylls/chla-122-abs.txt", n = 22L)
@@ -26,7 +28,7 @@ comment(chl_a_MethOH.spct) <- paste("File header:",
                                     sep = "\n")
 cat(comment(chl_a_MethOH.spct))
 
-is_normalized(chl_a_MethOH.spct)
+getNormalized(chl_a_MethOH.spct)
 autoplot(chl_a_MethOH.spct)
 
 chl_a_DME.spct <- read.table(file = "./data-raw/chlorophylls/chla-123-abs.txt",
@@ -37,10 +39,12 @@ chl_a_DME.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
+  smooth_spct(method = "supsmu", strength = 0.3) %>%
   clean() %>%
-  smooth_spct(method = "supsmu") %>%
-  #  interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
+  thin_wl(max.wl.step = 2) %>%
   setWhatMeasured("Chlorophyll a in di-methyl-ether (123-abs.txt)") -> chl_a_DME.spct
 
 file_header <- readLines("./data-raw/chlorophylls/chla-123-abs.txt", n = 22L)
@@ -49,7 +53,7 @@ comment(chl_a_DME.spct) <- paste("File header:",
                                     sep = "\n")
 cat(comment(chl_a_DME.spct))
 
-is_normalized(chl_a_DME.spct)
+getNormalized(chl_a_DME.spct)
 autoplot(chl_a_DME.spct)
 
 chl_b_DME.spct <- read.table(file = "./data-raw/chlorophylls/chlb-125-abs.txt",
@@ -60,10 +64,13 @@ chl_b_DME.spct %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
+  setFilterProperties(Rfr.constant = NA_real_, thickness = NA_real_,
+                      attenuation.mode = "absorption") %>%
+  clip_wl(c(305, NA)) %>%
+  smooth_spct(method = "supsmu", strength = 0.3) %>%
   clean() %>%
-#  interpolate_spct(length.out = 300) %>%
-  smooth_spct(method = "supsmu") %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
+  thin_wl(max.wl.step = 2) %>%
   setWhatMeasured("Chlorophyll a in Methanol (122-abs.txt)") -> chl_b_DME.spct
 
 file_header <- readLines("./data-raw/chlorophylls/chlb-125-abs.txt", n = 22L)
@@ -72,7 +79,7 @@ comment(chl_b_DME.spct) <- paste("File header:",
                                  sep = "\n")
 cat(comment(chl_b_DME.spct))
 
-is_normalized(chl_b_DME.spct)
+getNormalized(chl_b_DME.spct)
 autoplot(chl_b_DME.spct)
 
 chlorophylls.mspct <- filter_mspct(list(Chl_a_MethOH = chl_a_MethOH.spct,
@@ -90,9 +97,8 @@ chl_a_ems_MethOH.spct %>%
   group_by(w.length) %>%
   summarise(s.e.irrad = median(s.e.irrad)) %>%
   setSourceSpct() %>%
+  smooth_spct(method = "supsmu", strength = 0.3) %>%
   clean() %>%
-  smooth_spct(method = "supsmu") %>%
-  #  interpolate_spct(length.out = 300) %>%
   normalize() %>%
   na.omit() %>%
   setWhatMeasured("Chlorophyll a fluorescence emission spectrum in methanol (122-ems.txt)") -> chl_a_ems_MethOH.spct
@@ -103,7 +109,7 @@ comment(chl_a_ems_MethOH.spct) <- paste("File header:",
                                     sep = "\n")
 cat(comment(chl_a_ems_MethOH.spct))
 
-is_normalized(chl_a_ems_MethOH.spct)
+getNormalized(chl_a_ems_MethOH.spct)
 autoplot(chl_a_ems_MethOH.spct)
 
 chl_a_ems_DME.spct <- read.table(file = "./data-raw/chlorophylls/chla-123-ems.txt",
@@ -113,9 +119,8 @@ chl_a_ems_DME.spct %>%
   group_by(w.length) %>%
   summarise(s.e.irrad = median(s.e.irrad)) %>%
   setSourceSpct() %>%
+  smooth_spct(method = "supsmu", strength = 0.3) %>%
   clean() %>%
-  smooth_spct(method = "supsmu") %>%
-  #  interpolate_spct(length.out = 300) %>%
   normalize() %>%
   na.omit() %>%
   setWhatMeasured("Chlorophyll a fluorescence emission spectrum in di-methyl-ether (123-ems.txt)") -> chl_a_ems_DME.spct
@@ -126,7 +131,7 @@ comment(chl_a_ems_DME.spct) <- paste("File header:",
                                  sep = "\n")
 cat(comment(chl_a_ems_DME.spct))
 
-is_normalized(chl_a_ems_DME.spct)
+getNormalized(chl_a_ems_DME.spct)
 autoplot(chl_a_ems_DME.spct)
 
 chl_b_ems_DME.spct <- read.table(file = "./data-raw/chlorophylls/chlb-125-ems.txt",
@@ -136,9 +141,8 @@ chl_b_ems_DME.spct %>%
   group_by(w.length) %>%
   summarise(s.e.irrad = median(s.e.irrad)) %>%
   setSourceSpct() %>%
+  smooth_spct(method = "supsmu", strength = 0.3) %>%
   clean() %>%
-  smooth_spct(method = "supsmu") %>%
-  #  interpolate_spct(length.out = 300) %>%
   normalize() %>%
   na.omit() %>%
   setWhatMeasured("Chlorophyll b fluorescence emission spectrum in di-methyl-ether (125-ems.txt)") -> chl_b_ems_DME.spct
@@ -149,7 +153,7 @@ comment(chl_b_ems_DME.spct) <- paste("File header:",
                                  sep = "\n")
 cat(comment(chl_b_ems_DME.spct))
 
-is_normalized(chl_b_ems_DME.spct)
+getNormalized(chl_b_ems_DME.spct)
 autoplot(chl_b_ems_DME.spct)
 
 

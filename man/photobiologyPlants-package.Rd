@@ -47,7 +47,8 @@ M., ... Batschauer, A. (2007). The signaling state of Arabidopsis cryptochrome
 \doi{10.1074/jbc.M700616200}.
 }
 \seealso{
-Package \code{\link[photobiology]{photobiology-package}}
+Package \code{\link[photobiology]{photobiology-package}} and
+  \code{\link[photobiologyWavebands]{photobiologyWavebands-package}}.
 }
 \author{
 \strong{Maintainer}: Pedro J. Aphalo \email{pedro.aphalo@helsinki.fi} (\href{https://orcid.org/0000-0003-3385-972X}{ORCID})

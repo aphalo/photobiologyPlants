@@ -143,6 +143,11 @@ UVA_UV <- function(spct, std = "ISO",
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
+#' @note Whenever possible use UVA1 instead of UVAlw and UVA2 instead of UVAsw
+#'   as UVA1 and UVA2 are frequently used defintions, even if not standarddised,
+#'   while UVAlw and UVAsw are ad-hoc definitions used for specific optical
+#'   filters.
+#'
 #' @seealso \code{link[photobiologyWavebands]{UVA}},
 #'   \code{link[photobiologyWavebands]{UV}}.
 #'
@@ -174,6 +179,11 @@ UVAlw_UV <- function(spct, std = "plants",
 #' @return a single numeric nondimensional value giving the UVA:UV photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
+#'
+#' @note Whenever possible use UVA1 instead of UVAlw and UVA2 instead of UVAsw
+#'   as UVA1 and UVA2 are frequently used defintions, even if not standarddised,
+#'   while UVAlw and UVAsw are ad-hoc definitions used for specific optical
+#'   filters.
 #'
 #' @seealso \code{link[photobiologyWavebands]{UVA}},
 #'   \code{link[photobiologyWavebands]{UV}}.

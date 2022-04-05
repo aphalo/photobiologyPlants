@@ -27,6 +27,12 @@ a single numeric nondimensional value giving the UVA:UV photon ratio,
 This function returns the UVA:UV photon ratio of a light source
 spectrum.
 }
+\note{
+Whenever possible use UVA1 instead of UVAlw and UVA2 instead of UVAsw
+  as UVA1 and UVA2 are frequently used defintions, even if not standarddised,
+  while UVAlw and UVAsw are ad-hoc definitions used for specific optical
+  filters.
+}
 \examples{
 UVA_UV(sun.spct)
 

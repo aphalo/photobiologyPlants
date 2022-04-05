@@ -14,14 +14,14 @@ Description: Provides functions for quantifying visible (VIS) and ultraviolet
 License: GPL (>= 2)
 VignetteBuilder: knitr
 Depends:
-    R (>= 3.5.0),
-    photobiology (>= 0.10.1),
+    R (>= 3.6.0),
+    photobiology (>= 0.10.10),
     photobiologyWavebands (>= 0.4.3)
 Suggests:
-    knitr (>= 1.23),
-    rmarkdown (>= 1.13),
-    ggplot2 (>= 3.1.1),
-    ggspectra (>= 0.3.3)
+    knitr (>= 1.38),
+    rmarkdown (>= 2.13),
+    ggplot2 (>= 3.3.5),
+    ggspectra (>= 0.3.7)
 LazyLoad: yes
 LazyData: yes
 ByteCompile: true

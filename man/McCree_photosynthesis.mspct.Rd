@@ -5,19 +5,20 @@
 \alias{McCree_photosynthesis.mspct}
 \title{McCree's action spectra for whole-leaf photosynthesis.}
 \format{
-A \code{response_mspct} object with two member \code{response_spct}
+A \code{\link[photobiology]{response_mspct}} object with two member
+  \code{\link[photobiology]{response_spct}}
   objects each with 300 rows and 2 numeric variables, \code{w.length} and
   \code{s.e.response}.
 }
 \description{
 The 'classical' action spectra of K. J. McCree (1972) for
-  Amaranthus edulis Speg. var. UCD 1966 and Avena sativa L. var. Coronado are
+  _Amaranthus edulis_ Speg. var. UCD 1966 and _Avena sativa_ L. var. Coronado are
   included in this data set. Response is net CO2 uptake measured of leaf
   sections. Light source was a xenon-arc lamp fitted with a monochromator.
   Irradiance was in the range 10 to 15 W m$^{-2}$.
 }
 \note{
-Digitised from bitmap of from the original publicatiom.
+Digitised from bitmap of from the original publication.
 
 If you use these data in a publication, please cite also the original
   source as given under references.
@@ -25,6 +26,6 @@ If you use these data in a publication, please cite also the original
 \references{
 McCree, K. J. (1972) Significance of Enhancement for Calculations
   Based on the Action Spectrum for Photosynthesis. Plant Physiology, 49,
-  704-706. Fig. 1, AMARANTH
+  704-706. Fig. 1, AMARANTH.
 }
 \keyword{datasets}

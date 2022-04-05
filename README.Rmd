@@ -21,14 +21,14 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 Package '**photobiologyPlants**' provides pre-defined functions for quantifying
-visible ('VIS') and ultraviolet ('UV') radiation in relation to their efefcts on
-plants together with action spectra for photosynthesis and absorbance spectra
-for the plant photoreceptors in families 'phytochromes', 'cryptochromes',
-'phototropins' and 'UVR8s' which are present in plants. It also includes data
-sets on the optical properties of plant organs, photosynthesis and plant
-pigments, chlorophylls and carotenoids. All data are derived from the scientific
-literature. Please, see the help pages for the different data sets for details
-about the sources used.
+visible ('VIS'), near infra-red ('NIR') and ultraviolet ('UV') radiation in
+relation to their effects on plants together with action spectra for
+photosynthesis and absorbance spectra for the plant photoreceptors in families
+'phytochromes', 'cryptochromes', 'zeitlupe proteins', 'phototropins' and 'UVR8s'
+which are present in plants. It also includes data sets on the optical
+properties of plant organs, photosynthesis and plant pigments, chlorophylls and
+carotenoids. All data are derived from the scientific literature. Please, see
+the help pages for the different data sets for details about the sources used.
 
 The data in this package are stored in objects of classes defined in package 
 '**photobiology**' which are mostly backwards compatible with data frames.
@@ -100,7 +100,7 @@ Aphalo, P. J., Albert, A., Björn, L. O., McLeod, A. R., Robson, T. M., & Rosenq
 
 ## Contributing
 
-Pull requests, bug reports, and feature requests are welcome at (https://github.com/aphalo/photobiology).
+Pull requests, bug reports, and feature requests are welcome at (https://github.com/aphalo/photobiologyPlants).
 
 ## Citation
 

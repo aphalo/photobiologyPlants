@@ -33,6 +33,7 @@
 #'
 #' @import photobiology photobiologyWavebands
 #'
-#' @seealso Package \code{\link[photobiology]{photobiology-package}}
+#' @seealso Package \code{\link[photobiology]{photobiology-package}} and
+#'   \code{\link[photobiologyWavebands]{photobiologyWavebands-package}}.
 #'
 "_PACKAGE"

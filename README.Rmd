@@ -14,8 +14,11 @@ knitr::opts_chunk$set(
 
 # photobiologyPlants <img src="man/figures/logo.png" align="right" width="120" />
 
+<!-- badges: start -->
 [![CRAN version](https://www.r-pkg.org/badges/version-last-release/photobiologyPlants)](https://cran.r-project.org/package=photobiologyPlants) 
 [![cran checks](https://cranchecks.info/badges/worst/photobiologyPlants)](https://cran.r-project.org/web/checks/check_results_photobiologyPlants.html)
+[![R-CMD-check](https://github.com/aphalo/photobiologyPlants/workflows/R-CMD-check/badge.svg)](https://github.com/aphalo/photobiologyPlants/actions)
+<!-- badges: end -->
 
 Package '**photobiologyPlants**' provides pre-defined functions for quantifying
 visible ('VIS') and ultraviolet ('UV') radiation in relation to their efefcts on

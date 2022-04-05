@@ -1,12 +1,13 @@
-photobiologyPlants 0.4.3 (2020-04-25)
-=====================================
+photobiologyPlants 0.4.3
+========================
 
 * Add a second measured absorbance spectrum for UVR8, extending into longer
   wavelengths.
-* Rebuild data objects with photobiology 0.10.2.
+* Add `UVA1_UV()`, `UVA2_UV()`, `UVAlw_UV()` and `UVAsw_UV()`.
+* Rebuild data objects with photobiology 0.10.10.
 
-photobiologyPlants 0.4.2 (2019-06-09)
-=====================================
+photobiologyPlants 0.4.2
+========================
 
 * CODE BREAKING: Some data objects have been renamed and consequently old
   scripts may need minor edits.
@@ -18,19 +19,19 @@ photobiologyPlants 0.4.2 (2019-06-09)
 * Fix bug in Jalter leaf optical properties data object.
 * Rebuild data objects with photobiology 0.9.28.
 
-photobiologyPlants 0.4.1 (2017-03-21)
-=====================================
+photobiologyPlants 0.4.1
+========================
 
 Rebuild data objects with photobiology 0.9.14. Updating data build script to
-fix wrong attribute of exported object_spct data objects.
+fix wrong attribute of exported `object_spct` data objects.
 
 photobiologyPlants 0.4.0
 ========================
 
-Rebuild data objects with photobiology 0.9.9, after updating scripts to create
+* Rebuild data objects with photobiology 0.9.9, after updating scripts to create
 collections of spectra instead of separate objects for related data sets.
-Add functions for frequently used photon ratios.
-Remove some redundant phytochrome-related functions.
+* Add functions for frequently used photon ratios.
+* Remove some redundant phytochrome-related functions.
 
 photobiologyPlants 0.3.3
 ========================
@@ -41,67 +42,61 @@ instead of photobiologygg.
 photobiologyPlants 0.3.2
 ========================
 
-Set spectral absorbance data for photoreceptors as of type "internal".
-Fix minor error in UVR8 data.
-Rebuild all data and the package under photobiology 0.8.5.
+* Set spectral absorbance data for photoreceptors as of type "internal".
+* Fix minor error in UVR8 data.
+* Rebuild all data and the package under photobiology 0.8.5.
 
 photobiologyPlants 0.3.1
 ========================
 
-Rebuild all data and the package under photobiology 0.8.0.
-Removed dependency on data.table.
+* Rebuild all data and the package under photobiology 0.8.0.
+* Remove dependency on 'data.table'.
 
 photobiologyPlants 0.3.0
 ========================
 
-Changed naming of phytochrome related functions, which were all misnamed!
-Rebuilt all data and the package under photobiology 0.6.0.
+* Change naming of phytochrome related functions, which were all misnamed!
+* Rebuild all data and the package under photobiology 0.6.0.
 
 photobiologyPlants 0.1.2
 ========================
 
-Updated versions of dependencies.
-
-New generic function Pr_Ptot() for phytochrome photoequiibrium with methods
+* Update versions of dependencies.
+* New generic function `Pr_Ptot()` for phytochrome photoequiibrium with methods
 for numeric values of wavelengths and source.spct objects.
-
-Updated phytochrome chapter of User Guide.
+* Updated phytochrome chapter of User Guide.
 
 photobiologyPlants 0.1.1
 ========================
 
-Added JaLTER additional data for spectral properties of leaves.
-
-Rebuilt JaLTER data as it was missing the Rfr.type attribute.
+* Add JaLTER additional data for spectral properties of leaves.
+* Rebuild JaLTER data as it was missing the `Rfr.type` attribute.
 
 photobiologyPlants 0.1.0
 ========================
 
-Removed all waveband objects as it was confusing to have waveband objects and functions for spectral
-absorbance data.
-
-Rebuilt all data as .spct objects.
-
-Edited the vignettes.
+* Remove all waveband objects as it was confusing to have waveband objects and functions for spectral absorbance data.
+* Rebuild all data as `.spct objects`.
+* Edit the vignettes.
 
 photobiologyPlants 0.0.3
 ========================
 
-Added JaLTER data for spectral properties of leaves.
+* Add JaLTER data for spectral properties of leaves.
 
 photobiologyPlants 0.0.2
 ========================
 
-Added McCree's action spectra for photosynthesis in oat and amaranth as response.spct objects.
-Now the absorbance spectra of UVR8 and CRY2 are included as filter.spct objets.
+* Add McCree's action spectra for photosynthesis in oat and amaranth as response.spct objects.
+* Now the absorbance spectra of UVR8 and CRY2 are included as `filter.spct` objets.
 
 photobiologyPlants 0.0.1
 ========================
 
-New package created by merging the CRY and PHY related apckages, and adding UVR8 functions and data.
-Vignettes were editted, but only the User Guide was merged.
+New package created by merging the CRY and PHY related packages, and adding UVR8 functions and data.
+Vignettes were edited, but only the User Guide was merged.
 
-#### merged
+----------
 
 photobiologyCry 0.1.3
 =====================
@@ -115,6 +110,7 @@ Added missing import directive.
 
 photobiologyCry 0.1.1
 =====================
+
 Added vignettes.
 
 photobiologyCry 0.1.0
@@ -122,12 +118,12 @@ photobiologyCry 0.1.0
 
 First release. Only CRY2.
 
-#### merged
+----------
 
 photobiologyPhy 0.2.5
 =====================
 
-Now cache is created in emptyenv().
+Now cache is created in `emptyenv()`.
 
 photobiologyPhy 0.2.4
 =====================

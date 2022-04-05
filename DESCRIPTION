@@ -1,8 +1,8 @@
 Package: photobiologyPlants
 Type: Package
 Title: Plant Photobiology Related Functions and Data
-Version: 0.4.2.9000
-Date: 2019-04-26
+Version: 0.4.2.9001
+Date: 2022-04-05
 Authors@R:
     person("Pedro J.", "Aphalo", email = "pedro.aphalo@helsinki.fi", role = c("aut", "cre"), comment = c(ORCID = "https://orcid.org/0000-0003-3385-972X"))
 Maintainer: Pedro J. Aphalo <pedro.aphalo@helsinki.fi>
@@ -27,6 +27,6 @@ LazyData: yes
 ByteCompile: true
 Encoding: UTF-8
 URL: https://docs.r4photobiology.info/photobiologyPlants/
-    https://bitbucket.org/aphalo/photobiologyplants
-BugReports: https://bitbucket.org/aphalo/photobiologyplants/issues
-RoxygenNote: 7.1.0
+    https://github.com/aphalo/photobiologyplants
+BugReports: https://github.com/aphalo/photobiologyplants/issues
+RoxygenNote: 7.1.2

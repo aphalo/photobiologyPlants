@@ -1,5 +1,5 @@
 
-# photobiologyPlants
+# photobiologyPlants <img src="man/figures/logo.png" align="right" width="120" />
 
 [![CRAN
 version](https://www.r-pkg.org/badges/version-last-release/photobiologyPlants)](https://cran.r-project.org/package=photobiologyPlants)
@@ -116,7 +116,7 @@ Division of Plant Biology. ISBN 978-952-10-8363-1 (PDF),
 ## Contributing
 
 Pull requests, bug reports, and feature requests are welcome at
-(<https://bitbucket.org/aphalo/photobiology>).
+(<https://github.com/aphalo/photobiology>).
 
 ## Citation
 
@@ -147,6 +147,6 @@ citation("photobiologyPlants")
 
 ## License
 
-© 2015-2019 Pedro J. Aphalo (<pedro.aphalo@helsinki.fi>). Released under
+© 2015-2022 Pedro J. Aphalo (<pedro.aphalo@helsinki.fi>). Released under
 the GPL, version 2 or greater. This software carries no warranty of any
 kind.

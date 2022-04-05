@@ -31,5 +31,7 @@ spectrum.
 UVA_PAR(sun.spct)
 
 }
-\keyword{manip}
-\keyword{misc}
+\seealso{
+\code{link[photobiologyWavebands]{UVA}},
+  \code{link[photobiologyWavebands]{PAR}}.
+}

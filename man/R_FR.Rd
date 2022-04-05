@@ -31,5 +31,7 @@ spectrum.
 R_FR(sun.spct)
 
 }
-\keyword{manip}
-\keyword{misc}
+\seealso{
+\code{link[photobiologyWavebands]{Red}},
+  \code{link[photobiologyWavebands]{Far_red}}.
+}

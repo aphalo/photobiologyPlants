@@ -30,5 +30,7 @@ This function returns the blue:green photon ratio of a light source spectrum.
 B_G(sun.spct)
 
 }
-\keyword{manip}
-\keyword{misc}
+\seealso{
+\code{link[photobiologyWavebands]{Blue}},
+  \code{link[photobiologyWavebands]{Green}}.
+}

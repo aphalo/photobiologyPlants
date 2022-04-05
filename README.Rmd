@@ -1,7 +1,6 @@
 ---
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r readme-01, echo = FALSE}
@@ -13,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# photobiologyPlants
+# photobiologyPlants <img src="man/figures/logo.png" align="right" width="120" />
 
 [![CRAN version](https://www.r-pkg.org/badges/version-last-release/photobiologyPlants)](https://cran.r-project.org/package=photobiologyPlants) 
 [![cran checks](https://cranchecks.info/badges/worst/photobiologyPlants)](https://cran.r-project.org/web/checks/check_results_photobiologyPlants.html)
@@ -98,7 +97,7 @@ Aphalo, P. J., Albert, A., Björn, L. O., McLeod, A. R., Robson, T. M., & Rosenq
 
 ## Contributing
 
-Pull requests, bug reports, and feature requests are welcome at (https://bitbucket.org/aphalo/photobiology).
+Pull requests, bug reports, and feature requests are welcome at (https://github.com/aphalo/photobiology).
 
 ## Citation
 
@@ -110,5 +109,5 @@ citation("photobiologyPlants")
 
 ## License
 
-© 2015-2019 Pedro J. Aphalo (pedro.aphalo@helsinki.fi). Released under the GPL, version 2 or greater. This software carries no warranty of any kind.
+© 2015-2022 Pedro J. Aphalo (pedro.aphalo@helsinki.fi). Released under the GPL, version 2 or greater. This software carries no warranty of any kind.
 

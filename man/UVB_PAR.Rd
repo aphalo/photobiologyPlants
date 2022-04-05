@@ -31,5 +31,7 @@ spectrum.
 UVB_PAR(sun.spct)
 
 }
-\keyword{manip}
-\keyword{misc}
+\seealso{
+\code{link[photobiologyWavebands]{UVB}},
+  \code{link[photobiologyWavebands]{PAR}}.
+}

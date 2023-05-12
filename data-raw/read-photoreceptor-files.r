@@ -10,7 +10,7 @@ CRY1_dark.spct <- read.csv(file = "./data-raw/Cryptochromes/Cry1_dark.csv",
                            header = TRUE, comment.char = "#")
 names(CRY1_dark.spct) <- c("w.length", "A")
 CRY1_dark.spct %>%
-  mutate(A = A / max(A)) %>%
+#  mutate(A = A / max(A)) %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
@@ -27,7 +27,7 @@ CRY1_light.spct <- read.csv(file = "./data-raw/Cryptochromes/Cry1_light_30min.cs
                            header = TRUE, comment.char = "#")
 names(CRY1_light.spct) <- c("w.length", "A")
 CRY1_light.spct %>%
-  mutate(A = A / max(A)) %>%
+#  mutate(A = A / max(A)) %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
@@ -44,7 +44,7 @@ CRY3_dark.spct <- read.csv(file = "./data-raw/Cryptochromes/Cry3.csv",
                            header = TRUE, comment.char = "#")
 names(CRY3_dark.spct) <- c("w.length", "A")
 CRY3_dark.spct %>%
-  mutate(A = A / max(A)) %>%
+#  mutate(A = A / max(A)) %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
@@ -185,14 +185,15 @@ ZTL_dark.spct <- read.csv(file = "./data-raw/ZTL/ZTL-dark.csv",
                            header = TRUE, comment.char = "#")
 names(ZTL_dark.spct) <- c("w.length", "A")
 ZTL_dark.spct %>%
-  mutate(A = A / max(A)) %>%
+#  mutate(A = A / max(A)) %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
   clean() %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
+  #  setNormalized(norm = TRUE) %>%
   setWhatMeasured("In vitro absorbance of a dark adapted solution of ZTL") -> ZTL_dark.spct
 
 getNormalized(ZTL_dark.spct)
@@ -202,14 +203,14 @@ ZTL_light.spct <- read.csv(file = "./data-raw/ZTL/ZTL-light.csv",
                           header = TRUE, comment.char = "#")
 names(ZTL_light.spct) <- c("w.length", "A")
 ZTL_light.spct %>%
-  mutate(A = A / max(A)) %>%
+#  mutate(A = A / max(A)) %>%
   group_by(w.length) %>%
   summarise(A = median(A)) %>%
   setFilterSpct(Tfr.type = "internal") %>%
   clean() %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
-  setNormalized(norm = TRUE) %>%
+  normalize() %>%
   setWhatMeasured("In vitro absorbance of a light adapted solution of ZTL") -> ZTL_light.spct
 
 getNormalized(ZTL_light.spct)
@@ -241,6 +242,7 @@ autoplot(UVR8_Glasgow.spct)
 load("./data-raw/UVR8/UVR8Ecoli-merged-spct.Rda")
 rownames(UVR8Ecoli_merged.spct) <- NULL
 UVR8_Orebro.spct <- UVR8Ecoli_merged.spct
+setNormalised(UVR8_Orebro.spct) # remove old normalization
 UVR8_Orebro.spct <- normalize(UVR8_Orebro.spct)
 setWhatMeasured(UVR8_Orebro.spct, "UVR8 (protein in vitro)")
 comment(UVR8_Orebro.spct) <-
@@ -253,6 +255,9 @@ autoplot(UVR8_Glasgow.spct)
 
 UVR8s.mspct <- filter_mspct(list(UVR8.abs.Glasgow = UVR8_Glasgow.spct,
                                  UVR8.abs.Orebro = UVR8_Orebro.spct))
+
+autoplot(UVR8s.mspct)
+
 save(UVR8s.mspct, file = "./data/UVR8s.mspct.rda")
 
 ## Phytochromes
@@ -263,3 +268,4 @@ PHYs.mspct <- generic_mspct(list(PHY = phytochrome.spct))
 save(phytochrome.spct, PHYs.mspct, file = "./data/phytochrome.spct.rda")
 
 unset_filter_qty_default()
+

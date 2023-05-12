@@ -29,8 +29,7 @@ Mancinelli, A.L. (1994) The physiology of phytochrome action. In
 Photomorphogenesis in plants, 2nd edition. R.E. Kendrick and G.H.M.
 Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269. ISBN
 978-0-7923-2551-2 (print), 978-94-011-1884-2 (on-line).
-\href{http://dx.doi.org/10.1007/978-94-011-1884-2_10}{DOI
-10.1007/978-94-011-1884-2_10}
+\doi{10.1007/978-94-011-1884-2_10}
 }
 \seealso{
 \code{\link[photobiology]{q_ratio}}

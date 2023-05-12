@@ -6,9 +6,9 @@
 \alias{photobiologyPlants-package}
 \title{photobiologyPlants: Plant Photobiology Related Functions and Data}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Provides functions for quantifying visible (VIS) and ultraviolet (UV) radiation in relation to the photoreceptors Phytochromes, Cryptochromes, and UVR8 which are present in plants. It also includes data sets on the optical properties of plants. Part of the 'r4photobiology' suite, Aphalo P. J. (2015) <doi:10.19232/uv4pb.2015.1.14>.
+Provides functions for quantifying visible (VIS) and ultraviolet (UV) radiation in relation to the photoreceptors Phytochromes, Cryptochromes, and UVR8 which are present in plants. It also includes data sets on the optical properties of plants. Part of the 'r4photobiology' suite, Aphalo P. J. (2015) \doi{10.19232/uv4pb.2015.1.14}.
 }
 \details{
 Package 'photobiologyPlants' is part of a suite of packages for

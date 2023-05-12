@@ -4,7 +4,8 @@ photobiologyPlants 0.4.3
 * Add a second measured absorbance spectrum for UVR8, extending into longer
   wavelengths.
 * Add `UVA1_UV()`, `UVA2_UV()`, `UVAlw_UV()` and `UVAsw_UV()`.
-* Rebuild data objects with photobiology 0.10.10.
+* Rebuild data objects with photobiology 0.10.16.
+* The repository with the source of the package was relocated to GitHub.
 
 photobiologyPlants 0.4.2
 ========================
@@ -75,7 +76,8 @@ photobiologyPlants 0.1.1
 photobiologyPlants 0.1.0
 ========================
 
-* Remove all waveband objects as it was confusing to have waveband objects and functions for spectral absorbance data.
+* Remove all waveband objects as it was confusing to have waveband objects 
+and functions for spectral absorbance data.
 * Rebuild all data as `.spct objects`.
 * Edit the vignettes.
 
@@ -87,13 +89,16 @@ photobiologyPlants 0.0.3
 photobiologyPlants 0.0.2
 ========================
 
-* Add McCree's action spectra for photosynthesis in oat and amaranth as response.spct objects.
-* Now the absorbance spectra of UVR8 and CRY2 are included as `filter.spct` objets.
+* Add McCree's action spectra for photosynthesis in oat and amaranth as 
+response.spct objects.
+* Now the absorbance spectra of UVR8 and CRY2 are included as `filter.spct` 
+objects.
 
 photobiologyPlants 0.0.1
 ========================
 
-New package created by merging the CRY and PHY related packages, and adding UVR8 functions and data.
+New package created by merging the CRY and PHY related packages, and adding 
+UVR8 functions and data.
 Vignettes were edited, but only the User Guide was merged.
 
 ----------

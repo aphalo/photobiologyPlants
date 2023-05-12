@@ -4,7 +4,7 @@
 #' values for the in vitro absorbance spectrum of beta-carotene, lutein, lycopene,
 #' 3-4,di-hydro-lycopene, phytoene, phytofluene, violaxanthin and zeaxanthin.
 #' Data were digitized from plots downloaded from LipidBase
-#' (\url{http://lipidbank.jp/}), The official database of Japanese Conference
+#' (\url{https://lipidbank.jp/}), The official database of Japanese Conference
 #' on the Biochemistry of Lipids (JCBL). Data contributed to LipinBank by
 #' Takaichi Sinichi.
 #'

@@ -2,6 +2,8 @@ library(dplyr)
 library("photobiology")
 library(ggspectra)
 
+rm(list = ls(pattern = "*"))
+
 A_as_default()
 
 ## Chlorophylls (absorbance spectra)

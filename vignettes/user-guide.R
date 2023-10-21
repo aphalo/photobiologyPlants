@@ -1,7 +1,7 @@
-## ---- include=FALSE, echo=FALSE-----------------------------------------------
+## ----include=FALSE, echo=FALSE------------------------------------------------
 knitr::opts_chunk$set(fig.width=7.2, fig.height=4.3)
 
-## ---- printing-spectra, eval=TRUE, include=FALSE------------------------------
+## ----printing-spectra, eval=TRUE, include=FALSE-------------------------------
 # library(tibble)
 options(tibble.print_max = 6, tibble.print_min = 4)
 

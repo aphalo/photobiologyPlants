@@ -17,6 +17,7 @@ CRY1_dark.spct %>%
   clean() %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("In vitro absorbance of a dark exposed solution of CRY1") -> CRY1_dark.spct
 
@@ -34,6 +35,7 @@ CRY1_light.spct %>%
   clean() %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("In vitro absorbance of a light exposed (30 min) solution of CRY1") -> CRY1_light.spct
 
@@ -50,6 +52,7 @@ CRY3_dark.spct %>%
   setFilterSpct(Tfr.type = "internal") %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("In vitro absorbance of a dark exposed solution of CRY3") -> CRY3_dark.spct
 
@@ -62,6 +65,7 @@ CRY2_dark.spct[-(1:2), -3] %>%
   setFilterSpct(Tfr.type = "internal") %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() -> CRY2_dark.spct
 setWhatMeasured(CRY2_dark.spct, "In vitro absorbance of a dark exposed solution of CRY2")
 
@@ -74,6 +78,7 @@ CRY2_light.spct[order(CRY2_light.spct$w.length), -3] %>%
   setFilterSpct(Tfr.type = "internal") %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("In vitro absorbance of a light exposed solution of CRY2") ->
   CRY2_light.spct
@@ -97,6 +102,7 @@ read.csv(file = "./data-raw/phototropins/phot1.csv",
   as.filter_spct(Tfr.type = "internal") %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("phototropin 1 (Arabidopsis)") -> phot1.spct
 
@@ -115,6 +121,7 @@ read.csv(file = "./data-raw/phototropins/LOV2-dark.csv",
   clean() %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("phototropin 1 (Arabidopsis)") -> phot1_LOV2_dark.spct
 
@@ -132,6 +139,7 @@ read.csv(file = "./data-raw/phototropins/LOV2-light.csv",
   as.filter_spct(Tfr.type = "internal") %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("phototropin 1 (Arabidopsis)") -> phot1_LOV2_light.spct
 
@@ -147,6 +155,7 @@ read.csv(file = "./data-raw/phototropins/phot2.csv",
   as.filter_spct(Tfr.type = "internal") %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("phototropin 2 (Arabidopsis)") -> phot2.spct
 
@@ -164,6 +173,7 @@ read.csv(file = "./data-raw/phototropins/LOV2.csv",
   as.filter_spct(Tfr.type = "internal") %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("phototropin 1 LOV2 (Arabidopsis)") -> LOV2.spct
 
@@ -192,6 +202,7 @@ ZTL_dark.spct %>%
   clean() %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   #  setNormalized(norm = TRUE) %>%
   setWhatMeasured("In vitro absorbance of a dark adapted solution of ZTL") -> ZTL_dark.spct
@@ -210,6 +221,7 @@ ZTL_light.spct %>%
   clean() %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() %>%
   setWhatMeasured("In vitro absorbance of a light adapted solution of ZTL") -> ZTL_light.spct
 
@@ -233,7 +245,8 @@ comment(UVR8_Glasgow.spct) <-
   "UVR8 protein in vitro)\nfrom Christie et al. 2012, figure S3\nIn vitro absorbance."
 
 smooth_spct(UVR8_Glasgow.spct, method = "supsmu") %>%
-interpolate_spct(length.out = 300) %>%
+  interpolate_spct(length.out = 300) %>%
+  setNormalized() %>%
   normalize() -> UVR8_Glasgow.spct
 
 getNormalized(UVR8_Glasgow.spct)

@@ -4,10 +4,10 @@
 #' ratio. "Exact" only for dichromatic irradiation, only approximate for R:FR
 #' ratio calculated from a broadband light source.
 #'
-#' @param R.FR R:FR a single value or a vector of photon ratio (unitless) values
+#' @param R.FR R:FR a single value or a vector of photon ratio (dimentionless) values
 #'
 #' @return a single value or a vector of numeric values giving the Pr:Ptot
-#'   unitless ratio
+#'   dimensionless ratio
 #' @export
 #' @references Mancinelli, A.L. (1994) The physiology of phytochrome action. In
 #' Photomorphogenesis in plants, 2nd edition. R.E. Kendrick and G.H.M.

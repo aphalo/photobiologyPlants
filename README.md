@@ -6,8 +6,11 @@
 [![CRAN
 version](https://www.r-pkg.org/badges/version-last-release/photobiologyPlants)](https://cran.r-project.org/package=photobiologyPlants)
 [![cran
-checks](https://cranchecks.info/badges/worst/photobiologyPlants)](https://cran.r-project.org/web/checks/check_results_photobiologyPlants.html)
-[![R-CMD-check](https://github.com/aphalo/photobiologyPlants/workflows/R-CMD-check/badge.svg)](https://github.com/aphalo/photobiologyPlants/actions)
+checks](https://badges.cranchecks.info/worst/photobiologyPlants.svg)](https://cran.r-project.org/web/checks/check_results_photobiologyPlants.html)
+[![R Universe
+vwersion](https://aphalo.r-universe.dev/badges/photobiologyPlants)](https://aphalo.r-universe.dev/photobiologyPlants)
+[![R build
+status](https://github.com/aphalo/photobiologyPlants/workflows/R-CMD-check/badge.svg)](https://github.com/aphalo/photobiologyPlants/actions)
 <!-- badges: end -->
 
 Package ‘**photobiologyPlants**’ provides pre-defined functions for
@@ -77,17 +80,28 @@ Pfr_Ptot(sun.spct)
 
 ## Installation
 
-Installation of the most recent stable version from CRAN:
+Installation of the most recent released version from CRAN (source and
+binaries available):
 
 ``` r
 install.packages("photobiologyLamps")
 ```
 
-Installation of the current unstable version from Bitbucket:
+Installation of the current unstable version from R-Universe CRAN-like
+repository (source and binaries available):
 
 ``` r
-# install.packages("devtools")
-devtools::install_bitbucket("aphalo/photobiologylamps")
+install.packages('photobiologySun', 
+                 repos = c('https://aphalo.r-universe.dev', 
+                           'https://cloud.r-project.org'))
+```
+
+Installation of the current unstable version from GitHub (only source
+available):
+
+``` r
+# install.packages("remotes")
+remotes::install_github("aphalo/photobiologylamps")
 ```
 
 ## Documentation
@@ -129,7 +143,7 @@ publications, please cite according to:
 
 ``` r
 citation("photobiologyPlants")
-#> To cite package 'photobiologyPlants' in publications, please use:
+#> To cite package ‘photobiologyPlants’ in publications use:
 #> 
 #>   Aphalo, Pedro J. (2015) The r4photobiology suite. UV4Plants Bulletin,
 #>   2015:1, 21-29. DOI:10.19232/uv4pb.2015.1.14
@@ -150,6 +164,6 @@ citation("photobiologyPlants")
 
 ## License
 
-© 2015-2023 Pedro J. Aphalo (<pedro.aphalo@helsinki.fi>). Released under
+© 2015-2024 Pedro J. Aphalo (<pedro.aphalo@helsinki.fi>). Released under
 the GPL, version 2 or greater. This software carries no warranty of any
 kind.

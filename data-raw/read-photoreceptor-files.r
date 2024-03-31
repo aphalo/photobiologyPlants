@@ -22,6 +22,7 @@ CRY1_dark.spct %>%
   setWhatMeasured("In vitro absorbance of a dark exposed solution of CRY1") -> CRY1_dark.spct
 
 getNormalized(CRY1_dark.spct)
+getNormalization(CRY1_dark.spct)
 autoplot(CRY1_dark.spct)
 
 CRY1_light.spct <- read.csv(file = "./data-raw/Cryptochromes/Cry1_light_30min.csv",
@@ -40,6 +41,7 @@ CRY1_light.spct %>%
   setWhatMeasured("In vitro absorbance of a light exposed (30 min) solution of CRY1") -> CRY1_light.spct
 
 getNormalized(CRY1_light.spct)
+getNormalization(CRY1_light.spct)
 autoplot(CRY1_light.spct)
 
 CRY3_dark.spct <- read.csv(file = "./data-raw/Cryptochromes/Cry3.csv",
@@ -57,6 +59,7 @@ CRY3_dark.spct %>%
   setWhatMeasured("In vitro absorbance of a dark exposed solution of CRY3") -> CRY3_dark.spct
 
 getNormalized(CRY3_dark.spct)
+getNormalization(CRY3_dark.spct)
 autoplot(CRY3_dark.spct)
 
 CRY2_dark.spct <- read.csv(file = "./data-raw/Cryptochromes/cry2_dark.csv",
@@ -70,6 +73,7 @@ CRY2_dark.spct[-(1:2), -3] %>%
 setWhatMeasured(CRY2_dark.spct, "In vitro absorbance of a dark exposed solution of CRY2")
 
 getNormalized(CRY2_dark.spct)
+getNormalization(CRY2_dark.spct)
 autoplot(CRY2_dark.spct)
 
 CRY2_light.spct <- read.csv(file = "./data-raw/Cryptochromes/cry2_light.csv",
@@ -84,6 +88,7 @@ CRY2_light.spct[order(CRY2_light.spct$w.length), -3] %>%
   CRY2_light.spct
 
 getNormalized(CRY2_light.spct)
+getNormalization(CRY2_light.spct)
 autoplot(CRY2_light.spct)
 
 CRYs.mspct <- filter_mspct(list(CRY1_dark = CRY1_dark.spct,
@@ -110,6 +115,7 @@ comment(phot1.spct) <-
   "phototropin 1 (Arabidopsis)\nfrom Cristie et. al, 2002, figure 1a.\nBased on fluorescence yield."
 
 getNormalized(phot1.spct)
+getNormalization(phot1.spct)
 autoplot(phot1.spct)
 
 read.csv(file = "./data-raw/phototropins/LOV2-dark.csv",
@@ -129,6 +135,7 @@ comment(phot1_LOV2_dark.spct) <-
   "phototropin 1 (Arabidopsis) LOV2, dark adapted\nfrom Cristie et. al, 2015, figure 3B."
 
 getNormalized(phot1_LOV2_dark.spct)
+getNormalization(phot1_LOV2_dark.spct)
 autoplot(phot1_LOV2_dark.spct)
 
 read.csv(file = "./data-raw/phototropins/LOV2-light.csv",
@@ -147,6 +154,7 @@ comment(phot1_LOV2_light.spct) <-
   "phototropin 1 (Arabidopsis) LOV2, blue-ligth adapted\nfrom Cristie et. al, 2015, figure 3B."
 
 getNormalized(phot1_LOV2_light.spct)
+getNormalization(phot1_LOV2_light.spct)
 autoplot(phot1_LOV2_light.spct)
 
 read.csv(file = "./data-raw/phototropins/phot2.csv",
@@ -163,6 +171,7 @@ comment(phot2.spct) <-
   "phototropin 2 (Arabidopsis)\nfrom Cristie et. al, 2002, figure 7a.\nBased on fluorescence yield."
 
 getNormalized(phot2.spct)
+getNormalization(phot2.spct)
 autoplot(phot2.spct)
 
 
@@ -181,6 +190,7 @@ comment(LOV2.spct) <-
   "phototropin 1 LOV2 (Arabidopsis)\nfrom XXXX, figure 7a.\nIn vitro absorbance."
 
 getNormalized(LOV2.spct)
+getNormalization(LOV2.spct)
 autoplot(LOV2.spct)
 
 PHOTs.mspct <- filter_mspct(list(PHOT1_fluo = phot1.spct,
@@ -208,6 +218,7 @@ ZTL_dark.spct %>%
   setWhatMeasured("In vitro absorbance of a dark adapted solution of ZTL") -> ZTL_dark.spct
 
 getNormalized(ZTL_dark.spct)
+getNormalization(ZTL_dark.spct)
 autoplot(ZTL_dark.spct)
 
 ZTL_light.spct <- read.csv(file = "./data-raw/ZTL/ZTL-light.csv",
@@ -226,6 +237,7 @@ ZTL_light.spct %>%
   setWhatMeasured("In vitro absorbance of a light adapted solution of ZTL") -> ZTL_light.spct
 
 getNormalized(ZTL_light.spct)
+getNormalization(ZTL_light.spct)
 autoplot(ZTL_light.spct)
 
 ZTLs.mspct <- filter_mspct(list(ZTL_dark = ZTL_dark.spct,
@@ -250,6 +262,7 @@ smooth_spct(UVR8_Glasgow.spct, method = "supsmu") %>%
   normalize() -> UVR8_Glasgow.spct
 
 getNormalized(UVR8_Glasgow.spct)
+getNormalization(UVR8_Glasgow.spct)
 autoplot(UVR8_Glasgow.spct)
 
 load("./data-raw/UVR8/UVR8Ecoli-merged-spct.Rda")
@@ -263,8 +276,8 @@ comment(UVR8_Orebro.spct) <-
 
 
 getNormalized(UVR8_Orebro.spct)
-
-autoplot(UVR8_Glasgow.spct)
+getNormalization(UVR8_Orebro.spct)
+autoplot(UVR8_Orebro.spct)
 
 UVR8s.mspct <- filter_mspct(list(UVR8.abs.Glasgow = UVR8_Glasgow.spct,
                                  UVR8.abs.Orebro = UVR8_Orebro.spct))

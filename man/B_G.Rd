@@ -7,19 +7,19 @@
 B_G(spct, std = "Sellaro", use.cached.mult = FALSE, use.hinges = TRUE)
 }
 \arguments{
-\item{spct}{an object of class "source.spct"}
+\item{spct}{an object of class "source.spct".}
 
 \item{std}{select which definition of blue and green should be used,
-defaults to "Sellaro"}
+defaults to "Sellaro".}
 
 \item{use.cached.mult}{logical indicating whether multiplier values should be
-cached between calls}
+cached between calls.}
 
 \item{use.hinges}{logical indicating whether to use hinges to reduce
-interpolation errors}
+interpolation errors.}
 }
 \value{
-a single numeric nondimensional value giving the B:G photon ratio,
+a single numeric dimensionless value giving the B:G photon ratio,
   with name attribute set to the name of the wavebands, with "(q:q)"
   appended.
 }
@@ -31,6 +31,7 @@ B_G(sun.spct)
 
 }
 \seealso{
-\code{link[photobiologyWavebands]{Blue}},
-  \code{link[photobiologyWavebands]{Green}}.
+\code{\link[photobiologyWavebands]{Blue}},
+  \code{\link[photobiologyWavebands]{Green}} and
+  \code{\link[photobiology]{q_ratio}}.
 }

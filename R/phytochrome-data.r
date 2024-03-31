@@ -26,6 +26,6 @@
 #' \doi{10.1007/978-94-011-1884-2_10}
 #'
 #' @note If you use these data in a publication, please cite also the original
-#'   source as given under references.
+#'   source as given under references in addition to this package.
 #'
 NULL

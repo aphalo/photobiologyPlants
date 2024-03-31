@@ -28,12 +28,12 @@ default is TRUE}
 cached between calls}
 }
 \value{
-a list of three numeric values giving the photoconversion rate (nu)
-  and reaction rates (k1, k2).
+a list of three numeric values giving the photoconversion rate
+  (\eqn{\nu}) and reaction rates (\eqn{k_1}, \eqn{k_2}).
 }
 \description{
-Rate constants k1 Pr -> Pfr; k2 Pfr -> Pr; photoconversion rate nu = k1 + k2
-for Type I Phytochrome.
+Rate constants \eqn{k_1} Pr -> Pfr; \eqn{k_2} Pfr -> Pr; photoconversion rate
+\eqn{\nu = k_1 + k_2} for Type I Phytochrome.
 }
 \examples{
 library(photobiology)

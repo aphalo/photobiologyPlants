@@ -15,8 +15,8 @@ Phy_Sigma_FR(w.length, use.cached.mult = FALSE)
 a numeric array with values for Sigma
 }
 \description{
-Pfr Sigma as a function of wavelength, calculated by interpolatio from data
-for Type I Phytochrome as compiled by Mancinelli (xxxx).
+Pfr Sigma as a function of wavelength, calculated by interpolation from data
+for Type I Phytochrome as compiled by Mancinelli (1994).
 }
 \examples{
 with(sun.spct, Phy_Sigma_FR(w.length))

@@ -13,20 +13,20 @@
 #'   may have introduced some error; the cautious user is advised to compare
 #'   these results with the original sources (Du et al., 1998; Dixon et al., 2005).
 #'
-#' The spectral absorption measurements of chlorophyll a in methanol,
-#' chlorophyll a and chlorophyll b in diethyl ether were made by J. Li on
-#' 12-11-1997 using a Cary 3. The absorption values were collected using a
-#' spectral bandwidth of 1.0 nm, a signal averaging time of 0.133 sec, a data
-#' interval of 0.25 nm, and a scan rate of 112.5 nm/min.
+#' The spectral absorption measurements of chlorophyll \eqn{a} in methanol,
+#' chlorophyll \eqn{a} and chlorophyll \eqn{b} in diethyl ether were made by J.
+#' Li on 12-11-1997 using a Cary 3 spectrophotometer. The absorption values were
+#' collected using a spectral bandwidth of 1.0 nm, a signal averaging time of
+#' 0.133 sec, a data interval of 0.25 nm, and a scan rate of 112.5 nm/min.
 #'
-#' Chlorophyll a measurements were scaled to make the molar extinction
-#' coefficient match the value of 111700 cm-1/M at 417.8 nm.  These values were
-#' then interpolated to report extinction coefficients at regular 1nm intervals.
+#' Chlorophyll \eqn{a} measurements were scaled to make the molar extinction
+#' coefficient match the value of 111700 cm-1/M at 417.8 nm. These values were
+#' then interpolated to report extinction coefficients at regular 1 nm intervals.
 #' The reported molar extinction coefficient is from Strain et al. (1963).
 #'
-#' Chlorophyll b measurements were scaled to make the molar extinction
-#' coefficient match the value of 159100 cm-1/M at 453.0 nm.  These values were
-#' then interpolated to report extinction coefficients at regular 1nm intervals.
+#' Chlorophyll \eqn{b} measurements were scaled to make the molar extinction
+#' coefficient match the value of 159100 cm-1/M at 453.0 nm. These values were
+#' then interpolated to report extinction coefficients at regular 1 nm intervals.
 #' The reported molar extinction coefficient is from Vernon and Seely (1966).
 #'
 #' @docType data

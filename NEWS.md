@@ -1,7 +1,7 @@
 photobiologyPlants 0.4.4
 ========================
 
-* Rebuild data objects with photobiology 0.11.0.
+* Rebuild data objects with photobiology 0.11.2.
 
 photobiologyPlants 0.4.3
 ========================

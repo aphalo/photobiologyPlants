@@ -25,7 +25,7 @@
 #'   Glycosci. and Glycotechnol. 12, 175-184, 2000.
 #'
 #' @note If you use these data in a publication, please cite also the original
-#'   source as given under references.
+#'   source as given under references in addition to this package.
 #'
 #' @examples
 #' names(carotenoids.mspct)

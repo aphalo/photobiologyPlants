@@ -13,7 +13,7 @@ Phy_Sigma(w.length)
 a numeric array with values for Sigma
 }
 \description{
-Phytochrome Sigma as a function of wavelength, calculated by interpolatio
+Phytochrome Sigma as a function of wavelength, calculated by interpolation
 from data for Type I Phytochrome as compiled by Mancinelli (1994).
 }
 \examples{

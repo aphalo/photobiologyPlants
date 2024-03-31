@@ -7,19 +7,19 @@
 UVAlw_UV(spct, std = "plants", use.cached.mult = FALSE, use.hinges = TRUE)
 }
 \arguments{
-\item{spct}{an object of class "source.spct"}
+\item{spct}{an object of class "source.spct".}
 
 \item{std}{select which definition of UVAlw should be used,
 defaults to "plants". For UV "ISO" is always used.}
 
 \item{use.cached.mult}{logical indicating whether multiplier values should be
-cached between calls}
+cached between calls.}
 
 \item{use.hinges}{logical indicating whether to use hinges to reduce
-interpolation errors}
+interpolation errors.}
 }
 \value{
-a single numeric nondimensional value giving the UVA:UV photon ratio,
+a single numeric dimensionless value giving the UVA:UV photon ratio,
   with name attribute set to the name of the wavebands, with "(q:q)"
   appended.
 }
@@ -29,15 +29,16 @@ spectrum.
 }
 \note{
 Whenever possible use UVA1 instead of UVAlw and UVA2 instead of UVAsw
-  as UVA1 and UVA2 are frequently used defintions, even if not standarddised,
-  while UVAlw and UVAsw are ad-hoc definitions used for specific optical
-  filters.
+  as UVA1 and UVA2 are frequently used definitions, even if not standardised,
+  while UVAlw and UVAsw are ad-hoc definitions used in some publications for
+  specific optical filters.
 }
 \examples{
 UVA_UV(sun.spct)
 
 }
 \seealso{
-\code{link[photobiologyWavebands]{UVA}},
-  \code{link[photobiologyWavebands]{UV}}.
+\code{\link[photobiologyWavebands]{UVA}},
+  \code{\link[photobiologyWavebands]{UV}} and
+  \code{\link[photobiology]{q_ratio}}.
 }

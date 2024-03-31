@@ -10,8 +10,8 @@ A \code{filter_mspct} with three member \code{filter_spct} objects
   and \code{A}
 }
 \description{
-Optical absorption spectra of chlorophyll a in methanol and chlorophylls a
-and by in diethyl ether containing the wavelengths at 1 nm interval.
+Optical absorption spectra of chlorophyll \eqn{a} in methanol and chlorophylls \eqn{a}
+and \eqn{b} in diethyl ether containing the wavelengths at 1 nm interval.
 }
 \details{
 The variables of the member spectra are as follows:
@@ -28,9 +28,9 @@ Data from PhotochemCAD 2.1a has been munged on 2 June 2017 by Scott
   Fluorescence emission was measured using a Spex FluoroMax. The excitation
   and emission monochromators were set at 1 mm, giving a spectral bandwidth
   of 4.25 nm.  The data interval was 0.5 nm and the integration time was 2.0
-  sec. Samples were prepared in 1cm pathlength quartz cells with absorbance
+  sec. Samples were prepared in 1cm path length quartz cells with absorbance
   less than 0.1 at the excitation and all emission wavelengths to uniformly
-  illuminate across the sample, and to avoid the inner-filter effect.  The
+  illuminate across the sample, and to avoid the inner-filter effect. The
   dark counts were subtracted and the spectra were corrected for
   wavelength-dependent instrument sensitivity.
 }

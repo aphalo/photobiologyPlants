@@ -7,19 +7,19 @@
 R_FR(spct, std = "Smith10", use.cached.mult = FALSE, use.hinges = TRUE)
 }
 \arguments{
-\item{spct}{an object of class "source.spct"}
+\item{spct}{an object of class "source.spct".}
 
 \item{std}{select which definition of red and far-red should be used,
-defaults to "Smith"}
+defaults to "Smith".}
 
 \item{use.cached.mult}{logical indicating whether multiplier values should be
-cached between calls}
+cached between calls.}
 
 \item{use.hinges}{logical indicating whether to use hinges to reduce
-interpolation errors}
+interpolation errors.}
 }
 \value{
-a single numeric nondimensional value giving the R:FR photon ratio,
+a single numeric dimensionless value giving the R:FR photon ratio,
   with name attribute set to the name of the wavebands, with "(q:q)"
   appended.
 }
@@ -32,6 +32,7 @@ R_FR(sun.spct)
 
 }
 \seealso{
-\code{link[photobiologyWavebands]{Red}},
-  \code{link[photobiologyWavebands]{Far_red}}.
+\code{\link[photobiologyWavebands]{Red}},
+  \code{\link[photobiologyWavebands]{Far_red}} and
+  \code{\link[photobiology]{q_ratio}}.
 }

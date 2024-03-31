@@ -13,15 +13,16 @@ reference:
     contents:
     - R_FR
     - B_G
+    - UV_PAR
+    - UVB_PAR
     - UVB_UV
+    - UVB_UVA
+    - UVA_PAR
     - UVA_UV
     - UVA1_UV
     - UVA2_UV
     - UVAlw_UV
     - UVAsw_UV
-    - UV_PAR
-    - UVB_PAR
-    - UVA_PAR
   - title: Phytochromes
     desc: Data and functions related to the plant photoreceptors _phytochromes_ which mediate responses to red and far-red ligth.
     contents:

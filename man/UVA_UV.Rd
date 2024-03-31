@@ -7,19 +7,19 @@
 UVA_UV(spct, std = "ISO", use.cached.mult = FALSE, use.hinges = TRUE)
 }
 \arguments{
-\item{spct}{an object of class "source.spct"}
+\item{spct}{an object of class "source.spct".}
 
 \item{std}{select which definition of UVB and UV should be used,
-defaults to "ISO"}
+defaults to "ISO".}
 
 \item{use.cached.mult}{logical indicating whether multiplier values should be
-cached between calls}
+cached between calls.}
 
 \item{use.hinges}{logical indicating whether to use hinges to reduce
-interpolation errors}
+interpolation errors.}
 }
 \value{
-a single numeric nondimensional value giving the UVA:UV photon ratio,
+a single numeric dimensionless value giving the UVA:UV photon ratio,
   with name attribute set to the name of the wavebands, with "(q:q)"
   appended.
 }
@@ -32,6 +32,7 @@ UVA_UV(sun.spct)
 
 }
 \seealso{
-\code{link[photobiologyWavebands]{UVA}},
-  \code{link[photobiologyWavebands]{UV}}.
+\code{\link[photobiologyWavebands]{UVA}},
+  \code{\link[photobiologyWavebands]{UV}} and
+  \code{\link[photobiology]{q_ratio}}.
 }

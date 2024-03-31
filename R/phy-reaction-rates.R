@@ -1,7 +1,7 @@
 #' Phytochrome reaction rates
 #'
-#' Rate constants k1 Pr -> Pfr; k2 Pfr -> Pr; photoconversion rate nu = k1 + k2
-#' for Type I Phytochrome.
+#' Rate constants \eqn{k_1} Pr -> Pfr; \eqn{k_2} Pfr -> Pr; photoconversion rate
+#' \eqn{\nu = k_1 + k_2} for Type I Phytochrome.
 #'
 #' @param w.length numeric array of wavelength (nm)
 #' @param s.irrad numeric array of spectral (energy) irradiances (W m-2 nm-1) or
@@ -13,8 +13,8 @@
 #' @param use.cached.mult logical indicating whether multiplier values should be
 #'   cached between calls
 #'
-#' @return a list of three numeric values giving the photoconversion rate (nu)
-#'   and reaction rates (k1, k2).
+#' @return a list of three numeric values giving the photoconversion rate
+#'   (\eqn{\nu}) and reaction rates (\eqn{k_1}, \eqn{k_2}).
 #' @export
 #' @references Hayward, P. M. (1984) Determination of phytochrome parameters
 #' from radiation measurements. In Techniques in Photomorphogenesis, H. Smith
@@ -34,8 +34,11 @@
 #' trimmed.sun.spct <- trim_wl(sun.spct, range = c(300, 770))
 #' with(trimmed.sun.spct, Phy_reaction_rates(w.length, s.e.irrad))
 #'
-Phy_reaction_rates <- function(w.length, s.irrad, unit.in="energy",
-                       check.spectrum=TRUE, use.cached.mult=FALSE){
+Phy_reaction_rates <- function(w.length,
+                               s.irrad,
+                               unit.in="energy",
+                               check.spectrum=TRUE,
+                               use.cached.mult=FALSE){
   # sanity check for wavelengths
   if (check.spectrum && !check_spectrum(w.length, s.irrad)) {
     return(NA)

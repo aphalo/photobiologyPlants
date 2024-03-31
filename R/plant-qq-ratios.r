@@ -3,20 +3,21 @@
 #' This function returns the red:far-red photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of red and far-red should be used,
-#'   defaults to "Smith"
+#'   defaults to "Smith".
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the R:FR photon ratio,
+#' @return a single numeric dimensionless value giving the R:FR photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
-#' @seealso \code{link[photobiologyWavebands]{Red}},
-#'   \code{link[photobiologyWavebands]{Far_red}}.
+#' @seealso \code{\link[photobiologyWavebands]{Red}},
+#'   \code{\link[photobiologyWavebands]{Far_red}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -35,20 +36,21 @@ R_FR <- function(spct, std = "Smith10",
 #'
 #' This function returns the blue:green photon ratio of a light source spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of blue and green should be used,
-#'   defaults to "Sellaro"
+#'   defaults to "Sellaro".
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the B:G photon ratio,
+#' @return a single numeric dimensionless value giving the B:G photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
-#' @seealso \code{link[photobiologyWavebands]{Blue}},
-#'   \code{link[photobiologyWavebands]{Green}}.
+#' @seealso \code{\link[photobiologyWavebands]{Blue}},
+#'   \code{\link[photobiologyWavebands]{Green}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -67,20 +69,21 @@ B_G <- function(spct, std = "Sellaro",
 #' This function returns the UVB:UV photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of UVB and UV should be used,
-#'   defaults to "ISO"
+#'   defaults to "ISO".
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the UVB:UV photon ratio,
+#' @return a single numeric dimensionless value giving the UVB:UV photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
-#' @seealso \code{link[photobiologyWavebands]{UVB}},
-#'   \code{link[photobiologyWavebands]{UV}}.
+#' @seealso \code{\link[photobiologyWavebands]{UVB}},
+#'   \code{\link[photobiologyWavebands]{UV}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -94,25 +97,59 @@ UVB_UV <- function(spct, std = "ISO",
           use.hinges = use.hinges)
 }
 
+#' Calculate UVB:UVA photon ratio from spectral irradiance.
+#'
+#' This function returns the UVB:UVA photon ratio of a light source
+#' spectrum.
+#'
+#' @param spct an object of class "source.spct".
+#' @param std select which definition of UVB and UVA should be used,
+#'   defaults to "ISO".
+#' @param use.cached.mult logical indicating whether multiplier values should be
+#'   cached between calls.
+#' @param use.hinges logical indicating whether to use hinges to reduce
+#'   interpolation errors.
+#'
+#' @return a single numeric dimensionless value giving the UVB:UVA photon ratio,
+#'   with name attribute set to the name of the wavebands, with "(q:q)"
+#'   appended.
+#'
+#' @seealso \code{\link[photobiologyWavebands]{UVB}},
+#'   \code{\link[photobiologyWavebands]{UV}} and
+#'   \code{\link[photobiology]{q_ratio}}.
+#'
+#' @export
+#' @examples
+#' UVB_UVA(sun.spct)
+#'
+UVB_UVA <- function(spct, std = "ISO",
+                   use.cached.mult = FALSE,
+                   use.hinges = TRUE) {
+  q_ratio(spct, UVB(std), UVA(std),
+          use.cached.mult = use.cached.mult,
+          use.hinges = use.hinges)
+}
+
 #' Calculate UVA:UV photon ratio from spectral irradiance.
 #'
 #' This function returns the UVA:UV photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of UVB and UV should be used,
-#'   defaults to "ISO"
+#'   defaults to "ISO".
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the UVA:UV photon ratio,
+#' @return a single numeric dimensionless value giving the UVA:UV photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
-#' @seealso \code{link[photobiologyWavebands]{UVA}},
-#'   \code{link[photobiologyWavebands]{UV}}.
+#' @seealso \code{\link[photobiologyWavebands]{UVA}},
+#'   \code{\link[photobiologyWavebands]{UV}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -131,25 +168,26 @@ UVA_UV <- function(spct, std = "ISO",
 #' This function returns the UVA:UV photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of UVAlw should be used,
 #'   defaults to "plants". For UV "ISO" is always used.
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the UVA:UV photon ratio,
+#' @return a single numeric dimensionless value giving the UVA:UV photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
 #' @note Whenever possible use UVA1 instead of UVAlw and UVA2 instead of UVAsw
-#'   as UVA1 and UVA2 are frequently used defintions, even if not standarddised,
-#'   while UVAlw and UVAsw are ad-hoc definitions used for specific optical
-#'   filters.
+#'   as UVA1 and UVA2 are frequently used definitions, even if not standardised,
+#'   while UVAlw and UVAsw are ad-hoc definitions used in some publications for
+#'   specific optical filters.
 #'
-#' @seealso \code{link[photobiologyWavebands]{UVA}},
-#'   \code{link[photobiologyWavebands]{UV}}.
+#' @seealso \code{\link[photobiologyWavebands]{UVA}},
+#'   \code{\link[photobiologyWavebands]{UV}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -168,25 +206,26 @@ UVAlw_UV <- function(spct, std = "plants",
 #' This function returns the UVAsw:UV photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of UVAsw should be used,
 #'   defaults to "plants". For UV "ISO" is always used.
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the UVA:UV photon ratio,
+#' @return a single numeric dimensionless value giving the UVA:UV photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
 #' @note Whenever possible use UVA1 instead of UVAlw and UVA2 instead of UVAsw
-#'   as UVA1 and UVA2 are frequently used defintions, even if not standarddised,
-#'   while UVAlw and UVAsw are ad-hoc definitions used for specific optical
-#'   filters.
+#'   as UVA1 and UVA2 are frequently used definitions, even if not standardised,
+#'   while UVAlw and UVAsw are ad-hoc definitions used in some publications for
+#'   specific optical filters.
 #'
-#' @seealso \code{link[photobiologyWavebands]{UVA}},
-#'   \code{link[photobiologyWavebands]{UV}}.
+#' @seealso \code{\link[photobiologyWavebands]{UVA}},
+#'   \code{\link[photobiologyWavebands]{UV}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -205,20 +244,21 @@ UVAsw_UV <- function(spct, std = "plants",
 #' This function returns the UV:PAR photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of UV should be used,
-#'   defaults to "ISO"
+#'   defaults to "ISO".
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the UV:PAR photon ratio,
+#' @return a single numeric dimensionless value giving the UV:PAR photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
-#' @seealso \code{link[photobiologyWavebands]{UV}},
-#'   \code{link[photobiologyWavebands]{PAR}}.
+#' @seealso \code{\link[photobiologyWavebands]{UV}},
+#'   \code{\link[photobiologyWavebands]{PAR}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -237,20 +277,21 @@ UV_PAR <- function(spct, std = "ISO",
 #' This function returns the UVB:PAR photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of UVB should be used,
-#'   defaults to "ISO"
+#'   defaults to "ISO".
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the UVB:UV photon ratio,
+#' @return a single numeric dimensionless value giving the UVB:UV photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
-#' @seealso \code{link[photobiologyWavebands]{UVB}},
-#'   \code{link[photobiologyWavebands]{PAR}}.
+#' @seealso \code{\link[photobiologyWavebands]{UVB}},
+#'   \code{\link[photobiologyWavebands]{PAR}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -269,20 +310,21 @@ UVB_PAR <- function(spct, std = "ISO",
 #' This function returns the UVA:PAR photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of UVA should be used,
-#'   defaults to "ISO"
+#'   defaults to "ISO".
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the UVA:PAR photon ratio,
+#' @return a single numeric dimensionless value giving the UVA:PAR photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
-#' @seealso \code{link[photobiologyWavebands]{UVA}},
-#'   \code{link[photobiologyWavebands]{PAR}}.
+#' @seealso \code{\link[photobiologyWavebands]{UVA}},
+#'   \code{\link[photobiologyWavebands]{PAR}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -301,20 +343,21 @@ UVA_PAR <- function(spct, std = "ISO",
 #' This function returns the UVA1:UV photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of UVA1 should be used,
 #'   defaults to "CIE".  For UV "ISO" is always used.
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the UVA:UV photon ratio,
+#' @return a single numeric dimensionless value giving the UVA:UV photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
-#' @seealso \code{link[photobiologyWavebands]{UV}},
-#'   \code{link[photobiologyWavebands]{UVA}}.
+#' @seealso \code{\link[photobiologyWavebands]{UV}},
+#'   \code{\link[photobiologyWavebands]{UVA}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples
@@ -333,20 +376,21 @@ UVA1_UV <- function(spct, std = "CIE",
 #' This function returns the UVA2:UV photon ratio of a light source
 #' spectrum.
 #'
-#' @param spct an object of class "source.spct"
+#' @param spct an object of class "source.spct".
 #' @param std select which definition of UVA1 should be used,
 #'   defaults to "CIE". For UV "ISO" is always used.
 #' @param use.cached.mult logical indicating whether multiplier values should be
-#'   cached between calls
+#'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
-#'   interpolation errors
+#'   interpolation errors.
 #'
-#' @return a single numeric nondimensional value giving the UVA:UV photon ratio,
+#' @return a single numeric dimensionless value giving the UVA:UV photon ratio,
 #'   with name attribute set to the name of the wavebands, with "(q:q)"
 #'   appended.
 #'
-#' @seealso \code{link[photobiologyWavebands]{UV}},
-#'   \code{link[photobiologyWavebands]{UVA}}.
+#' @seealso \code{\link[photobiologyWavebands]{UV}},
+#'   \code{\link[photobiologyWavebands]{UVA}} and
+#'   \code{\link[photobiology]{q_ratio}}.
 #'
 #' @export
 #' @examples

@@ -21,7 +21,7 @@ The variables of the member spectra are as follows:
 }
 \note{
 If you use these data in a publication, please cite also the original
-  source as given under references.
+  source as given under references in addition to this package.
 }
 \references{
 Zoltowski, B. D., Imaizumi, T. (2014). Structure and Function of the

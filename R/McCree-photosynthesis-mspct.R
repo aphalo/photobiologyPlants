@@ -2,10 +2,10 @@
 #' McCree's action spectra for whole-leaf photosynthesis.
 #'
 #' @description The 'classical' action spectra of K. J. McCree (1972) for
-#'   _Amaranthus edulis_ Speg. var. UCD 1966 and _Avena sativa_ L. var. Coronado are
-#'   included in this data set. Response is net CO2 uptake measured of leaf
-#'   sections. Light source was a xenon-arc lamp fitted with a monochromator.
-#'   Irradiance was in the range 10 to 15 \eqn{W m^{-2}}.
+#'   \emph{Amaranthus edulis} Speg. var. UCD 1966 and \emph{Avena sativa} L.
+#'   var. Coronado are included in this data set. Response is net \eqn{CO_2}
+#'   uptake measured of leaf sections. Light source was a xenon-arc lamp fitted
+#'   with a monochromator. Irradiance was in the range 10 to 15 \eqn{W m^{-2}}.
 #'
 #' @references
 #' McCree, K. J. (1972) Significance of Enhancement for Calculations

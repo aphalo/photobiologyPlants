@@ -15,7 +15,7 @@ Phy_Sigma_R(w.length, use.cached.mult = FALSE)
 a numeric array with values for Sigma
 }
 \description{
-Pr Sigma as a function of wavelength, calculated by interpolatio from data
+Pr Sigma as a function of wavelength, calculated by interpolation from data
 for Type I Phytochrome as compiled by Mancinelli (1994).
 }
 \examples{

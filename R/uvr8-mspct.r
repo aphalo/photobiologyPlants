@@ -28,7 +28,7 @@
 #'   \doi{10.1111/pce.13752}. (Figure S7)
 #'
 #' @note If you use these data in a publication, please cite also the original
-#'   source as given under references.
+#'   source as given under references in addition to this package.
 #'
 #' @name UVR8s.mspct
 #'

@@ -1,12 +1,14 @@
 #' CRY1, CRY2 and CRY3 absorbance spectra.
 #'
-#' A dataset containing the wavelengths at an arbitrary nm interval. Tabulated
-#' values for the in vitro absorbance spectrum of CRY1, CRY2, CRY3 for
-#' Arabidopsis. CRY1 data were digitized from figure 1, curve "dark" and curve
-#' "30 min illumination" in Zeugnwer et al. (2005). The CRY2 data were digitized
-#' from Figure 1.B, curve "dark adapted sample", and curve "irradiated with blue
-#' light (450 nm, 50 umol m-2 s-1) during 30 min" in Banerjee et al. (2007).
-#' CRY3 data were digitized from figure 2a, curve "cry3" in Song et al. (2006).
+#' A dataset containing the wavelengths at an arbitrary nm interval and spectral
+#' absorbance for plant cryptochromes 1 (CRY1), 2 (CRY2), and 3 (CRY3 or
+#' CRY-DASH). Tabulated values for the in vitro absorbance spectrum for
+#' \emph{Arabidopsis thaliana}. CRY1 data were digitized from figure 1, curve
+#' "dark" and curve "30 min illumination" in Zeugnwer et al. (2005). The CRY2
+#' data were digitized from Figure 1.B, curve "dark adapted sample", and curve
+#' "irradiated with blue light (450 nm, 50 umol m-2 s-1) during 30 min" in
+#' Banerjee et al. (2007). CRY3 data were digitized from figure 2a, curve "cry3"
+#' in Song et al. (2006).
 #'
 #' The variables of the member spectra are as follows:
 #'
@@ -35,6 +37,6 @@
 #'   Journal of Biological Chemistry. 280(20):19437-19440.
 #'
 #' @note If you use these data in a publication, please cite also the original
-#'   source as given under references.
+#'   source as given under references in addition to this package.
 #'
 NULL

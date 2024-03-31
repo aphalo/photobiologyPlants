@@ -20,6 +20,6 @@
 #'   ZTL/FKF1/LKP2 Group Proteins in Arabidopsis. Enzymes, 35, 213-39.
 #'
 #' @note If you use these data in a publication, please cite also the original
-#'   source as given under references.
+#'   source as given under references in addition to this package.
 #'
 NULL

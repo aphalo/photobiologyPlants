@@ -15,7 +15,8 @@ Betula_ermanii.mspct
 A dataset containing for wavelengths at a 1 nm interval in the
   range 350 to 1000 nm, tabulated values for total reflectance and total
   transmittance, for the upper and lower epidermis of leaves of different
-  ages from 'Betula ermanii' trees growing in the forest in Japan.
+  ages from Erman's birch (\emph{Betula ermanii}) trees growing in the forest
+  in Japan.
 
 The variables in each spectrum are as follows:
 
@@ -28,14 +29,15 @@ The variables in each spectrum are as follows:
 \note{
 We thank H. M. Noda for allowing us to include these data in our
   package. We have included here only data for two leaves from one species
-  (Betula ermanii) and for wavelengths shorter than 1000 nm, from the
+  (\emph{Betula ermanii}) and for wavelengths shorter than 1000 nm, from the
   much larger original data set. The whole data set is publicly available and
   the data easy to read into R. The data included here where measured with a
   Li-Cor LI-1800 spectroradiometer equipped with a LI-1800-12 (Li-Cor)
   integrating sphere, and consequently are for total reflectance and total
   transmittance. Further details on methods are available through the JaLTER
   web site. If you use these data in a publication, please cite the original
-  source as given under references and contact the original author.
+  source as given under references and contact the original author. In
+  addition cite this package.
 }
 \references{
 Noda H. 'Reflectance and transmittance spectra of leaves and

@@ -22,7 +22,7 @@ A dataset containing the wavelengths at a 1 nm interval.
 }
 \note{
 If you use these data in a publication, please cite also the original
-  source as given under references.
+  source as given under references in addition to this package.
 }
 \references{
 Mancinelli, A.L. (1994) The physiology of phytochrome action. In

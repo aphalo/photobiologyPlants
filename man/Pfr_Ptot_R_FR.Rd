@@ -7,11 +7,11 @@
 Pfr_Ptot_R_FR(R.FR)
 }
 \arguments{
-\item{R.FR}{R:FR a single value or a vector of photon ratio (unitless) values}
+\item{R.FR}{R:FR a single value or a vector of photon ratio (dimentionless) values}
 }
 \value{
 a single value or a vector of numeric values giving the Pr:Ptot
-  unitless ratio
+  dimensionless ratio
 }
 \description{
 Calculation of Pfr:Ptot ratio for Type I Phytochrome from red:far-red photon

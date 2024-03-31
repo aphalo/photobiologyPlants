@@ -19,7 +19,7 @@ The variables are as follows:
 }
 \note{
 If you use these data in a publication, please cite also the original
-  source as given under references.
+  source as given under references in addition to this package.
 }
 \examples{
 names(UVR8s.mspct)

@@ -1,10 +1,11 @@
 #' PHOT1 and PHOT2 absorbance spectra.
 #'
-#' A dataset containing the wavelengths at an arbitrary nm interval. Tabulated
+#' A dataset containing the wavelengths at an arbitrary nm interval for plant
+#' photoreceptors phototropin 1 and phototropin 2. Tabulated
 #' values for the in vitro absorbance spectrum of PHOT1 LOV2 domain for
-#' fluorescence yield of PHOT1 and PHOT2 from Arabidopsis measured in vitro.
-#' PHOT1 fluorescenve yield data were digitized from figure 1a curve
-#' "LOV1 + LOV2 (WT) and PHOT2 fluorescenve yield data were digitized from figure
+#' fluorescence yield of PHOT1 and PHOT2 from \emph{Arabidopsis thaliana} measured in vitro.
+#' PHOT1 fluorescence yield data were digitized from figure 1a curve
+#' "LOV1 + LOV2 (WT) and PHOT2 fluorescence yield data were digitized from figure
 #' 7a curve "LOV1 + LOV2 (WT) in Christie et al. (2002). PHOT1 LOV2, dark
 #' adapted, spectral absorbance data were digitized from figure 3, black
 #' curve and PHOT1 LOV2, blue-light adapted spectral absorbance data were
@@ -29,6 +30,6 @@
 #'   Flavoprotein Photoreceptors. Plant and Cell Physiology. 56(3):401-413.
 #'
 #' @note If you use these data in a publication, please cite also the original
-#'   source as given under references.
+#'   source as given under references in addition to this package.
 #'
 NULL

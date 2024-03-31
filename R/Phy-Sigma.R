@@ -1,6 +1,6 @@
 #' Phytochrome Sigma as a function of wavelength
 #'
-#' Phytochrome Sigma as a function of wavelength, calculated by interpolatio
+#' Phytochrome Sigma as a function of wavelength, calculated by interpolation
 #' from data for Type I Phytochrome as compiled by Mancinelli (1994).
 #'
 #' @param w.length numeric array of wavelength (nm)

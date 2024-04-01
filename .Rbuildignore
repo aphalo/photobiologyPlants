@@ -6,6 +6,5 @@
 ^_pkgdown\.yml$
 ^build-binary-from-source.sh$
 ^README\.Rmd$
-^CITATION\.cff$
 ^\.github$
 ^pkgdown

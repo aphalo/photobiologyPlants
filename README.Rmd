@@ -64,6 +64,7 @@ And also other attributes defined in package 'photobiology'.
 
 ```{r example2}
 what_measured(McCree_photosynthesis.mspct$oats)
+how_measured(McCree_photosynthesis.mspct$oats)
 is_normalised(McCree_photosynthesis.mspct$oats)
 ```
 

@@ -14,14 +14,19 @@ A \code{\link[photobiology]{response_mspct}} object with two member
 The 'classical' action spectra of K. J. McCree (1972) for
   \emph{Amaranthus edulis} Speg. var. UCD 1966 and \emph{Avena sativa} L.
   var. Coronado are included in this data set. Response is net \eqn{CO_2}
-  uptake measured of leaf sections. Light source was a xenon-arc lamp fitted
-  with a monochromator. Irradiance was in the range 10 to 15 \eqn{W m^{-2}}.
+  uptake measured on leaf sections umder monochromatic light. The light
+  source used was a xenon-arc lamp fitted with a monochromator. Irradiance
+  was in the range 10 to 15 \eqn{W m^{-2}}.
 }
 \note{
 Digitised from bitmap of from the original publication.
 
 If you use these data in a publication, please cite also the original
   source as given under references.
+}
+\examples{
+summary(McCree_photosynthesis.mspct)
+
 }
 \references{
 McCree, K. J. (1972) Significance of Enhancement for Calculations

@@ -55,14 +55,16 @@ commonly used in R.
 
 ``` r
 comment(McCree_photosynthesis.mspct$oats)
-#> [1] "One of the 'classical' action spectra of K. J. McCree (1972) Avena sativa L. var. Coronado."
+#> [1] "One of the 'classical' action spectra of photosynthesis from K. J. McCree (1972): Avena sativa L. var. Coronado leaf sections."
 ```
 
 And also other attributes defined in package ‘photobiology’.
 
 ``` r
 what_measured(McCree_photosynthesis.mspct$oats)
-#> [1] "Net CO2 uptake measured after about 2 to 10 minutes measurement time at each wavelength"
+#> [1] "Action spectrum of net CO2 uptake in Avena sativa L. var. Coronado (McCree 1972)."
+how_measured(McCree_photosynthesis.mspct$oats)
+#> [1] "Net CO2 uptake measured on detached leaf sections after about 2 to 10 minutes equilibration time at each wavelength"
 is_normalised(McCree_photosynthesis.mspct$oats)
 #> [1] TRUE
 ```

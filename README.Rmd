@@ -28,46 +28,65 @@ photosynthesis and absorbance spectra for the plant photoreceptors in families
 which are present in plants. It also includes data sets on the optical
 properties of plant organs, photosynthesis and plant pigments, chlorophylls and
 carotenoids. All data are derived from the scientific literature. Please, see
-the help pages for the different data sets for details about the sources used.
+the help pages for the different data sets for details about the primary sources
+of the data.
 
 The data in this package are stored in objects of classes defined in package 
-'**photobiology**' which are mostly backwards compatible with data frames.
+'**photobiology**' which are mostly backwards compatible with data frames but
+include metadata as attributes.
 
-This package is part of a suite of R packages for photobiological calculations described at the [r4photobiology](https://www.r4photobiology.info) web site.
+This package is part of a suite of R packages for photobiological calculations 
+described at the [r4photobiology](https://www.r4photobiology.info) web site.
 
 ## Examples
 
-```{r example1, message=FALSE}
-library(ggspectra)
+```{r, message=FALSE}
 library(photobiologyPlants)
+eval_plots <- requireNamespace("ggspectra", quietly = TRUE)
+if (eval_plots) library(ggspectra)
 ```
 
-We plot the action spectrum of photosynthesis in Oats.
-
-```{r example2}
-comment(McCree_photosynthesis.mspct$oats)
-```
+Spectral data are stored in R objects of classes defined in package 
+'photobiology'.
 
 ```{r}
 class(McCree_photosynthesis.mspct$oats)
 ```
 
-```{r example1a, message=FALSE}
-autoplot(McCree_photosynthesis.mspct$oats, 
-         annotations = c("+", "title:none:what"))
+Objects contain metadata that can be queried. The `comment` attribute
+commonly used in R.
+
+```{r}
+comment(McCree_photosynthesis.mspct$oats)
 ```
 
-We can calculate the R:FR photon ratio of a spectrum, in this case an example solar spectrum at ground level from package 'photobiology'.
+And also other attributes defined in package 'photobiology'.
+
+```{r example2}
+what_measured(McCree_photosynthesis.mspct$oats)
+is_normalised(McCree_photosynthesis.mspct$oats)
+```
+
+Functions defined in package 'ggspectra' make plotting easy. For example, to
+plot the action spectrum of photosynthesis in Oats we can use.
+
+```{r, eval=eval_plots}
+autoplot(McCree_photosynthesis.mspct$oats, unit.out = "photon")
+```
+
+We can calculate the R:FR photon ratio of a light-source or iradiance spectrum,
+in this case the solar spectrum at ground level measured on at a specific
+location and time, included in package 'photobiology'.
 
 ```{r}
 R_FR(sun.spct)
 ```
+
 We can also estimate the photo-equilibrium of phytochrome exposed _in vitro_ to the same spectrum. 
 
 ```{r}
 Pfr_Ptot(sun.spct)
 ```
-
 
 ## Installation
 
@@ -94,7 +113,7 @@ remotes::install_github("aphalo/photobiologylamps")
 
 ## Documentation 
 
-HTML documentation is available at (https://docs.r4photobiology.info/photobiologyPlants/), including a _User Guide_.
+HTML documentation is available at (https://docs.r4photobiology.info/photobiologyPlants/), including the _User Guide_.
 
 News on updates to the different packages of the 'r4photobiology' suite are regularly posted at (https://www.r4photobiology.info/).
 

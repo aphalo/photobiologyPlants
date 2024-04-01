@@ -22,11 +22,12 @@ proteins’, ‘phototropins’ and ‘UVR8s’ which are present in plants. It
 also includes data sets on the optical properties of plant organs,
 photosynthesis and plant pigments, chlorophylls and carotenoids. All
 data are derived from the scientific literature. Please, see the help
-pages for the different data sets for details about the sources used.
+pages for the different data sets for details about the primary sources
+of the data.
 
 The data in this package are stored in objects of classes defined in
 package ‘**photobiology**’ which are mostly backwards compatible with
-data frames.
+data frames but include metadata as attributes.
 
 This package is part of a suite of R packages for photobiological
 calculations described at the
@@ -35,16 +36,13 @@ calculations described at the
 ## Examples
 
 ``` r
-library(ggspectra)
 library(photobiologyPlants)
+eval_plots <- requireNamespace("ggspectra", quietly = TRUE)
+if (eval_plots) library(ggspectra)
 ```
 
-We plot the action spectrum of photosynthesis in Oats.
-
-``` r
-comment(McCree_photosynthesis.mspct$oats)
-#> [1] "One of the 'classical' action spectra of K. J. McCree (1972) Avena sativa L. var. Coronado."
-```
+Spectral data are stored in R objects of classes defined in package
+‘photobiology’.
 
 ``` r
 class(McCree_photosynthesis.mspct$oats)
@@ -52,15 +50,36 @@ class(McCree_photosynthesis.mspct$oats)
 #> [5] "data.frame"
 ```
 
+Objects contain metadata that can be queried. The `comment` attribute
+commonly used in R.
+
 ``` r
-autoplot(McCree_photosynthesis.mspct$oats, 
-         annotations = c("+", "title:none:what"))
+comment(McCree_photosynthesis.mspct$oats)
+#> [1] "One of the 'classical' action spectra of K. J. McCree (1972) Avena sativa L. var. Coronado."
 ```
 
-![](man/figures/README-example1a-1.png)<!-- -->
+And also other attributes defined in package ‘photobiology’.
 
-We can calculate the R:FR photon ratio of a spectrum, in this case an
-example solar spectrum at ground level from package ‘photobiology’.
+``` r
+what_measured(McCree_photosynthesis.mspct$oats)
+#> [1] "Net CO2 uptake measured after about 2 to 10 minutes measurement time at each wavelength"
+is_normalised(McCree_photosynthesis.mspct$oats)
+#> [1] TRUE
+```
+
+Functions defined in package ‘ggspectra’ make plotting easy. For
+example, to plot the action spectrum of photosynthesis in Oats we can
+use.
+
+``` r
+autoplot(McCree_photosynthesis.mspct$oats, unit.out = "photon")
+```
+
+![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
+
+We can calculate the R:FR photon ratio of a light-source or iradiance
+spectrum, in this case the solar spectrum at ground level measured on at
+a specific location and time, included in package ‘photobiology’.
 
 ``` r
 R_FR(sun.spct)
@@ -107,7 +126,7 @@ remotes::install_github("aphalo/photobiologylamps")
 ## Documentation
 
 HTML documentation is available at
-(<https://docs.r4photobiology.info/photobiologyPlants/>), including a
+(<https://docs.r4photobiology.info/photobiologyPlants/>), including the
 *User Guide*.
 
 News on updates to the different packages of the ‘r4photobiology’ suite

@@ -23,19 +23,24 @@ options(tibble.print_max = 6, tibble.print_min = 4)
 
 ## Introduction
 
-This package provides data sets and functions relevant to the photobiology of plants. It is part of a suite, which has package 
-'photobiology' at its core. Please visit (http://www.r4photobiology.info/) 
-for more details. For more details on plotting spectra, please consult the 
-documentation for package 'ggspectra', and for information on the calculation of summaries and maths operations between spectra, please, consult the 
-documentation for package 'photobiology'.
+This package provides data sets and functions relevant to the photobiology of
+plants. It is part of a suite, which has package 'photobiology' at its core.
+Please visit (http://www.r4photobiology.info/) for more details. For more
+details on plotting spectra, please consult the documentation for package
+'ggspectra', and for information on the calculation of summaries and maths
+operations between spectra, please, consult the documentation for package
+'photobiology'.
 
-See the User Guide for package 'photobiology' for instructions on how to work with spectral data. 
+See the User Guide for packages 'photobiology' and 'ggspectra' for instructions
+on how to work with spectral data. As package 'ggspectra' is only suggested, in
+this vignette it is loaded an used conditionally on its availability.
 
 ```{r,message=FALSE}
-library(ggspectra)
 library(photobiology)
 library(photobiologyPlants)
 library(photobiologyWavebands)
+eval_plots <- requireNamespace("ggspectra", quietly = TRUE)
+if (eval_plots) library(ggspectra)
 
 theme_set(theme_bw())
 ```
@@ -92,7 +97,7 @@ Pfr_Ptot(435)
 
 We can also plot Pfr:Ptot as a function of wavelength (nm) of monochromatic light. The default is to return a vector for short input vectors, and a `response_spct` object otherwise, but this can be changed through argument `spct.out`.
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(Pfr_Ptot(300:770), norm = NULL, unit.out = "photon",
          w.band = Plant_bands(),
          annotations = c("colour.guide", "labels", "boxes")) +
@@ -101,7 +106,7 @@ autoplot(Pfr_Ptot(300:770), norm = NULL, unit.out = "photon",
 
 It is, of course, also possible to use base R plotting functions, or as shown here functions from package 'ggplot2'
 
-```{r}
+```{r, eval = eval_plots}
 ggplot(data = Pfr_Ptot(300:770), aes(w.length, s.q.response)) +
   geom_line() +
   labs(x = "Wavelength (nm)",
@@ -148,7 +153,7 @@ in the case of Phy are called `Sigma'.
 
 Here we reproduce Figure 3 in Mancinelli (1994), which gives the 'Relative photoconversion cross-sections' of Pr ($\sigma_R$) and Pfr ($\sigma_{FR}$). The values are expressed relative to $\sigma_R$ at its maximum at $\lambda = 666$ nm.
 
-```{r}
+```{r, eval = eval_plots}
 ex7.data <- data.frame(w.length=seq(300, 770, length.out=100))
 ex7.data$sigma.r <- Phy_Sigma_R(ex7.data$w.length)
 ex7.data$sigma.fr <- Phy_Sigma_FR(ex7.data$w.length)
@@ -169,23 +174,24 @@ names(CRYs.mspct)
 
 Here we approximate Figure 1.B from Banerjee et al.\ (2007).
 
-```{r}
+```{r, eval = eval_plots}
 A_as_default()
 autoplot(interpolate_wl(CRYs.mspct$CRY2_dark, 300:500))
 ```
 
-```{r}
-autoplot(CRYs.mspct[c("CRY2_dark", "CRY2_light")], range = c(300,700))
+```{r, eval = eval_plots, warning=FALSE}
+autoplot(CRYs.mspct[c("CRY2_dark", "CRY2_light")])
 ```
 
-```{r}
+```{r, eval = eval_plots, warning=FALSE}
 autoplot(CRYs.mspct[c("CRY1_dark", "CRY1_light")])
 ```
-```{r}
+
+```{r, eval = eval_plots}
 autoplot(CRYs.mspct["CRY3_dark"], range = c(300,700))
 ```
 
-```{r}
+```{r, eval = eval_plots}
 ggplot(CRYs.mspct[c("CRY1_dark", "CRY2_dark", "CRY3_dark")]) +
   geom_line(aes(linetype = spct.idx)) +
   expand_limits(x = 300)
@@ -197,12 +203,12 @@ ggplot(CRYs.mspct[c("CRY1_dark", "CRY2_dark", "CRY3_dark")]) +
 names(PHOTs.mspct)
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(PHOTs.mspct[c("PHOT1_fluo", "PHOT2_fluo")]) +
   expand_limits(x = 300)
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(PHOTs.mspct[c("PHOT1_dark", "PHOT1_light")])
 ```
 
@@ -218,14 +224,14 @@ autoplot(UVR8s.mspct)
 names(ZTLs.mspct)
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(ZTLs.mspct) +
   expand_limits(x = 300)
 ```
 
 ## Photosynthesis action spectra
 
-```{r}
+```{r, eval = eval_plots}
 photon_as_default()
 ```
 
@@ -233,7 +239,7 @@ photon_as_default()
 names(McCree_photosynthesis.mspct)
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(McCree_photosynthesis.mspct)
 ```
 
@@ -247,11 +253,11 @@ A_as_default()
 names(carotenoids.mspct)
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(carotenoids.mspct[1:4], 
          annotations = c("-", "labels", "boxes")) 
 ```
-```{r}
+```{r, eval = eval_plots}
 autoplot(carotenoids.mspct[5:length(carotenoids.mspct)], 
          annotations = c("-", "labels", "boxes")) 
 ```
@@ -266,11 +272,11 @@ A_as_default()
 names(chlorophylls.mspct)
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_b_DME")]) 
 ```
 
-```{r}
+```{r}, eval = eval_plots
 autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_a_MethOH")]) 
 ```
 
@@ -280,11 +286,11 @@ autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_a_MethOH")])
 names(chlorophylls_fluorescence.mspct)
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(chlorophylls_fluorescence.mspct[c("Chl_a_DME", "Chl_b_DME")]) 
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(chlorophylls_fluorescence.mspct[c("Chl_a_DME", "Chl_a_MethOH")]) 
 ```
 
@@ -297,18 +303,18 @@ Tfr_as_default()
 ```{r}
 names(Solidago_altissima.mspct)
 ```
-```{r}
+```{r, eval = eval_plots}
 autoplot(Solidago_altissima.mspct$lower_adax) 
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(Solidago_altissima.mspct$lower_abax) 
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(as.filter_mspct(Betula_ermanii.mspct)) 
 ```
 
-```{r}
+```{r, eval = eval_plots}
 autoplot(as.reflector_mspct(Betula_ermanii.mspct)) 
 ```

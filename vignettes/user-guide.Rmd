@@ -176,7 +176,7 @@ Here we approximate Figure 1.B from Banerjee et al.\ (2007).
 
 ```{r, eval = eval_plots}
 A_as_default()
-autoplot(interpolate_wl(CRYs.mspct$CRY2_dark, 300:500))
+autoplot(CRYs.mspct$CRY2_dark)
 ```
 
 ```{r, eval = eval_plots, warning=FALSE}
@@ -317,4 +317,14 @@ autoplot(as.filter_mspct(Betula_ermanii.mspct))
 
 ```{r, eval = eval_plots}
 autoplot(as.reflector_mspct(Betula_ermanii.mspct)) 
+```
+
+## Fluorescence of leaves
+
+```{r}
+names(leaf_fluorescence.mspct)
+```
+
+```{r, eval = eval_plots}
+autoplot(leaf_fluorescence.mspct$wheat_Fo_ex355nm)
 ```

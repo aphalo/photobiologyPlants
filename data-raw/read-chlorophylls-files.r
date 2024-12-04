@@ -103,6 +103,7 @@ chl_a_ems_MethOH.spct %>%
   clean() %>%
   normalize() %>%
   na.omit() %>%
+  thin_wl(max.wl.step = 2) %>%
   setWhatMeasured("Chlorophyll a fluorescence emission spectrum in methanol (122-ems.txt)") -> chl_a_ems_MethOH.spct
 
 file_header <- readLines("./data-raw/chlorophylls/chla-122-ems.txt", n = 15L)
@@ -125,6 +126,7 @@ chl_a_ems_DME.spct %>%
   clean() %>%
   normalize() %>%
   na.omit() %>%
+  thin_wl(max.wl.step = 2) %>%
   setWhatMeasured("Chlorophyll a fluorescence emission spectrum in di-methyl-ether (123-ems.txt)") -> chl_a_ems_DME.spct
 
 file_header <- readLines("./data-raw/chlorophylls/chla-123-ems.txt", n = 15L)
@@ -147,6 +149,7 @@ chl_b_ems_DME.spct %>%
   clean() %>%
   normalize() %>%
   na.omit() %>%
+  thin_wl(max.wl.step = 2) %>%
   setWhatMeasured("Chlorophyll b fluorescence emission spectrum in di-methyl-ether (125-ems.txt)") -> chl_b_ems_DME.spct
 
 file_header <- readLines("./data-raw/chlorophylls/chlb-125-ems.txt", n = 15L)

@@ -11,6 +11,7 @@ setResponseSpct(McCree_Amaranth.spct) %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("Action spectrum of net CO2 uptake in Amaranthus edulis Speg. var. UCD 1966 (McCree 1972).") %>%
   setHowMeasured("Net CO2 uptake measured on leaf sections after about 2 minutes equilibration time at each wavelength.") ->
   McCree_Amaranth.spct
@@ -27,6 +28,7 @@ setResponseSpct(McCree_Oat.spct) %>%
   smooth_spct(method = "supsmu") %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("Action spectrum of net CO2 uptake in Avena sativa L. var. Coronado (McCree 1972).") %>%
   setHowMeasured("Net CO2 uptake measured on detached leaf sections after about 2 to 10 minutes equilibration time at each wavelength") ->
   McCree_Oat.spct

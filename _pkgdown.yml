@@ -67,6 +67,10 @@ reference:
     contents:
     - Solidago_altissima.mspct
     - Betula_ermanii.mspct
+  - title: Fluorescence of leaves
+    desc: Data sets with fluorescence spectra of intact leaves.
+    contents:
+    - leaf_fluorescence.mspct
 
 navbar:
   structure:
@@ -76,6 +80,7 @@ navbar:
     intro:
       icon: fas fa-home fa-lg
       href: index.html
+      aria.lab: Home
     reference:
       text: Reference
       href: reference/index.html

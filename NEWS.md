@@ -1,3 +1,9 @@
+photobiologyPlants 0.5.1
+========================
+
+* Add wheat leaf fluorescence emission spectrum data.
+* Rebuild data objects with photobiology 0.11.4.
+
 photobiologyPlants 0.5.0
 ========================
 

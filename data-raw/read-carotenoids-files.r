@@ -20,6 +20,7 @@ beta_carotene.spct %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("Beta-carotene in Methanol (VCA0001SP1101)") -> beta_carotene.spct
 
 
@@ -41,6 +42,7 @@ dihydro_lycopene.spct %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("3-4 dihydro-lycopene (VCA0010SP1051)") -> dihydro_lycopene.spct
 
 getNormalized(dihydro_lycopene.spct)
@@ -60,6 +62,7 @@ lycopene.spct %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("Lycopene in Methanol (VCA0010SP1107)") -> lycopene.spct
 
 getNormalized(lycopene.spct)
@@ -79,6 +82,7 @@ lutein.spct %>%
   smooth_spct(method = "lowess", strength = 1) %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("Lutein in Methanol (VCA0016SP1108)") -> lutein.spct
 
 getNormalized(lutein.spct)
@@ -99,6 +103,7 @@ phytoene.spct %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("Phytoene (VCA1010SP1051)") -> phytoene.spct
 
 getNormalized(phytoene.spct)
@@ -119,6 +124,7 @@ phytofluene.spct %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("Phytoene (VCA1010SP1051)") -> phytofluene.spct
 
 getNormalized(phytofluene.spct)
@@ -138,6 +144,7 @@ violaxanthin.spct %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("Violaxanthin in methanol (VCA0060SP1112)") -> violaxanthin.spct
 
 getNormalized(violaxanthin.spct)
@@ -157,6 +164,7 @@ zeaxanthin.spct %>%
   clean() %>%
   interpolate_spct(length.out = 300) %>%
   normalize() %>%
+  thin_wl() %>%
   setWhatMeasured("Zeaxanthin (VCA0007SP1105)") -> zeaxanthin.spct
 
 getNormalized(zeaxanthin.spct)

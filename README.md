@@ -11,6 +11,8 @@ checks](https://badges.cranchecks.info/worst/photobiologyPlants.svg)](https://cr
 vwersion](https://aphalo.r-universe.dev/badges/photobiologyPlants)](https://aphalo.r-universe.dev/photobiologyPlants)
 [![R build
 status](https://github.com/aphalo/photobiologyPlants/workflows/R-CMD-check/badge.svg)](https://github.com/aphalo/photobiologyPlants/actions)
+[![Documentation](https://img.shields.io/badge/documentation-photobiologyPlants-informational.svg)](https://docs.r4photobiology.info/photobiologyPlants/)
+[![doi](https://img.shields.io/badge/doi-10.32614/CRAN.package.photobiologyPlants-blue.svg)](https://doi.org/10.32614/CRAN.package.photobiologyPlants)
 <!-- badges: end -->
 
 Package ‘**photobiologyPlants**’ provides pre-defined functions for

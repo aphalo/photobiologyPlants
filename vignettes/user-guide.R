@@ -80,7 +80,7 @@ names(CRYs.mspct)
 
 ## ----eval = eval_plots--------------------------------------------------------
 A_as_default()
-autoplot(interpolate_wl(CRYs.mspct$CRY2_dark, 300:500))
+autoplot(CRYs.mspct$CRY2_dark)
 
 ## ----eval = eval_plots, warning=FALSE-----------------------------------------
 autoplot(CRYs.mspct[c("CRY2_dark", "CRY2_light")])
@@ -174,4 +174,10 @@ autoplot(as.filter_mspct(Betula_ermanii.mspct))
 
 ## ----eval = eval_plots--------------------------------------------------------
 autoplot(as.reflector_mspct(Betula_ermanii.mspct)) 
+
+## -----------------------------------------------------------------------------
+names(leaf_fluorescence.mspct)
+
+## ----eval = eval_plots--------------------------------------------------------
+autoplot(leaf_fluorescence.mspct$wheat_Fo_ex355nm)
 

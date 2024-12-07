@@ -23,6 +23,7 @@ CRY1_dark.spct %>%
 
 getNormalized(CRY1_dark.spct)
 getNormalization(CRY1_dark.spct)
+summary(CRY1_dark.spct)
 autoplot(CRY1_dark.spct)
 
 CRY1_light.spct <- read.csv(file = "./data-raw/Cryptochromes/Cry1_light_30min.csv",

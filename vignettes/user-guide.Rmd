@@ -98,7 +98,7 @@ Pfr_Ptot(435)
 We can also plot Pfr:Ptot as a function of wavelength (nm) of monochromatic light. The default is to return a vector for short input vectors, and a `response_spct` object otherwise, but this can be changed through argument `spct.out`.
 
 ```{r, eval = eval_plots}
-autoplot(Pfr_Ptot(300:770), norm = NULL, unit.out = "photon",
+autoplot(Pfr_Ptot(300:770), unit.out = "photon",
          w.band = Plant_bands(),
          annotations = c("colour.guide", "labels", "boxes")) +
   labs(y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
@@ -276,7 +276,7 @@ names(chlorophylls.mspct)
 autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_b_DME")]) 
 ```
 
-```{r}, eval = eval_plots
+```{r, eval = eval_plots}
 autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_a_MethOH")]) 
 ```
 
@@ -303,6 +303,7 @@ Tfr_as_default()
 ```{r}
 names(Solidago_altissima.mspct)
 ```
+
 ```{r, eval = eval_plots}
 autoplot(Solidago_altissima.mspct$lower_adax) 
 ```

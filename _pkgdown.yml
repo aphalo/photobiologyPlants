@@ -71,6 +71,13 @@ reference:
     desc: Data sets with fluorescence spectra of intact leaves.
     contents:
     - leaf_fluorescence.mspct
+  - title: Energy and water balances
+    desc: Computations related to water vapour in air, and energy and water
+      exchange between vegetation and the atmosphere.
+    contents:
+    - water_vp_sat
+    - ET_ref
+    - net_irradiance
 
 navbar:
   structure:

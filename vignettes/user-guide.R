@@ -3,7 +3,7 @@ knitr::opts_chunk$set(fig.width=7.2, fig.height=4.3)
 
 ## ----printing-spectra, eval=TRUE, include=FALSE-------------------------------
 # library(tibble)
-options(tibble.print_max = 6, tibble.print_min = 4)
+old.options <- options(tibble.print_max = 6, tibble.print_min = 4)
 
 ## ----message=FALSE------------------------------------------------------------
 library(photobiology)
@@ -36,7 +36,7 @@ Pfr_Ptot(c(660, 735))
 Pfr_Ptot(435)
 
 ## ----eval = eval_plots--------------------------------------------------------
-autoplot(Pfr_Ptot(300:770), norm = NULL, unit.out = "photon",
+autoplot(Pfr_Ptot(300:770), unit.out = "photon",
          w.band = Plant_bands(),
          annotations = c("colour.guide", "labels", "boxes")) +
   labs(y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
@@ -147,6 +147,9 @@ names(chlorophylls.mspct)
 
 ## ----eval = eval_plots--------------------------------------------------------
 autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_b_DME")]) 
+
+## ----eval = eval_plots--------------------------------------------------------
+autoplot(chlorophylls.mspct[c("Chl_a_DME", "Chl_a_MethOH")]) 
 
 ## -----------------------------------------------------------------------------
 names(chlorophylls_fluorescence.mspct)

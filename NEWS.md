@@ -3,6 +3,8 @@ photobiologyPlants 0.5.1
 
 * Add wheat leaf fluorescence emission spectrum data.
 * Rebuild data objects with photobiology 0.11.4.
+* Functions migrated from 'photobiology' package to this package: see help for
+`water_vp_sat()`, `ET_ref()` and `net_irradiance()`.
 
 photobiologyPlants 0.5.0
 ========================

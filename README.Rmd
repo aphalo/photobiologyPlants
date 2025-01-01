@@ -28,10 +28,16 @@ relation to their effects on plants together with action spectra for
 photosynthesis and absorbance spectra for the plant photoreceptors in families
 'phytochromes', 'cryptochromes', 'zeitlupe proteins', 'phototropins' and 'UVR8s'
 which are present in plants. It also includes data sets on the optical
-properties of plant organs, photosynthesis and plant pigments, chlorophylls and
+properties of plant organs, plant pigments, chlorophylls and
 carotenoids. All data are derived from the scientific literature. Please, see
 the help pages for the different data sets for details about the primary sources
 of the data.
+
+The package also includes functions for the calculation of reference 
+evapotranspiration using different approaches, for unit conversions for water in 
+the atmosphere and for the computation of the energy balance of vegetation. 
+These functions were included in package 'photobiology' (< 0.12.0) and were
+migrated to this package.
 
 The data in this package are stored in objects of classes defined in package 
 '**photobiology**' which are mostly backwards compatible with data frames but

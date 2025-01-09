@@ -33,8 +33,7 @@
 #'   function calls to \code{water_vp_sat()} and \code{water_vp_sat_slope()}.
 #'
 #' @return A numeric vector of reference evapotranspiration estimates expressed
-#'   in mm/h for \code{ET_ref()} and \code{ET_PM()} and in mm/d for
-#'   \code{ET_ref_day()}.
+#'   in mm/h for \code{ET_ref()} and in mm/d for \code{ET_ref_day()}.
 #'
 #' @references
 #'   Allen R G, Pereira L S, Raes D, Smith M. 1998. Crop evapotranspiration:
@@ -211,7 +210,7 @@ ET_ref_day <- function(temperature,
 #' \code{lw.down.irradiance} is passed a value in W / m2 the difference is
 #' computed directly and if not an approximate value is estimated, using
 #' \code{R_rel = 0.75} which corresponds to clear sky, i.e., uncorrected for
-#' cloudiness. This is the approach to estimation is that recommended by FAO for
+#' cloudiness. This is the approach to estimation that is recommended by FAO for
 #' hourly estimates while here we use it for instantaneous or mean flux rates.
 #'
 #' @param temperature numeric vector of air temperatures (C) at 2 m height.

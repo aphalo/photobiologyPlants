@@ -55,8 +55,7 @@ function calls to \code{water_vp_sat()} and \code{water_vp_sat_slope()}.}
 }
 \value{
 A numeric vector of reference evapotranspiration estimates expressed
-  in mm/h for \code{ET_ref()} and \code{ET_PM()} and in mm/d for
-  \code{ET_ref_day()}.
+  in mm/h for \code{ET_ref()} and in mm/d for \code{ET_ref_day()}.
 }
 \description{
 Compute an estimate of reference (= potential) evapotranspiration from

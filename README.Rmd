@@ -25,19 +25,23 @@ knitr::opts_chunk$set(
 Package '**photobiologyPlants**' provides pre-defined functions for quantifying
 visible ('VIS'), near infra-red ('NIR') and ultraviolet ('UV') radiation in
 relation to their effects on plants together with action spectra for
-photosynthesis and absorbance spectra for the plant photoreceptors in families
-'phytochromes', 'cryptochromes', 'zeitlupe proteins', 'phototropins' and 'UVR8s'
-which are present in plants. It also includes data sets on the optical
-properties of plant organs, plant pigments, chlorophylls and
-carotenoids. All data are derived from the scientific literature. Please, see
-the help pages for the different data sets for details about the primary sources
-of the data.
+photosynthesis. Absorbance spectra for the plant photoreceptors in families
+'phytochromes', 'cryptochromes', 'zeitlupe proteins', 'phototropins' and
+'UVR8s' are included together with absorbance spectra for plants' "mass pigments",
+including chlorophylls, carotenoids and some other metabolites such as flavonoids.
 
-The package also includes functions for the calculation of reference 
+The package also includes data sets on the optical properties of plant organs,
+including whole-leaf reflectance, absorptance, transmittance and 
+fluorescence spectra. 
+
+All data are derived from the scientific literature. Please, see the help pages
+for the different data sets for details about the primary sources of the data.
+
+The package includes functions for the calculation of reference 
 evapotranspiration using different approaches, for unit conversions for water in 
 the atmosphere and for the computation of the energy balance of vegetation. 
-These functions were included in package 'photobiology' (< 0.12.0) and were
-migrated to this package.
+These functions were included in package 'photobiology' (< 0.12.0) and have been
+migrated to 'photobiologyPlants' (>= 0.6.0).
 
 The data in this package are stored in objects of classes defined in package 
 '**photobiology**' which are mostly backwards compatible with data frames but
@@ -148,5 +152,5 @@ citation("photobiologyPlants")
 
 ## License
 
-© 2015-2024 Pedro J. Aphalo (pedro.aphalo@helsinki.fi). Released under the GPL, version 2 or greater. This software carries no warranty of any kind.
+© 2015-2025 Pedro J. Aphalo (pedro.aphalo@helsinki.fi). Released under the GPL, version 2 or greater. This software carries no warranty of any kind.
 

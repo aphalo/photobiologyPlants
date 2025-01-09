@@ -40,7 +40,7 @@ Estimate net radiation balance expressed as a flux in W/m2. If
 \code{lw.down.irradiance} is passed a value in W / m2 the difference is
 computed directly and if not an approximate value is estimated, using
 \code{R_rel = 0.75} which corresponds to clear sky, i.e., uncorrected for
-cloudiness. This is the approach to estimation is that recommended by FAO for
+cloudiness. This is the approach to estimation that is recommended by FAO for
 hourly estimates while here we use it for instantaneous or mean flux rates.
 }
 \seealso{

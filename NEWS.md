@@ -1,4 +1,4 @@
-photobiologyPlants 0.5.1
+photobiologyPlants 0.6.0
 ========================
 
 * Add wheat leaf fluorescence emission spectrum data.

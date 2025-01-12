@@ -1,6 +1,6 @@
 #' Fluorescence emission spectra of leaves.
 #'
-#' Fluroescence spectra of whole leaves. Wheat excited with low irradiance of
+#' Fluroescence spectra of whole leaves of wheat excited with low irradiance of
 #' UVA1 radiation at 355 nm. Fluorescence state of chlorophylls equivalent to
 #' \eqn{F_0}.
 #'

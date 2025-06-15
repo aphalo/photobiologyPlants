@@ -21,11 +21,12 @@
 #'
 #' @keywords internal
 #'
-Pfr_P_ratio <- function(w.length, s.irrad=rep(1.0,length(w.length)), unit.in="energy",
-                       check.spectrum=TRUE, use.cached.mult=FALSE){
+Pfr_P_ratio <- function(w.length, s.irrad = rep(1.0,length(w.length)),
+                        unit.in = "energy",
+                        check.spectrum = TRUE, use.cached.mult = FALSE){
   # sanity check for wavelengths
   if (check.spectrum && !check_spectrum(w.length, s.irrad)) {
-    return(NA)
+    return(NA_real_)
   }
   if (unit.in == "energy") {
     s.q.irrad <- as_quantum_mol(w.length,s.irrad)

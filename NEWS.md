@@ -1,3 +1,9 @@
+photobiologyPlants 0.6.1
+========================
+
+* Add parameter `na.rm` and checks for NAs and low wavelength resolution to the 
+`Pfr_Ptot()` method for `source_spct` objects.
+
 photobiologyPlants 0.6.0
 ========================
 

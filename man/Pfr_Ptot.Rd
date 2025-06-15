@@ -13,7 +13,7 @@ Pfr_Ptot(x, ...)
 
 \method{Pfr_Ptot}{numeric}(x, spct.out = length(x) > 20, ...)
 
-\method{Pfr_Ptot}{source_spct}(x, ...)
+\method{Pfr_Ptot}{source_spct}(x, ..., na.rm = FALSE)
 }
 \arguments{
 \item{x}{an R object}
@@ -22,19 +22,31 @@ Pfr_Ptot(x, ...)
 
 \item{spct.out}{logical Flag indicating if the returned object should be of
 class \code{response_spct} instead of \code{numeric}.}
+
+\item{na.rm}{logical. If \code{TRUE} \code{link[stats]{na.omit}} is
+first called on \code{x}.}
 }
 \value{
 If \code{x} is \code{numeric}, giving wavelengths (nm), a vector of
-  numeric values giving the unitless photon ratio at each wavelength or a
+  numeric values giving the \eqn{P_{fr} / P_{tot}} at each wavelength or a
   \code{generic_spct} object with the wavelength values sorted in ascending
-  order and the corresponding \code{Pfr_Ptot} values in column
+  order and the corresponding \eqn{P_{fr} / P_{tot}} values in column
   \code{s.q.response}.
 
 If \code{x} is a \code{source_spct} object, a single numeric value
-  giving the unitless photon ratio
+  giving the \eqn{P_{fr} / P_{tot}}.
 }
 \description{
-A method implemented for objects of different classes.
+Calculate the phytochrome photoequilibrium for monochromatic light from its
+wavelength or from a spectrum expressed as spectral irradiance.
+}
+\details{
+The calculations are based on data describing the photochemical
+  constants for the plant photoreceptor phytochrome measured \emph{in vitro}
+  and available for wavelengths in the range 380 nm to 770 nm as published by
+  Mancinelli (1994). For reliable estimates of \eqn{P_{fr} / P_{tot}} from
+  spectral irradiance, the spectrum should cover all these wavelengths with
+  reasonably high wavelength resolution.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -50,6 +62,13 @@ A method implemented for objects of different classes.
 \note{
 If you use these data in a publication, please cite also the original
   source as given under references.
+}
+\examples{
+# monochromatic light
+Pfr_Ptot(620) # one wavelength in nm
+Pfr_Ptot(c(570, 600, 630, 660, 690, 735, 760)) # six wavelengths
+Pfr_Ptot(sun.spct) # spectrum of terrestrial sunligth
+
 }
 \references{
 Mancinelli, A.L. (1994) The physiology of phytochrome action. In

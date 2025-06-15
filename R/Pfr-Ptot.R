@@ -1,9 +1,23 @@
 #' Calculate phytochrome photoequilibrium
 #'
-#' A method implemented for objects of different classes.
+#' Calculate the phytochrome photoequilibrium for monochromatic light from its
+#' wavelength or from a spectrum expressed as spectral irradiance.
 #'
 #' @param x an R object
 #' @param ... not used
+#'
+#' @details The calculations are based on data describing the photochemical
+#'   constants for the plant photoreceptor phytochrome measured \emph{in vitro}
+#'   and available for wavelengths in the range 380 nm to 770 nm as published by
+#'   Mancinelli (1994). For reliable estimates of \eqn{P_{fr} / P_{tot}} from
+#'   spectral irradiance, the spectrum should cover all these wavelengths with
+#'   reasonably high wavelength resolution.
+#'
+#' @examples
+#' # monochromatic light
+#' Pfr_Ptot(620) # one wavelength in nm
+#' Pfr_Ptot(c(570, 600, 630, 660, 690, 735, 760)) # six wavelengths
+#' Pfr_Ptot(sun.spct) # spectrum of terrestrial sunligth
 #'
 #' @export
 #'
@@ -34,9 +48,9 @@ Pfr_Ptot.default <- function(x, ...) {
 #'   class \code{response_spct} instead of \code{numeric}.
 #'
 #' @return If \code{x} is \code{numeric}, giving wavelengths (nm), a vector of
-#'   numeric values giving the unitless photon ratio at each wavelength or a
+#'   numeric values giving the \eqn{P_{fr} / P_{tot}} at each wavelength or a
 #'   \code{generic_spct} object with the wavelength values sorted in ascending
-#'   order and the corresponding \code{Pfr_Ptot} values in column
+#'   order and the corresponding \eqn{P_{fr} / P_{tot}} values in column
 #'   \code{s.q.response}.
 #'
 #' @export
@@ -62,14 +76,28 @@ Pfr_Ptot.numeric <- function(x, spct.out = length(x) > 20, ...) {
 #'
 #'   Calculate phytochrome photoequilibrium from spectral (photon) irradiance
 #'
+#' @param na.rm logical. If \code{TRUE} \code{link[stats]{na.omit}} is
+#'   first called on \code{x}.
+#'
 #' @return If \code{x} is a \code{source_spct} object, a single numeric value
-#'   giving the unitless photon ratio
+#'   giving the \eqn{P_{fr} / P_{tot}}.
 #'
 #' @export
 #'
-Pfr_Ptot.source_spct <- function(x, ...) {
+Pfr_Ptot.source_spct <- function(x, ..., na.rm = FALSE) {
+  if (na.rm) {
+    x <- stats::na.omit(x)
+  }
   spct <- trim_spct(x, range = c(300, 770), verbose = FALSE)
-  e2q(spct, byref = TRUE)
+  spct <- e2q(spct, action = "replace")
+  if (anyNA(spct)) {
+    return(NA_real_)
+  }
+  if (wl_stepsize(spct)[2] > 10) {
+    # phytochrome data have steps 4 to 10 nm
+    warning("Spectrum 'x' wavelength resolution: ",
+            wl_stepsize(spct), ". Expect bad Pfr:Ptot estimate!", )
+  }
   Pfr_P_ratio(
     w.length = spct$w.length,
     s.irrad = spct$s.q.irrad,

@@ -3,6 +3,9 @@ photobiologyPlants 0.6.1
 
 * Add parameter `na.rm` and checks for NAs and low wavelength resolution to the 
 `Pfr_Ptot()` method for `source_spct` objects.
+* Methods `xPAR_irrad()` to compute extended photosynthetically active radiation
+photon irradiance in constrained (xPAR) and unconstrained (ePAR), and their
+PAR and far-red (FR) components.
 
 photobiologyPlants 0.6.0
 ========================

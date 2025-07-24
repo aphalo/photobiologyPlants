@@ -24,6 +24,10 @@ reference:
     - UVA2_UV
     - UVAlw_UV
     - UVAsw_UV
+  - title: Photon irradiances
+     desc: Convenience functions for calculation of photon irradiances.
+    contents:
+    - xPAR_irrad
   - title: Phytochromes
     desc: Data and functions related to the plant photoreceptors _phytochromes_ which mediate responses to red and far-red ligth.
     contents:

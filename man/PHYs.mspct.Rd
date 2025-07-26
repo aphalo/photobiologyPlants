@@ -10,6 +10,9 @@ A \code{generic_mspct} with one member \code{generic_spct} object
   with 49 rows and 3 numeric variables, \code{w.length}, \code{Sigma.R} and
   \code{Sigma.FR}.
 }
+\usage{
+PHYs.mspct
+}
 \description{
 A dataset containing the wavelengths at a 1 nm interval.
   Tabulated values for Sigma R and Sigma FR for Type I Phytochrome as
@@ -31,4 +34,14 @@ Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269. ISBN
 978-0-7923-2551-2 (print), 978-94-011-1884-2 (on-line).
 \doi{10.1007/978-94-011-1884-2_10}
 }
+\seealso{
+Other phytochrome-related functions and data: 
+\code{\link{Pfr_Ptot}()},
+\code{\link{Pfr_Ptot_R_FR}()},
+\code{\link{Phy_Sigma}()},
+\code{\link{Phy_Sigma_FR}()},
+\code{\link{Phy_Sigma_R}()},
+\code{\link{Phy_reaction_rates}()}
+}
+\concept{phytochrome-related functions and data}
 \keyword{datasets}

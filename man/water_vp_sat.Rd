@@ -219,3 +219,9 @@ Tetens, O., 1930. Uber einige meteorologische Begriffe.
   [Equations describing the physical properties of moist
   air](http://www.conservationphysics.org/atmcalc/atmoclc2.pdf)
 }
+\seealso{
+Other Evapotranspiration and energy balance related functions.: 
+\code{\link{ET_ref}()},
+\code{\link{net_irradiance}()}
+}
+\concept{Evapotranspiration and energy balance related functions.}

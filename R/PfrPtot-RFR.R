@@ -16,6 +16,9 @@
 #' \doi{10.1007/978-94-011-1884-2_10}
 #'
 #' @seealso \code{\link[photobiology]{q_ratio}}
+#'
+#' @family phytochrome-related functions and data
+#'
 #' @examples
 #' Pfr_Ptot_R_FR(1.15)
 #' Pfr_Ptot_R_FR(0.10)

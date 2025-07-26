@@ -9,6 +9,9 @@ A \code{filter_mspct} with three member \code{filter_spct} objects
   each with variable number of rows and 2 numeric variables, \code{w.length}
   and \code{A}
 }
+\usage{
+chlorophylls_fluorescence.mspct
+}
 \description{
 Optical absorption spectra of chlorophyll \eqn{a} in methanol and chlorophylls \eqn{a}
 and \eqn{b} in diethyl ether containing the wavelengths at 1 nm interval.
@@ -53,4 +56,11 @@ J. M. Dixon, M. Taniguchi and J. S. Lindsey "PhotochemCAD 2. A
   computer-aided design and research tool in photochemistry," Photochem.
   Photobiol., 68, 141-142, 1998.
 }
+\seealso{
+Other photosynthesis-related functions and data: 
+\code{\link{McCree_photosynthesis.mspct}},
+\code{\link{chlorophylls.mspct}},
+\code{\link{photon irradiances}}
+}
+\concept{photosynthesis-related functions and data}
 \keyword{datasets}

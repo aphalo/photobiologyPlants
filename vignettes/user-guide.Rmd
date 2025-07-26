@@ -49,10 +49,21 @@ theme_set(theme_bw())
 
 `R_FR()`, `B_G()`, `UVB_UV()`, `UVA_UV()`, `UV_PAR()`, `UVB_PAR()`, `UVA_PAR()` are convenience functions implemented using function `q_ratio()` from package
 'photobiology' and waveband definitions from package 'photobiiologyWavebands'
-with defaults as commonly used in the field of _plant photobiology_.
+with defaults as commonly used in the field of _plant photobiology_. These
+functions can be used with one or more spectra.
 
 ```{r}
 R_FR(sun.spct)
+```
+
+Here, the argument named `attr2tb` is forwarded to method `q_ratio` from 
+package 'photobiology' to copy metadata from the spectra into the returned
+data frame.
+
+```{r}
+R_FR(sun_evening.spct, 
+     std = "Smith20", 
+     attr2tb = c("when.measured" = "time.UTC", "lat" = "latitude"))
 ```
 
 ## Calculating the phytochrome photoequilibrium

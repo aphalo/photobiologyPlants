@@ -35,7 +35,7 @@
 #'   each with variable number of rows and 2 numeric variables, \code{w.length}
 #'   and \code{A}
 #'
-#' @name chlorophylls.mspct
+#' @family photosynthesis-related functions and data
 #'
 #' @references J. M. Dixon, M. Taniguchi and J. S. Lindsey "PhotochemCAD 2. A
 #' refined program with accompanying spectral databases for photochemical
@@ -59,4 +59,4 @@
 #' names(chlorophylls.mspct)
 #' getWhatMeasured(chlorophylls.mspct[[1]])
 #'
-NULL
+"chlorophylls.mspct"

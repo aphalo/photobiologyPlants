@@ -31,6 +31,8 @@
 #' @note If you use these data in a publication, please cite also the original
 #'   source as given under references.
 #'
+#' @family phytochrome-related functions and data
+#'
 Pfr_Ptot <- function(x, ...) UseMethod("Pfr_Ptot")
 
 #' @describeIn Pfr_Ptot Default for generic function

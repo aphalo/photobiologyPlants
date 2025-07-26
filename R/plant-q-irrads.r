@@ -1,4 +1,4 @@
-#' Constrained extended PAR from spectral irradiance.
+#' Constrained extended PAR from spectral irradiance
 #'
 #' Compute the constrained extended photosynthetically active radiation (xPAR)
 #' photon irradiance and its components ePAR, PAR and FR.700.750.
@@ -50,13 +50,36 @@
 #' @seealso \code{\link[photobiology]{q_irrad}} and
 #'   \code{\link[photobiologyWavebands]{PAR}}.
 #'
+#' @family photosynthesis-related functions and data
+#'
+#' @name photon irradiances
+#' @rdname photon-irradiances
+#' @concept extended PAR
+#'
 #' @export
 #' @examples
-#' xPAR_irrad(sun.spct)
-#' xPAR_irrad(sun.spct, w.band = UVA("CIE"))
-#' xPAR_irrad(sun_evening.spct)
-#' xPAR_irrad(sun_evening.mspct)
-#' xPAR_irrad(sun_evening.mspct, attr2tb = c("lon", "lat", "when.measured"))
+#' # default with a single spectrum (spectral irradiance)
+#' xPAR_irrad(sun.spct) # mol m-2 s-1
+#' xPAR_irrad(sun.spct, scale.factor = 1e6) # umol m-2 s-1
+#' xPAR_irrad(sun.spct, time.unit = "hour") # mol m-2 h-1
+#'
+#' # add irradiances for other wavebands
+#' xPAR_irrad(sun.spct, scale.factor = 1e6, w.band = UVA("CIE"))
+#'
+#' # DLI from a daily spectrum (spectral daily integral)
+#' summary(sun_daily.spct)
+#' xPAR_irrad(sun_daily.spct) # mol m-2 d-1
+#'
+#' # multiple spectra
+#' xPAR_irrad(sun_evening.spct, scale.factor = 1e6)
+#'
+#' # multiple spectra as a collection
+#' xPAR_irrad(sun_evening.mspct, scale.factor = 1e6)
+#'
+#' # copy metadata from the spectra, see help(q_irrad)
+#' xPAR_irrad(sun_evening.mspct,
+#'            scale.factor = 1e6,
+#'            attr2tb = c("lon", "lat", "when.measured"))
 #'
 #' @export
 #'
@@ -69,7 +92,7 @@ xPAR_irrad <-
            use.hinges,
            ...) UseMethod("xPAR_irrad")
 
-#' @rdname xPAR_irrad
+#' @rdname photon-irradiances
 #'
 #' @export
 #'
@@ -86,7 +109,7 @@ xPAR_irrad.default <-
   return(NA)
 }
 
-#' @rdname xPAR_irrad
+#' @rdname photon-irradiances
 #'
 #' @export
 #'
@@ -132,7 +155,7 @@ xPAR_irrad.source_spct <-
     z
   }
 
-#' @rdname xPAR_irrad
+#' @rdname photon-irradiances
 #'
 #' @param attr2tb character vector, see \code{\link[photobiology]{add_attr2tb}}
 #'   for the syntax for \code{attr2tb} passed as is to formal parameter

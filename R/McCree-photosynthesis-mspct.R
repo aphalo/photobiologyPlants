@@ -23,6 +23,8 @@
 #'   objects each with 300 rows and 2 numeric variables, \code{w.length} and
 #'   \code{s.e.response}.
 #'
+#' @family photosynthesis-related functions and data
+#'
 #' @note If you use these data in a publication, please cite also the original
 #'   source as given under references.
 #'

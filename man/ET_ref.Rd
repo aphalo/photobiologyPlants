@@ -139,6 +139,7 @@ Allen R G, Pereira L S, Raes D, Smith M. 1998. Crop evapotranspiration:
 }
 \seealso{
 Other Evapotranspiration and energy balance related functions.: 
-\code{\link{net_irradiance}()}
+\code{\link{net_irradiance}()},
+\code{\link{water_vp_sat}()}
 }
 \concept{Evapotranspiration and energy balance related functions.}

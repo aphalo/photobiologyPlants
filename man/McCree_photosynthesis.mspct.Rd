@@ -33,4 +33,11 @@ McCree, K. J. (1972) Significance of Enhancement for Calculations
   Based on the Action Spectrum for Photosynthesis. Plant Physiology, 49,
   704-706. Fig. 1, AMARANTH.
 }
+\seealso{
+Other photosynthesis-related functions and data: 
+\code{\link{chlorophylls.mspct}},
+\code{\link{chlorophylls_fluorescence.mspct}},
+\code{\link{photon irradiances}}
+}
+\concept{photosynthesis-related functions and data}
 \keyword{datasets}

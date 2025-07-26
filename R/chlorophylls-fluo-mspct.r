@@ -29,8 +29,6 @@
 #'   each with variable number of rows and 2 numeric variables, \code{w.length}
 #'   and \code{A}
 #'
-#' @name chlorophylls_fluorescence.mspct
-#'
 #' @references J. M. Dixon, M. Taniguchi and J. S. Lindsey "PhotochemCAD 2. A
 #'   refined program with accompanying spectral databases for photochemical
 #'   calculations", Photochem. Photobiol., 81, 212-213, 2005.
@@ -38,6 +36,8 @@
 #'   H. Du, R. A. Fuh, J. Li, A. Corkan, J. S. Lindsey, "PhotochemCAD: A
 #'   computer-aided design and research tool in photochemistry," Photochem.
 #'   Photobiol., 68, 141-142, 1998.
+#'
+#' @family photosynthesis-related functions and data
 #'
 #' @note If you use these data in a publication, please cite also the original
 #'   sources as given under references. For more information please visit
@@ -47,4 +47,4 @@
 #' names(chlorophylls_fluorescence.mspct)
 #' getWhatMeasured(chlorophylls_fluorescence.mspct[[1]])
 #'
-NULL
+"chlorophylls_fluorescence.mspct"

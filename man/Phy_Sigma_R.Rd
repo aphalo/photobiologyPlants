@@ -31,7 +31,12 @@ Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269. ISBN
 \doi{10.1007/978-94-011-1884-2_10}
 }
 \seealso{
-\code{\link[photobiologyPlants]{Phy_Sigma}},
-  \code{\link[photobiologyPlants]{Pfr_Ptot}} and
-  \code{\link[photobiologyPlants]{Pfr_Ptot_R_FR}}
+Other phytochrome-related functions and data: 
+\code{\link{PHYs.mspct}},
+\code{\link{Pfr_Ptot}()},
+\code{\link{Pfr_Ptot_R_FR}()},
+\code{\link{Phy_Sigma}()},
+\code{\link{Phy_Sigma_FR}()},
+\code{\link{Phy_reaction_rates}()}
 }
+\concept{phytochrome-related functions and data}

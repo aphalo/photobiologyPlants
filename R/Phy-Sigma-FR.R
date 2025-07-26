@@ -14,9 +14,8 @@
 #' 978-0-7923-2551-2 (print), 978-94-011-1884-2 (on-line).
 #' \doi{10.1007/978-94-011-1884-2_10}
 #'
-#' @seealso \code{\link[photobiologyPlants]{Phy_Sigma}},
-#'   \code{\link[photobiologyPlants]{Pfr_Ptot}} and
-#'   \code{\link[photobiologyPlants]{Pfr_Ptot_R_FR}}
+#' @family phytochrome-related functions and data
+#'
 #' @examples
 #' with(sun.spct, Phy_Sigma_FR(w.length))
 #' with(sun.spct, Phy_Sigma_FR(w.length, TRUE))

@@ -103,6 +103,7 @@
 #'   [Equations describing the physical properties of moist
 #'   air](http://www.conservationphysics.org/atmcalc/atmoclc2.pdf)
 #'
+#' @family Evapotranspiration and energy balance related functions.
 #'
 #' @export
 #'

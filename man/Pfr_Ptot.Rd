@@ -77,3 +77,13 @@ Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269. ISBN
 978-0-7923-2551-2 (print), 978-94-011-1884-2 (on-line).
 \doi{10.1007/978-94-011-1884-2_10}
 }
+\seealso{
+Other phytochrome-related functions and data: 
+\code{\link{PHYs.mspct}},
+\code{\link{Pfr_Ptot_R_FR}()},
+\code{\link{Phy_Sigma}()},
+\code{\link{Phy_Sigma_FR}()},
+\code{\link{Phy_Sigma_R}()},
+\code{\link{Phy_reaction_rates}()}
+}
+\concept{phytochrome-related functions and data}

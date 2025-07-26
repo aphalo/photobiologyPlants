@@ -45,6 +45,7 @@ hourly estimates while here we use it for instantaneous or mean flux rates.
 }
 \seealso{
 Other Evapotranspiration and energy balance related functions.: 
-\code{\link{ET_ref}()}
+\code{\link{ET_ref}()},
+\code{\link{water_vp_sat}()}
 }
 \concept{Evapotranspiration and energy balance related functions.}

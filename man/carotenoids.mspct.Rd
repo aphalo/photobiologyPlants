@@ -8,6 +8,9 @@
 A \code{filter_mspct} with eight member \code{filter_spct} objects each
   with 300 rows and 2 numeric variables, \code{w.length} and \code{A}
 }
+\usage{
+carotenoids.mspct
+}
 \description{
 A dataset containing the wavelengths at an arbitrary nm interval. Tabulated
 values for the in vitro absorbance spectrum of beta-carotene, lutein, lycopene,
@@ -29,7 +32,6 @@ If you use these data in a publication, please cite also the original
 \examples{
 names(carotenoids.mspct)
 getWhatMeasured(carotenoids.mspct[[1]])
-
 
 }
 \references{

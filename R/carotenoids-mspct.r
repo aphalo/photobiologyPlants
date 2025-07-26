@@ -17,8 +17,6 @@
 #' @format A \code{filter_mspct} with eight member \code{filter_spct} objects each
 #'   with 300 rows and 2 numeric variables, \code{w.length} and \code{A}
 #'
-#' @name carotenoids.mspct
-#'
 #' @references
 #' Watanabe K., Yasugi E. and Oshima M. "How to search the glycolipid data in
 #'   LIPIDBANK for Web: the newly developed lipid database" Japan Trend
@@ -31,5 +29,4 @@
 #' names(carotenoids.mspct)
 #' getWhatMeasured(carotenoids.mspct[[1]])
 #'
-#'
-NULL
+"carotenoids.mspct"

@@ -27,8 +27,11 @@
 #' 978-0-7923-2551-2 (print), 978-94-011-1884-2 (on-line).
 #' \doi{10.1007/978-94-011-1884-2_10}
 #'
-#' @seealso \code{\link[photobiology]{photon_ratio}} and
-#'   \code{\link[photobiology]{energy_ratio}}
+#' @seealso \code{\link[photobiology]{q_ratio}} and
+#'   \code{\link[photobiology]{e_ratio}}
+#'
+#' @family phytochrome-related functions and data
+#'
 #' @examples
 #' library(photobiology)
 #' trimmed.sun.spct <- trim_wl(sun.spct, range = c(300, 770))

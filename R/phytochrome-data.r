@@ -16,7 +16,7 @@
 #' @docType data
 #' @keywords datasets
 #'
-#' @name PHYs.mspct
+#' @family phytochrome-related functions and data
 #'
 #' @aliases phytochrome.spct
 #' @references Mancinelli, A.L. (1994) The physiology of phytochrome action. In
@@ -28,4 +28,4 @@
 #' @note If you use these data in a publication, please cite also the original
 #'   source as given under references in addition to this package.
 #'
-NULL
+"PHYs.mspct"

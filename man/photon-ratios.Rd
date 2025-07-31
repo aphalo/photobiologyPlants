@@ -241,12 +241,12 @@ in a single waveband or the sum of irradiances in two wavebands.
 }
 \details{
 These functions are convenience wrappers on calls to method
-  \code{\link[photobiology]{q_ratio}} with specific waveband definitions from
+  \code{\link[photobiology]{q_ratio}()} with specific waveband definitions from
   package \code{\link[photobiologyWavebands]{photobiologyWavebands}}. To
-  compute other photon ratios call method \code{\link[photobiology]{q_ratio}}
-  with predefined or ad hoc \code{\link[photobiology]{waveband}} definitions.
+  compute other photon ratios call method \code{\link[photobiology]{q_ratio}()}
+  with predefined or ad hoc \code{\link[photobiology]{waveband}()} definitions.
 
-  Many predefined \code{\link[photobiology]{waveband}} definitions accept a
+  Many predefined \code{\link[photobiology]{waveband}()} definitions accept a
   character string as argument to \code{std} used to select among different
   standardised and ad hoc but frequently used variations in the wavelength
   ranges. These functions for computing photon ratios forward the arguments
@@ -263,24 +263,24 @@ These functions are convenience wrappers on calls to method
 
   \tabular{lllll}{
      \strong{Function}  \tab \strong{Numerator} \tab \strong{Denominator} \tab \strong{Default} \code{std} \tab \strong{Ref.} \cr
-     \code{R_FR}  \tab \code{\link[photobiologyWavebands]{Red}(std)} \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab "Smith20" \tab 4,5,6 \cr
-     \code{R_RpFR}  \tab \code{\link[photobiologyWavebands]{Red}(std)} \tab \code{\link[photobiologyWavebands]{Red}(std)} + \code{\link[photobiologyWavebands]{Far_red}(std)} \tab "Smith20" \tab 2 \cr
-     \code{FR_RpFR}  \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab \code{\link[photobiologyWavebands]{Red}(std)} + \code{\link[photobiologyWavebands]{Far_red}(std)} \tab "Smith20" \tab 2\cr
-     \code{FR_ePAR}  \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("ePAR")} \tab "Smith20" \tab 3 \cr
-     \code{FR_PAR}  \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "Smith20" \tab 3 \cr
-     \code{B_G}   \tab \code{\link[photobiologyWavebands]{Blue}(std)} \tab \code{\link[photobiologyWavebands]{Green}(std)} \tab "Sellaro" \tab 4 \cr
-     \code{UVB_UV}  \tab \code{\link[photobiologyWavebands]{UVB}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "ISO" \tab 1,7 \cr
-     \code{UVB_UVA}  \tab \code{\link[photobiologyWavebands]{UVB}(std)} \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab "ISO" \tab 1,7 \cr
-     \code{UVA_UV}  \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "ISO" \tab 1,7 \cr
-     \code{UVAlw_UV}  \tab \code{\link[photobiologyWavebands]{UVAlw}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "plants" \tab 7,8 \cr
-     \code{UVAsw_UV}  \tab \code{\link[photobiologyWavebands]{UVAsw}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "plants" \tab 7,8\cr
-     \code{UV_PAR}  \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "ISO" \tab 1 \cr
-     \code{UVB_PAR}  \tab \code{\link[photobiologyWavebands]{UVB}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "ISO" \tab 1 \cr
-     \code{UVA_PAR}  \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "ISO" \tab 1 \cr
-     \code{UVA1_UV}  \tab \code{\link[photobiologyWavebands]{UVA1}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "CIE" \tab 1,7 \cr
-     \code{UVA2_UV}  \tab \code{\link[photobiologyWavebands]{UVA2}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "CIE" \tab 1,7 \cr
-     \code{UVA1_UVA}  \tab \code{\link[photobiologyWavebands]{UVA1}(std)} \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab "CIE" \tab 1,7 \cr
-     \code{UVA2_UVA}  \tab \code{\link[photobiologyWavebands]{UVA2}(std)} \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab "CIE" \tab 1,7 \cr
+     \code{R_FR()}  \tab \code{\link[photobiologyWavebands]{Red}(std)} \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab "Smith20" \tab 4,5,6 \cr
+     \code{R_RpFR()}  \tab \code{\link[photobiologyWavebands]{Red}(std)} \tab \code{\link[photobiologyWavebands]{Red}(std)} + \code{\link[photobiologyWavebands]{Far_red}(std)} \tab "Smith20" \tab 2 \cr
+     \code{FR_RpFR()}  \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab \code{\link[photobiologyWavebands]{Red}(std)} + \code{\link[photobiologyWavebands]{Far_red}(std)} \tab "Smith20" \tab 2\cr
+     \code{FR_ePAR()}  \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("ePAR")} \tab "Smith20" \tab 3 \cr
+     \code{FR_PAR()}  \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "Smith20" \tab 3 \cr
+     \code{B_G()}   \tab \code{\link[photobiologyWavebands]{Blue}(std)} \tab \code{\link[photobiologyWavebands]{Green}(std)} \tab "Sellaro" \tab 4 \cr
+     \code{UVB_UV()}  \tab \code{\link[photobiologyWavebands]{UVB}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "ISO" \tab 1,7 \cr
+     \code{UVB_UVA()}  \tab \code{\link[photobiologyWavebands]{UVB}(std)} \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab "ISO" \tab 1,7 \cr
+     \code{UVA_UV()}  \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "ISO" \tab 1,7 \cr
+     \code{UVAlw_UV()}  \tab \code{\link[photobiologyWavebands]{UVAlw}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "plants" \tab 7,8 \cr
+     \code{UVAsw_UV()}  \tab \code{\link[photobiologyWavebands]{UVAsw}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "plants" \tab 7,8\cr
+     \code{UV_PAR()}  \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "ISO" \tab 1 \cr
+     \code{UVB_PAR()}  \tab \code{\link[photobiologyWavebands]{UVB}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "ISO" \tab 1 \cr
+     \code{UVA_PAR()}  \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "ISO" \tab 1 \cr
+     \code{UVA1_UV()}  \tab \code{\link[photobiologyWavebands]{UVA1}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "CIE" \tab 1,7 \cr
+     \code{UVA2_UV()}  \tab \code{\link[photobiologyWavebands]{UVA2}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "CIE" \tab 1,7 \cr
+     \code{UVA1_UVA()}  \tab \code{\link[photobiologyWavebands]{UVA1}(std)} \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab "CIE" \tab 1,7 \cr
+     \code{UVA2_UVA()}  \tab \code{\link[photobiologyWavebands]{UVA2}(std)} \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab "CIE" \tab 1,7 \cr
   }
 }
 \examples{
@@ -388,11 +388,11 @@ sunlight with responsivity moderated by cryptochromes. Plant, Cell &
 Environment 43, 1513–1527. \doi{10.1111/pce.13752}.
 }
 \seealso{
-Ratios are computed with \code{\link[photobiology]{q_ratio}} with
-  \code{\link[photobiology]{waveband}} objects as input. Two "fractions": R
-  fraction \code{R_RpFR} and FR fraction \code{FR_RpFR} are computed using
-  directly \code{\link[photobiology]{q_irrad}}, which is also called by
-  \code{\link[photobiology]{q_ratio}}. In the table above the wavebands and
+Ratios are computed with \code{\link[photobiology]{q_ratio}()} with
+  \code{\link[photobiology]{waveband}()} objects as input. Two "fractions": R
+  fraction \code{R_RpFR()} and FR fraction \code{FR_RpFR()} are computed using
+  directly \code{\link[photobiology]{q_irrad}()}, which is also called by
+  \code{\link[photobiology]{q_ratio}()}. In the table above the wavebands and
   default argument for \code{std} used to compute the photon ratios in each
   of the functions are listed and linked to the respective help pages.
 }

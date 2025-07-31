@@ -29,28 +29,45 @@
 #'   channels, such as Apogee's S2-141-SS PAR-FAR sensor. This bounded extended
 #'   PAR is labelled here xPAR.
 #'
-#'   Under natural illumination and commonly used plant grow lights, a difference
-#'   between unconstrained (ePAR) and constrained (xPAR) extended PAR is very
-#'   unlikely to be observed. As xPAR cannot be computed from spectral
+#'   Under natural illumination and commonly used plant grow lights, a
+#'   difference between unconstrained (ePAR) and constrained (xPAR) extended PAR
+#'   is very unlikely to be observed. As xPAR cannot be computed from spectral
 #'   irradiance using a single waveband definition or measured with a
 #'   single-channel broadband sensor, this function can be used to check under
 #'   which conditions ePAR and xPAR irradiances differ.
 #'
-#'   Methods \code{xPAR_irrad} return four photon irradiances: ePAR (400-750 nm,
+#'   Methods \code{xPAR_irrad()} return four photon irradiances: ePAR (400-750 nm,
 #'   unconstrained), xPAR(400-750 nm, with FR contribution constrained to a
 #'   maximum of 40% of PAR), PAR (400-700 nm) and FR (700-750 nm).
 #'
-#' @return a data.frame with four numeric variables photon irradiances for
-#'   xPAR, ePAR, PAR, and the far-red with wavelength 700 to 750 nm.
-#'   expressed in \eqn{mol m^{-2} s^{-1}} if \code{scale.factor = 1}, and
-#'   possibly additional ones with metadata copied from the spectra. The
-#'   data frame has one row for each spectrum in the object passed as argument
-#'   to formal parameter \code{spct}.
+#' @return a data.frame with four numeric variables photon irradiances for xPAR,
+#'   ePAR, PAR, and the far-red with wavelength 700 to 750 nm. expressed in
+#'   \eqn{mol m^{-2} s^{-1}} if \code{scale.factor = 1}, and possibly additional
+#'   ones with metadata copied from the spectra. The data frame has one row for
+#'   each spectrum in the object passed as argument to formal parameter
+#'   \code{spct}.
 #'
-#' @seealso \code{\link[photobiology]{q_irrad}} and
-#'   \code{\link[photobiologyWavebands]{PAR}}.
+#' @seealso \code{\link[photobiology]{q_irrad}()} and
+#'   \code{\link[photobiologyWavebands]{PAR}()}.
 #'
 #' @family photosynthesis-related functions and data
+#'
+#' @references
+#' McCree KJ. 1972. Test of current definitions of photosynthetically active
+#' radiation against leaf photosynthesis data. Agricultural Meteorology 10,
+#' 443-453. \doi{10.1016/0002-1571(72)90045-3}.
+#'
+#' McCree KJ. 1976. A Rational Approach to Light Measurements in Plant Ecology.
+#' In: Smith H, ed. Commentaries in Plant Science. Oxford: Pergamon Press.
+#'
+#' Zhen S, van Iersel M, Bugbee B. 2021. Why Far-Red Photons Should Be Included
+#' in the Definition of Photosynthetic Photons and the Measurement of
+#' Horticultural Fixture Efficacy. Frontiers in Plant Science 12.
+#' \doi{10.3389/fpls.2021.693445}.
+#'
+#' Zhen S, van Iersel MW, Bugbee B. 2022. Photosynthesis in sun and
+#' shade: the surprising importance of far‐red photons. New Phytologist 236,
+#' 538–546. \doi{10.1111/nph.18375}.
 #'
 #' @name photon irradiances
 #' @rdname photon-irradiances

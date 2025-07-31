@@ -3,6 +3,10 @@
 \name{photon ratios}
 \alias{photon ratios}
 \alias{R_FR}
+\alias{FR_ePAR}
+\alias{FR_PAR}
+\alias{FR_RpFR}
+\alias{R_RpFR}
 \alias{B_G}
 \alias{UVB_UV}
 \alias{UVB_UVA}
@@ -15,40 +19,195 @@
 \alias{UVA1_UV}
 \alias{UVA2_UV}
 \alias{UVA2_UVA}
+\alias{UVA1_UVA}
 \title{Calculate photon ratios from spectral irradiance}
 \usage{
-R_FR(spct, std = "Smith20", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+R_FR(
+  spct,
+  std = "Smith20",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-B_G(spct, std = "Sellaro", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+FR_ePAR(
+  spct,
+  std = "Smith20",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVB_UV(spct, std = "ISO", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+FR_PAR(
+  spct,
+  std = "Smith20",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVB_UVA(spct, std = "ISO", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+FR_RpFR(
+  spct,
+  std = "Smith20",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVA_UV(spct, std = "ISO", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+R_RpFR(
+  spct,
+  std = "Smith20",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVAlw_UV(spct, std = "plants", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+B_G(
+  spct,
+  std = "Sellaro",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVAsw_UV(spct, std = "plants", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+UVB_UV(
+  spct,
+  std = "ISO",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UV_PAR(spct, std = "ISO", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+UVB_UVA(
+  spct,
+  std = "ISO",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVB_PAR(spct, std = "ISO", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+UVA_UV(
+  spct,
+  std = "ISO",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVA_PAR(spct, std = "ISO", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+UVAlw_UV(
+  spct,
+  std = "plants",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVA1_UV(spct, std = "CIE", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+UVAsw_UV(
+  spct,
+  std = "plants",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVA2_UV(spct, std = "CIE", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+UV_PAR(
+  spct,
+  std = "ISO",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 
-UVA2_UVA(spct, std = "CIE", use.cached.mult = FALSE, use.hinges = TRUE, ...)
+UVB_PAR(
+  spct,
+  std = "ISO",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
+
+UVA_PAR(
+  spct,
+  std = "ISO",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
+
+UVA1_UV(
+  spct,
+  std = "CIE",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
+
+UVA2_UV(
+  spct,
+  std = "CIE",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
+
+UVA2_UVA(
+  spct,
+  std = "CIE",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
+
+UVA1_UVA(
+  spct,
+  std = "CIE",
+  use.cached.mult = FALSE,
+  use.hinges = TRUE,
+  naming = "short",
+  name.tag = "[q:q]",
+  ...
+)
 }
 \arguments{
 \item{spct}{an object of class "source.spct" or an object of class
 "source.mspct" containing one of more spectra.}
 
-\item{std}{character Name of the variants of the two waveband definitions to
-use.}
+\item{std}{character Name of the variants of the waveband definitions to
+use (see table below).}
 
 \item{use.cached.mult}{logical indicating whether multiplier values should be
 cached between calls.}
@@ -56,7 +215,13 @@ cached between calls.}
 \item{use.hinges}{logical indicating whether to use hinges to reduce
 interpolation errors.}
 
-\item{...}{named arguments to be forwarded to \code{q_ratio} methods.}
+\item{naming}{character one of "long", "default", "short" or "none". Used to
+select the type of names to assign to the returned value.}
+
+\item{name.tag}{character Used to tag the name of the returned values.}
+
+\item{...}{named arguments to be forwarded to \code{q_ratio} or
+\code{q_irrad} methods.}
 }
 \value{
 When \code{spct} contains a single spectrum, a single named numeric
@@ -68,8 +233,11 @@ When \code{spct} contains a single spectrum, a single named numeric
   the ratio.
 }
 \description{
-These functions return photon ratios between two different wavebands computed
-from one or more light source spectra.
+Photon ratios used in plant photobiology to summarize difference in spectral
+composition of light. Both historical, current and recently proposed photon
+ratios are implemented. The denominator is always a photon (= quantum)
+irradiance for a single waveband. The denominator is the irradiance either
+in a single waveband or the sum of irradiances in two wavebands.
 }
 \details{
 These functions are convenience wrappers on calls to method
@@ -78,26 +246,86 @@ These functions are convenience wrappers on calls to method
   compute other photon ratios call method \code{\link[photobiology]{q_ratio}}
   with predefined or ad hoc \code{\link[photobiology]{waveband}} definitions.
 
-  The returned value is the ratio between two photon irradiances (or two
-  photon fluence values) each integrated over the range of wavelengths in a
-  waveband definition, which can differ in wavelength extent. Some ratios
+  Many predefined \code{\link[photobiology]{waveband}} definitions accept a
+  character string as argument to \code{std} used to select among different
+  standardised and ad hoc but frequently used variations in the wavelength
+  ranges. These functions for computing photon ratios forward the arguments
+  received through parameter \code{std} to the parameter of the same name of
+  the different waveband constructors as listed in the table below.
+
+  The returned value is the ratio between two photon irradiances (identical
+  two photon fluence values) each integrated over the range of wavelengths in
+  a waveband definition, which can differ in wavelength extent. Some ratios
   are defined for non-overlapping ranges of wavelengths (e.g., R:FR photon
   ratio) while others are defined for overlapping ranges of wavelengths
-  (e.g., UVB:UV, which will never exceed 1 in value).
+  (e.g., UVB:UV, which will never exceed 1 in value) or for the sum of
+  irradiance in two wavelength ranges (e.g., FR:R+FR).
+
+  \tabular{lllll}{
+     \strong{Function}  \tab \strong{Numerator} \tab \strong{Denominator} \tab \strong{Default} \code{std} \tab \strong{Ref.} \cr
+     \code{R_FR}  \tab \code{\link[photobiologyWavebands]{Red}(std)} \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab "Smith20" \tab 4,5,6 \cr
+     \code{R_RpFR}  \tab \code{\link[photobiologyWavebands]{Red}(std)} \tab \code{\link[photobiologyWavebands]{Red}(std)} + \code{\link[photobiologyWavebands]{Far_red}(std)} \tab "Smith20" \tab 2 \cr
+     \code{FR_RpFR}  \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab \code{\link[photobiologyWavebands]{Red}(std)} + \code{\link[photobiologyWavebands]{Far_red}(std)} \tab "Smith20" \tab 2\cr
+     \code{FR_ePAR}  \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("ePAR")} \tab "Smith20" \tab 3 \cr
+     \code{FR_PAR}  \tab \code{\link[photobiologyWavebands]{Far_red}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "Smith20" \tab 3 \cr
+     \code{B_G}   \tab \code{\link[photobiologyWavebands]{Blue}(std)} \tab \code{\link[photobiologyWavebands]{Green}(std)} \tab "Sellaro" \tab 4 \cr
+     \code{UVB_UV}  \tab \code{\link[photobiologyWavebands]{UVB}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "ISO" \tab 1,7 \cr
+     \code{UVB_UVA}  \tab \code{\link[photobiologyWavebands]{UVB}(std)} \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab "ISO" \tab 1,7 \cr
+     \code{UVA_UV}  \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "ISO" \tab 1,7 \cr
+     \code{UVAlw_UV}  \tab \code{\link[photobiologyWavebands]{UVAlw}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "plants" \tab 7,8 \cr
+     \code{UVAsw_UV}  \tab \code{\link[photobiologyWavebands]{UVAsw}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "plants" \tab 7,8\cr
+     \code{UV_PAR}  \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "ISO" \tab 1 \cr
+     \code{UVB_PAR}  \tab \code{\link[photobiologyWavebands]{UVB}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "ISO" \tab 1 \cr
+     \code{UVA_PAR}  \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab \code{\link[photobiologyWavebands]{PAR}("McCree")} \tab "ISO" \tab 1 \cr
+     \code{UVA1_UV}  \tab \code{\link[photobiologyWavebands]{UVA1}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "CIE" \tab 1,7 \cr
+     \code{UVA2_UV}  \tab \code{\link[photobiologyWavebands]{UVA2}(std)} \tab \code{\link[photobiologyWavebands]{UV}(std)} \tab "CIE" \tab 1,7 \cr
+     \code{UVA1_UVA}  \tab \code{\link[photobiologyWavebands]{UVA1}(std)} \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab "CIE" \tab 1,7 \cr
+     \code{UVA2_UVA}  \tab \code{\link[photobiologyWavebands]{UVA2}(std)} \tab \code{\link[photobiologyWavebands]{UVA}(std)} \tab "CIE" \tab 1,7 \cr
+  }
 }
 \examples{
 # default, one spectrum
 R_FR(sun.spct)
 
+# naming
+R_FR(sun.spct, naming = "default")
+R_FR(sun.spct, naming = "none")
+R_FR(sun.spct, naming = "short")
+R_FR(sun.spct, naming = "long")
+R_FR(sun.spct, name.tag = "")
+
 # default, multiple spectra
 R_FR(sun_evening.spct)
 R_FR(sun_evening.mspct)
+R_FR(sun_evening.mspct, naming = "long")
+R_FR(sun_evening.mspct, name.tag = "")
 
 # different waveband definitions
 R_FR(sun.spct, std = "Smith10")
 R_FR(sun.spct, std = "Smith20")
 R_FR(sun.spct, std = "Sellaro")
 R_FR(sun.spct, std = "Apogee")
+R_FR(sun.spct, std = "Apogee", naming = "long")
+
+FR_ePAR(sun.spct)
+FR_ePAR(sun.spct, "Smith10")
+FR_ePAR(sun.spct, "Smith20")
+FR_ePAR(sun.spct, "Sellaro")
+
+FR_PAR(sun.spct)
+FR_PAR(sun.spct, "Smith10")
+FR_PAR(sun.spct, "Smith20")
+FR_PAR(sun.spct, "Sellaro")
+
+FR_RpFR(sun.spct)
+FR_RpFR(sun.spct, "Smith10")
+FR_RpFR(sun.spct, "Smith20")
+FR_RpFR(sun.spct, "Sellaro")
+
+R_RpFR(sun.spct)
+R_RpFR(sun.spct, "Smith10")
+R_RpFR(sun.spct, "Smith20")
+R_RpFR(sun.spct, "Sellaro")
 
 B_G(sun.spct)
 
@@ -123,28 +351,48 @@ UVA2_UV(sun.spct)
 
 UVA2_UVA(sun.spct)
 
+UVA1_UVA(sun.spct)
+
+}
+\references{
+[1] Aphalo PJ, Albert A, Björn LO, McLeod AR, Robson TM, Rosenqvist E (Eds.).
+2012. Beyond the Visible: A handbook of best practice in plant UV
+photobiology. Helsinki: University of Helsinki, Department of Biosciences,
+Division of Plant Biology. \doi{10.31885/9789521083631}.
+
+[2] Kusuma P, Bugbee B. 2021. Improving the Predictive Value of Phytochrome
+Photoequilibrium: Consideration of Spectral Distortion Within a Leaf.
+Frontiers in Plant Science 12. \doi{10.3389/fpls.2021.596943}.
+
+[3] Kusuma P, Bugbee B. 2021. Far-red Fraction: An Improved Metric for
+Characterizing Phytochrome Effects on Morphology. Journal of the American
+Society for Horticultural Science 146, 3–13. \doi{10.21273/jashs05002-20}.
+
+[4] Sellaro R, Crepy M, Trupkin SA, Karayekov E, Buchovsky AS, Rossi C, Casal
+JJ. 2010. Cryptochrome as a sensor of the blue / green ratio of natural
+radiation in Arabidopsis. Plant Physiology 154, 401–409.
+\doi{10.1104/pp.110.160820}.
+
+[5] Smith H. 1981. Plants and the Daylight Spectrum. London: Academic Press.
+
+[6] Smith H, Holmes MG. 1984. Techniques in Photomorphogenesis. London:
+Academic Press.
+
+[7] Rai N, Morales LO, Aphalo PJ. 2021. Perception of solar UV radiation by
+plants: photoreceptors and mechanisms. Plant Physiology 186, 1382–1396.
+\doi{10.1093/plphys/kiab162}.
+
+[8] Rai N, Farkas AOD, Safronov O, et al. 2020. The photoreceptor UVR8
+mediates the perception of both UV-B and UV-A wavelengths up to 350 nm of
+sunlight with responsivity moderated by cryptochromes. Plant, Cell &
+Environment 43, 1513–1527. \doi{10.1111/pce.13752}.
 }
 \seealso{
 Ratios are computed with \code{\link[photobiology]{q_ratio}} with
-  \code{\link[photobiology]{waveband}} objects as input. In the table below
-  the wavebands and default for \code{std} used to compute the photon ratios
-  in each of the functions are listed and linked to the respective help
-  pages.
-
-  \tabular{llll}{
-     \strong{Function}  \tab \strong{Numerator} \tab \strong{Denominator} \tab \strong{Default} \code{std} \cr
-     \code{R_FR}  \tab \code{\link[photobiologyWavebands]{Red}} \tab \code{\link[photobiologyWavebands]{Far_red}} \tab "Smith20" \cr
-     \code{B_G}   \tab \code{\link[photobiologyWavebands]{Blue}} \tab \code{\link[photobiologyWavebands]{Green}} \tab "Sellaro" \cr
-     \code{UVB_UV}  \tab \code{\link[photobiologyWavebands]{UVB}} \tab \code{\link[photobiologyWavebands]{UV}} \tab "ISO" \cr
-     \code{UVB_UVA}  \tab \code{\link[photobiologyWavebands]{UVB}} \tab \code{\link[photobiologyWavebands]{UVA}} \tab "ISO" \cr
-     \code{UVA_UV}  \tab \code{\link[photobiologyWavebands]{UVA}} \tab \code{\link[photobiologyWavebands]{UV}} \tab "ISO" \cr
-     \code{UVAlw_UV}  \tab \code{\link[photobiologyWavebands]{UVAlw}} \tab \code{\link[photobiologyWavebands]{UV}} \tab "plants" \cr
-     \code{UVAsw_UV}  \tab \code{\link[photobiologyWavebands]{UVAsw}} \tab \code{\link[photobiologyWavebands]{UV}} \tab "plants" \cr
-     \code{UV_PAR}  \tab \code{\link[photobiologyWavebands]{UV}} \tab \code{\link[photobiologyWavebands]{PAR}} \tab "ISO" \cr
-     \code{UVB_PAR}  \tab \code{\link[photobiologyWavebands]{UVB}} \tab \code{\link[photobiologyWavebands]{PAR}} \tab "ISO" \cr
-     \code{UVA_PAR}  \tab \code{\link[photobiologyWavebands]{UVA}} \tab \code{\link[photobiologyWavebands]{PAR}} \tab "ISO" \cr
-     \code{UVA1_UV}  \tab \code{\link[photobiologyWavebands]{UVA1}} \tab \code{\link[photobiologyWavebands]{UV}} \tab "CIE" \cr
-     \code{UVA2_UV}  \tab \code{\link[photobiologyWavebands]{UVA2}} \tab \code{\link[photobiologyWavebands]{UV}} \tab "CIE" \cr
-     \code{UVA2_UVA}  \tab \code{\link[photobiologyWavebands]{UVA2}} \tab \code{\link[photobiologyWavebands]{UVA}} \tab "CIE" \cr
-  }
+  \code{\link[photobiology]{waveband}} objects as input. Two "fractions": R
+  fraction \code{R_RpFR} and FR fraction \code{FR_RpFR} are computed using
+  directly \code{\link[photobiology]{q_irrad}}, which is also called by
+  \code{\link[photobiology]{q_ratio}}. In the table above the wavebands and
+  default argument for \code{std} used to compute the photon ratios in each
+  of the functions are listed and linked to the respective help pages.
 }

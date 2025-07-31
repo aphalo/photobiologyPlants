@@ -47,10 +47,12 @@ theme_set(theme_bw())
 
 ## Photon ratios relevant to plants
 
-`R_FR()`, `B_G()`, `UVB_UV()`, `UVA_UV()`, `UV_PAR()`, `UVB_PAR()`, `UVA_PAR()` are convenience functions implemented using function `q_ratio()` from package
-'photobiology' and waveband definitions from package 'photobiiologyWavebands'
-with defaults as commonly used in the field of _plant photobiology_. These
-functions can be used with one or more spectra.
+`R_FR()` and other functions for computing photon ratios are convenience 
+functions implemented using function `q_ratio()` and `q_irrad()` from package
+'photobiology' and waveband definitions from package 'photobiologyWavebands'
+with defaults arguments to parameter `std` for wavelength ranges commonly used 
+in the field of _plant photobiology_. These functions can be used with one or 
+more spectra as argument.
 
 ```{r}
 R_FR(sun.spct)

@@ -16,13 +16,13 @@ VignetteBuilder: knitr
 Depends:
     R (>= 4.0.0),
     photobiology (>= 0.13.2),
-    photobiologyWavebands (>= 0.5.2)
+    photobiologyWavebands (>= 0.5.3)
 Suggests:
-    knitr (>= 1.45),
-    rmarkdown (>= 2.26),
-    ggplot2 (>= 3.4.0),
-    ggspectra (>= 0.3.12),
-    testthat (>= 2.0.0)
+    knitr (>= 1.50),
+    rmarkdown (>= 2.29),
+    ggplot2 (>= 3.5.0),
+    ggspectra (>= 0.3.16),
+    testthat (>= 3.2.3)
 LazyLoad: yes
 LazyData: yes
 ByteCompile: true

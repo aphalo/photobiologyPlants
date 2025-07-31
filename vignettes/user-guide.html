@@ -12,7 +12,7 @@
 
 <meta name="author" content="Pedro J. Aphalo" />
 
-<meta name="date" content="2025-07-26" />
+<meta name="date" content="2025-08-01" />
 
 <title>User Guide</title>
 
@@ -341,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1 class="title toc-ignore">User Guide</h1>
 <h3 class="subtitle">Package ‘photobiologyPlants’ 0.6.1</h3>
 <h4 class="author">Pedro J. Aphalo</h4>
-<h4 class="date">2025-07-26</h4>
+<h4 class="date">2025-08-01</h4>
 
 
 <div id="TOC">
@@ -402,16 +402,17 @@ on its availability.</p>
 </div>
 <div id="photon-ratios-relevant-to-plants" class="section level2">
 <h2>Photon ratios relevant to plants</h2>
-<p><code>R_FR()</code>, <code>B_G()</code>, <code>UVB_UV()</code>,
-<code>UVA_UV()</code>, <code>UV_PAR()</code>, <code>UVB_PAR()</code>,
-<code>UVA_PAR()</code> are convenience functions implemented using
-function <code>q_ratio()</code> from package ‘photobiology’ and waveband
-definitions from package ‘photobiiologyWavebands’ with defaults as
-commonly used in the field of <em>plant photobiology</em>. These
-functions can be used with one or more spectra.</p>
+<p><code>R_FR()</code> and other functions for computing photon ratios
+are convenience functions implemented using function
+<code>q_ratio()</code> and <code>q_irrad()</code> from package
+‘photobiology’ and waveband definitions from package
+‘photobiologyWavebands’ with defaults arguments to parameter
+<code>std</code> for wavelength ranges commonly used in the field of
+<em>plant photobiology</em>. These functions can be used with one or
+more spectra as argument.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">R_FR</span>(sun.spct)</span></code></pre></div>
 <pre><code>## R:FR[q:q] 
-##  1.266704 
+##  1.242474 
 ## attr(,&quot;radiation.unit&quot;)
 ## [1] &quot;q:q ratio&quot;</code></pre>
 <p>Here, the argument named <code>attr2tb</code> is forwarded to method
@@ -443,7 +444,7 @@ follows.</p>
 example, for the same spectrum as above</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">R_FR</span>(sun.spct)</span></code></pre></div>
 <pre><code>## R:FR[q:q] 
-##  1.266704 
+##  1.242474 
 ## attr(,&quot;radiation.unit&quot;)
 ## [1] &quot;q:q ratio&quot;</code></pre>
 <p>which is equivalent to calculating it using package ‘photobiology’
@@ -461,13 +462,13 @@ however, is only strictly valid, for di-chromatic illumination with red
 plus far-red light.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">Pfr_Ptot_R_FR</span>(<span class="fu">R_FR</span>(sun.spct))</span></code></pre></div>
 <pre><code>## R:FR[q:q] 
-## 0.7051691</code></pre>
+## 0.7025925</code></pre>
 <p>Here we calculated the R:FR ratio from spectral data, but in practice
 one would use this function only when spectral data is not available as
 when a R plus FR sensor is used. We can see that in such a case the
 photoequilibrium calculated is only a rough approximation. For sunlight,
 in the example above when using spectral data we obtained a value of
-0.683 in contrast to 0.705 when using the R:FR photon ratio. For other
+0.683 in contrast to 0.703 when using the R:FR photon ratio. For other
 light sources differences can be much larger. Furthermore, here we used
 the true R:FR ratio calculated from the spectrum, while broad-band
 red:far-red sensors guive only an approximation, which is good for

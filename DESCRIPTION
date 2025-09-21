@@ -30,5 +30,5 @@ Encoding: UTF-8
 URL: https://docs.r4photobiology.info/photobiologyPlants/
     https://github.com/aphalo/photobiologyplants
 BugReports: https://github.com/aphalo/photobiologyplants/issues
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Config/testthat/edition: 2

@@ -270,6 +270,7 @@ names(carotenoids.mspct)
 autoplot(carotenoids.mspct[1:4], 
          annotations = c("-", "labels", "boxes")) 
 ```
+
 ```{r, eval = eval_plots}
 autoplot(carotenoids.mspct[5:length(carotenoids.mspct)], 
          annotations = c("-", "labels", "boxes")) 
@@ -370,9 +371,11 @@ Conversion of water vapour pressure to relative humidity and vice versa is based
 ```{r}
 water_vp2RH(1000, 25) # Pa and C -> RH%
 ```
+
 ```{r}
 water_vp2mvc(1000, 25) # Pa and C ->  mass per volume g m-3
 ```
+
 The reverse conversion functions are `water_RH2vp()`, `water_mvc2vp()`.
 
 If we know the actual vapour pressure we can compute at which temperature this

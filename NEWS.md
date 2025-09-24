@@ -6,8 +6,8 @@ In recent years a few new photon ratios and irradiances have been proposed to
 describe light spectra in relation to plants responses. This update adds 
 functions to easily compute them.
 
-* Track enhancements in packages 'photobiology' (>= 0.13.2) and 
-'photobiologyWavebands' (>= 0.5.2).
+* Track enhancements in packages 'photobiology' (>= 0.14.0) and 
+'photobiologyWavebands' (>= 0.5.3).
 * Add parameter `na.rm` and checks for NAs and low wavelength resolution to the 
 `Pfr_Ptot()` method for `source_spct` objects.
 * Add methods `xPAR_irrad()` to compute extended photosynthetically active 

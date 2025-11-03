@@ -4,9 +4,9 @@
 #'
 #' @param length,width numeric "Length" and "width" of the stomatal opening,
 #'   i.e., the major and minor diameters of the ellipse describing the stomatal
-#'   pore's mean cross section [\eqn{\mu m}].
+#'   pore's mean cross section [\eqn{m}].
 #' @param depth numeric The depth (or diffusion path length) of the stomatal
-#'   pore [\eqn{\mu m}].
+#'   pore [\eqn{m}].
 #' @param num numeric Number of stomata per unit area [\eqn{mm^{-2}}].
 #' @param D numeric Diffusion coefficient of the gas[\eqn{m^2\,s^{-1}}].
 #'
@@ -40,11 +40,13 @@
 #' @export
 #'
 rs_from_size <- function(length, width = length, depth, num = 1, D) {
-  if (length < 1e-3) {
-    message("Assuming 'length', 'width' and 'depth' are expressed in metres")
+  if (all(c(length, width, depth) < 1e-3)) {
     k = 1
-  } else {
+  } else if (all(c(length, width, depth) >= 1e-3)) {
+    message("Assuming 'length', 'width' and 'depth' are expressed in micrometres (um)")
     k = 1e-6
+  } else {
+    stop("Dimensions of stomata are inconsistent, metres expected.")
   }
   diameter <- (length + width) / 2 * k
   depth <- depth * k

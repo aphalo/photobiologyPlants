@@ -45,7 +45,8 @@ if (eval_plots) library(ggspectra)
 theme_set(theme_bw())
 ```
 
-## Photon ratios relevant to plants
+## Light environment
+### Photon ratios
 
 `R_FR()` and other functions for computing photon ratios are convenience 
 functions implemented using function `q_ratio()` and `q_irrad()` from package
@@ -68,7 +69,9 @@ R_FR(sun_evening.spct,
      attr2tb = c("when.measured" = "time.UTC", "lat" = "latitude"))
 ```
 
-## Calculating the phytochrome photoequilibrium
+## Photoreceptors
+
+###  Phytochromes: photoequilibrium
 
 In the examples below we use the solar spectral data included in package 'photobiology' as a data frame in object `sun.spct`. 
 
@@ -149,13 +152,13 @@ ggplot(data=ex6.data, aes(r.fr, Pfr.p)) +
 
 ```
 
-## Calculating reaction rates
+###  Phytochromes:  reaction rates
 
 ```{r}
 with(clip_wl(sun.spct, c(300,770)), Phy_reaction_rates(w.length, s.e.irrad))
 ```
 
-## Calculating the absorption cross section at given wavelengths
+### Phytochromes: absorption cross section at given wavelengths
 
 The phytochrome photoequilibrium cannot be calculated from the absorptance spectra
 of Pr and Pfr, because Pr and Pfr have different quantum yields for the
@@ -179,7 +182,7 @@ rm(ex7.data)
 ```
 
 
-## Spectral absorbance of cryptochromes
+### Cryptochromes: spectral absorbance
 
 ```{r}
 names(CRYs.mspct)
@@ -210,7 +213,7 @@ ggplot(CRYs.mspct[c("CRY1_dark", "CRY2_dark", "CRY3_dark")]) +
   expand_limits(x = 300)
 ```
 
-## Spectral absorbance of phototropins
+### Phototropins: spectral absorbance
 
 ```{r}
 names(PHOTs.mspct)
@@ -225,13 +228,13 @@ autoplot(PHOTs.mspct[c("PHOT1_fluo", "PHOT2_fluo")]) +
 autoplot(PHOTs.mspct[c("PHOT1_dark", "PHOT1_light")])
 ```
 
-## UVR8 absorbance
+### UVR8: spectral absorbance
 
 ```{r}
 autoplot(UVR8s.mspct)
 ```
 
-## Spectral absorbance of zeitloupe proteins
+### Zeitloupe proteins: spectral absorbance
 
 ```{r}
 names(ZTLs.mspct)
@@ -242,21 +245,9 @@ autoplot(ZTLs.mspct) +
   expand_limits(x = 300)
 ```
 
-## Photosynthesis action spectra
+## Mass pigments
 
-```{r, eval = eval_plots}
-photon_as_default()
-```
-
-```{r}
-names(McCree_photosynthesis.mspct)
-```
-
-```{r, eval = eval_plots}
-autoplot(McCree_photosynthesis.mspct)
-```
-
-## Carotenoids
+### Carotenoids
 
 ```{r}
 A_as_default()
@@ -276,7 +267,7 @@ autoplot(carotenoids.mspct[5:length(carotenoids.mspct)],
          annotations = c("-", "labels", "boxes")) 
 ```
 
-## Chlorophylls
+### Chlorophylls
 
 ```{r}
 A_as_default()
@@ -308,7 +299,9 @@ autoplot(chlorophylls_fluorescence.mspct[c("Chl_a_DME", "Chl_b_DME")])
 autoplot(chlorophylls_fluorescence.mspct[c("Chl_a_DME", "Chl_a_MethOH")]) 
 ```
 
-## Optical properties of leaves
+## Leaves
+
+### Optical properties
 
 ```{r}
 Tfr_as_default()
@@ -334,7 +327,7 @@ autoplot(as.filter_mspct(Betula_ermanii.mspct))
 autoplot(as.reflector_mspct(Betula_ermanii.mspct)) 
 ```
 
-## Fluorescence of leaves
+### Fluorescence: UV excited
 
 ```{r}
 names(leaf_fluorescence.mspct)
@@ -344,55 +337,81 @@ names(leaf_fluorescence.mspct)
 autoplot(leaf_fluorescence.mspct$wheat_Fo_ex355nm)
 ```
 
-## Water vapour in air
+### Photosynthesis: action spectra
 
-The functions described in this section and the following one have been migrated from package 'photobiology' (>= 0.12.0) to 'photobiologyPlants' (>= 0.6.0).
-
-Water vapour partial pressure in air depends on temperature and on whether air is in equilibrium with liquid water or ice.Not considered here, solutes in water and surface interactions also affect the equilibrium. The examples below use the default equation for the computation of saturated water vapour pressure. The default is Tetens' equation from 1930. Currently supported
-methods are `"tetens"`, modified `"magnus"`, `"wexler"` and `"goff.gratch"`.
-
-```{r}
-water_vp_sat(20) # temperature in C, partial pressure in Pa
-water_vp_sat(20) * 1e-3 # temperature in C, partial pressure in kPa
+```{r, eval = eval_plots}
+photon_as_default()
 ```
 
 ```{r}
-vp_sat.df <- data.frame(temperature = -20:100,
-                        vp.sat = c(water_vp_sat(-20:-1, over.ice = TRUE),
-                                   water_vp_sat(0:100)) * 1e-3)
-
-ggplot(vp_sat.df, aes(temperature, vp.sat)) +
-  geom_line() +
-  labs(x = "Temperature (C)", y = "Water valour pressure at saturation (kPa)")
+names(McCree_photosynthesis.mspct)
 ```
 
-Conversion of water vapour pressure to relative humidity and vice versa is based on the curve shown in the figure above.
+```{r, eval = eval_plots}
+autoplot(McCree_photosynthesis.mspct)
+```
+
+### Stomatal conductance
+
+The functions described in this section are available in 'photobiologyPlants' (>= 0.6.2).
+
+While in meteorology it is common to use stomatal resistances expressed based of
+volume, in plant sciences their expression as molar conductances is the norm.
+The conversion depends on the molar volume of air, which here is treated as an
+ideal gas. The molar volume is a function of temperature and pressure.
 
 ```{r}
-water_vp2RH(1000, 25) # Pa and C -> RH%
+1 / gs_mol2vol(0.150) # mol m-2 s-1 -> s m-2
 ```
 
 ```{r}
-water_vp2mvc(1000, 25) # Pa and C ->  mass per volume g m-3
+# mol m-2 s-1 -> s m-2
+1 / gs_mol2vol(0.150, temperature = 5, pressure = 98e3) 
 ```
 
-The reverse conversion functions are `water_RH2vp()`, `water_mvc2vp()`.
-
-If we know the actual vapour pressure we can compute at which temperature this
-pressure would the saturating (RH = 100%), or dew point.
+Stomatal conductance is directly dependent on the diffusion coefficient (D)
+which depends on the chemical species, temperature and pressure.
 
 ```{r}
-water_dp(1000) # Pa -> C 
+gs_c_from_gs_w(0.150) # mol m-2 s-1
 ```
 
-If the vapour pressure is very low, instead of dew point we have to compute the freezing point.
+Estimation of stomatal conductance from the measured size of the stomatal pore
+is challenging, both because of the difficulty in doing the measurements and
+because the equation used is based on an approximation to the real shape of
+stomata.
 
 ```{r}
-water_fp(500) # Pa -> C 
+gs_w <-
+  gs_w_from_size(length = 10e-6, # m
+                 width = 5e-6, # m
+                 depth = 20e-6, # m
+                 n = 50e6, # m^-2 (stomatal density)
+                 temperature = 30) |>  # C
+  gs_vol2mol(temperature = 30, pressure = 101e3) # C, Pa
+gs_w # for water vapour mol m-2 s-1
+gs_w * 1e3 # for water vapour mmol m-2 s-1
+gs_c_from_gs_w(gs_w) * 1e3 # for CO2 mmol m-2 s-1
 ```
-Function `water_vp_sat_slope()` can be used to compute the slope of the curve in the figure above as a function of air temperature, and function `psychrometric_constant()` to compute the psychrometric constant as a function of air temperature.
 
-## Reference evapotranspiration
+These functions rely on computation of the volumetric diffusion coefficients,
+
+```{r}
+D_water(c(0, 10, 20, 30, 40))
+D_CO2(c(0, 10, 20, 30, 40))
+```
+and the molar volume of an ideal gas.
+
+```{r}
+molar_vol(c(0, 10, 20, 30, 40))
+molar_vol(temperature = 25, pressure = c(98e3, 100e3, 102e3))
+```
+
+## Vegetation
+
+The functions described in this section have been migrated from package 'photobiology' (>= 0.12.0) to 'photobiologyPlants' (>= 0.6.0).
+
+### Reference evapotranspiration
 
 Evapotranspiration is the combined water fluxes between a vegetation canopy and the atmosphere, It is the sum of transpiration (water that evaporates inside leaves and flows through stomata) and evaporation (water that evaporated from the soil and other surfaces, including from the wet outer surfaces of plants and their leaves). Measured evapotranspiration is described as _actual evapotranspiration_ ($\mathrm{ET}$), the maximum rate of evapotranspiration of short vegetation canopy is called _reference evapotranspiration_ ($\mathrm{ET}_\mathrm{ref}$), also described as _potential evapotranspiration_ ($\mathrm{PET}$)). Potential evapotranspiration can be measured on irrigated vegetation, but can also be estimated from meteorological conditions. Supported methods are the current FAO recommended and some earlier ones still in use.
 
@@ -443,3 +462,50 @@ ggplot(ET_ref_irrad.df, aes(irrad, ET.ref)) +
 ```
 
 Function `net_irradiance()` simplifies the computation of net irradiance, needed as input for the computation of reference evapotranspiration.
+
+### Water vapour in air
+
+Water vapour partial pressure in air depends on temperature and on whether air is in equilibrium with liquid water or ice.Not considered here, solutes in water and surface interactions also affect the equilibrium. The examples below use the default equation for the computation of saturated water vapour pressure. The default is Tetens' equation from 1930. Currently supported
+methods are `"tetens"`, modified `"magnus"`, `"wexler"` and `"goff.gratch"`.
+
+```{r}
+water_vp_sat(20) # temperature in C, partial pressure in Pa
+water_vp_sat(20) * 1e-3 # temperature in C, partial pressure in kPa
+```
+
+```{r}
+vp_sat.df <- data.frame(temperature = -20:100,
+                        vp.sat = c(water_vp_sat(-20:-1, over.ice = TRUE),
+                                   water_vp_sat(0:100)) * 1e-3)
+
+ggplot(vp_sat.df, aes(temperature, vp.sat)) +
+  geom_line() +
+  labs(x = "Temperature (C)", y = "Water valour pressure at saturation (kPa)")
+```
+
+Conversion of water vapour pressure to relative humidity and vice versa is based on the curve shown in the figure above.
+
+```{r}
+water_vp2RH(1000, 25) # Pa and C -> RH%
+```
+
+```{r}
+water_vp2mvc(1000, 25) # Pa and C ->  mass per volume g m-3
+```
+
+The reverse conversion functions are `water_RH2vp()`, `water_mvc2vp()`.
+
+If we know the actual vapour pressure we can compute at which temperature this
+pressure would the saturating (RH = 100%), or dew point.
+
+```{r}
+water_dp(1000) # Pa -> C 
+```
+
+If the vapour pressure is very low, instead of dew point we have to compute the freezing point.
+
+```{r}
+water_fp(500) # Pa -> C 
+```
+Function `water_vp_sat_slope()` can be used to compute the slope of the curve in the figure above as a function of air temperature, and function `psychrometric_constant()` to compute the psychrometric constant as a function of air temperature.
+

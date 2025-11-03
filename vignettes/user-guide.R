@@ -121,15 +121,6 @@ names(ZTLs.mspct)
 autoplot(ZTLs.mspct) +
   expand_limits(x = 300)
 
-## ----eval = eval_plots--------------------------------------------------------
-photon_as_default()
-
-## -----------------------------------------------------------------------------
-names(McCree_photosynthesis.mspct)
-
-## ----eval = eval_plots--------------------------------------------------------
-autoplot(McCree_photosynthesis.mspct)
-
 ## -----------------------------------------------------------------------------
 A_as_default()
 
@@ -189,30 +180,44 @@ names(leaf_fluorescence.mspct)
 ## ----eval = eval_plots--------------------------------------------------------
 autoplot(leaf_fluorescence.mspct$wheat_Fo_ex355nm)
 
-## -----------------------------------------------------------------------------
-water_vp_sat(20) # temperature in C, partial pressure in Pa
-water_vp_sat(20) * 1e-3 # temperature in C, partial pressure in kPa
+## ----eval = eval_plots--------------------------------------------------------
+photon_as_default()
 
 ## -----------------------------------------------------------------------------
-vp_sat.df <- data.frame(temperature = -20:100,
-                        vp.sat = c(water_vp_sat(-20:-1, over.ice = TRUE),
-                                   water_vp_sat(0:100)) * 1e-3)
+names(McCree_photosynthesis.mspct)
 
-ggplot(vp_sat.df, aes(temperature, vp.sat)) +
-  geom_line() +
-  labs(x = "Temperature (C)", y = "Water valour pressure at saturation (kPa)")
+## ----eval = eval_plots--------------------------------------------------------
+autoplot(McCree_photosynthesis.mspct)
 
 ## -----------------------------------------------------------------------------
-water_vp2RH(1000, 25) # Pa and C -> RH%
+1 / gs_mol2vol(0.150) # mol m-2 s-1 -> s m-2
 
 ## -----------------------------------------------------------------------------
-water_vp2mvc(1000, 25) # Pa and C ->  mass per volume g m-3
+# mol m-2 s-1 -> s m-2
+1 / gs_mol2vol(0.150, temperature = 5, pressure = 98e3) 
 
 ## -----------------------------------------------------------------------------
-water_dp(1000) # Pa -> C 
+gs_c_from_gs_w(0.150) # mol m-2 s-1
 
 ## -----------------------------------------------------------------------------
-water_fp(500) # Pa -> C 
+gs_w <-
+  gs_w_from_size(length = 10e-6, # m
+                 width = 5e-6, # m
+                 depth = 20e-6, # m
+                 n = 50e6, # m^-2 (stomatal density)
+                 temperature = 30) |>  # C
+  gs_vol2mol(temperature = 30, pressure = 101e3) # C, Pa
+gs_w # for water vapour mol m-2 s-1
+gs_w * 1e3 # for water vapour mmol m-2 s-1
+gs_c_from_gs_w(gs_w) * 1e3 # for CO2 mmol m-2 s-1
+
+## -----------------------------------------------------------------------------
+D_water(c(0, 10, 20, 30, 40))
+D_CO2(c(0, 10, 20, 30, 40))
+
+## -----------------------------------------------------------------------------
+molar_vol(c(0, 10, 20, 30, 40))
+molar_vol(temperature = 25, pressure = c(98e3, 100e3, 102e3))
 
 ## -----------------------------------------------------------------------------
 ET_ref(temperature = 20, # C
@@ -247,4 +252,29 @@ ggplot(ET_ref_irrad.df, aes(irrad, ET.ref)) +
   geom_line() +
   labs(x = expression("Global radiation "*(W~m^{-2})),
        y = expression("Reference evapotranspiration "*(mm~h^{-1})))
+
+## -----------------------------------------------------------------------------
+water_vp_sat(20) # temperature in C, partial pressure in Pa
+water_vp_sat(20) * 1e-3 # temperature in C, partial pressure in kPa
+
+## -----------------------------------------------------------------------------
+vp_sat.df <- data.frame(temperature = -20:100,
+                        vp.sat = c(water_vp_sat(-20:-1, over.ice = TRUE),
+                                   water_vp_sat(0:100)) * 1e-3)
+
+ggplot(vp_sat.df, aes(temperature, vp.sat)) +
+  geom_line() +
+  labs(x = "Temperature (C)", y = "Water valour pressure at saturation (kPa)")
+
+## -----------------------------------------------------------------------------
+water_vp2RH(1000, 25) # Pa and C -> RH%
+
+## -----------------------------------------------------------------------------
+water_vp2mvc(1000, 25) # Pa and C ->  mass per volume g m-3
+
+## -----------------------------------------------------------------------------
+water_dp(1000) # Pa -> C 
+
+## -----------------------------------------------------------------------------
+water_fp(500) # Pa -> C 
 

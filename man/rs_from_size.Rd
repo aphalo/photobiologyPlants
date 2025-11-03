@@ -18,10 +18,10 @@ gs_c_from_size(length, width = length, depth, num = 1, temperature)
 \arguments{
 \item{length, width}{numeric "Length" and "width" of the stomatal opening,
 i.e., the major and minor diameters of the ellipse describing the stomatal
-pore's mean cross section [\eqn{\mu m}].}
+pore's mean cross section [\eqn{m}].}
 
 \item{depth}{numeric The depth (or diffusion path length) of the stomatal
-pore [\eqn{\mu m}].}
+pore [\eqn{m}].}
 
 \item{num}{numeric Number of stomata per unit area [\eqn{mm^{-2}}].}
 

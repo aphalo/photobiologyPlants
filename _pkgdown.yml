@@ -66,12 +66,16 @@ reference:
     contents:
     - leaf_fluorescence.mspct
   - title: Energy and water balances
-    desc: Computations related to water vapour in air, and energy and water
-      exchange between vegetation and the atmosphere.
+    desc: Computations related to water vapour in air, and energy, water vapour
+      and carbon dioxide exchange between vegetation and the atmosphere.
     contents:
     - water_vp_sat
     - ET_ref
     - net_irradiance
+    - D_water
+    - gs_c_from_gs_w
+    - rs_from_size
+    - molar_vol
 
 navbar:
   structure:

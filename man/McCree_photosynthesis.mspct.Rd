@@ -11,12 +11,12 @@ A \code{\link[photobiology]{response_mspct}} object with two member
   \code{s.e.response}.
 }
 \description{
-The 'classical' action spectra of K. J. McCree (1972) for
-  \emph{Amaranthus edulis} Speg. var. UCD 1966 and \emph{Avena sativa} L.
-  var. Coronado are included in this data set. Response is net \eqn{CO_2}
-  uptake measured on leaf sections umder monochromatic light. The light
-  source used was a xenon-arc lamp fitted with a monochromator. Irradiance
-  was in the range 10 to 15 \eqn{W m^{-2}}.
+The 'classical' action spectra for \emph{Amaranthus edulis}
+  Speg. var. UCD 1966, \emph{Avena sativa} L. var. Coronado (McCree 1972) and
+  Lettuce var. Great Lakes or Boston (McCree 1972a) are included in this data
+  set. Response is net \eqn{CO_2} uptake measured on leaf sections umder
+  monochromatic light. The light source used was a xenon-arc lamp fitted with
+  a monochromator. Irradiance was in the range 10 to 15 \eqn{W m^{-2}}.
 }
 \note{
 Digitised from bitmap of from the original publication.
@@ -32,6 +32,9 @@ summary(McCree_photosynthesis.mspct)
 McCree, K. J. (1972) Significance of Enhancement for Calculations
   Based on the Action Spectrum for Photosynthesis. Plant Physiology, 49,
   704-706. Fig. 1, AMARANTH.
+McCree, K. J. (1972a) The action spectrum, absorptance and quantum yield of
+photosynthesis in crop plants. Agricultural Meteorology 9, 191–216. Table III,
+species 12.
 }
 \seealso{
 Other photosynthesis-related functions and data: 

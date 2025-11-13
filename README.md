@@ -99,7 +99,7 @@ a specific location and time, included in package ‘photobiology’.
 ``` r
 R_FR(sun.spct)
 #> R:FR[q:q] 
-#>  1.266704 
+#>  1.242474 
 #> attr(,"radiation.unit")
 #> [1] "q:q ratio"
 ```

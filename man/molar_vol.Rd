@@ -21,7 +21,7 @@ Compute the molar volume of an ideal gas from temåerature and pressure.
 \details{
 The ideal gas equation, \eqn{V = R * T / P}, is used to compute the
 returned value. In the equation \eqn{R} is the gas constant
-(\eqn{8.314 m^3 Pa mol^{-1} K^{-1}}), \eqn{T} temperature expressed
+(\eqn{8.314\,m^3\,Pa\,mol^{-1}\,K^{-1}}), \eqn{T} temperature expressed
 in degrees kelvin
 and \eqn{P} the pressure expressed in pascals. The argument passed to
 \code{temperature}, expressed in \eqn{^{\circ}C}, is re-expressed in

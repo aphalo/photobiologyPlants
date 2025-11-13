@@ -1,0 +1,38 @@
+#' @references
+#' McCree, K. J. 1972. The action spectrum, absorptance and quantum yield of
+#' photosynthesis in crop plants. Agricultural Meteorology 9, 191–216. Table III,
+#' species 12.
+#'
+#' @title
+#' Action spectrum for photosynthesis of Lettuce
+#'
+#' @description
+#' One of the 'classical' action spectra of K. J. McCree (1972)
+#' Lactuca sativa L. var. Great Lakes or Boston grown in a growth was used for this data set.
+#' Response is net CO2 uptake measured in a leaf disk enclosed in a gas-exchange
+#' cuvette. At each wavelength, data were acquired after about 2 to 10
+#' minutes measurement time. The light source used was a xenon-arc lamp fitted
+#' with a monochromator. Irradiance was in the range 10 to 15 W m$^{-2}$.
+#' Irradiance was adjusted to keep the photosynthetic
+#' rate nearly the same at each wavelength.
+#'
+#' @name McCree_lettuce.spct
+#' @note Numbers are from published table at 25 nm steps, interpolated to 5 nm.
+#'
+w.length s.q.response
+350      0.15
+375      0.53
+400      0.75
+425      0.78
+450      0.75
+475      0.66
+500      0.72
+525      0.76
+550      0.86
+575      0.94
+600      1.00
+625      0.99
+650      0.94
+675      0.96
+700      0.46
+725      0.29

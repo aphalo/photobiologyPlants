@@ -10,7 +10,7 @@
 #' Implemented as interpolating splines from tabulated data.
 #'
 #' @return A numeric vector of the same length as \code{temperature} containing
-#'    diffusion coefficients expressed in \eqn{m^2 s^{-1}}. \code{NA} is
+#'    diffusion coefficients expressed in \eqn{m^2\,s^{-1}}. \code{NA} is
 #'   returned silently for off-range arguments passed to \code{temperature}.
 #'
 #' @references

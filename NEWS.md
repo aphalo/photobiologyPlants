@@ -3,13 +3,13 @@ photobiologyPlants 0.6.2
 ========================
 
 * Add functions `rs_from_size()`,  `gs_from_size()`,
-`gs_water_from_size()`  and `gs_CO2_from_size()`. These functions make it
+`gs_water_from_size()` and `gs_CO2_from_size()`. These functions make it
 possible to estimate stomatal conductance from anatomical measurements on the
 epidermis of leaves, using equations from Monteith and Unsworth (2008).
 * Add functions `gs_c_from_gs_w()`, `gs_w_from_gs_c()`, `gs_vol2mol()` and
 `gs_mol2vol()` for interconverting stomatal conductance values.
 * Add functions `D_water()`, `D_CO2()`, and `molar_vol()` for computing
-diffusion coefficients for water vapour and CO2, and the molar valume of an
+diffusion coefficients for water vapour and CO2, and the molar volume of an
 ideal gas from temperature and pressure.
   
 photobiologyPlants 0.6.1-1

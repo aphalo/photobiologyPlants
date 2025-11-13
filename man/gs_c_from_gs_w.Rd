@@ -17,7 +17,7 @@ gs_mol2vol(gs_c, temperature = 21, pressure = 101300)
 }
 \arguments{
 \item{gs_w, gs_c, gs}{numeric Stomatal conductance to water vapour and carbon
-dioxide [\eqn{m^2 s^{-1}}].}
+dioxide [\eqn{m^2\,s^{-1}}].}
 
 \item{temperature}{numeric Temperature [\eqn{^{\circ}C}], in the range -7
 to 47 \eqn{^{\circ}C}.}
@@ -26,7 +26,7 @@ to 47 \eqn{^{\circ}C}.}
 }
 \value{
 A numeric vector of stomatal conductance values expressed as
-  \eqn{m^2 s^{-1}}.
+  \eqn{m^2\,s^{-1}}.
 }
 \description{
 Convert between stomatal conductances to water vapour and carbon dioxide.

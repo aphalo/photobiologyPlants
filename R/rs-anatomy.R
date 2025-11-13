@@ -8,34 +8,70 @@
 #' @param depth numeric The depth (or diffusion path length) of the stomatal
 #'   pore [\eqn{m}].
 #' @param num numeric Number of stomata per unit area [\eqn{mm^{-2}}].
-#' @param D numeric Diffusion coefficient of the gas[\eqn{m^2\,s^{-1}}].
+#' @param D numeric Diffusion coefficient of the gas [\eqn{m^2\,s^{-1}}].
 #'
-#' @return A resistance expressed in \eqn{s m^{-1}} or a conductance
-#'   expressed in \eqn{m s^{-1}}.
+#' @details The equation for \eqn{r_s} from Monteith and Unsworth (2008):
+#'
+#' \deqn{r_s = \frac{4(l + \pi\,d / 8)}{\pi\,n\,d^2\,D}}
+#'
+#' is used to compute diffusive resistance in function \code{rs_from_size()},
+#' which can be used to obtain diffusive resistance from a known size of a
+#' pore with circular or elliptical cross section. The value of \code{D}, the
+#' diffusion should match that of water vapour or \eqn{CO_2}, and its unit
+#' of expression determines the whether the returned value is expressed as the
+#' inverse of a volume or molar flux rate.
+#'
+#' Functions \code{gs_from_size()}, \code{gs_w_from_size()} and
+#' \code{gs_c_from_size()} are convenience wrappers.
+#'
+#' @note This is an approximate computation as plant stomata have a section that
+#' varies with depth. The equation incorporates a single end correction and
+#' assumes no interference among the flows from neighbouring stomata crossing
+#' the bounday layer.
+#'
+#' @return A \code{numeric} vector of resistances expressed in \eqn{s\,m^{-1}}
+#' or \eqn{s\,mol^{-1}}, or of conductances expressed in \eqn{m\,s^{-1}} or in
+#' \eqn{mol\,m^{-2}\,s^{-1}} when the density expressed in estomata per \eqn{m^2}
+#' is passed as argument to \code{n}. With the default of \code{n = 1} the
+#' diffusive conductance per individual pore is returned expressed, e.g., for
+#' molar conductance, in \eqn{mol\,s-1}.
 #'
 #' @references
 #' Monteith, J. L. and Unsworth M. H. (2008) Principles of Environmental
 #'   Physics (3ed) Academic Press-Elsevier. ISBN: 978-0-12-505103-3. See
 #'   Section 11.4 Mass transfer through pores.
 #'
+#' @seealso Functions \code{\link{D_water}()} and \code{\link{D_CO2}()} can be
+#' used to compute the diffusion coefficients as a function of temperature. In
+#' addition function \code{\link{molar_vol}()} computes the molar volume of an
+#' ideal gas as a function of temperature and pressure. Functions
+#' \code{\link{gs_mol2vol}()} and \code{\link{gs_vol2mol}()} interconvert
+#' conductances between molar and volume bases of expression. These functions
+#' are used internally in the functions described here.
+#'
 #' @examples
 #' # a single round stomatal pore
-#' gs_from_size(length = 20, depth = 5, D = D_water(23))
+#' gs_from_size(length = 20e-6, depth = 5e-6, D = D_water(23))
+#'
 #' # a single elliptical stomatal pore
-#' gs_from_size(length = 30, width = 10, depth = 5, D = D_water(23))
-#' #
+#' gs_from_size(length = 30e-6, width = 10e-6, depth = 5e-6, D = D_water(23))
+#'
 #' # 200 circular stomatal pores per mm^2
-#' rs_from_size(length = 5,
-#'              width = 5,
-#'              depth = 10,
+#' rs_from_size(length = 5e-6,
+#'              width = 5e-6,
+#'              depth = 10-6,
 #'              num = 200e6,
 #'              D = D_water(25))
+#'
 #' # 50 elliptical stomatal pores per mm^2
-#' rs_from_size(length = 10,
-#'              width = 5,
-#'              depth = 20,
+#' rs_from_size(length = 10-6,
+#'              width = 5-6,
+#'              depth = 20e-6,
 #'              num = 50e6,
 #'              D = D_water(23))
+#'
+#' # a single round stomatal pore with dimensions in micrometers
+#' gs_from_size(length = 20, depth = 5, D = D_water(23))
 #'
 #' @export
 #'
@@ -102,13 +138,13 @@ gs_c_from_size <-
 #' @inheritParams D_water
 #' @inheritParams molar_vol
 #' @param gs_w,gs_c,gs numeric Stomatal conductance to water vapour and carbon
-#'   dioxide [\eqn{m^2 s^{-1}}].
+#'   dioxide [\eqn{m^2\,s^{-1}}].
 #'
 #' @details These conversions are based on the diffusion coefficients, both of
 #'   which are looked up based on the temperature.
 #'
 #' @return A numeric vector of stomatal conductance values expressed as
-#'   \eqn{m^2 s^{-1}}.
+#'   \eqn{m^2\,s^{-1}}.
 #'
 #' @examples
 #' # example code
@@ -168,7 +204,7 @@ gs_mol2vol <-
 #'
 #' @details The ideal gas equation, \eqn{V = R * T / P}, is used to compute the
 #' returned value. In the equation \eqn{R} is the gas constant
-#' (\eqn{8.314 m^3 Pa mol^{-1} K^{-1}}), \eqn{T} temperature expressed
+#' (\eqn{8.314\,m^3\,Pa\,mol^{-1}\,K^{-1}}), \eqn{T} temperature expressed
 #' in degrees kelvin
 #' and \eqn{P} the pressure expressed in pascals. The argument passed to
 #' \code{temperature}, expressed in \eqn{^{\circ}C}, is re-expressed in

@@ -72,12 +72,12 @@ gs_from_size(length = 30e-6, width = 10e-6, depth = 5e-6, D = D_water(23))
 # 200 circular stomatal pores per mm^2
 rs_from_size(length = 5e-6,
              width = 5e-6,
-             depth = 10-6,
+             depth = 10e-6,
              num = 200e6,
              D = D_water(25))
 
 # 50 elliptical stomatal pores per mm^2
-rs_from_size(length = 10-6,
+rs_from_size(length = 10e-6,
              width = 5-6,
              depth = 20e-6,
              num = 50e6,

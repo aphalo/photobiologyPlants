@@ -15,7 +15,7 @@ ideal gas from temperature and pressure.
 photobiologyPlants 0.6.1-1
 ==========================
 
-Depend on 'photobioogy' (>= 0.14.0) and 'ggspectra' (>= 0.3.17) to
+Depend on 'photobiology' (>= 0.14.0) and 'ggspectra' (>= 0.3.17) to
 avoid errors in vignette example and in users' code.
 
 photobiologyPlants 0.6.1

@@ -89,7 +89,7 @@ correct environment set up for computing.}
 \value{
 a data.frame with four numeric variables photon irradiances for xPAR,
   ePAR, PAR, and the far-red with wavelength 700 to 750 nm. expressed in
-  \eqn{mol m^{-2} s^{-1}} if \code{scale.factor = 1}, and possibly additional
+  \eqn{mol\,m^{-2}\,s^{-1}} if \code{scale.factor = 1}, and possibly additional
   ones with metadata copied from the spectra. The data frame has one row for
   each spectrum in the object passed as argument to formal parameter
   \code{spct}.

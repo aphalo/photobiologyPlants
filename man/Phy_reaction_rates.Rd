@@ -57,12 +57,12 @@ Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269. ISBN
 \code{\link[photobiology]{q_ratio}} and
   \code{\link[photobiology]{e_ratio}}
 
-Other phytochrome-related functions and data: 
+Other phytochrome-related functions and data:
 \code{\link{PHYs.mspct}},
-\code{\link{Pfr_Ptot}()},
-\code{\link{Pfr_Ptot_R_FR}()},
-\code{\link{Phy_Sigma}()},
-\code{\link{Phy_Sigma_FR}()},
-\code{\link{Phy_Sigma_R}()}
+\code{\link[=Pfr_Ptot]{Pfr_Ptot()}},
+\code{\link[=Pfr_Ptot_R_FR]{Pfr_Ptot_R_FR()}},
+\code{\link[=Phy_Sigma]{Phy_Sigma()}},
+\code{\link[=Phy_Sigma_FR]{Phy_Sigma_FR()}},
+\code{\link[=Phy_Sigma_R]{Phy_Sigma_R()}}
 }
 \concept{phytochrome-related functions and data}

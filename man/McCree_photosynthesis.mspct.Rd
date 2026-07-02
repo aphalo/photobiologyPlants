@@ -37,7 +37,7 @@ photosynthesis in crop plants. Agricultural Meteorology 9, 191–216. Table III,
 species 12.
 }
 \seealso{
-Other photosynthesis-related functions and data: 
+Other photosynthesis-related functions and data:
 \code{\link{chlorophylls.mspct}},
 \code{\link{chlorophylls_fluorescence.mspct}},
 \code{\link{photon irradiances}}

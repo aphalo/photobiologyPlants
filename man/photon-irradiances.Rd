@@ -171,7 +171,7 @@ shade: the surprising importance of far‐red photons. New Phytologist 236,
 \code{\link[photobiology]{q_irrad}()} and
   \code{\link[photobiologyWavebands]{PAR}()}.
 
-Other photosynthesis-related functions and data: 
+Other photosynthesis-related functions and data:
 \code{\link{McCree_photosynthesis.mspct}},
 \code{\link{chlorophylls.mspct}},
 \code{\link{chlorophylls_fluorescence.mspct}}

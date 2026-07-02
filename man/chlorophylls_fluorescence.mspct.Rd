@@ -57,7 +57,7 @@ J. M. Dixon, M. Taniguchi and J. S. Lindsey "PhotochemCAD 2. A
   Photobiol., 68, 141-142, 1998.
 }
 \seealso{
-Other photosynthesis-related functions and data: 
+Other photosynthesis-related functions and data:
 \code{\link{McCree_photosynthesis.mspct}},
 \code{\link{chlorophylls.mspct}},
 \code{\link{photon irradiances}}

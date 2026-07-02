@@ -69,7 +69,7 @@ Biophys. Acta 75, 306-311.
 Vernon, L. P. and G. R. Seely (1966) The chlorophylls.  Academic Press, NY.
 }
 \seealso{
-Other photosynthesis-related functions and data: 
+Other photosynthesis-related functions and data:
 \code{\link{McCree_photosynthesis.mspct}},
 \code{\link{chlorophylls_fluorescence.mspct}},
 \code{\link{photon irradiances}}

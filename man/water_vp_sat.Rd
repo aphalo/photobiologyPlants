@@ -220,8 +220,8 @@ Tetens, O., 1930. Uber einige meteorologische Begriffe.
   air](http://www.conservationphysics.org/atmcalc/atmoclc2.pdf)
 }
 \seealso{
-Other Evapotranspiration and energy balance related functions.: 
-\code{\link{ET_ref}()},
-\code{\link{net_irradiance}()}
+Other Evapotranspiration and energy balance related functions.:
+\code{\link[=ET_ref]{ET_ref()}},
+\code{\link[=net_irradiance]{net_irradiance()}}
 }
 \concept{Evapotranspiration and energy balance related functions.}

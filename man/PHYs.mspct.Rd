@@ -35,13 +35,13 @@ Kronenberg, eds. Kluwer Academic Publishers, Dordrecht, pp. 211-269. ISBN
 \doi{10.1007/978-94-011-1884-2_10}
 }
 \seealso{
-Other phytochrome-related functions and data: 
-\code{\link{Pfr_Ptot}()},
-\code{\link{Pfr_Ptot_R_FR}()},
-\code{\link{Phy_Sigma}()},
-\code{\link{Phy_Sigma_FR}()},
-\code{\link{Phy_Sigma_R}()},
-\code{\link{Phy_reaction_rates}()}
+Other phytochrome-related functions and data:
+\code{\link[=Pfr_Ptot]{Pfr_Ptot()}},
+\code{\link[=Pfr_Ptot_R_FR]{Pfr_Ptot_R_FR()}},
+\code{\link[=Phy_Sigma]{Phy_Sigma()}},
+\code{\link[=Phy_Sigma_FR]{Phy_Sigma_FR()}},
+\code{\link[=Phy_Sigma_R]{Phy_Sigma_R()}},
+\code{\link[=Phy_reaction_rates]{Phy_reaction_rates()}}
 }
 \concept{phytochrome-related functions and data}
 \keyword{datasets}

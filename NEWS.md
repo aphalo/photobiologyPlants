@@ -2,6 +2,9 @@
 photobiologyPlants 0.6.2
 ========================
 
+* Add function `PQ_redox_state()` and data object `PS1_PS2_k.spct` for estimation
+of the red redox state of the plastoquinone pool of photosynthesis in Arabidopsis
+with the model in Mattila et al. (2020).
 * Add functions `rs_from_size()`,  `gs_from_size()`,
 `gs_water_from_size()` and `gs_CO2_from_size()`. These functions make it
 possible to estimate stomatal conductance from anatomical measurements on the

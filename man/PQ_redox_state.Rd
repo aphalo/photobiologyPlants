@@ -4,30 +4,45 @@
 \alias{PQ_redox_state}
 \title{Redox state of the plastoquinone pool}
 \usage{
-PQ_redox_state(light.spct, coefs.spct = photobiologyPlants::PS1_PS2_k.spct)
+PQ_redox_state(
+  light.spct,
+  coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
+  w.band = photobiologyWavebands::PAR()
+)
 }
 \arguments{
-\item{light.spct}{A \code{source_spct} object.}
+\item{light.spct}{A \code{source_spct} object or a \code{source_mspct}
+object.}
 
-\item{coefs.spct}{A \code{generic_spct} object containg the coefficients of
+\item{coefs.spct}{A \code{generic_spct} object containing the coefficients of
 the fitted model. Defaults to those in Mattila et al. (2020).}
+
+\item{w.band}{A \code{waveband} object setting the waveband used for scaling
+each the spectral irradiance(s) in \code{light.spct}. Defaults to PAR as
+used in Mattila et al. (2020).}
 }
 \value{
-A numeric value.
+A numeric vector, with one value for each spectrum in the input.
 }
 \description{
-Estimate the redox state of the plastoquinone pool from spectral irradiance.
+Estimate the redox state of the plastoquinone (PQ) pool from spectral
+irradiance.
 }
 \details{
 The computations follow the procedure in Mattila et al. (2020). The
   spectrum in \code{light.spct} is re-expressed by interpolation to the
-  wavelengths from \code{coefs.spct}. If used in a publication, please, cite
-  both Mattila et al. (2020) and this R package.
+  wavelengths from \code{coefs.spct}. As in Mattila et al. (2020) the state
+  is expressed as percent of the PQ pool that is reduced. If the result of
+  the computation is used in a publication, please, cite both Mattila et al.
+  (2020) and this R package.
 }
 \examples{
 
-PQ_redox_state(sun.spct)
+PQ_redox_state(sun.spct) # PAR is default for scaling
+PQ_redox_state(sun.spct, w.band = c(370, 730)) # scaling with wavelength range
 PQ_redox_state(white_led.source_spct)
+PQ_redox_state(sun_evening.mspct)
+PQ_redox_state(sun_evening.spct)
 
 }
 \references{

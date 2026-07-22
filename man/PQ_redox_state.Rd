@@ -2,12 +2,44 @@
 % Please edit documentation in R/PQ_redox_state.R
 \name{PQ_redox_state}
 \alias{PQ_redox_state}
+\alias{PQ_redox_state.default}
+\alias{PQ_redox_state.source_spct}
+\alias{PQ_redox_state.source_mspct}
 \title{Redox state of the plastoquinone pool}
 \usage{
 PQ_redox_state(
   light.spct,
   coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
-  w.band = photobiologyWavebands::PAR()
+  w.band = photobiologyWavebands::PAR(),
+  ...
+)
+
+\method{PQ_redox_state}{default}(
+  light.spct,
+  coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
+  w.band = photobiologyWavebands::PAR(),
+  ...
+)
+
+\method{PQ_redox_state}{source_spct}(
+  light.spct,
+  coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
+  w.band = photobiologyWavebands::PAR(),
+  return.tb = !is.null(attr2tb),
+  attr2tb = NULL,
+  ...
+)
+
+\method{PQ_redox_state}{source_mspct}(
+  light.spct,
+  coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
+  w.band = photobiologyWavebands::PAR(),
+  return.tb = TRUE,
+  attr2tb = NULL,
+  idx = "spct.idx",
+  ...,
+  .parallel = FALSE,
+  .paropts = NULL
 )
 }
 \arguments{
@@ -20,6 +52,26 @@ the fitted model. Defaults to those in Mattila et al. (2020).}
 \item{w.band}{A \code{waveband} object setting the waveband used for scaling
 each the spectral irradiance(s) in \code{light.spct}. Defaults to PAR as
 used in Mattila et al. (2020).}
+
+\item{...}{currently ignored.}
+
+\item{return.tb}{logical If \code{TRUE} force return of a data frame for a
+single spectrum, to match the returned class for collections of spectra.}
+
+\item{attr2tb}{character vector, see \code{\link[photobiology]{add_attr2tb}}
+the syntax for \code{attr2tb} passed as is to formal parameter \code{col.names}.}
+
+\item{idx}{character Name of the column with the names of the members of the
+collection of spectra.}
+
+\item{.parallel}{if TRUE, apply function in parallel, using parallel backend
+provided by foreach}
+
+\item{.paropts}{a list of additional options passed into the foreach function
+when parallel computation is enabled. This is important if (for example)
+your code relies on external data or packages: use the .export and
+.packages arguments to supply them so that all cluster nodes have the
+correct environment set up for computing.}
 }
 \value{
 A numeric vector, with one value for each spectrum in the input.
@@ -40,8 +92,10 @@ The computations follow the procedure in Mattila et al. (2020). The
 
 PQ_redox_state(sun.spct) # PAR is default for scaling
 PQ_redox_state(sun.spct, w.band = c(370, 730)) # scaling with wavelength range
+PQ_redox_state(sun.spct, attr2tb = "what.measured")
 PQ_redox_state(white_led.source_spct)
 PQ_redox_state(sun_evening.mspct)
+PQ_redox_state(sun_evening.mspct, attr2tb = "when.measured")
 PQ_redox_state(sun_evening.spct)
 
 }

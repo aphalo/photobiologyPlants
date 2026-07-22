@@ -54,9 +54,11 @@ reference:
     contents:
     - carotenoids.mspct
   - title: Photosynthesis
-    desc: Data sets related to carbon fixation through photosynthesis in plants.
+    desc: Data sets and functions related to carbon fixation through photosynthesis in plants.
     contents:
     - McCree_photosynthesis.mspct
+    - PQ_redox_state
+    - PS1_PS2_k.spct
   - title: Optical properties of plants
     desc: Data sets with reflectance, transmittance and absorptance for plants and their organs.
     contents:

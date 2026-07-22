@@ -12,6 +12,20 @@
 #'   cached between calls.
 #' @param use.hinges logical indicating whether to use hinges to reduce
 #'   interpolation errors.
+#' @param return.tb logical If \code{TRUE} force return of a data frame for a
+#'   single spectrum, to match the returned class for collections of spectra.
+#' @param attr2tb character vector, see \code{\link[photobiology]{add_attr2tb}}
+#'   for the syntax for \code{attr2tb} passed as is to formal parameter
+#'   \code{col.names}.
+#' @param idx character Name of the column with the names of the members of the
+#'   collection of spectra.
+#' @param .parallel	if TRUE, apply function in parallel, using parallel backend
+#'   provided by foreach
+#' @param .paropts a list of additional options passed into the foreach function
+#'   when parallel computation is enabled. This is important if (for example)
+#'   your code relies on external data or packages: use the .export and
+#'   .packages arguments to supply them so that all cluster nodes have the
+#'   correct environment set up for computing.
 #' @param ... ignored.
 #'
 #' @details PAR is defined by a very simple biological spectral weighting
@@ -138,54 +152,53 @@ xPAR_irrad.source_spct <-
            use.cached.mult = getOption("photobiology.use.cached.mult",
                                        default = FALSE),
            use.hinges = NULL,
+           return.tb = !is.null(attr2tb),
+           attr2tb = NULL,
            ...) {
-    if (is.null(time.unit)) {
-      time.unit <- attr(spct, which = "time.unit", exact = TRUE)
+    if (return.tb || getMultipleWl(spct) > 1L) {
+      xPAR_irrad.source_mspct(spct = photobiology::subset2mspct(spct),
+                              w.band = w.band,
+                              time.unit = time.unit,
+                              scale.factor = scale.factor,
+                              use.cached.mult = use.cached.mult,
+                              use.hinges = use.hinges,
+                              attr2tb = attr2tb)
+    } else {
+      if (is.null(time.unit)) {
+        time.unit <- attr(spct, which = "time.unit", exact = TRUE)
+      }
+      if (is.waveband(w.band)) {
+        w.band <- list(w.band)
+      }
+      w.bands <- list(photobiologyWavebands::PAR("ePAR"),
+                      photobiologyWavebands::PAR(),
+                      photobiology::waveband(c(700, 750),
+                                             hinges = NULL,
+                                             wb.name = "FR.700.750"))
+      w.bands <- c(w.bands, w.band)
+      z <-
+        photobiology::q_irrad(spct = spct,
+                              w.band = w.bands,
+                              quantity = "total",
+                              time.unit = time.unit,
+                              scale.factor = scale.factor,
+                              wb.trim = "TRUE",
+                              use.hinges = use.hinges,
+                              allow.scaled = FALSE,
+                              return.tb = TRUE)
+      time.unit.attr <- attr(z, "time.unit")
+      radiation.unit.attr <- attr(z, "radiation.unit")
+      Q_xPAR <- with(z, ifelse((Q_FR.700.750 / Q_PAR) > 0.4,
+                               Q_PAR * 1.4,
+                               Q_PAR + Q_FR.700.750))
+      z <- cbind(Q_xPAR, z)
+      attr(z, "time.unit") <- time.unit.attr
+      attr(z, "radiation.unit") <- radiation.unit.attr
+      z
     }
-    if (is.waveband(w.band)) {
-      w.band <- list(w.band)
-    }
-    w.bands <- list(photobiologyWavebands::PAR("ePAR"),
-                    photobiologyWavebands::PAR(),
-                    photobiology::waveband(c(700, 750),
-                                           hinges = NULL,
-                                           wb.name = "FR.700.750"))
-    w.bands <- c(w.bands, w.band)
-    z <-
-      photobiology::q_irrad(spct = spct,
-                            w.band = w.bands,
-                            quantity = "total",
-                            time.unit = time.unit,
-                            scale.factor = scale.factor,
-                            wb.trim = "TRUE",
-                            use.hinges = use.hinges,
-                            allow.scaled = FALSE,
-                            return.tb = TRUE)
-    time.unit.attr <- attr(z, "time.unit")
-    radiation.unit.attr <- attr(z, "radiation.unit")
-    Q_xPAR <- with(z, ifelse((Q_FR.700.750 / Q_PAR) > 0.4,
-                             Q_PAR * 1.4,
-                             Q_PAR + Q_FR.700.750))
-    z <- cbind(Q_xPAR, z)
-    attr(z, "time.unit") <- time.unit.attr
-    attr(z, "radiation.unit") <- radiation.unit.attr
-    z
   }
 
 #' @rdname photon-irradiances
-#'
-#' @param attr2tb character vector, see \code{\link[photobiology]{add_attr2tb}}
-#'   for the syntax for \code{attr2tb} passed as is to formal parameter
-#'   \code{col.names}.
-#' @param idx character Name of the column with the names of the members of the
-#'   collection of spectra.
-#' @param .parallel	if TRUE, apply function in parallel, using parallel backend
-#'   provided by foreach
-#' @param .paropts a list of additional options passed into the foreach function
-#'   when parallel computation is enabled. This is important if (for example)
-#'   your code relies on external data or packages: use the .export and
-#'   .packages arguments to supply them so that all cluster nodes have the
-#'   correct environment set up for computing.
 #'
 #' @export
 #'
@@ -197,8 +210,8 @@ xPAR_irrad.source_mspct <-
            use.cached.mult = getOption("photobiology.use.cached.mult",
                                        default = FALSE),
            use.hinges = NULL,
-           ...,
            attr2tb = NULL,
+           ...,
            idx = "spct.idx",
            .parallel = FALSE,
            .paropts = NULL) {
@@ -222,7 +235,7 @@ xPAR_irrad.source_mspct <-
 
     colnames(z) <- gsub("xPAR_irrad_", "", colnames(z))
 
-    photobiology::add_attr2tb(tb = z,
+      photobiology::add_attr2tb(tb = z,
                               mspct = spct,
                               col.names = attr2tb,
                               idx = idx)

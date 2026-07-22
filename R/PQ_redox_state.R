@@ -31,6 +31,20 @@
 #' @param w.band A \code{waveband} object setting the waveband used for scaling
 #'   each the spectral irradiance(s) in \code{light.spct}. Defaults to PAR as
 #'   used in Mattila et al. (2020).
+#' @param return.tb logical If \code{TRUE} force return of a data frame for a
+#'   single spectrum, to match the returned class for collections of spectra.
+#' @param attr2tb character vector, see \code{\link[photobiology]{add_attr2tb}}
+#'  the syntax for \code{attr2tb} passed as is to formal parameter \code{col.names}.
+#' @param idx character Name of the column with the names of the members of the
+#'   collection of spectra.
+#' @param .parallel	if TRUE, apply function in parallel, using parallel backend
+#'   provided by foreach
+#' @param .paropts a list of additional options passed into the foreach function
+#'   when parallel computation is enabled. This is important if (for example)
+#'   your code relies on external data or packages: use the .export and
+#'   .packages arguments to supply them so that all cluster nodes have the
+#'   correct environment set up for computing.
+#' @param ... currently ignored.
 #'
 #' @details The computations follow the procedure in Mattila et al. (2020). The
 #'   spectrum in \code{light.spct} is re-expressed by interpolation to the
@@ -53,22 +67,49 @@
 #'
 #' PQ_redox_state(sun.spct) # PAR is default for scaling
 #' PQ_redox_state(sun.spct, w.band = c(370, 730)) # scaling with wavelength range
+#' PQ_redox_state(sun.spct, attr2tb = "what.measured")
 #' PQ_redox_state(white_led.source_spct)
 #' PQ_redox_state(sun_evening.mspct)
+#' PQ_redox_state(sun_evening.mspct, attr2tb = "when.measured")
 #' PQ_redox_state(sun_evening.spct)
 #'
 PQ_redox_state <- function(light.spct,
                            coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
-                           w.band = photobiologyWavebands::PAR()) {
-  if (is.source_spct(light.spct) && getMultipleWl(light.spct) > 1L) {
-    light.spct <- subset2mspct(light.spct)
+                           w.band = photobiologyWavebands::PAR(),
+                           ...) UseMethod("PQ_redox_state")
+
+#' @rdname PQ_redox_state
+#'
+#' @export
+#'
+PQ_redox_state.default <-
+  function(light.spct,
+           coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
+           w.band = photobiologyWavebands::PAR(),
+           ...) {
+    warning("'PQ_redox_state' is not defined for objects of class ",
+            class(light.spct)[1])
+    return(NA)
   }
-  if (is.source_mspct(light.spct)) {
-    photobiology::msaply(mspct = light.spct,
-                         .fun = PQ_redox_state,
-                         coefs.spct = coefs.spct,
-                         w.band = w.band)
-  } else {
+
+#' @rdname PQ_redox_state
+#'
+#' @export
+#'
+PQ_redox_state.source_spct <-
+  function(light.spct,
+           coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
+           w.band = photobiologyWavebands::PAR(),
+           return.tb = !is.null(attr2tb),
+           attr2tb = NULL,
+           ...) {
+
+    if (return.tb || getMultipleWl(light.spct) > 1L) {
+      PQ_redox_state(light.spct = photobiology::subset2mspct(light.spct),
+                     coefs.spct = coefs.spct,
+                     return.tb = TRUE,
+                     attr2tb = attr2tb)
+    } else {
       interpolated.spct <-
         photobiology::interpolate_spct(
           photobiology::fscale(light.spct,
@@ -76,6 +117,50 @@ PQ_redox_state <- function(light.spct,
                                w.band = w.band,
                                unit.out = "photon"),
           w.length.out = coefs.spct$w.length)
-    sum(interpolated.spct$s.q.irrad * coefs.spct$k) + 50
+      sum(interpolated.spct[["s.q.irrad"]] * coefs.spct[["k"]]) + 50
+    }
   }
-}
+
+#' @rdname PQ_redox_state
+#'
+#' @export
+#'
+PQ_redox_state.source_mspct <-
+  function(light.spct,
+           coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
+           w.band = photobiologyWavebands::PAR(),
+           return.tb = TRUE,
+           attr2tb = NULL,
+           idx = "spct.idx",
+           ...,
+           .parallel = FALSE,
+           .paropts = NULL) {
+
+    if (!return.tb & !is.null(attr2tb)) {
+      warning("Overriding 'return.tb = FALSE' as '!is.null(attr2tb)'!")
+    }
+
+    light.mspct <-
+      subset2mspct(light.spct) # expand long form spectra within collection
+
+    z <-
+      photobiology::msdply(
+        mspct = light.mspct,
+        .fun = PQ_redox_state.source_spct,
+        coefs.spct = coefs.spct,
+        w.band = w.band,
+        idx = idx,
+        col.names = "PQ_redox.state",
+        .parallel = .parallel,
+        .paropts = .paropts
+      )
+
+    if (return.tb) {
+      photobiology::add_attr2tb(tb = z,
+                                mspct = light.mspct,
+                                col.names = attr2tb,
+                                idx = idx)
+    } else {
+      z[["PQ_redox.state"]]
+    }
+  }

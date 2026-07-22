@@ -35,6 +35,8 @@ xPAR_irrad(
   scale.factor = 1,
   use.cached.mult = getOption("photobiology.use.cached.mult", default = FALSE),
   use.hinges = NULL,
+  return.tb = !is.null(attr2tb),
+  attr2tb = NULL,
   ...
 )
 
@@ -45,8 +47,8 @@ xPAR_irrad(
   scale.factor = 1,
   use.cached.mult = getOption("photobiology.use.cached.mult", default = FALSE),
   use.hinges = NULL,
-  ...,
   attr2tb = NULL,
+  ...,
   idx = "spct.idx",
   .parallel = FALSE,
   .paropts = NULL
@@ -69,6 +71,9 @@ cached between calls.}
 interpolation errors.}
 
 \item{...}{ignored.}
+
+\item{return.tb}{logical If \code{TRUE} force return of a data frame for a
+single spectrum, to match the returned class for collections of spectra.}
 
 \item{attr2tb}{character vector, see \code{\link[photobiology]{add_attr2tb}}
 for the syntax for \code{attr2tb} passed as is to formal parameter

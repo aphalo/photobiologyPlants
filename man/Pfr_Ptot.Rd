@@ -5,6 +5,7 @@
 \alias{Pfr_Ptot.default}
 \alias{Pfr_Ptot.numeric}
 \alias{Pfr_Ptot.source_spct}
+\alias{Pfr_Ptot.source_mspct}
 \title{Calculate phytochrome photoequilibrium}
 \usage{
 Pfr_Ptot(x, ...)
@@ -13,28 +14,56 @@ Pfr_Ptot(x, ...)
 
 \method{Pfr_Ptot}{numeric}(x, spct.out = length(x) > 20, ...)
 
-\method{Pfr_Ptot}{source_spct}(x, ..., na.rm = FALSE)
+\method{Pfr_Ptot}{source_spct}(x, return.tb = !is.null(attr2tb), attr2tb = NULL, ..., na.rm = FALSE)
+
+\method{Pfr_Ptot}{source_mspct}(
+  x,
+  return.tb = TRUE,
+  attr2tb = NULL,
+  ...,
+  na.rm = FALSE,
+  idx = "spct.idx",
+  .parallel = FALSE,
+  .paropts = NULL
+)
 }
 \arguments{
-\item{x}{an R object}
+\item{x}{an R object. A \code{numeric} vector}
 
-\item{...}{not used}
+\item{...}{currently ignored.}
 
 \item{spct.out}{logical Flag indicating if the returned object should be of
 class \code{response_spct} instead of \code{numeric}.}
 
-\item{na.rm}{logical. If \code{TRUE} \code{link[stats]{na.omit}} is
-first called on \code{x}.}
+\item{return.tb}{logical If \code{TRUE} force return of a data frame for a
+single spectrum, to match the returned class for collections of spectra.}
+
+\item{attr2tb}{character vector, see
+\code{\link[photobiology]{add_attr2tb}()} the syntax for \code{attr2tb}
+passed as is to formal parameter \code{col.names}.}
+
+\item{na.rm}{logical. If \code{TRUE} \code{link[stats]{na.omit}} is first
+called on \code{x}.}
+
+\item{idx}{character Name of the column with the names of the members of the
+collection of spectra.}
+
+\item{.parallel}{if TRUE, apply function in parallel, using parallel backend
+provided by foreach}
+
+\item{.paropts}{a list of additional options passed into the foreach function
+when parallel computation is enabled. This is important if (for example)
+your code relies on external data or packages: use the .export and
+.packages arguments to supply them so that all cluster nodes have the
+correct environment set up for computing.}
 }
 \value{
-If \code{x} is \code{numeric}, giving wavelengths (nm), a vector of
-  numeric values giving the \eqn{P_{fr} / P_{tot}} at each wavelength or a
-  \code{generic_spct} object with the wavelength values sorted in ascending
-  order and the corresponding \eqn{P_{fr} / P_{tot}} values in column
-  \code{s.q.response}.
-
-If \code{x} is a \code{source_spct} object, a single numeric value
-  giving the \eqn{P_{fr} / P_{tot}}.
+When input is spectral data, a numeric vector of values
+  giving the \eqn{P_{fr} / P_{tot}} or a data frame are returned, possibly
+  with attributes extracted from the spectral objects as additional
+  columns. When input is a numeric vector of wavelengths, the returned
+  object is either a numeric vector or a \code{generic_spct} object with
+  giving the \eqn{P_{fr} / P_{tot}} for each wavelength in the input.
 }
 \description{
 Calculate the phytochrome photoequilibrium for monochromatic light from its
@@ -47,18 +76,11 @@ The calculations are based on data describing the photochemical
   Mancinelli (1994). For reliable estimates of \eqn{P_{fr} / P_{tot}} from
   spectral irradiance, the spectrum should cover all these wavelengths with
   reasonably high wavelength resolution.
+
+  Two approaches are possible, using wavelength for monochromatic radiation
+  or spectral irradiance data. Spectral irradiance data are accepted either
+  as individual spectra or collections of spectra.
 }
-\section{Methods (by class)}{
-\itemize{
-\item \code{Pfr_Ptot(default)}: Default for generic function
-
-\item \code{Pfr_Ptot(numeric)}: Specialization for numeric
-
-\item \code{Pfr_Ptot(source_spct)}: Specialization for source_spct
-
-  Calculate phytochrome photoequilibrium from spectral (photon) irradiance
-
-}}
 \note{
 If you use these data in a publication, please cite also the original
   source as given under references.
@@ -67,7 +89,12 @@ If you use these data in a publication, please cite also the original
 # monochromatic light
 Pfr_Ptot(620) # one wavelength in nm
 Pfr_Ptot(c(570, 600, 630, 660, 690, 735, 760)) # six wavelengths
-Pfr_Ptot(sun.spct) # spectrum of terrestrial sunligth
+# spectral irradiance
+Pfr_Ptot(sun.spct) # one spectrum
+Pfr_Ptot(sun.spct, attr2tb = "when.measured")
+Pfr_Ptot(sun_evening.spct) # five spectra
+Pfr_Ptot(sun_evening.mspct)
+Pfr_Ptot(sun_evening.mspct, attr2tb = "when.measured")
 
 }
 \references{

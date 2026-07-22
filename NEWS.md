@@ -5,6 +5,9 @@ photobiologyPlants 0.6.2
 * Add function `PQ_redox_state()` and data object `PS1_PS2_k.spct` for estimation
 of the redox state of the plastoquinone pool of photosynthesis in Arabidopsis
 with the model in Mattila et al. (2020).
+* Add specialization of `Pfr_Ptot()` for collections of spectra.
+* Update `xPAR_irrad()` to support multiple spectra in long form and forcing
+of data frame output for a single spectrum.
 * Add functions `rs_from_size()`,  `gs_from_size()`,
 `gs_water_from_size()` and `gs_CO2_from_size()`. These functions make it
 possible to estimate stomatal conductance from anatomical measurements on the

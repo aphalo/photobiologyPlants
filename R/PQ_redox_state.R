@@ -31,6 +31,8 @@
 #' @param w.band A \code{waveband} object setting the waveband used for scaling
 #'   each the spectral irradiance(s) in \code{light.spct}. Defaults to PAR as
 #'   used in Mattila et al. (2020).
+#' @param force.to.range logical If \code{TRUE}, convert negative values into
+#'   zero.
 #' @param return.tb logical If \code{TRUE} force return of a data frame for a
 #'   single spectrum, to match the returned class for collections of spectra.
 #' @param attr2tb character vector, see \code{\link[photobiology]{add_attr2tb}}
@@ -76,6 +78,7 @@
 PQ_redox_state <- function(light.spct,
                            coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
                            w.band = photobiologyWavebands::PAR(),
+                           force.to.range = TRUE,
                            ...) UseMethod("PQ_redox_state")
 
 #' @rdname PQ_redox_state
@@ -86,6 +89,7 @@ PQ_redox_state.default <-
   function(light.spct,
            coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
            w.band = photobiologyWavebands::PAR(),
+           force.to.range = TRUE,
            ...) {
     warning("'PQ_redox_state' is not defined for objects of class ",
             class(light.spct)[1])
@@ -100,15 +104,17 @@ PQ_redox_state.source_spct <-
   function(light.spct,
            coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
            w.band = photobiologyWavebands::PAR(),
+           force.to.range = TRUE,
            return.tb = !is.null(attr2tb),
            attr2tb = NULL,
            ...) {
 
     if (return.tb || getMultipleWl(light.spct) > 1L) {
-      PQ_redox_state(light.spct = photobiology::subset2mspct(light.spct),
-                     coefs.spct = coefs.spct,
-                     return.tb = TRUE,
-                     attr2tb = attr2tb)
+      z <-
+        PQ_redox_state(light.spct = photobiology::subset2mspct(light.spct),
+                       coefs.spct = coefs.spct,
+                       return.tb = TRUE,
+                       attr2tb = attr2tb)
     } else {
       interpolated.spct <-
         photobiology::interpolate_spct(
@@ -117,8 +123,14 @@ PQ_redox_state.source_spct <-
                                w.band = w.band,
                                unit.out = "photon"),
           w.length.out = coefs.spct$w.length)
-      sum(interpolated.spct[["s.q.irrad"]] * coefs.spct[["k"]]) + 50
+      z <-
+        sum(interpolated.spct[["s.q.irrad"]] * coefs.spct[["k"]]) + 50
+      if (force.to.range) {
+        z <- ifelse(z < 0, 0, z)
+        z <- ifelse(z > 100, 100, z)
+      }
     }
+    z
   }
 
 #' @rdname PQ_redox_state
@@ -129,6 +141,7 @@ PQ_redox_state.source_mspct <-
   function(light.spct,
            coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
            w.band = photobiologyWavebands::PAR(),
+           force.to.range = TRUE,
            return.tb = TRUE,
            attr2tb = NULL,
            idx = "spct.idx",
@@ -149,6 +162,7 @@ PQ_redox_state.source_mspct <-
         .fun = PQ_redox_state.source_spct,
         coefs.spct = coefs.spct,
         w.band = w.band,
+        force.to.range = force.to.range,
         idx = idx,
         col.names = "PQ_redox.state",
         .parallel = .parallel,

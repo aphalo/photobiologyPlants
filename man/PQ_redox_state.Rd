@@ -11,6 +11,7 @@ PQ_redox_state(
   light.spct,
   coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
   w.band = photobiologyWavebands::PAR(),
+  force.to.range = TRUE,
   ...
 )
 
@@ -18,6 +19,7 @@ PQ_redox_state(
   light.spct,
   coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
   w.band = photobiologyWavebands::PAR(),
+  force.to.range = TRUE,
   ...
 )
 
@@ -25,6 +27,7 @@ PQ_redox_state(
   light.spct,
   coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
   w.band = photobiologyWavebands::PAR(),
+  force.to.range = TRUE,
   return.tb = !is.null(attr2tb),
   attr2tb = NULL,
   ...
@@ -34,6 +37,7 @@ PQ_redox_state(
   light.spct,
   coefs.spct = photobiologyPlants::PS1_PS2_k.spct,
   w.band = photobiologyWavebands::PAR(),
+  force.to.range = TRUE,
   return.tb = TRUE,
   attr2tb = NULL,
   idx = "spct.idx",
@@ -52,6 +56,9 @@ the fitted model. Defaults to those in Mattila et al. (2020).}
 \item{w.band}{A \code{waveband} object setting the waveband used for scaling
 each the spectral irradiance(s) in \code{light.spct}. Defaults to PAR as
 used in Mattila et al. (2020).}
+
+\item{force.to.range}{logical If \code{TRUE}, convert negative values into
+zero.}
 
 \item{...}{currently ignored.}
 

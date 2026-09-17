@@ -7,7 +7,7 @@
 #'   pore's mean cross section [\eqn{m}].
 #' @param depth numeric The depth (or diffusion path length) of the stomatal
 #'   pore [\eqn{m}].
-#' @param num numeric Number of stomata per unit area [\eqn{mm^{-2}}].
+#' @param num numeric Number of stomata per unit area [\eqn{m^{-2}}].
 #' @param D numeric Diffusion coefficient of the gas [\eqn{m^2\,s^{-1}}].
 #'
 #' @details The equation for \eqn{r_s} from Monteith and Unsworth (2008):
@@ -23,6 +23,11 @@
 #'
 #' Functions \code{gs_from_size()}, \code{gs_w_from_size()} and
 #' \code{gs_c_from_size()} are convenience wrappers.
+#'
+#' Arguments are expected in SI units with no scale multiplier. Enter dimensions
+#' in micrometers using scientific notation, e.g., \code{length = 20e-6} for a
+#' pore length of \eqn{20\,\mu m} and \code{n = 10e6} for a density of
+#' \eqn{10\,mm^{-2}}.
 #'
 #' @note This is an approximate computation as plant stomata have a section that
 #' varies with depth. The equation incorporates a single end correction and

@@ -55,7 +55,8 @@
 #'   the computation is used in a publication, please, cite both Mattila et al.
 #'   (2020) and this R package.
 #'
-#' @return A numeric vector, with one value for each spectrum in the input.
+#' @return A numeric vector, with one value for each spectrum in the input, or
+#'   a data frame.
 #'
 #' @export
 #'

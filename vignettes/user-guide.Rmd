@@ -24,14 +24,14 @@ old.options <- options(tibble.print_max = 6, tibble.print_min = 4)
 ## Introduction
 
 This package provides data sets and functions relevant to the photobiology of
-plants. It is part of a suite, which has package 'photobiology' at its core.
-Please visit (http://www.r4photobiology.info/) for more details. For more
-details on plotting spectra, please consult the documentation for package
-'ggspectra', and for information on the calculation of summaries and maths
-operations between spectra, please, consult the documentation for package
-'photobiology'.
+plants. It is part of a suite, which has package 'photobiology' at its core. Its
+documentation is also available on-line as a [website](https://docs.r4photobiology.info/photobiologyPlants/).
+For plotting spectra, please consult the documentation for package
+['ggspectra'](https://docs.r4photobiology.info/ggspectra/), and for information on the calculation of summaries and maths
+operations between spectra, please, consult the documentation of package
+['photobiology'](https://docs.r4photobiology.info/photobiology/).
 
-See the User Guide for packages 'photobiology' and 'ggspectra' for instructions
+See the User Guides for packages 'photobiology' and 'ggspectra' for instructions
 on how to work with spectral data. As package 'ggspectra' is only suggested, in
 this vignette it is loaded an used conditionally on its availability.
 
@@ -374,27 +374,42 @@ autoplot(McCree_photosynthesis.mspct)
 
 ### Photosynthesis: plastoquinone redox state
 
-The balance between the activation of photosystem 1 (PSI) and photosystem 2 (PSII) depends on the wavelengths of the incoming radiation as the chlorophylls in the two photosystems absorb predominantly at different wavelengths. The balance between PSI and PSII affects the redox state of the plastoquinone pool. Based on a published model fitted to measured state of the pool under different light sources makes it possible to guesstimate how a given light source can affect the redox state. _This model can be used, with care, to assess light from different sources in relation to its ability to drive PSI relative to PSII._ The actual balance between PSI and PSII acclimates and in addition depends on plant species, genotype and plant growing conditions!
+The balance between the activation of photosystem 1 (PSI) and photosystem 2 (PSII) depends on the wavelength composition of the incoming radiation as the chlorophylls in the two photosystems absorb predominantly at slightly different wavelengths. The balance between PSI and PSII affects the redox state of the plastoquinone pool. Based on a published model for Arabidopsis fitted to the measured state of the pool under different light sources, it is possible to _roughly estimate_ how a given light source can affect the redox state. Thus, this model can be used, with care, to assess different light sources in relation to their _relative_ ability to drive PSI and PSII. **The actual balance between PSI and PSII acclimates to growing conditions and varies among plant species and genotypes!**
+
+By default the published coefficients (Mattila et al, 2020, doi:10.1111/tpj.14983) are used with normalization based on PAR. These are default arguments making it possible the use of different ones, possibly for sensitivity analysis or if in the future values for other spacies or conditions become available.
 
 ```{r}
 PQ_redox_state(sun.spct) # % in reduced state
 ```
+Similarly as functions from package 'photobiology' metadata from spectra can be
+transferred to the returned value.
+
 ```{r}
 PQ_redox_state(sun.spct, attr2tb = "when.measured")
 ```
 
+Collections of spectra are also supported.
+
+```{r}
+PQ_redox_state(sun_evening.mspct, attr2tb = "when.measured")
+```
+
 ### Stomatal conductance
 
-The functions described in this section are available in 'photobiologyPlants' (>= 0.6.2).
-
 While in meteorology it is common to use stomatal resistances expressed based of
-volume, in plant sciences their expression as molar conductances is the norm.
-The conversion depends on the molar volume of air, which here is treated as an
-ideal gas. The molar volume is a function of temperature and pressure.
+volume, in plant sciences their expression as molar conductances is currently
+the norm. The conversion depends on the molar volume of air, which here is
+treated as an ideal gas. By default $21^\circ \mathrm{C}$ for temperature and
+101.3\ kPa for ambient pressure are used. `gs_mol2vol()` returns volumetric
+conductance and its inverse is the resistance.
 
 ```{r}
 1 / gs_mol2vol(0.150) # mol m-2 s-1 -> s m-2
 ```
+
+The same molar conductance translates into a higher resistance in cool air and
+lower pressure conditions. These calculations assume that gas-exchange through
+stomata is purely by diffusion.
 
 ```{r}
 # mol m-2 s-1 -> s m-2
@@ -402,7 +417,10 @@ ideal gas. The molar volume is a function of temperature and pressure.
 ```
 
 Stomatal conductance is directly dependent on the diffusion coefficient (D)
-which depends on the chemical species, temperature and pressure.
+which depends on the chemical species, temperature and pressure. As 
+$\mathrm{CO}_2$ is heavier than $\mathrm{H_2O}$, diffusion is slower, resulting
+in lower conductance for $\mathrm{CO}_2$ compared to $\mathrm{H_2O}$ under
+identical conditions.
 
 ```{r}
 gs_c_from_gs_w(0.150) # mol m-2 s-1
@@ -410,8 +428,9 @@ gs_c_from_gs_w(0.150) # mol m-2 s-1
 
 Estimation of stomatal conductance from the measured size of the stomatal pore
 is challenging, both because of the difficulty in doing the measurements and
-because the equation used is based on an approximation to the real shape of
-stomata.
+because equations used is based on an approximation to the real shape of
+stomata. The implementation in 'photobiologyPlants' is based on equations from 
+Monteith and Unsworth (2008, ISBN: 978-0-12-505103-3)
 
 ```{r}
 gs_w <-
@@ -426,19 +445,28 @@ gs_w * 1e3 # for water vapour mmol m-2 s-1
 gs_c_from_gs_w(gs_w) * 1e3 # for CO2 mmol m-2 s-1
 ```
 
-These functions rely on computation of the volumetric diffusion coefficients,
+All conversion and estimation functions shown earlier in this section, rely on 
+computation of the volumetric diffusion coefficients of $\mathrm{H_2O}$ and 
+$\mathrm{CO}_2$ in air and their dependence on temperature. The functions
+below expect temperatures to be expressed in $^\circ\mathrm{C}$.
 
 ```{r}
-D_water(c(0, 10, 20, 30, 40))
+D_water(temperature = c(0, 10, 20, 30, 40))
 D_CO2(c(0, 10, 20, 30, 40))
 ```
-and the molar volume of an ideal gas.
+They also depend on the molar volume of an ideal gas, which depends on pressure
+and temperature.
+For ideal gases the molar volume is independent of the chemical species. Air at
+anbient pressure behaves approximately as an ideal gas. Function `molar_vol()`
+expects temperature expressed in $^\circ\mathrm{C}$ and pressure in 
+$\mathrm{Pa}$. 
 
 ```{r}
-molar_vol(c(0, 10, 20, 30, 40))
+molar_vol(temperature = c(0, 10, 20, 30, 40))
+```
+```{r}
 molar_vol(temperature = 25, pressure = c(98e3, 100e3, 102e3))
 ```
-
 ## Vegetation
 
 The functions described in this section have been migrated from package 'photobiology' (>= 0.12.0) to 'photobiologyPlants' (>= 0.6.0).

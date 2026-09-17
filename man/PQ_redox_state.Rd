@@ -81,7 +81,8 @@ your code relies on external data or packages: use the .export and
 correct environment set up for computing.}
 }
 \value{
-A numeric vector, with one value for each spectrum in the input.
+A numeric vector, with one value for each spectrum in the input, or
+  a data frame.
 }
 \description{
 Estimate the redox state of the plastoquinone (PQ) pool from spectral

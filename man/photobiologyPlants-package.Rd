@@ -13,7 +13,7 @@ Provides functions for quantifying visible (VIS) and ultraviolet (UV) radiation 
 \details{
 Package 'photobiologyPlants' is part of a suite of packages for
   analysis and plotting of data relevant to photobiology (described at
-  \url{http://www.r4photobiology.info/}). The current component package
+  \url{https://www.r4photobiology.info/}). The current component package
   provides functions and data related to plant photoreceptors, light
   dependent reponses and optical properties of plants.
 }

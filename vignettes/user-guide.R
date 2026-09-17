@@ -26,6 +26,10 @@ R_FR(sun_evening.spct,
 Pfr_Ptot(sun.spct)
 
 ## -----------------------------------------------------------------------------
+Pfr_Ptot(sun_evening.spct, 
+     attr2tb = c("when.measured" = "time.UTC", "lat" = "latitude"))
+
+## -----------------------------------------------------------------------------
 R_FR(sun.spct)
 
 ## -----------------------------------------------------------------------------
@@ -33,6 +37,9 @@ q_ratio(sun.spct, Red("Smith10"), Far_red("Smith10"))
 
 ## -----------------------------------------------------------------------------
 Pfr_Ptot_R_FR(R_FR(sun.spct))
+
+## -----------------------------------------------------------------------------
+Pfr_Ptot_R_FR(R_FR(sun.spct, std = "Smith10"))
 
 ## -----------------------------------------------------------------------------
 Pfr_Ptot(660)
@@ -62,12 +69,14 @@ ex6.data <- data.frame(r.fr=seq(0.01, 5.0, length.out=100), Pfr.p=numeric(100))
 ex6.data$Pfr.p <- Pfr_Ptot_R_FR(ex6.data$r.fr)
 ggplot(data=ex6.data, aes(r.fr, Pfr.p)) +
   geom_line() +
+  expand_limits(y = 0) +
     labs(x ="R:FR photon ratio",
          y = "Phytochrome photoequilibrium, Pfr:Ptot ratio")
 
 
 ## -----------------------------------------------------------------------------
-with(clip_wl(sun.spct, c(300,770)), Phy_reaction_rates(w.length, s.e.irrad))
+with(clip_wl(sun.spct, c(300,770)), 
+     Phy_reaction_rates(w.length, s.e.irrad))
 
 ## ----eval = eval_plots--------------------------------------------------------
 ex7.data <- data.frame(w.length=seq(300, 770, length.out=100))
@@ -177,8 +186,9 @@ autoplot(as.reflector_mspct(Betula_ermanii.mspct))
 ## -----------------------------------------------------------------------------
 names(leaf_fluorescence.mspct)
 
-## ----eval = eval_plots--------------------------------------------------------
-autoplot(leaf_fluorescence.mspct$wheat_Fo_ex355nm)
+## ----eval = eval_plots, message=FALSE-----------------------------------------
+autoplot(leaf_fluorescence.mspct$wheat_Fo_ex355nm,
+         span = 21)
 
 ## ----eval = eval_plots--------------------------------------------------------
 photon_as_default()
@@ -188,6 +198,15 @@ names(McCree_photosynthesis.mspct)
 
 ## ----eval = eval_plots--------------------------------------------------------
 autoplot(McCree_photosynthesis.mspct)
+
+## -----------------------------------------------------------------------------
+PQ_redox_state(sun.spct) # % in reduced state
+
+## -----------------------------------------------------------------------------
+PQ_redox_state(sun.spct, attr2tb = "when.measured")
+
+## -----------------------------------------------------------------------------
+PQ_redox_state(sun_evening.mspct, attr2tb = "when.measured")
 
 ## -----------------------------------------------------------------------------
 1 / gs_mol2vol(0.150) # mol m-2 s-1 -> s m-2
@@ -212,11 +231,13 @@ gs_w * 1e3 # for water vapour mmol m-2 s-1
 gs_c_from_gs_w(gs_w) * 1e3 # for CO2 mmol m-2 s-1
 
 ## -----------------------------------------------------------------------------
-D_water(c(0, 10, 20, 30, 40))
+D_water(temperature = c(0, 10, 20, 30, 40))
 D_CO2(c(0, 10, 20, 30, 40))
 
 ## -----------------------------------------------------------------------------
-molar_vol(c(0, 10, 20, 30, 40))
+molar_vol(temperature = c(0, 10, 20, 30, 40))
+
+## -----------------------------------------------------------------------------
 molar_vol(temperature = 25, pressure = c(98e3, 100e3, 102e3))
 
 ## -----------------------------------------------------------------------------
